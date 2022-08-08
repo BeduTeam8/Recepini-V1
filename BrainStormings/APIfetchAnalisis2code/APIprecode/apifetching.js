@@ -14,7 +14,9 @@ function callMealDBAPI(url,callType){
     })
     document.getElementById('json').innerHTML = data.meals//;
 }
-//variables
+
+
+//variables every search in a variable to call a function
 let callType='GET';
 let searchxMealName='https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
 
@@ -53,7 +55,7 @@ let searchAllAreas='https://www.themealdb.com/api/json/v1/1/list.php?a=list';
 let searchAllIngredients='https://www.themealdb.com/api/json/v1/1/list.php?i=list';
 
 // ###
-// # Filter by main ingredient
+// # Filter by main ingredient examples
 // let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast';
 let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken';
 // let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=garlic';
@@ -71,10 +73,9 @@ let searchxCat='https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
 let searchxArea='https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian';
 
+// ###
 // # Images
 // # Meal Thumbnail Images
-
-// ###
 // # Add /preview to the end of the meal image URL
 let getUrlPreview='https://www.themealdb.com//images/media/meals/llcbn01574260722.jpg/preview';
 
@@ -82,9 +83,17 @@ let getUrlPreview='https://www.themealdb.com//images/media/meals/llcbn0157426072
 // # Ingredient Thumbnail Images
 let getUrlImage='https://www.themealdb.com/images/ingredients/Lime.png';
 
-// ###getUrlSmallImage
+// # Inrgesient small images by addind "-small.png" at the end of the string getUrlSmallImage
 let getThumbnailImageUrl='https://www.themealdb.com/images/ingredients/Lime-Small.png';
-let output='';
+
+
+// =======================================================================
+// =======================================================================
+// =======================================================================
+// PRUEBAS de llamado con fecth
+// =======================================================================
+
+
 console.log(callMealDBAPI(searchxMealName, callType));
 
 // console.log(callMealDBAPI(listAllMealsx1stLetter,callType));
@@ -121,5 +130,3 @@ console.log(callMealDBAPI(searchxMealName, callType));
 // console.log('getUrlSmallImage');
 // console.log(callMealDBAPI(getThumbnailImageUrl,callType));
 
-
-get
