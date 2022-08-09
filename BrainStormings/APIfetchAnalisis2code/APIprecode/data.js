@@ -7,6 +7,8 @@ function callMealDBAPI(url,callType){
     })
     .then(function(data) {
         console.log(data);
+        //Marcadores usados en la aproximacion al codigo
+        //Borrar si ya tenemos una funcion
         // console.log(a=1);
         // console.log(data.meals[0]);
         // console.log(a=1);
@@ -14,41 +16,43 @@ function callMealDBAPI(url,callType){
         // data_json=data;
         // data_json={...data.meals[0]};
         // console.log(a=1);
-        let size = Object.keys(data).length;
-        console.log('tamaño del obj data: '+size);
+        let size = Object.keys(data.meals).length;
+        console.log('tamaño del Obj data: '+size);
         let jsonHTML="";
-        // for (let mealsObj = 0; mealsObj < size-1; mealsObj++) {
-        //     const element = array[mealsObj];
-            
-        // }
-        data_json=Object.entries(data.meals);
-        // document.getElementById('json').innerHTML = ;
-        console.log(a=1);
-        console.log(data_json);
-        // document.getElementById('json').innerHTML = `${data["meals"][0].idMeal}`;
-        // data_json=JSON.stringify(data_json);
-        // document.getElementById('json').innerHTML = data_json[0][1][1]["idMeal"];
-       
-        // for (const iterator of data_json) {
-        //     jsonHTML+=iterator+"<br>";
-        // }
+
+        //For el numero de meals en el objeto pasar cada uno y que los imprima en pagina
+        console.log('Vamos a entrar al for que pasa el index')
+        for (let mealsObjIndex = 0; mealsObjIndex < size; mealsObjIndex++) {
+        // Este es el objeto json de un solo arrreglo que si lo paso a la funcion como esta si funciona y se imprime en console log y en  html code
+        // data_json=Object.entries(data.meals[0]);
+
+            data_json=Object.entries(data.meals[mealsObjIndex]);
+            console.log(mealsObjIndex);//marcador de fase en que indice voy del arreglo
+            console.log(data_json);//despliega el contenido pasado
+            //Esto se debe borrar en cuanto la funcion jale
+            // document.getElementById('json').innerHTML = `${data["meals"][0].idMeal}`;
+            // data_json=JSON.stringify(data_json);
+            // document.getElementById('json').innerHTML = data_json[0][1][1]["idMeal"];
         
-        console.log('Longitud del arreglo: '+data_json.length);
-
-        for (let i = 0; i < data_json.length; i++) {
-            // const element = data_json[i];
+            // for (const iterator of data_json) {
+            //     jsonHTML+=iterator+"<br>";
+            // }
             
-            console.log(data_json[i])
-            // jsonHTML=`${jsonHTML + data_json[i][0]}<br>`;
+            console.log('Indice:'+mealsObjIndex+' Longitud del arreglo: '+data_json.length);
+            jsonHTML+=jsonHTML+`${'<p>Indice:'+ mealsObjIndex+' Longitud del arreglo: '+data_json.length+'</p>'}`;
 
-            jsonHTML=`${jsonHTML+'<b>'+data_json[i][0]+':</b> '+data_json[i][1]+'<br>'+data_json[i][2]+'<br>'+data_json[i][3]+'<br>'}`;
-        }
+            for (let i = 0; i < data_json.length; i++) {
+                
+                console.log(data_json[i])
+                jsonHTML=`${jsonHTML+'<b>'+data_json[i][0]+':</b> '+data_json[i][1]+'<br>'}`;
+
+            }
+        }   
         document.getElementById('json').innerHTML = jsonHTML;
     })
     .catch(function(error) {
         console.log(error)
     })
-    // document.getElementById('json').innerHTML = data_json.meals[0];//;
 }
 
 // readData
