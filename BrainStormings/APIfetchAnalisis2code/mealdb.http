@@ -1,72 +1,104 @@
 ###
 # Search meal by name
+# Regresa varios Registros
+
 GET https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
 
 ###
 # List all meals by first letter
+# Regresa varios Registros
+
 GET https://www.themealdb.com/api/json/v1/1/search.php?f=a
 
 ###
 # Lookup full meal details by id
+# Regresa 1 Registro
 GET https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772
 
 ###
 # Lookup a single random meal
+# Regresa 1 Registro
+
 GET https://www.themealdb.com/api/json/v1/1/random.php
 
 ###
 # Lookup a selection of 10 random meals (only available to $2+ Paypal supporters)
+# Regresa 10max Registro
+
 GET https://www.themealdb.com/api/json/v1/1/randomselection.php
 
 ###
 # List all meal categories
+# Regresa 14 Registros
+
 GET https://www.themealdb.com/api/json/v1/1/categories.php
 
 ###
 # Latest Meals (only available to $2+ Paypal supporters)
+# Regresa 1 Registro
 
 GET https://www.themealdb.com/api/json/v1/1/latest.php
 
 ###
 # List all Categories, Area, Ingredients
+# Regresa 14 Registros de categorias
+
 GET https://www.themealdb.com/api/json/v1/1/list.php?c=list
 
 ###
+# Regresa 27 Registros de Area
 
 GET https://www.themealdb.com/api/json/v1/1/list.php?a=list
 
 ###
+# Regresa 574 Registros de Ingredientes
+
 GET https://www.themealdb.com/api/json/v1/1/list.php?i=list
 
 ###
 # Filter by main ingredient
+# Regresa varios Registro
+
 GET https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast
 
 ###
 # Filter by multi-ingredient (only available to $2+ Paypal supporters)
+# Regresa varios Registros
+
 GET https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast,garlic,salt
 
 ###
 # Filter by Category
+# Regresa varios Registros
+
 GET https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
 
 ###
 # Filter by Area
+# Regresa varios Registros
+
 
 GET https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian
 
+###
 # Images
 # Meal Thumbnail Images
 
-###
 # Add /preview to the end of the meal image URL
+# Regresa 1 Registro
+
 GET https://www.themealdb.com//images/media/meals/llcbn01574260722.jpg/preview
 
 ###
 # Ingredient Thumbnail Images
+# Regresa 1 Registro
+
 GET https://www.themealdb.com/images/ingredients/Lime.png
 
 ###
+# Agregar "-small.png" para generar el URL de la imagen. 
+# Regresa 1 Registro
+
 GET https://www.themealdb.com/images/ingredients/Lime-Small.png
 
 ###

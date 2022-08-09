@@ -12,7 +12,8 @@ function callMealDBAPI(url,callType){
     .catch(function(error) {
         console.log(error)
     })
-    document.getElementById('json').innerHTML = data.meals//;
+    //Codigo para pegarle a un html la informacion
+    // document.getElementById('json').innerHTML = data; 
 }
 
 
@@ -94,7 +95,7 @@ let getThumbnailImageUrl='https://www.themealdb.com/images/ingredients/Lime-Smal
 // =======================================================================
 
 
-console.log(callMealDBAPI(searchxMealName, callType));
+// console.log(callMealDBAPI(searchxMealName, callType));
 
 // console.log(callMealDBAPI(listAllMealsx1stLetter,callType));
 
@@ -104,13 +105,13 @@ console.log(callMealDBAPI(searchxMealName, callType));
 
 // console.log(callMealDBAPI(search10RandomMeals,callType));
 
-// console.log(callMealDBAPI(searchAllMealCats,callType));
+console.log(callMealDBAPI(searchAllMealCats,callType));
 
 // console.log(callMealDBAPI(searchLatestMeal,callType));
 
-// console.log(callMealDBAPI(searchAllAreas,callType));
+console.log(callMealDBAPI(searchAllAreas,callType));
 
-// console.log(callMealDBAPI(searchAllIngredients,callType));
+console.log(callMealDBAPI(searchAllIngredients,callType));
 
 // console.log(callMealDBAPI(searchxMainIngredient,callType));
 // callMealDBAPI(searchxMainIngredient,callType);
