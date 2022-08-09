@@ -28,7 +28,9 @@ function callMealDBAPI(url,callType){
         for (let mealsObjIndex = 0; mealsObjIndex < size; mealsObjIndex++) {
         // Este es el objeto json de un solo arrreglo que si lo paso a la funcion como esta si funciona y se imprime en console log y en  html code
         // data_json=Object.entries(data.meals[0]);
-
+            //Convierte el registro Que es un OBJ meals.[indice] a un arreglo. 
+            // Porque Object.entries regresa un arreglo minimo bidimensional tipo [key][value]
+            //No supe si fue la mejor opcion en el momento, pero me fui explotando asi el JSON
             data_json=Object.entries(data.meals[mealsObjIndex]);
             // data_json=Object.entries(data.categories[mealsObjIndex]);
 
@@ -76,7 +78,7 @@ let searchxMealName='https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabi
 // console.log(callMealDBAPI(searchxMealName, callType));
 // callMealDBAPI(searchxMealName, callType);
 
-let listAllMealsx1stLetter='https://www.themealdb.com/api/json/v1/1/search.php?f=a';
+let listAllMealsx1stLetter='https://www.themealdb.com/api/json/v1/1/search.php?f=k';
 
 //.meals uncomment. Es un Obj: meals
 // console.log(callMealDBAPI(listAllMealsx1stLetter,callType));
@@ -123,13 +125,13 @@ let searchLatestMeal='https://www.themealdb.com/api/json/v1/1/latest.php';
 let searchAllCats='https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 
 //.meals uncomment. Es un Obj: meals
-console.log(callMealDBAPI(searchAllCats,callType));
+// console.log(callMealDBAPI(searchAllCats,callType));
 // ###
 
 let searchAllAreas='https://www.themealdb.com/api/json/v1/1/list.php?a=list';
 
 //.meals uncomment. Es un Obj: meals
-// console.log(callMealDBAPI(searchAllAreas,callType));
+console.log(callMealDBAPI(searchAllAreas,callType));
 
 // ###
 let searchAllIngredients='https://www.themealdb.com/api/json/v1/1/list.php?i=list';
