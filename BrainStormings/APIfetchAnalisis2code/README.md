@@ -5,6 +5,9 @@ Colección de los resultados devueltos para analisar lso datos que el JSON regre
 =====================================
 
 apifetching:
--deja ver lo que llega en JSON
+
+    ---deja ver lo que llega en JSON
+
 data:
--deja ver como lo presentamos en HTML basic aproach
+
+    --- deja ver como lo presentamos en HTML basic aproach
