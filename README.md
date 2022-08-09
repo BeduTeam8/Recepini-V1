@@ -2,7 +2,7 @@
 
 En espera de los diseños aprobados en la sesion del viernes 5 de agosto 2022
 
-1aanzar en el analisis de como viene los datos del JSON.
+Avanzar en el analisis de como vienen los datos del JSON.
 
 ---
 
