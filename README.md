@@ -1,4 +1,19 @@
-# MealDB
+# Recipini
+
+Envios miercoles, 10 de agosto.
+Siguiente junta viernes, 12 de agosto.
+
+---
+
+Lunes, 8 de agosto 2022.
+
+Analizamos parte del codigo del API y su conexión al HTML a través de un "document.getElementbyId('Id Tag')='string con codigo HTML'
+
+De los nombres elegidos y paletas de colores, pasamos a ver un modelo basico de wireframe en dos colores posibles.
+
+Quedamos en enviar nuestra propuesta basados en los tres puntos anteriores.
+
+---
 
 En espera de los diseños aprobados en la sesion del viernes 5 de agosto 2022
 
