@@ -7,7 +7,9 @@ function callMealDBAPI(url,callType){
     })
     .then(function(data) {
         console.log(data);
-        let jsonHTML="";//Elementop que carga el html en el punto indicado
+
+        // let jsonHTML="";//Elementop que carga el html en el punto indicado
+        let jsonHTML=`${'<p>Busqueda empleada: '+url+'</p>'}`;
         //Marcadores usados en la aproximacion al codigo
         //Borrar si ya tenemos una funcion
         // console.log(a=1);
@@ -17,10 +19,15 @@ function callMealDBAPI(url,callType){
         // data_json=data;
         // data_json={...data.meals[0]};
         // console.log(a=1);
-        let size = Object.keys(data.meals).length;
-        // let size = Object.keys(data.categories).length;
+       
+            let size = Object.keys(data.meals).length;
+           
+     
+            // let size = Object.keys(data.categories).length;
         
-        let msj=`${'<h2>Número de elementos en el OBJ(tamaño del Obj data): '+size+'</h2>'}`;
+        
+        let msj=`${'<b>Número de elementos en el OBJ(tamaño del Obj data): '+size+'</b>'}`;
+
         console.log(msj);
         jsonHTML+=msj;
         //For el numero de meals en el objeto pasar cada uno y que los imprima en pagina
@@ -31,6 +38,7 @@ function callMealDBAPI(url,callType){
             //Convierte el registro Que es un OBJ meals.[indice] a un arreglo. 
             // Porque Object.entries regresa un arreglo minimo bidimensional tipo [key][value]
             //No supe si fue la mejor opcion en el momento, pero me fui explotando asi el JSON
+            //Probando la seleccion automatica del json sea este meals o categories con Index
             data_json=Object.entries(data.meals[mealsObjIndex]);
             // data_json=Object.entries(data.categories[mealsObjIndex]);
 
@@ -77,7 +85,7 @@ let callType='GET';
 let searchxMealName='https://www.themealdb.com/api/json/v2/9973533/search.php?s=Arrabiata';
 
 //.meals uncomment. Es un Obj: meals
-console.log(callMealDBAPI(searchxMealName, callType));
+// console.log(callMealDBAPI(searchxMealName, callType));
 // callMealDBAPI(searchxMealName, callType);
 
 let listAllMealsx1stLetter='https://www.themealdb.com/api/json/v1/1/search.php?f=k';
@@ -101,7 +109,7 @@ let searchSingleRandomMeal='https://www.themealdb.com/api/json/v1/1/random.php';
 
 // ###
 // # Lookup a selection of 10 random meals (only available to $2+ Paypal supporters)
-let search10RandomMeals='https://www.themealdb.com/api/json/v1/1/randomselection.php';
+let search10RandomMeals='https://www.themealdb.com/api/json/v2/9973533/randomselection.php';
 
 //.meals uncomment. Es un Obj: meals
 //No se prueba hasta comprar API
@@ -143,17 +151,18 @@ let searchAllIngredients='https://www.themealdb.com/api/json/v1/1/list.php?i=lis
 
 // ###
 // # Filter by main ingredient
-// let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast';
-let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken';
+let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast';
+// let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken';
 // let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=garlic';
 
-// console.log(callMealDBAPI(searchxMainIngredient,callType));
 //.meals uncomment. Es un Obj: meals
 // callMealDBAPI(searchxMainIngredient,callType);
+// console.log(callMealDBAPI(searchxMainIngredient,callType));
+
 
 // ###
 // # Filter by multi-ingredient (only available to $2+ Paypal supporters)
-let searchxMultiIngredient='https://www.themealdb.com/api/json/v2/9973533/filter.php?i=chicken_breast,garlic,salt';
+let searchxMultiIngredient='https://www.themealdb.com/api/json/v2/9973533/filter.php?i=garlic,salt';
 
 //.meals uncomment. Es un Obj: meals
 //Hasta que se pague la API mientras es un null
@@ -172,7 +181,7 @@ let searchxCat='https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 let searchxArea='https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian';
 
 //.meals uncomment. Es un Obj: meals
-// console.log(callMealDBAPI(searchxArea,callType));
+console.log(callMealDBAPI(searchxArea,callType));
 
 // # Images
 // # Meal Thumbnail Images
