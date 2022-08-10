@@ -72,10 +72,12 @@ function callMealDBAPI(url,callType){
 
 //variables
 let callType='GET';
-let searchxMealName='https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
+
+// let searchxMealName='https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
+let searchxMealName='https://www.themealdb.com/api/json/v2/9973533/search.php?s=Arrabiata';
 
 //.meals uncomment. Es un Obj: meals
-// console.log(callMealDBAPI(searchxMealName, callType));
+console.log(callMealDBAPI(searchxMealName, callType));
 // callMealDBAPI(searchxMealName, callType);
 
 let listAllMealsx1stLetter='https://www.themealdb.com/api/json/v1/1/search.php?f=k';
@@ -115,7 +117,7 @@ let searchAllMealCats='https://www.themealdb.com/api/json/v1/1/categories.php';
 // ###
 // # Latest Meals (only available to $2+ Paypal supporters)
 
-let searchLatestMeal='https://www.themealdb.com/api/json/v1/1/latest.php';
+let searchLatestMeal='https://www.themealdb.com/api/json/v2/9973533/latest.php';
 
 //.meals uncomment. Es un Obj: meals
 // console.log(callMealDBAPI(searchLatestMeal,callType));
@@ -131,7 +133,7 @@ let searchAllCats='https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 let searchAllAreas='https://www.themealdb.com/api/json/v1/1/list.php?a=list';
 
 //.meals uncomment. Es un Obj: meals
-console.log(callMealDBAPI(searchAllAreas,callType));
+// console.log(callMealDBAPI(searchAllAreas,callType));
 
 // ###
 let searchAllIngredients='https://www.themealdb.com/api/json/v1/1/list.php?i=list';
@@ -151,7 +153,7 @@ let searchxMainIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=
 
 // ###
 // # Filter by multi-ingredient (only available to $2+ Paypal supporters)
-let searchxMultiIngredient='https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast,garlic,salt';
+let searchxMultiIngredient='https://www.themealdb.com/api/json/v2/9973533/filter.php?i=chicken_breast,garlic,salt';
 
 //.meals uncomment. Es un Obj: meals
 //Hasta que se pague la API mientras es un null
