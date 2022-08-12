@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: antiquewhite;
+}
+
+img {
+  border-radius: 1em;
+  box-shadow: 10rem;
+}
+
+a {
+  box-shadow: 10rem;
+}
+.json {
+  background-color: cadetblue;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+}
+.cardContainer {
+  background-color: aqua;
+  border-radius: 1em;
+}
+.cardImgContainer {
+}
+.linkCard {
+}
+imgCard {
+}
