@@ -10,73 +10,27 @@ function callMealDBAPI(url,callType){
 
         // let jsonHTML="";//Elementop que carga el html en el punto indicado
         let jsonHTML=`${'<p>Busqueda empleada: '+url+'</p>'}`;
-        
-
-        // console.log('Object.keys(data):'+Object.keys(data['categories'])+' Object.values(data): '+Object.values(data['categories']));
-        console.log('Object.keys(data):'+Object.keys(data)+' Object.values(data): '+Object.values(data));
-        index='categories';
-        console.log('Object.keys(data):'+Object.keys(data[index])+' Object.values(data): '+Object.values(data[index]));
+        //Codigo para ver que llega se puede borrar despues.
+        //Esto hace log en consola
+        // console.log('Object.keys(data):'+Object.keys(data)+' Object.values(data): '+Object.values(data));
+        let index='categories'; //permite elegir el objeto y usar parte del codigo original. Antes se tenian que tener dos copias del mismo programa que se usaba en dos diferentes grupos de resultados: 13 busquedas que regresaban un obj meals y 1 que regresa un obj categories.
+        // console.log('Object.keys(data):'+Object.keys(data[index])+' Object.values(data): '+Object.values(data[index]));
 
         let datajson=Object.values(data);
         let size = Object.values(data).length;
-        
-
-
-        
-        // console.log('datajson.Array: ',datajson[0][0]);//[0].idCategory,datajson.categories);
-        
-              
-            // let size = Object.keys(data.categories).length;
-        
-        
-        // let msj=`${'<b>Número de elementos en el OBJ(tamaño del Obj data): '+size+'</b>'}`;
-
-        // console.log(msj);
-        // jsonHTML+=msj;
-        // //For el numero de meals en el objeto pasar cada uno y que los imprima en pagina
-        // console.log('Antes de entrar al for que recibe el index igual al tamaño del OBJ')
-        // for (let mealsObjIndex = 0; mealsObjIndex < size; mealsObjIndex++) {
-        // // Este es el objeto json de un solo arrreglo que si lo paso a la funcion como esta si funciona y se imprime en console log y en  html code
-        // // data_json=Object.entries(data.meals[0]);
-        //     //Convierte el registro Que es un OBJ meals.[indice] a un arreglo. 
-        //     // Porque Object.entries regresa un arreglo minimo bidimensional tipo [key][value]
-        //     //No supe si fue la mejor opcion en el momento, pero me fui explotando asi el JSON
-        //     //Probando la seleccion automatica del json sea este meals o categories con Index
-        //     data_json=Object.entries(datajson[mealsObjIndex]);
-        //     // data_json=Object.entries(data.categories[mealsObjIndex]);
-
-        //     // console.log(mealsObjIndex);//marcador de fase en que indice voy del arreglo
-        //     console.log('Convertido en Arreglo el OBJ:', data_json);//despliega el contenido pasado
-        //     //Esto se debe borrar en cuanto la funcion jale
-        //     // document.getElementById('json').innerHTML = `${data["meals"][0].idMeal}`;
-        //     // data_json=JSON.stringify(data_json);
-        //     // document.getElementById('json').innerHTML = data_json[0][1][1]["idMeal"];
-        
-        //     // for (const iterator of data_json) {
-        //     //     jsonHTML+=iterator+"<br>";
-        //     // }
-            
-        //     msj=`${'<p>El elemento['+mealsObjIndex+'] tiene una longitud de subarreglo: '+datajson.length+'</p>'}`;
-        //     console.log(msj);
-        //     jsonHTML+=msj;
-            
-
-            
+                    
         let vartext='';
              for (let i = 0; i < data[index].length; i++) {
-                
-            
+             //El string que getElementbyId despiega en el Id de HTML indicado.            
                 vartext+=`${'<div class="cardContainer"><div class="cardImgContainer">'+'data.categories: '+data[index][i].idCategory +'<a class="linkCard" href=https://www.themealdb.com/api/json/v1/1/filter.php?c='+data[index][i].strCategory +'><img class="imgCard" src='+data[index][i].strCategoryThumb+'></a></div><h3>'+data[index][i].strCategory+'</h3><div class="textCartContainer"> <p>'+data[index][i].strCategoryDescription+'</p> </div></div>'}`;
 
-            console.log( vartext);
-    
-    
-    
-            console.log('data.categories: ',
-            data[index][i].idCategory,
-            data[index][i].strCategory,
-            data[index][i].strCategoryDescription,
-            data[index][i].strCategoryThumb);
+                //Solo hade log en la consola para ver que es cada dato
+            // console.log( vartext);
+            // console.log('data.categories: ',
+            // data[index][i].idCategory,
+            // data[index][i].strCategory,
+            // data[index][i].strCategoryDescription,
+            // data[index][i].strCategoryThumb);
             }
         // document.getElementById('json').innerHTML = jsonHTML;
         document.getElementById('json').innerHTML = jsonHTML+vartext
@@ -85,10 +39,6 @@ function callMealDBAPI(url,callType){
         console.log(error)
     })
 }
-
-// readData
-
-
 
 //variables
 let callType='GET';
