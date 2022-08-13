@@ -26,7 +26,7 @@ function callMealDBAPI(url,callType,jsonTipoEsperado){
         console.log(data);
 
     // let jsonHTML="";//Elementop que carga el html en el punto indicado
-    let jsonHTML=`${'<strong>Busqueda empleada: '+url+'</strong>'}`;
+    let jsonHTML=`${'<h2>Busqueda empleada: '+url+'</h2>'}`;
     //Codigo para ver que llega se puede borrar despues.
     //Esto hace log Por separado presenta los dos arreglos de jey y values
     // console.log('Object.keys(data):'+Object.keys(data)+' Object.values(data): '+Object.values(data));
@@ -37,12 +37,12 @@ function callMealDBAPI(url,callType,jsonTipoEsperado){
         index='categories'; //permite elegir el objeto y usar parte del codigo original. Antes se tenian que tener dos copias del mismo programa que se usaba en dos diferentes grupos de resultados: 13 busquedas que regresaban un obj meals y 1 que regresa un obj categories.
     }
     console.log('Que tipo de objeto estoy recibiendo: meals o Categories:', index);
-    jsonHTML+=`${'<strong>OBJ recibido de tipo:'+index+'</strong>'}`;
+    jsonHTML+=`${'<h3>OBJ recibido de tipo:'+index+'</h3>'}`;
     
     // console.log('Object.keys(data):'+Object.keys(data[index])+' Object.values(data): '+Object.values(data[index]));
 
-    let datajson=Object.values(data);//Saca de un OBJ JSON los values hacia un arreglo 
-    let size = Object.values(data).length; //Tamaño de la informacion obtenida en numero registros del arreglo.
+    //let datajson=Object.values(data);//Saca de un OBJ JSON los values hacia un arreglo 
+    //let size = Object.values(data).length; //Tamaño de la informacion obtenida en numero registros del arreglo.
     let vartextDOM='';//Inicializo la variable para el DOM
 
         for (let i = 0; i < data[index].length; i++) {
@@ -71,13 +71,17 @@ function callMealDBAPI(url,callType,jsonTipoEsperado){
             //             +'</div>'
             //         +'</div>'}`;
 
+            //Voy a evaluar usar un button en lugar de un anchor href porque no puedo usar hrefs ya que solo tenemos de acceso la api.
+            //Listo  funciona llamanda la lista categories con un BUTTON
+            let urlInAButton="\'https://www.themealdb.com/api/json/v1/1/filter.php?c="+ data[index][i].strCategory+"\'";
+            let onklick=`${'callMealDBAPI('+urlInAButton+',callType,1)'}`;
             vartextDOM+=`${
                     '<div class="cardContainer">'
                         +'<div class="cardImgContainer">'
                             +'data.categories: '+data[index][i].idCategory 
-                            +'<a class="linkCard" href=https://www.themealdb.com/api/json/v1/1/filter.php?c='+data[index][i].strCategory +'>'
+                            +'<button class="linkCard" onclick="'+onklick+'">'
                                 +'<img class="imgCard" src='+data[index][i].strCategoryThumb+'>'
-                            +'</a>'
+                            +'</button>'
                         +'</div>'
                         +'<h3>'+data[index][i].strCategory+'</h3>'
                         +'<div class="textCartContainer">'
