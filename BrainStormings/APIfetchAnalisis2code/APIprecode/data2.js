@@ -72,7 +72,9 @@ function callMealDBAPI(url,callType,jsonTipoEsperado){
             //         +'</div>'}`;
 
             //Voy a evaluar usar un button en lugar de un anchor href porque no puedo usar hrefs ya que solo tenemos de acceso la api.
-            //Listo  funciona llamanda la lista categories con un BUTTON
+            //
+            //Listo  funciona llamanda la lista categories con un BUTTON, 
+            // JESUS, quiza esto te sirva?
             let urlInAButton="\'https://www.themealdb.com/api/json/v1/1/filter.php?c="+ data[index][i].strCategory+"\'";
             let onklick=`${'callMealDBAPI('+urlInAButton+',callType,1)'}`;
             vartextDOM+=`${
