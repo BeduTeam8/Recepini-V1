@@ -75,6 +75,7 @@ function callMealDBAPI(url,callType,jsonTipoEsperado){
             //
             //Listo  funciona llamanda la lista categories con un BUTTON, 
             // JESUS, quiza esto te sirva?
+            // Puedes ver data.js con un boton al final de la busqueda
             let urlInAButton="\'https://www.themealdb.com/api/json/v1/1/filter.php?c="+ data[index][i].strCategory+"\'";
             let onklick=`${'callMealDBAPI('+urlInAButton+',callType,1)'}`;
             vartextDOM+=`${
