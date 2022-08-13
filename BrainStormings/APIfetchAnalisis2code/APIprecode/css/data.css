@@ -18,12 +18,24 @@ a {
 .json {
   background-color: cadetblue;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .cardContainer {
-  background-color: aqua;
+  background-color: rgb(212, 225, 225);
   border-radius: 1em;
+  display: inline-flex;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: auto;
+  margin: 10px;
+}
+.cardTextContainer {
 }
 .cardImgContainer {
 }
