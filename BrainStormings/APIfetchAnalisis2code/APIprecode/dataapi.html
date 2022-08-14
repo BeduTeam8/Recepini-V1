@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Using a fetched JSON</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="text/javascript" src="dataapi.js"></script>
+  </head>
+  <body>
+    <h4>API</h4>
+    <div><p>getUrlPreview: https://www.themealdb.com//images/media/meals/llcbn01574260722.jpg/preview</p>
+        <p>getUrlImage: https://www.themealdb.com/images/ingredients/Lime.png</p>
+        <p>getThumbnailImageUrl: https://www.themealdb.com/images/ingredients/Lime-Small.png</p>
+    </div>
+    <div style="background-color: aqua; display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 10px; grid-auto-rows: minmax(100px, auto);">
+        <div>
+            <h4>1 Búsqueda por MealName (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>2 Búsqueda por listAllMealsx1stLetter (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/search.php?f=k','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>3 Búsqueda por searchMealxId (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>4 Búsqueda por searchSingleRandomMeal (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/random.php','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>5 Búsqueda por search10RandomMeals (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v2/9973533/randomselection.php','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>6 Búsqueda por searchAllMealCats (tipo: categories)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/categories.php','GET')">Buscar</button>
+        </div>
+        <div>
+            <h4>7 Búsqueda por searchLatestMeal (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v2/9973533/latest.php','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>8 Búsqueda por searchAllCats (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/list.php?c=list','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>9 Búsqueda por searchAllAreas (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/list.php?a=list','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>10 Búsqueda por searchAllIngredients (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/list.php?i=list','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>11 Búsqueda por searchxMainIngredient (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>12 Búsqueda por searchxMultiIngredient (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v2/9973533/filter.php?i=garlic,salt','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>13 Búsqueda por searchxCat (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood','GET',1)">Buscar</button>
+        </div>
+        <div>
+            <h4>14 Búsqueda por searchxArea (tipo: meal)</h4>
+            <button type="button" onclick="callMealDBAPI('https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian','GET',1)">Buscar</button>
+        </div>
+    </div>
+    <div id="json"></div>
+  </body>
+</html>
