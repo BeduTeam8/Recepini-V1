@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: antiquewhite;
+}
+
+h1 {
+  background-color: #fff;
+}
+h2 {
+  background-color: darksalmon;
+}
+
+h3 {
+  background-color: brown;
+}
+img {
+  border-radius: 1em;
+  box-shadow: 10rem;
+}
+
+a {
+  box-shadow: 10rem;
+}
+.json {
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card {
+  width: 30%;
+  background-color: rgb(212, 225, 225);
+  border-radius: 1em;
+  display: inline-flex;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: auto;
+  margin: 10px;
+}
+.cardContainer {
+  width: 30%;
+  background-color: rgb(212, 225, 225);
+  border-radius: 1em;
+  display: inline-flex;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: auto;
+  margin: 10px;
+}
+.cardTextContainer {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  flex-flow: wrap;
+  /* visibility: collapse; */
+}
+.cardImgContainer {
+}
+.linkCard {
+  text-decoration: none;
+}
+.imgCard {
+}
+.card:hover .cardTextContainer {
+  display: block;
+
+  /* visibility: visible; */
+  /* z-index: 1; */
+}
