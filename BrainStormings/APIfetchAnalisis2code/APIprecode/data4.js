@@ -2,105 +2,123 @@
 //function callMealDBAPI(url,callType,jsonTipoEsperado)
 //recibe 3 argumentos:
 //url:'String' con el URL al que llama la API
-//callType='String' GET,etc se deja en caso de tener que usar la 
-//  funcion para llamadas de otro tipo. 
+//callType='String' GET,etc se deja en caso de tener que usar la
+//  funcion para llamadas de otro tipo.
 //  (Por el momento se deja en GET)
 //
-//jsonTipoEsperado:Entero que sirve para elegir entre dos estructuras. 
+//jsonTipoEsperado:Entero que sirve para elegir entre dos estructuras.
 //  El Json regresado solo puede ser de dos tipos:
 //  1)OBJ tipo meals
 //  2)OBJ tipo Categories.
-//  El primero se recibe en todas la llamadas al API, 
+//  El primero se recibe en todas la llamadas al API,
 //  exceptuando la de categories.php
-//  
+//
 //  jsonTipoEsperado=0; Selecciona el OBJ Cateagorias
 //  jsonTipoEsperado=1; Debiera ser el Default que Selecciona
 //       el OBJ meals, ademas imprime campos de una busqueda de recetas.
 //
-const JSONTipo = { 0:'categories', 1:'meals' }; ///Definimos los diferentes tipos de estructuras que puede retornar la API
+const JSONTipo = { 0: "categories", 1: "meals" }; ///Definimos los diferentes tipos de estructuras que puede retornar la API
 
 function Category(category) {
-    this.idCategory = category.idCategory;
-    this.strCategory = category.strCategory;
-    this.strCategoryDescription = category.strCategoryDescription;
-    this.strCategoryThumb = category.strCategoryThumb;
+  this.idCategory = category.idCategory;
+  this.strCategory = category.strCategory;
+  this.strCategoryDescription = category.strCategoryDescription;
+  this.strCategoryThumb = category.strCategoryThumb;
 }
 
 function Meal(meal) {
-    this.idMeal = meal.idMeal;
-    this.strMeal = meal.strMeal;
-    this.strMealThumb = meal.strMealThumb;
+  this.idMeal = meal.idMeal;
+  this.strMeal = meal.strMeal;
+  this.strMealThumb = meal.strMealThumb;
 }
 
-function categoryHTML(dataCategory){
-    return dataCategory.map(function(data){
-        category = new Category(data);
-        return `${
-            '<div class="cardContainer">'
-                +'<div class="cardImgContainer">'
-                    +'data.categories: '+category.idCategory 
-                    +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/filter.php?c='+ category.strCategory+'\',callType,1)">'
-                        +'<img class="imgCard" src="'+category.strCategoryThumb+'">'
-                    +'</button>'
-                +'</div>'
-                +'<h3>'+category.strCategory+'</h3>'
-                +'<div class="textCartContainer">'
-                    +'<p>'+category.strCategoryDescription+'</p>'
-                    +'</div>'
-                +'</div>'}`;
-    });
+function categoryHTML(dataCategory) {
+  return dataCategory.map(function (data) {
+    category = new Category(data);
+    return `${
+      '<div class="cardContainer">' +
+      '<div class="cardImgContainer">' +
+      "data.categories: " +
+      category.idCategory +
+      '<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/filter.php?c=' +
+      category.strCategory +
+      "',callType,1)\">" +
+      '<img class="imgCard" src="' +
+      category.strCategoryThumb +
+      '">' +
+      "</button>" +
+      "</div>" +
+      "<h3>" +
+      category.strCategory +
+      "</h3>" +
+      '<div class="textCartContainer">' +
+      "<p>" +
+      category.strCategoryDescription +
+      "</p>" +
+      "</div>" +
+      "</div>"
+    }`;
+  });
 }
 
-function mealHTML(dataMeal){
-    return dataMeal.map(function(data){
-        meal = new Meal(data);
-        return `${
-            '<div class="cardContainer">'
-                +'<div class="cardImgContainer">'
-                    +'data.meals: '
-                    +'<p>'+meal.strMeal+'</p>'
-                    +'<img class="imgCard" src="'+meal.strMealThumb+'/preview">'
-                    +'</div>'
-                +'</div>'}`;
-    });
+function mealHTML(dataMeal) {
+  return dataMeal.map(function (data) {
+    meal = new Meal(data);
+    return `${
+      '<div class="cardContainer">' +
+      '<div class="cardImgContainer">' +
+      "data.meals: " +
+      "<p>" +
+      meal.strMeal +
+      "</p>" +
+      '<img class="imgCard" src="' +
+      meal.strMealThumb +
+      '/preview">' +
+      "</div>" +
+      "</div>"
+    }`;
+  });
 }
 
-function callMealDBAPI(url, callType, html_result, jsonTipoEsperado = 1){
-    fetch(url, { method: callType })
-        .then(function(response) {
-            return response.json()  
-        })
-        .then(function(data) {
-            console.log(data);
+function callMealDBAPI(url, callType, html_result, jsonTipoEsperado = 1) {
+  fetch(url, { method: callType })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
 
-            // let jsonHTML="";//Elementop que carga el html en el punto indicado
-            let jsonHTML=`${'<h2>Busqueda empleada: '+url+'</h2>'}`;
-            //Codigo para ver que llega se puede borrar despues.
-            //Esto hace log Por separado presenta los dos arreglos de jey y values
-            // console.log('Object.keys(data):'+Object.keys(data)+' Object.values(data): '+Object.values(data));
-            //El Json regresado solo puede ser de dos tipos:OBJ tipo meals u OBJ tipo Categories.
-            //El primero se recibe en todas la llamadas al API exceptuando la de Categories.
-            
-            /*let index='meals'
+      // let jsonHTML="";//Elementop que carga el html en el punto indicado
+      let jsonHTML = `${"<h2>Busqueda empleada: " + url + "</h2>"}`;
+      //Codigo para ver que llega se puede borrar despues.
+      //Esto hace log Por separado presenta los dos arreglos de jey y values
+      // console.log('Object.keys(data):'+Object.keys(data)+' Object.values(data): '+Object.values(data));
+      //El Json regresado solo puede ser de dos tipos:OBJ tipo meals u OBJ tipo Categories.
+      //El primero se recibe en todas la llamadas al API exceptuando la de Categories.
+
+      /*let index='meals'
             if (jsonTipoEsperado===0){
                 index='categories'; //permite elegir el objeto y usar parte del codigo original. Antes se tenian que tener dos copias del mismo programa que se usaba en dos diferentes grupos de resultados: 13 busquedas que regresaban un obj meals y 1 que regresa un obj categories.
             }*/
 
-            console.log(JSONTipo[jsonTipoEsperado]);
-            console.log('Que tipo de objeto estoy recibiendo: meals o Categories:', jsonTipoEsperado);
-            jsonHTML+=`${'<h3>OBJ recibido de tipo:'+jsonTipoEsperado+'</h3>'}`;
-            
-            // console.log('Object.keys(data):'+Object.keys(data[index])+' Object.values(data): '+Object.values(data[index]));
+      console.log(JSONTipo[jsonTipoEsperado]);
+      console.log(
+        "Que tipo de objeto estoy recibiendo: meals o Categories:",
+        jsonTipoEsperado
+      );
+      jsonHTML += `${"<h3>OBJ recibido de tipo:" + jsonTipoEsperado + "</h3>"}`;
 
-            let vartextDOM='';//Inicializo la variable para el DOM
+      // console.log('Object.keys(data):'+Object.keys(data[index])+' Object.values(data): '+Object.values(data[index]));
 
-            if (jsonTipoEsperado===0){
-                vartextDOM += categoryHTML(data[JSONTipo[jsonTipoEsperado]]);
-            } else {
-                vartextDOM += mealHTML(data[JSONTipo[jsonTipoEsperado]]);
-            }
-            
-            /*for (let i = 0; i < data[JSONTipo[jsonTipoEsperado]].length; i++) {
+      let vartextDOM = ""; //Inicializo la variable para el DOM
+
+      if (jsonTipoEsperado === 0) {
+        vartextDOM += categoryHTML(data[JSONTipo[jsonTipoEsperado]]);
+      } else {
+        vartextDOM += mealHTML(data[JSONTipo[jsonTipoEsperado]]);
+      }
+
+      /*for (let i = 0; i < data[JSONTipo[jsonTipoEsperado]].length; i++) {
                 //Coloca en el log los datos de este Json 1 despues del otro separado por coma.
                 //Pude haber usado object.values para hacerlo, pero en la siguiente linea
                 //Asi los agrego al text formateado
@@ -169,16 +187,16 @@ function callMealDBAPI(url, callType, html_result, jsonTipoEsperado = 1){
             // document.getElementById('json').innerHTML = jsonHTML;
             //Le paso al DOM lo que encontre en la busqueda preformateado para WEB
             }*/
-            document.getElementById(html_result).innerHTML = jsonHTML+vartextDOM;
-        })
-        .catch(function(error) {
-            console.log(error)
-        });
+      document.getElementById(html_result).innerHTML = jsonHTML + vartextDOM;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 //variables
-let callType='GET';
-let jsonTipoEsperado=1;
+let callType = "GET";
+let jsonTipoEsperado = 1;
 
 // let searchxMealName='https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
 // let searchxMealName='https://www.themealdb.com/api/json/v2/9973533/search.php?s=Arrabiata';
@@ -216,14 +234,30 @@ let jsonTipoEsperado=1;
 
 // ###
 // # List all meal categories
-let searchAllMealCats='';
+let searchAllMealCats = "";
 //.categories uncomment. Es un OBJ: CATEGORIES
 //jsonTipoEsperado debe ser = 0 para categories
 
-window.addEventListener("load", function(event) {
-  callMealDBAPI('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata', callType, 'jsonTop');
-  callMealDBAPI('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772', callType, 'jsonMiddle');
-  callMealDBAPI('https://www.themealdb.com/api/json/v1/1/categories.php', callType, 'jsonBottom', 0);
+window.addEventListener("load", function (event) {
+  //J Cambie el URL a la Pollo Arrabiata por la random.
+  callMealDBAPI(
+    "https://www.themealdb.com/api/json/v2/9973533/random.php",
+    callType,
+    "jsonTop"
+  );
+  callMealDBAPI(
+    "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772",
+    callType,
+    "jsonMiddle"
+  );
+
+  //J Cambie el URL de categorias por el de Latestphp, para que regrese las 10 ultimas recetas.
+  callMealDBAPI(
+    "https://www.themealdb.com/api/json/v2/9973533/latest.php",
+    callType,
+    "jsonBottom",
+    1
+  );
 });
 
 // // ###
@@ -262,7 +296,6 @@ window.addEventListener("load", function(event) {
 // //.meals uncomment. Es un Obj: meals
 // // callMealDBAPI(searchxMainIngredient,callType,false);
 // // console.log(callMealDBAPI(searchxMainIngredient,callType,false));
-
 
 // // ###
 // // # Filter by multi-ingredient (only available to $2+ Paypal supporters)
@@ -311,6 +344,3 @@ window.addEventListener("load", function(event) {
 
 // // console.log('getUrlSmallImage');
 // // console.log(callMealDBAPI(getThumbnailImageUrl,callType,false));
-
-
-
