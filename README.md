@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+
 # REcipini
+
 =======
+
 # MealDB
 
 En espera de los diseños aprobados en la sesion del viernes 5 de agosto 2022
@@ -22,4 +25,9 @@ Hablamos algo de wireframes y quedamos en ver el diseño en la siguiente junta d
 Hasta ahora se han visto vaias plataformas Miro. (preguntar mas a Miguel)
 
 Se vio la llamada con fetch al url y un JSOn que regresa en respuesta. Falta revisar mas cosas.
->>>>>>> 503e0f462009e9e5ecfc54d3c3839b2fda1c2eaa
+
+> > > > > > > 503e0f462009e9e5ecfc54d3c3839b2fda1c2eaa
+
+# updating repo
+
+git add .
