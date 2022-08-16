@@ -17,7 +17,7 @@ function callAPI(){
     let searchxMealName='search.php?s=';
     let urlString=url+searchxMealName+searchterm.value;
     console.log(urlString);
-    callMealDBAPI(urlString,callType);
+    callMealDBAPI(urlString,callType,1);
 }//End of funciton callAPI();
 
 
@@ -59,18 +59,20 @@ function categoryHTML(dataCategory){
     return dataCategory.map(function(data){
         category = new Category(data);
         return `${
-            '<div class="cardContainer">'
-                +'<div class="cardImgContainer">'
-                    +'data.categories: '+category.idCategory 
-                    +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/filter.php?c='+ category.strCategory+'\',callType,1)">'
-                        +'<img class="imgCard" src="'+category.strCategoryThumb+'">'
-                    +'</button>'
-                +'</div>'
-                +'<h3>'+category.strCategory+'</h3>'
-                +'<div class="textCartContainer">'
-                    +'<p>'+category.strCategoryDescription+'</p>'
+            '<div class="card">'+
+                '<div class="cardContainer">'
+                    +'<div class="cardImgContainer">'
+                        +'data.categories: '+category.idCategory 
+                        +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/filter.php?c='+ category.strCategory+'\',callType,1)">'
+                            +'<img class="imgCard" src="'+category.strCategoryThumb+'/preview">'
+                        +'</button>'
                     +'</div>'
-                +'</div>'}`;
+                    +'<h3>'+category.strCategory+'</h3>'
+                    +'<div class="textCartContainer">'
+                        +'<p>'+category.strCategoryDescription+'</p>'
+                    +'</div>'
+                +'</div>'
+            +'</div>'}`;
     });
 }
 
@@ -78,13 +80,17 @@ function mealHTML(dataMeal){
     return dataMeal.map(function(data){
         meal = new Meal(data);
         return `${
-            '<div class="cardContainer">'
-                +'<div class="cardImgContainer">'
-                    +'data.meals: '
-                    +'<p>'+meal.strMeal+'</p>'
-                    +'<img class="imgCard" src="'+meal.strMealThumb+'">'
+            '<div class="card">'+
+                '<div class="cardContainer">'
+                    +'<div class="cardImgContainer">'
+                        +'data.meals: '
+                        +'<p>'+meal.strMeal+'</p>'
+                        +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/lookup.php?i='+ meal.idMeal+'\',callType,1)">'
+                        +'<img class="imgCard" src="'+meal.strMealThumb+'/preview">'
+                        +'</button>'
                     +'</div>'
-                +'</div>'}`;
+                +'</div>'
+            +'</div>'}`;
     });
 }
 
@@ -193,6 +199,7 @@ function callMealDBAPI(url, callType, jsonTipoEsperado = 1){
             //Le paso al DOM lo que encontre en la busqueda preformateado para WEB
             }*/
             document.getElementById('json').innerHTML = jsonHTML+vartextDOM;
+            document.getElementById('json23').innerHTML = jsonHTML+vartextDOM;
         })
         .catch(function(error) {
             console.log(error)

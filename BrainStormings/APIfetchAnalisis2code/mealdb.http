@@ -2,7 +2,7 @@
 # Search meal by name
 # Regresa varios Registros
 
-GET https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
+GET https://www.themealdb.com/api/json/v1/1/search.php?s=dumpling
 
 ###
 # List all meals by first letter

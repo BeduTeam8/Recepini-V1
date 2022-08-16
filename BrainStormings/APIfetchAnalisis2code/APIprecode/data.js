@@ -82,10 +82,10 @@ function callMealDBAPI(url,callType){
 let callType='GET';
 
 // let searchxMealName='https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
-let searchxMealName='https://www.themealdb.com/api/json/v2/9973533/search.php?s=Arrabiata';
+let searchxMealName='https://www.themealdb.com/api/json/v2/9973533/search.php?s=ami';
 
 //.meals uncomment. Es un Obj: meals
-// console.log(callMealDBAPI(searchxMealName, callType));
+console.log(callMealDBAPI(searchxMealName, callType));
 // callMealDBAPI(searchxMealName, callType);
 
 let listAllMealsx1stLetter='https://www.themealdb.com/api/json/v1/1/search.php?f=k';
@@ -181,7 +181,7 @@ let searchxCat='https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 let searchxArea='https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian';
 
 //.meals uncomment. Es un Obj: meals
-console.log(callMealDBAPI(searchxArea,callType));
+// console.log(callMealDBAPI(searchxArea,callType));
 
 // # Images
 // # Meal Thumbnail Images

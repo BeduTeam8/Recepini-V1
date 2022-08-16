@@ -36,18 +36,23 @@ function categoryHTML(dataCategory){
     return dataCategory.map(function(data){
         category = new Category(data);
         return `${
-            '<div class="cardContainer">'
-                +'<div class="cardImgContainer">'
-                    +'data.categories: '+category.idCategory 
-                    +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/filter.php?c='+ category.strCategory+'\',callType,1)">'
-                        +'<img class="imgCard" src="'+category.strCategoryThumb+'">'
-                    +'</button>'
-                +'</div>'
-                +'<h3>'+category.strCategory+'</h3>'
-                +'<div class="textCartContainer">'
-                    +'<p>'+category.strCategoryDescription+'</p>'
+            '<div class="card">'
+                +'<div class="cardContainer">'
+                    +'<div class="cardImgContainer">'
+                        // +'data.categories: '
+                        // +'<p>'
+                        // +category.idCategory
+                        // +'</p>'
+                        +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/filter.php?c='+ category.strCategory+'\',callType,1)">'
+                            +'<img class="imgCard" src="'+category.strCategoryThumb+'">'
+                        +'</button>'
                     +'</div>'
-                +'</div>'}`;
+                    +'<h3>'+category.strCategory+'</h3>'
+                    +'<div class="textCartContainer">'
+                        +'<p>'+category.strCategoryDescription+'</p>'
+                    +'</div>'
+                +'</div>'
+            +'</div>'}`;
     });
 }
 
@@ -55,13 +60,19 @@ function mealHTML(dataMeal){
     return dataMeal.map(function(data){
         meal = new Meal(data);
         return `${
-            '<div class="cardContainer">'
-                +'<div class="cardImgContainer">'
-                    +'data.meals: '
-                    +'<p>'+meal.strMeal+'</p>'
-                    +'<img class="imgCard" src="'+meal.strMealThumb+'">'
+            '<div class="card">'+
+                '<div class="cardContainer">'
+                    +'<div class="cardImgContainer">'
+                        // +'data.meals: '
+                        +'<p>'
+                        +meal.strMeal+
+                        '</p>'
+                        +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/lookup.php?i='+ meal.idMeal+'\',callType,1)">'
+                        +'<img class="imgCard" src="'+meal.strMealThumb+'/preview">'
+                        +'</button>'
                     +'</div>'
-                +'</div>'}`;
+                +'</div>'
+            +'</div>'}`;
     });
 }
 

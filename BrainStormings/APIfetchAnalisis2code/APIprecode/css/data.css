@@ -73,6 +73,7 @@ a {
   text-decoration: none;
 }
 .imgCard {
+  max-width: 50%;
 }
 .card:hover .cardTextContainer {
   display: block;
