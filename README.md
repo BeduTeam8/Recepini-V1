@@ -35,6 +35,6 @@ Hablamos algo de wireframes y quedamos en ver el diseño en la siguiente junta d
 Hasta ahora se han visto vaias plataformas Miro. (preguntar mas a Miguel)
 
 Se vio la llamada con fetch al url y un JSOn que regresa en respuesta. Falta revisar mas cosas.
-=======
+---
 # REcipini
 >>>>>>> 8f1e6310582a664e4101c4a3b6342dae0085605c
