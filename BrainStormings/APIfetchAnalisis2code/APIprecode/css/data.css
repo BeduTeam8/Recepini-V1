@@ -34,6 +34,12 @@ a {
   align-items: center;
 }
 
+#jsonTop {
+  width: 30%;
+  align-items: right;
+  /* align-self: flex-end; */
+}
+
 .card {
   width: 30%;
   background-color: rgb(212, 225, 225);

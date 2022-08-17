@@ -8,20 +8,22 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0,user-scalable=no"
     />
-    <script type="text/javascript" src="data2.js"></script>
+    <script type="text/javascript" src="data4.js"></script>
   </head>
   <body>
-    <h1>Display de un OBJ:OBJ.meals.</h1>
+    <h1>Display de un OBJ:y su tipo</h1>
 
-    <h3 class="buqueda">TIpo de Busqueda</h3>
-    <div id="json" class="json">
-      <!-- <div class="cardContainer">
-        <div class="cardImgContainer">
-          <a class=linkCard" href="http://" alt="TXT">
-            <img class="imgCard" src="">TXT</a>
-        </div>
-      </div> -->
-    </div>
-    <!-- <div id="json"></div> -->
+    <!-- <h2 class="busqueda">Busqueda</h2> -->
+    <h1>
+      Se realiza la llamada de 3 recursos al terminar de cargar los elementos de
+      la p�gina principal. Dos corresponden al tipo meal y una a la de
+      categor�as.
+    </h1>
+    <h1>Llamada 1 - B�squeda por receta aletoria(random)</h1>
+    <div id="jsonTop" class="json" style="background-color: red"></div>
+    <h1>Llamada 2 - B�squeda por searchMealxId. Tipo Meal</h1>
+    <div id="jsonMiddle" class="json" style="background-color: blue"></div>
+    <h1>Llamada 3 - B�squeda por las ultimas 10 recetas(latest)</h1>
+    <div id="jsonBottom" class="json" style="background-color: green"></div>
   </body>
 </html>
