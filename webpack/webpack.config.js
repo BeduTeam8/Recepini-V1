@@ -9,7 +9,8 @@ module.exports = {
 	plugins: [
 		// plugins section
 		new HtmlWebpackPlugin({
-			template: "./src/index.html",
+			// template: "./src/index.html",
+			template: "./src/design_system.html",
 		}),
 	],
 	module: {

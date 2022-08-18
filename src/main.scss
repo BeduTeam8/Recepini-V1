@@ -1,5 +1,159 @@
 @import "bootstrap/scss/bootstrap";
-body {
-	padding-top: 50px;
-	background-color: gray;
+
+:root {
+	// Custom color variables
+	--Primary-tomatored: 212, 24, 46;
+	--Primary-tomatogreen: 185, 206, 71;
+	--Neutral-lightpink: 255, 248, 248;
+	--Neutral-matteblack: 33, 37, 41;
+	--Secondary-orange: 231, 63, 10;
+	--Secondary-duckyellow: 243, 236, 106;
+	--Secondary-spoiledtomato: 114, 15, 0;
+
+	// Custom font variables
+
+	// Custom border variables
+	--Border-radius-5px: 0.3125rem;
+	--Border-radius-8px: 0.5rem;
+	--Border-radius-10px: 0.625rem;
+	--Border-radius-12px: 0.75rem;
+	--Border-radius-16px: 1rem;
+	--Border-radius-22px: 1.375rem;
+	--Border-radius-50px: 3.125rem;
+}
+
+//               utility classes          //
+
+// 			 Background classes             //
+.bg-primary-tomatored {
+	background-color: rgb(var(--Primary-tomatored));
+}
+.bg-primary-tomatogreen {
+	background-color: rgb(var(--Primary-tomatogreen));
+}
+.bg-neutral-lightpink {
+	background-color: rgb(var(--Neutral-lightpink));
+}
+.bg-neutral-matteblack {
+	background-color: rgb(var(--Neutral-matteblack));
+}
+.bg-secondary-orange {
+	background-color: rgb(var(--Secondary-orange));
+}
+.bg-secondary-duckyellow {
+	background-color: rgb(var(--Secondary-duckyellow));
+}
+.bg-secondary-spoiledtomato {
+	background-color: rgb(var(--Secondary-spoiledtomato));
+}
+// text classes
+.text-primary-tomatored {
+	color: rgb(var(--Primary-tomatored));
+}
+.text-primary-tomatogreen {
+	color: rgb(var(--Primary-tomatogreen));
+}
+.text-neutral-lightpink {
+	color: rgb(var(--Neutral-lightpink));
+}
+.text-neutral-matteblack {
+	color: rgb(var(--Neutral-matteblack));
+}
+.text-secondary-orange {
+	color: rgb(var(--Secondary-orange));
+}
+.text-secondary-duckyellow {
+	color: rgb(var(--Secondary-duckyellow));
+}
+.text-secondary-spoiledtomato {
+	color: rgb(var(--Secondary-spoiledtomato));
+}
+
+// border radius classes
+.border-radius-5px {
+	border-radius: var(--Border-radius-5px);
+}
+.border-radius-8px {
+	border-radius: var(--Border-radius-8px);
+}
+.border-radius-10px {
+	border-radius: var(--Border-radius-10px);
+}
+.border-radius-12px {
+	border-radius: var(--Border-radius-12px);
+}
+.border-radius-16px {
+	border-radius: var(--Border-radius-16px);
+}
+.border-radius-50px {
+	border-radius: var(--Border-radius-50px);
+}
+
+// 			 Display classes             //
+.display-none {
+	display: none; // hide element
+}
+.display-inline {
+	display: inline; // show element as inline element
+}
+
+.display-block {
+	display: block; // show element as block element
+}
+.display-flex {
+	display: flex; // show element as flex element
+}
+//flex clases
+.flex-column {
+	flex-direction: column; // show element as flex element
+}
+.flex-row {
+	flex-direction: row; // show element as flex element
+}
+.flex-wrap {
+	flex-wrap: wrap; // show element as flex element
+}
+.flex-end {
+	justify-content: flex-end; // show element as flex element
+}
+.flex-center {
+	justify-content: center; // show element as flex element
+}
+.flex-start {
+	justify-content: flex-start; // show element as flex element
+}
+.flex-align-center {
+	align-items: center; // show element as flex element
+}
+.flex-center {
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-space-between {
+	justify-content: space-between; // show element as flex element
+}
+//               component classes          //
+.color-block {
+	border: 1px solid rgba(var(--Neutral-matteblack), 0.25);
+	width: 9rem;
+	height: 12.75rem;
+}
+
+.flex-gap {
+	gap: var(--Border-radius-22px);
+}
+
+.h1-title {
+	font-family: "Helvetica";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 32px;
+	line-height: 136.5%;
+	/* identical to box height, or 44px */
+
+	text-align: right;
+	letter-spacing: 8px;
+	text-transform: lowercase;
+	color: var(--Neutral-lightpink);
 }
