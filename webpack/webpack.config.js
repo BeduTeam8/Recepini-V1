@@ -9,8 +9,13 @@ module.exports = {
 	plugins: [
 		// plugins section
 		new HtmlWebpackPlugin({
-			// template: "./src/index.html",
+			template: "./src/index.html",
+			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
+		}),
+		new HtmlWebpackPlugin({
+			filename: "design_system.html",
 			template: "./src/design_system.html",
+			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
 		}),
 	],
 	module: {
