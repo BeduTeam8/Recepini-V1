@@ -12,10 +12,10 @@
     <img src="src/assets/Logo_Recepini.png" alt="Logo">
   </a>
 
-<h3 align="center">Recepini</h3>
+<h3 align="center">Recipini</h3>
 
   <p align="center">
-    Recepini is a project created for Bedu FrontEnd Fundementals Bootcamp
+    Recipini is a project created for Bedu FrontEnd Fundementals Bootcamp
     <br />
 </div>
 
