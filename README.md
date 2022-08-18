@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/BeduTeam8/Recepini-V1">
-    <img src="./assets/recepini_logo alt="Logo" width="80" height="80">
+    <img src="./src/assets/recepini_logo alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Recepini</h3>
