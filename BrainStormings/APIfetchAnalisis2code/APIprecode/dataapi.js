@@ -23,7 +23,8 @@ function callMealDBAPI(url, callType, jsonTipoEsperado = 1 ){
         // data_json={...data.meals[0]};
         // console.log(a=1);
        
-        let size = Object.keys(data.meals).length;
+        console.log('data.?', data[JSONTipo[jsonTipoEsperado]]);
+        let size = Object.keys(data[JSONTipo[jsonTipoEsperado]]).length;
         // let size = Object.keys(data.categories).length;
         
         let msj=`${'<b>Número de elementos en el OBJ(tamaño del Obj data): '+size+'</b>'}`;
@@ -38,7 +39,7 @@ function callMealDBAPI(url, callType, jsonTipoEsperado = 1 ){
             // Porque Object.entries regresa un arreglo minimo bidimensional tipo [key][value]
             //No supe si fue la mejor opcion en el momento, pero me fui explotando asi el JSON
             //Probando la seleccion automatica del json sea este meals o categories con Index
-            data_json=Object.entries(data.meals[mealsObjIndex]);
+            data_json=Object.entries(data[JSONTipo[jsonTipoEsperado]][mealsObjIndex]);
             // data_json=Object.entries(data.categories[mealsObjIndex]);
 
             console.log(mealsObjIndex);//marcador de fase en que indice voy del arreglo
