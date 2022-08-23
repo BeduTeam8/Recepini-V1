@@ -11,7 +11,7 @@ let apiSelected = [
   "randomselection.php", //10random recipes
   "categories.php", //List ade categorias en un OBJ Categories
   "latest.php", //La ultima receta ingresada al DB
-  "list.php?a=list", //Lista de Area =Country/Pais son 27registros
+  "list.php?a=list", //Lista de Areagit  =Country/Pais son 27registros
   "list.php?c=list", //Lista de categorias 14 registros
   "list.php?i=list", //Lista de ingredienes son 574
   //Busqquedas que req parametro
