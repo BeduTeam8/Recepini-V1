@@ -185,8 +185,8 @@ function categoriesHTML(categoriesDIV,categories) {
     const adding_categorie = document.createElement("div");
     adding_categorie.innerHTML = `
         <div class="card">
-            <div class="cardCategories" id="${data.idCategory}">
-                <div class="cardImgCategories">
+            <div class="cardContainer" id="${data.idCategory}">
+                <div class="cardImgContainer">
                 data.meals:
                     <p>
                         id=${data.strCategory}: 
@@ -195,7 +195,7 @@ function categoriesHTML(categoriesDIV,categories) {
                         <img class="imgCard" src="${data.strCategoryThumb}">
                     </button>
                  </div>
-                 <div class="cardCategoryDesc">${data.strCategoryDescription}</div>
+                 <div class="cardDescription">${data.strCategoryDescription}</div>
             </div>
         </div>`;
     categoriesGoInDiv.appendChild(adding_categorie);
