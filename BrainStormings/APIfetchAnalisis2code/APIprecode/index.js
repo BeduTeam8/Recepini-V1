@@ -3,6 +3,7 @@
 const base_URL = "https://www.themealdb.com/api/json/";
 const api_BaseKey = "v1/1/";
 const api_PayedKey = "v2/9973533/";
+const urlImg=base_URL;
 
 // let result = "";
 
@@ -60,15 +61,15 @@ async function getAPIResponse(apiIndex,params = '') {
     const response = await fetch(url);
     const data = await response.json();
     return data;
-  }
+}
 
 
 async function getARandomRecipe() {
-  const url = `${base_URL}${api_PayedKey}${apiSelected[0]}`;
-  console.log("URL a llamar", url);
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+    const url = `${base_URL}${api_PayedKey}${apiSelected[0]}`;
+    console.log("URL a llamar", url);
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
 }
 
 async function get10RandomRecipes() {
@@ -77,16 +78,15 @@ async function get10RandomRecipes() {
     const response = await fetch(url);
     const data = await response.json();
     return data;
-  }
+}
 
 async function getLatestRecipe() {
-const url = `${base_URL}${api_PayedKey}${apiSelected[3]}`;
-console.log("URL a llamar", url);
-const response = await fetch(url);
-const data = await response.json();
-return data;
+    const url = `${base_URL}${api_PayedKey}${apiSelected[3]}`;
+    console.log("URL a llamar", url);
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
 }
-  
 
 // async function getARecipe(id) {
 //   const url = `${base_URL}${api_PayedKey}${apiSelected[11]}${id}`;
@@ -155,9 +155,9 @@ return data;
 //un obj con listarecetas y el div
 function recipesHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:', recipes);
-  const recipesGoInDiv = document.getElementById(recipesDIV);
-  recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
-  recipes.forEach(data => {
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+    recipes.forEach(data => {
     const adding_recipe = document.createElement("div");
     adding_recipe.innerHTML = `
         <div class="card">
@@ -202,13 +202,76 @@ function categoriesHTML(categoriesDIV,categories) {
   });
 }
 
-// "idCategory" 
-//                     //"strCategory" "strCategoryThumb" "strCategoryDescription"
 
-// async function getRandomRecipe() {
-//   const recipe = await getARandomRecipe();
-//   // const promise=recipe.map(id=>)
-// }
+function listsAllAreaHTML(listsDIV,lists) {
+    console.log('Enla funcion lists:', lists);
+  const listsGoInDiv = document.getElementById(listsDIV);
+  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+  lists.forEach(data => {
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
+        <div class="card">
+            <div class="cardContainer" id="${data.strArea}">
+                <div class="cardImgContainer">
+                data.meals:
+                    <p>
+                        id=${data.strArea}: 
+                    </p>
+                    <button class="linkCard" onclick="console.log('List ID: ',${data.strArea})">
+                        <img class="imgCard" src="./assets/${data.strArea}.jpg">
+                    </button>
+        </div>`;
+    listsGoInDiv.appendChild(addingList);
+  });
+}
+function listsAllCategoriesHTML(listsDIV,lists) {
+    console.log('Enla funcion lists:', lists);
+  const listsGoInDiv = document.getElementById(listsDIV);
+  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+  lists.forEach(data => {
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
+        <div class="card">
+            <div class="cardContainer" id="${data.strCategory}">
+                <div class="cardImgContainer">
+                data.meals:
+                    <p>
+                        id=${data.strCategory}: 
+                    </p>
+                    <button class="linkCard" onclick="console.log('List ID: ',${data.strCategory})">
+                        <img class="imgCard" src="${urlImg}${data.strCategory}.jpg">
+                    </button>
+        </div>`;
+    listsGoInDiv.appendChild(addingList);
+  });
+}
+
+
+function listsAllIngredientsHTML(listIngredientsDIV,lists) {
+    console.log('Enla funcion lists:', lists);
+  const listsGoInDiv = document.getElementById(listIngredientsDIV);
+  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+  lists.forEach(data => {
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
+        <div class="card">
+            <div class="cardContainer" id="${data.idIngredient}">
+                <div class="cardImgContainer">
+                data.meals:
+                    <p>
+                        Ingrediente=${data.strIngredient}: 
+                    </p>
+                    <button class="linkCard" onclick="console.log('List ID: ',${data.idIngredient}:${data.strIngredient})">
+                        <img class="imgCard" src="${urlImg}${data.strIngredient}.jpg">
+                    </button>
+                    </div>
+                 <div class="cardDescription">${data.strDescription}</div>
+            </div>
+        </div>`;
+    listsGoInDiv.appendChild(addingList);
+  });
+}
+
 
 document.getElementById("randomButton").onclick = async function () {
     // const recipe = await getARandomRecipe();
@@ -240,30 +303,56 @@ async function getCategories(){
         
     };
 
-
+    
 
 
 async function getLatest(){
-    //document.getElementById("rnd10Recipes").onload
-        // const recipe = await getLatestRecipe();
-        const recipe = await getAPIResponse(3);
-        // console.log(recipe);
-        console.log("latestRecipe:",recipe);
-        console.log("latestRecipe:",recipe.meals);
-        console.log('Registros de getLatestRecipe:(',recipe.meals.length,'):\n',recipe.meals);
-        recipesHTML("latestRecipe",recipe.meals);
-        
-    };
+    const recipe = await getAPIResponse(3);
+    // console.log(recipe);
+    console.log("latestRecipe:",recipe);
+    console.log("latestRecipe:",recipe.meals);
+    console.log('Registros de getLatestRecipe:(',recipe.meals.length,'):\n',recipe.meals);
+    recipesHTML("latestRecipe",recipe.meals);
+    
+};
+async function getListAllAreaCountry(){
+    const recipe = await getAPIResponse(4);
+    // console.log(recipe);
+    console.log("ListAllArea:",recipe);
+    console.log("ListAllArea:",recipe.meals);
+    console.log('Registros de List by Area:(',recipe.meals.length,'):\n',recipe.meals);
+    listsAllAreaHTML("listAllArea",recipe.meals);
+    
+};
 
 
 
+async function getListAllCategories(){
+    const allcategories = await getAPIResponse(5);
+    // console.log(allcategories);
+    console.log("ListAllCategories:",allcategories);
+    console.log("ListAllCategories:",allcategories.meals);
+    console.log('Registros de List by Categories:(',allcategories.meals.length,'):\n',allcategories.meals);
+    listsAllCategoriesHTML("listAllCategories",allcategories.meals);
+    
+};
+
+async function getListAllIngredients(){
+    const allIngredients = await getAPIResponse(6);
+    // console.log(allIngredients);
+    console.log("ListAllIngredients:",allIngredients);
+    console.log("ListAllIngredients:",allIngredients.meals);
+    console.log('Registros de List by Area:(',allIngredients.meals.length,'):\n',allIngredients.meals);
+    listsAllIngredientsHTML("listAllIngredients",allIngredients.meals);
+    
+};
 
 
 
     // window.onload=
 window.onload=async function(){
     try {
-    await Promise.all([get10Random(),getLatest(),getCategories()]);
+    await Promise.all([get10Random(),getLatest(),getCategories(),getListAllAreaCountry(),getListAllCategories() ]);//,getListAllIngredients()
     }catch(error){
         console.error("Promise.all Error on Wondos.onload",error);
     }
