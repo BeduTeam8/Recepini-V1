@@ -8,23 +8,119 @@
 </head>
 
 <body>
-    <header class="bg-primary-tomatored display-flex flex-row flex-space-around flex-align-center">
-        <a name="" id="" class="btn bg-primary-tomatogreen text-neutral-lightpink text-uppercase" href="index.html"
-            role="button">Index</a>
-        <img src="/src/assets/Logo_Recepini.png" alt="" style="height: 4.13rem;" class="flex-space-between ">
-        <h1 class="h1-title | text-neutral-lightpink  "> Design / System </h1>
-    </header>
-    <div class="container display-flex flex-row flex-gap">
-        <figure class="color-block | border-radius-8px bg-neutral-matteblack"></figure>
-        <figure class="color-block | border-radius-8px bg-secondary-spoiledtomato"></figure>
-        <figure class="color-block | border-radius-8px bg-primary-tomatored"></figure>
-        <figure class="color-block | border-radius-8px bg-secondary-orange"></figure>
-        <figure class="color-block | border-radius-8px bg-primary-tomatogreen"></figure>
-        <figure class="color-block | border-radius-8px bg-secondary-duckyellow"></figure>
-        <figure class="color-block | border-radius-8px bg-neutral-lightpink"> </figure>
-    </div>
 
+    <section id="button-section">
+        <section class="display-flex">
+            <div class="button-sizes"> 
+                <p>DEFAULT</p>
+                <button class="bg-primary-tomatored text-neutral-lightpink border-radius-5px button-large">Button lg</button>
+                <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary">Primary</button>
+                <button class="bg-primary-tomatored text-neutral-lightpink border-radius-3px button-small">Button sm</button>
+                <p>PILL</p>
+                <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-large">Button lg</button>
+                <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary">Primary</button>
+                <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-small">Button sm</button>
+        </div>
+        
+        <div class="button-states">
+            <p>Default</p>
+            <button class="button-primary bg-primary-tomatored text-neutral-lightpink border-radius-4px ">Button</button>
+            <button class="button-primary bg-primary-tomatored text-neutral-lightpink border-radius-45px ">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Button</button>
 
+            <p>Hover</p>
+            <button class="button-primary text-neutral-lightpink border-radius-4px button-primary-hover">Button</button>
+            <button class="button-primary text-neutral-lightpink border-radius-45px  button-primary-hover">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-neutral-lightpink border-radius-4px button-primary-outline-hover">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-neutral-lightpink border-radius-45px button-primary-outline-hover">Button</button>
+        
+            <p>Active</p>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary button-primary-active">Button</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary button-primary-active">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px button-primary-outline-active">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px button-primary-outline-active">Button</button>
+
+            <p>Focus</p>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary button-primary-focus">Button</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary button-primary-focus">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px button-primary-focus">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px button-primary-focus">Button</button>
+
+            <p>Disabled</p>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary button-primary-disabled">Button</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary button-primary-disabled">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px button-primary-outline-disabled">Button</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px button-primary-outline-disabled">Button</button>
+        </div>
+        </section>
+
+        
+        <!-- Button examples -->
+        <p>EXAMPLES</p>
+        <p>DEFAULT</p>
+        <div class="container display-flex flex-row flex-gap">
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary">Primary</button>
+            <button class="bg-primary-tomatogreen text-neutral-lightpink border-radius-4px button-primary">Secondary</button>
+            <button class="bg-primary-darkgreen text-neutral-lightpink border-radius-4px button-primary">Success</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary">Danger</button>
+            <button class="bg-secondary-duckyellow text-neutral-lightpink border-radius-4px button-primary">Warning</button>
+            <button class="bg-neutral-matteblack text-neutral-lightpink border-radius-4px button-primary">Dark</button>
+            <button class="button-primary-outline border-color-neutral-lightblack text-primary-tomatored border-radius-4px">Link</button>
+        </div>
+        <p>PILL</p>
+        <div class="container display-flex flex-row flex-gap ">
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary">Primary</button>
+            <button class="bg-primary-tomatogreen text-neutral-lightpink border-radius-45px button-primary">Secondary</button>
+            <button class="bg-primary-darkgreen text-neutral-lightpink border-radius-45px button-primary">Success</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary">Danger</button>
+            <button class="bg-secondary-duckyellow text-neutral-lightpink border-radius-45px button-primary">Warning</button>
+            <button class="bg-neutral-matteblack text-neutral-lightpink border-radius-45px button-primary">Dark</button>
+            <button class="button-primary-outline border-color-neutral-lightblack text-primary-tomatored border-radius-45px">Link</button>
+        </div>
+        <p>OUTLINE</p>
+        <p>DEFAULT</p>
+        <div class="container display-flex flex-row flex-gap">
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px">Primary</button>
+            <button class="button-primary-outline border-color-primary-tomatogreen text-primary-tomatogreen border-radius-4px">Secondary</button>
+            <button class="button-primary-outline border-color-primary-darkgreen text-primary-darkgreen border-radius-4px">Success</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px">Danger</button>
+            <button class="button-primary-outline border-color-secondary-duckyellow text-secondary-duckyellow border-radius-4px">Warning</button>
+            <button class="button-primary-outline border-color-neutral-matteblack text-neutral-matteblack border-radius-4px">Dark</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-4px">Link</button>
+        </div>
+        <p>PILL</p>
+        <div class="container display-flex flex-row flex-gap ">
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Primary</button>
+            <button class="button-primary-outline border-color-primary-tomatogreen text-primary-tomatogreen border-radius-45px">Secondary</button>
+            <button class="button-primary-outline border-color-primary-darkgreen text-primary-darkgreen border-radius-45px">Success</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Danger</button>
+            <button class="button-primary-outline border-color-secondary-duckyellow text-secondary-duckyellow border-radius-45px">Warning</button>
+            <button class="button-primary-outline border-color-neutral-matteblack text-neutral-matteblack border-radius-45px">Dark</button>
+            <button class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Link</button>
+        </div>
+        <p>Right icon</p>
+        <p>Default</p>
+        <div class="container display-flex flex-row flex-gap">
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary">Primary ☆</button>
+            <button class="bg-primary-tomatogreen text-neutral-lightpink border-radius-4px button-primary">Secondary ☆</button>
+            <button class="bg-primary-darkgreen text-neutral-lightpink border-radius-4px button-primary">Success ☆</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-4px button-primary">Danger ☆</button>
+            <button class="bg-secondary-duckyellow text-neutral-lightpink border-radius-4px button-primary">Warning ☆</button>
+            <button class="bg-neutral-matteblack text-neutral-lightpink border-radius-4px button-primary">Dark ☆</button>
+            <button class="button-primary-outline border-color-neutral-lightblack text-primary-tomatored border-radius-4px">Link ☆</button>
+        </div>
+        <p>Round</p>
+        <div class="container display-flex flex-row flex-gap">
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary">Primary ☆</button>
+            <button class="bg-primary-tomatogreen text-neutral-lightpink border-radius-45px button-primary">Secondary ☆</button>
+            <button class="bg-primary-darkgreen text-neutral-lightpink border-radius-45px button-primary">Success ☆</button>
+            <button class="bg-primary-tomatored text-neutral-lightpink border-radius-45px button-primary">Danger ☆</button>
+            <button class="bg-secondary-duckyellow text-neutral-lightpink border-radius-45px button-primary">Warning ☆</button>
+            <button class="bg-neutral-matteblack text-neutral-lightpink border-radius-45px button-primary">Dark ☆</button>
+            <button class="button-primary-outline border-color-neutral-lightblack text-primary-tomatored border-radius-45px">Link ☆</button>
+        </div>
+    </section>
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
