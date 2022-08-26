@@ -7,6 +7,7 @@
 	--Primary-tomatogreen: 185, 206, 71;
 	--Neutral-lightpink: 255, 248, 248;
 	--Neutral-matteblack: 33, 37, 41;
+	--Neutral-white: 255, 255, 255;
 	--Secondary-orange: 231, 63, 10;
 	--Secondary-duckyellow: 243, 236, 106;
 	--Secondary-spoiledtomato: 114, 15, 0;
@@ -86,6 +87,9 @@
 }
 .bg-neutral-lightpink {
 	background-color: rgb(var(--Neutral-lightpink));
+}
+.bg-neutral-white {
+	background-color: rgb(var(--Neutral-white));
 }
 .bg-neutral-matteblack {
 	background-color: rgb(var(--Neutral-matteblack));
@@ -378,6 +382,64 @@
 	padding: var(--Padding-900);
 }
 
+// padding inline classes
+.padding-100-inline {
+	padding-inline: var(--Padding-100);
+}
+.padding-200-inline {
+	padding-inline: var(--Padding-200);
+}
+.padding-300-inline {
+	padding-inline: var(--Padding-300);
+}
+.padding-400-inline {
+	padding-inline: var(--Padding-400);
+}
+.padding-500-inline {
+	padding-inline: var(--Padding-500);
+}
+.padding-600-inline {
+	padding-inline: var(--Padding-600);
+}
+.padding-700-inline {
+	padding-inline: var(--Padding-700);
+}
+.padding-800-inline {
+	padding-inline: var(--Padding-800);
+}
+.padding-900-inline {
+	padding-inline: var(--Padding-900);
+}
+
+// padding vertical classes
+.padding-100-vertical {
+	padding-block: var(--Padding-100);
+}
+.padding-200-vertical {
+	padding-block: var(--Padding-200);
+}
+.padding-300-vertical {
+	padding-block: var(--Padding-300);
+}
+.padding-400-vertical {
+	padding-block: var(--Padding-400);
+}
+.padding-500-vertical {
+	padding-block: var(--Padding-500);
+}
+.padding-600-vertical {
+	padding-block: var(--Padding-600);
+}
+.padding-700-vertical {
+	padding-block: var(--Padding-700);
+}
+.padding-800-vertical {
+	padding-block: var(--Padding-800);
+}
+.padding-900-vertical {
+	padding-block: var(--Padding-900);
+}
+
 // border radius classes
 .border-radius-5px {
 	border-radius: var(--Border-radius-5px);
@@ -396,6 +458,82 @@
 }
 .border-radius-50px {
 	border-radius: var(--Border-radius-50px);
+}
+
+// semi round classes
+.border-radius-semi-round-8px {
+	border-radius: var(--Border-radius-8px) 0 0 var(--Border-radius-8px);
+}
+
+.border-radius-semi-round-8px-reverse {
+	border-radius: 0 var(--Border-radius-8px) var(--Border-radius-8px) 0;
+}
+
+.border-radius-semi-round-50px {
+	border-radius: var(--Border-radius-50px) 0 0 var(--Border-radius-50px);
+}
+.border-radius-semi-round-50px-reverse {
+	border-radius: 0 var(--Border-radius-50px) var(--Border-radius-50px) 0;
+}
+
+//Border and outline classes
+.border-color-primary-tomatored {
+	border-color: rgb(var(--Primary-tomatored));
+	border-style: solid;
+}
+.border-color-primary-tomatogreen {
+	border-color: rgb(var(--Primary-tomatogreen));
+	border-style: solid;
+}
+.border-color-neutral-lightpink {
+	border-color: rgb(var(--Neutral-lightpink));
+	border-style: solid;
+}
+.border-color-neutral-matteblack {
+	border-color: rgb(var(--Neutral-matteblack));
+	border-style: solid;
+}
+.border-color-secondary-orange {
+	border-color: rgb(var(--Secondary-orange));
+	border-style: solid;
+}
+.border-color-secondary-duckyellow {
+	border-color: rgb(var(--Secondary-duckyellow));
+	border-style: solid;
+}
+.border-color-secondary-spoiledtomato {
+	border-color: rgb(var(--Secondary-spoiledtomato));
+	border-style: solid;
+}
+.border-color-primary-darkgreen {
+	border-color: rgb(var(--Primary-darkgreen));
+	border-style: solid;
+}
+.border-color-neutral-lightblack {
+	border-color: rgb(var(--Neutral-matteblack), 0.12);
+	border-style: solid;
+}
+
+.outline-color-primary-tomatored {
+	outline-color: rgb(var(--Primary-tomatored)) !important;
+}
+.outline-color-primary-tomatogreen {
+	outline-color: rgb(var(--Primary-tomatogreen)) !important;
+}
+.outline-color-neutral-lightpink {
+	outline-color: rgb(var(--Neutral-lightpink)) !important;
+}
+.outline-color-neutral-matteblack {
+	outline-color: rgb(var(--Neutral-matteblack)) !important;
+}
+.outline-color-secondary-orange {
+	outline-color: rgb(var(--Secondary-orange)) !important;
+}
+.outline-color-secondary-duckyellow {
+	outline-color: rgb(var(--Secondary-duckyellow)) !important;
+}
+.outline-color-secondary-spoiledtomato {
+	outline-color: rgb(var(--Secondary-spoiledtomato)) !important;
 }
 
 // Display classes
@@ -545,4 +683,30 @@
 	}
 
 } 
+
+
+.hex-Code {
+	font-family: "Helvetica";
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.body-rgb-hsl {
+	font-family: Helvetica;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1.125rem;
+	letter-spacing: 0rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.Search-Grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-gap: 1rem;
+	justify-content: center;
+}
 
