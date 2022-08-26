@@ -303,20 +303,40 @@
 }
 
 //Text transforms
-.text-transf {
+.text-uppercase {
 	text-transform: uppercase;
 }
-.basic-t {
-	width: 21.5rem;
-	height: 1.125rem;
-	line-height: 176.49%;
-	letter-spacing: 0.2813rem;
+.text-lowercase {
+	text-transform: lowercase;
 }
-.basic-p {
-	width: 24.25rem;
-	height: 1.125rem;
-	line-height: 176.49%;
-	letter-spacing: 0.2813rem;
+.text-capitalize {
+	text-transform: capitalize;
+}
+.text-underline {
+	text-decoration: underline;
+}
+.text-line-through {
+	text-decoration: line-through;
+}
+.text-overline {
+	text-decoration: overline;
+}
+.text-italic {
+	font-style: italic;
+}
+
+//Text align
+.text-left {
+	text-align: left;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-justify {
+	text-align: justify;
 }
 
 // margin and padding classes
@@ -600,95 +620,6 @@
 	outline-color: rgb(var(--Secondary-spoiledtomato)) !important;
 }
 
-// 			 Display classes             //
-
-// Display classes
-
-.display-none {
-	display: none; // hide element
-}
-.display-inline {
-	display: inline; // show element as inline element
-}
-.display-block {
-	display: block; // show element as block element
-}
-.display-flex {
-	display: flex; // show element as flex element
-}
-
-// flex clases
-.flex-column {
-	flex-direction: column; // flex element direction is column
-}
-.flex-row {
-	flex-direction: row; // flex element direction is row
-}
-.flex-wrap {
-	flex-wrap: wrap; // flex element wrap is wrap
-}
-.flex-end {
-	justify-content: flex-end; // flex element justify content is flex-end
-}
-.flex-start {
-	justify-content: flex-start; //	flex element justify content is flex-start
-}
-.flex-align-center {
-	align-items: center; // flex element align items is center
-}
-.flex-center {
-	justify-content: center; // flex element justify content is center
-	align-items: center; // flex element align items is center
-}
-.flex-space-between {
-	justify-content: space-between; // flex element justify content is space-between
-}
-.flex-space-around {
-	justify-content: space-around; // 	flex element justify content is space-around
-}
-.flex-gap {
-	gap: var(--Border-radius-22px);
-}
-
-// width and height classes
-.width-100 {
-	width: 100%; // width is 100%
-}
-.width-50 {
-	width: 50%; // width is 50%
-}
-
-.height-100 {
-	height: 100%; // height is 100%
-}
-.height-50 {
-	height: 50%; // height is 50%
-}
-
-.fit-content-width {
-	width: fit-content; // width is fit-content
-}
-.fit-content-height {
-	height: fit-content; // height is fit-content
-}
-
-//               Selector classes          //
-.color-block {
-	border: 1px solid rgba(var(--Neutral-matteblack), 0.25);
-	width: 9rem;
-	height: 12.75rem;
-}
-
-.h1-title {
-	font-family: "Helvetica";
-	font-style: normal;
-	font-weight: 300;
-	font-size: 1.5rem;
-	text-align: right;
-	letter-spacing: 0.5rem;
-	text-transform: lowercase;
-}
-
 // Button classes //
 .button-large {
 	width: var(--Button-large-width);
@@ -762,6 +693,212 @@
 	justify-items: center;
 }
 
+// 			 Display classes             //
+
+// Display classes
+
+.display-none {
+	display: none; // hide element
+}
+.display-inline {
+	display: inline; // show element as inline element
+}
+.display-block {
+	display: block; // show element as block element
+}
+.display-flex {
+	display: flex; // show element as flex element
+}
+
+.display-grid {
+	display: grid; // show element as grid element
+}
+
+.overflow-hidden {
+	overflow: hidden; // hide overflow
+}
+
+// flex clases
+.flex-column {
+	flex-direction: column; // flex element direction is column
+}
+.flex-row {
+	flex-direction: row; // flex element direction is row
+}
+.flex-wrap {
+	flex-wrap: wrap; // flex element wrap is wrap
+}
+.flex-end {
+	justify-content: flex-end; // flex element justify content is flex-end
+}
+.flex-start {
+	justify-content: flex-start; //	flex element justify content is flex-start
+}
+.flex-align-center {
+	align-items: center; // flex element align items is center
+}
+.flex-center {
+	justify-content: center; // flex element justify content is center
+	align-items: center; // flex element align items is center
+}
+.flex-space-between {
+	justify-content: space-between; // flex element justify content is space-between
+}
+.flex-space-around {
+	justify-content: space-around; // 	flex element justify content is space-around
+}
+.flex-gap {
+	gap: var(--Border-radius-22px);
+}
+
+// grid classes
+
+.grid-rows-2 {
+	grid-template-rows: repeat(2, 1fr);
+}
+.grid-rows-3 {
+	grid-template-rows: repeat(3, 1fr);
+}
+.grid-rows-4 {
+	grid-template-rows: repeat(4, 1fr);
+}
+
+.grid-columns-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-columns-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-columns-4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-columns-5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+// width and height classes
+.width-100 {
+	width: 100%; // width is 100%
+}
+.width-50 {
+	width: 50%; // width is 50%
+}
+
+.height-100 {
+	height: 100%; // height is 100%
+}
+.height-50 {
+	height: 50%; // height is 50%
+}
+
+.fit-content-width {
+	width: fit-content; // width is fit-content
+}
+.fit-content-height {
+	height: fit-content; // height is fit-content
+}
+
+// 			 Position classes             //
+
+// Position classes
+
+.position-relative {
+	position: relative; // position is relative
+}
+.position-absolute {
+	position: absolute; // position is absolute
+}
+.position-fixed {
+	position: fixed; // position is fixed
+}
+.position-sticky {
+	position: sticky; // position is sticky
+}
+
+// top, bottom, left, right classes
+.top-0 {
+	top: 0; // top is 0
+}
+.bottom-0 {
+	bottom: 0; // bottom is 0
+}
+.left-0 {
+	left: 0; // left is 0
+}
+.right-0 {
+	right: 0; // right is 0
+}
+
+// Center classes   //
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.center-flex-row {
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.center-flex-column-reverse {
+	justify-content: center;
+	align-items: center;
+	flex-direction: column-reverse;
+}
+
+.center-flex-row-reverse {
+	justify-content: center;
+	align-items: center;
+	flex-direction: row-reverse;
+}
+
+.center-grid {
+	justify-content: center;
+	align-items: center;
+}
+
+.center-grid-column {
+	justify-content: center;
+	align-items: center;
+	grid-template-columns: repeat(1, 1fr);
+}
+
+//    //           Selector classes     //     //
+.color-block {
+	border: 1px solid rgba(var(--Neutral-matteblack), 0.25);
+	width: 9rem;
+	height: 12.75rem;
+}
+
+.h1-title {
+	font-family: "Helvetica";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 1.5rem;
+	text-align: right;
+	letter-spacing: 0.5rem;
+	text-transform: lowercase;
+}
+
+.basic-t {
+	width: 21.5rem;
+	height: 1.125rem;
+	line-height: 176.49%;
+	letter-spacing: 0.2813rem;
+}
+.basic-p {
+	width: 24.25rem;
+	height: 1.125rem;
+	line-height: 176.49%;
+	letter-spacing: 0.2813rem;
+}
+
 .paragraph-rt {
 	width: 46.875rem;
 	// height: 44.9375rem;
@@ -797,4 +934,20 @@
 	grid-template-rows: repeat(2, 1fr);
 	grid-gap: 1rem;
 	justify-content: center;
+}
+
+// Component classes //
+
+//card classes
+.recipieCard {
+	border-radius: 0.625rem;
+	box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
+	background-color: rgba(var(--Neutral-white), 0.25);
+	max-width: 16rem;
+	max-height: 21rem;
+}
+.card-Btn {
+	bottom: 0;
+	transform: translateY(100%);
+	transition: all 250ms ease-in-out;
 }
