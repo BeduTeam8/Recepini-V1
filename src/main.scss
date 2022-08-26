@@ -1,4 +1,5 @@
 @import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Vidaloka&display=swap');
 
 :root {
 	// Custom color variables
@@ -6,12 +7,44 @@
 	--Primary-tomatogreen: 185, 206, 71;
 	--Neutral-lightpink: 255, 248, 248;
 	--Neutral-matteblack: 33, 37, 41;
+	--Neutral-white: 255, 255, 255;
 	--Secondary-orange: 231, 63, 10;
 	--Secondary-duckyellow: 243, 236, 106;
 	--Secondary-spoiledtomato: 114, 15, 0;
 	--Primary-darkgreen: 25, 134, 83;
 
 	// Custom font variables
+
+	--Popp: 'Poppins';
+	--Vida: 'Vidaloka';
+	--Helvetica: 'Helvetica';
+
+	--font-size-64: 4rem;
+	--font-size-56: 3.5rem;
+	--font-size-48: 3rem;
+	--font-size-40: 2.5rem;
+	--font-size-32: 2rem;
+	--font-size-28: 1.75rem;
+	--font-size-24: 1.5rem;
+	--font-size-20: 1.25rem;
+	--font-size-16: 1rem;
+	--font-size-10: 0.625rem;
+
+	--line-height-78: 4.875rem;
+	--line-height-68: 4.25rem;
+	--line-height-60: 3.75rem;
+	--line-height-58: 3.625rem;
+	--line-height-48: 3rem;
+	--line-height-42: 2.625rem;
+	--line-height-39: 2.4375rem;
+	--line-height-38: 2.375rem;
+	--line-height-36: 2.25rem;
+	--line-height-32: 2rem;
+	--line-height-24: 1.5rem;
+	--line-height-20: 1.25rem;
+	
+	
+	
 
 	// Custom border variables
 	--Border-radius-3px: 0.1875rem;
@@ -25,6 +58,7 @@
 	--Border-radius-45px: 2.8125rem;
 	--Border-radius-50px: 3.125rem;
 
+
 	//Button sizes
 	--Button-large-width: 140px;
 	--Button-large-height: 48px;
@@ -32,11 +66,32 @@
 	--Button-primary-height: 40px;
 	--Button-small-width: 100px;
 	--Button-small-height: 30px;
+  
+	// margin and padding variables in increaments of 8px
+	--Margin-100: 0.25rem;
+	--Margin-200: 0.5rem;
+	--Margin-300: 1rem;
+	--Margin-400: 1.5rem;
+	--Margin-500: 2rem;
+	--Margin-600: 2.5rem;
+	--Margin-700: 3rem;
+	--Margin-800: 3.5rem;
+	--Margin-900: 4rem;
+
+	--Padding-100: 0.25rem;
+	--Padding-200: 0.5rem;
+	--Padding-300: 1rem;
+	--Padding-400: 1.5rem;
+	--Padding-500: 2rem;
+	--Padding-600: 2.5rem;
+	--Padding-700: 3rem;
+	--Padding-800: 3.5rem;
+	--Padding-900: 4rem;
 }
 
 //               utility classes          //
 
-// 			 Background classes             //
+// Background classes
 .bg-primary-tomatored {
 	background-color: rgb(var(--Primary-tomatored));
 }
@@ -45,6 +100,9 @@
 }
 .bg-neutral-lightpink {
 	background-color: rgb(var(--Neutral-lightpink));
+}
+.bg-neutral-white {
+	background-color: rgb(var(--Neutral-white));
 }
 .bg-neutral-matteblack {
 	background-color: rgb(var(--Neutral-matteblack));
@@ -60,6 +118,170 @@
 }
 .bg-primary-darkgreen{
 	background-color: rgb(var(--Primary-darkgreen));
+
+// text font classes
+
+.font-family-Vida{
+	font-family: var(--Vida);
+}
+.font-family-Popp{
+	font-family: var(--Popp);
+}
+.font-family-Helvetica{
+	font-family: var(--Helvetica);
+}
+.font-color-matteblk{
+	color: rgb(var(--Neutral-matteblack));
+}
+.font-weight-100{
+	font-weight: 100;
+}
+.font-weight-200{
+	font-weight: 200;
+}
+.font-weight-275{
+	font-weight: 275;
+}
+.font-weight-300{
+	font-weight: 300;
+}
+.font-weight-400{
+	font-weight: 400;
+}
+.font-weight-500{
+	font-weight: 500;
+}
+.font-weight-600{
+	font-weight: 600;
+}
+.font-style-normal{
+	font-style: normal;
+}
+.font-size-64{
+	font-size: var(--font-size-64);
+}
+.font-size-56{
+	font-size: var(--font-size-56);
+}
+.font-size-48{
+	font-size: var(--font-size-48);
+}
+.font-size-40{
+	font-size: var(--font-size-40);
+}
+.font-size-32{
+	font-size: var(--font-size-32);
+}
+.font-size-28{
+	font-size: var(--font-size-28);
+}
+.font-size-24{
+	font-size: var(--font-size-24);
+}
+.font-size-20{
+	font-size: var(--font-size-20);
+}
+.font-size-16{
+	font-size: var(--font-size-16);
+}
+.font-size-10{
+	font-size: var(--font-size-10);
+}
+.font-line-height-78{
+	font-size: var(--line-height-78);
+}
+.font-line-height-68{
+	font-size: var(--line-height-68);
+}
+.font-line-height-60{
+	font-size: var(--line-height-60);
+}
+.font-line-height-58{
+	font-size: var(--line-height-58);
+}
+.font-line-height-48{
+	font-size: var(--line-height-48);
+}
+.font-line-height-42{
+	font-size: var(--line-height-42);
+}
+.font-line-height-39{
+	font-size: var(--line-height-39);
+}
+.font-line-height-38{
+	font-size: var(--line-height-38);
+}
+.font-line-height-36{
+	font-size: var(--line-height-36);
+}
+.font-line-height-32{
+	font-size: var(--line-height-32);
+}
+.font-line-height-24{
+	font-size: var(--line-height-24);
+}
+.font-line-height-20{
+	font-size: var(--line-height-20);
+}
+.opacity{
+	opacity: 0.5;
+}
+
+  /** dispositivo movil */
+@media only screen and (max-width: 40em){
+	:root{
+		--font-size-64: 2.625rem;
+		--font-size-56: 2.375rem;
+		--font-size-48: 2.125rem;
+		--font-size-40: 1.875rem;
+		--font-size-32: 1.75rem;
+		--font-size-28: 1.625rem;
+		--font-size-24: 1.5rem;
+		--font-size-20: 1.25rem;
+		--font-size-16: 1rem;
+		--font-size-10: 0.625rem;
+	}
+	.font-size-64{
+		font-size: var(--font-size-64);
+	}
+	.font-size-56{
+		font-size: var(--font-size-56);
+	}
+	.font-size-48{
+		font-size: var(--font-size-48);
+	}
+	.font-size-40{
+		font-size: var(--font-size-40);
+	}
+	.font-size-32{
+		font-size: var(--font-size-32);
+	}
+	.font-size-28{
+		font-size: var(--font-size-28);
+	}
+	.font-size-24{
+		font-size: var(--font-size-24);
+	}
+	.font-size-20{
+		font-size: var(--font-size-20);
+	}
+	.font-size-16{
+		font-size: var(--font-size-16);
+	}
+	.font-size-10{
+		font-size: var(--font-size-10);
+	}
+	.paragraph-rt,
+	.titles-lt{
+		width: 50%;
+		left: 10%;
+		margin-top: 30px;
+		margin-left: 20px;
+	}
+
+} 
+
+  
 }
 // text classes
 .text-primary-tomatored {
@@ -85,6 +307,197 @@
 }
 .text-primary-darkgreen{
 	color: rgb(var(--Primary-darkgreen));
+}
+
+//Text transforms
+.text-transf{
+	text-transform: uppercase;
+}
+.basic-t{
+	width: 21.5rem;
+	height: 1.125rem;
+	line-height: 176.49%;
+	letter-spacing: 0.2813rem;
+}
+.basic-p{
+	width: 24.25rem;
+	height: 1.125rem;
+	line-height: 176.49%;
+	letter-spacing: 0.2813rem;
+}
+
+// margin and padding classes
+.margin-100 {
+	margin: var(--Margin-100);
+}
+.margin-200 {
+	margin: var(--Margin-200);
+}
+.margin-300 {
+	margin: var(--Margin-300);
+}
+.margin-400 {
+	margin: var(--Margin-400);
+}
+.margin-500 {
+	margin: var(--Margin-500);
+}
+.margin-600 {
+	margin: var(--Margin-600);
+}
+.margin-700 {
+	margin: var(--Margin-700);
+}
+.margin-800 {
+	margin: var(--Margin-800);
+}
+.margin-900 {
+	margin: var(--Margin-900);
+}
+
+/////// margin inline classes
+.margin-100-inline {
+	margin-inline: var(--Margin-100);
+}
+.margin-200-inline {
+	margin-inline: var(--Margin-200);
+}
+.margin-300-inline {
+	margin-inline: var(--Margin-300);
+}
+.margin-400-inline {
+	margin-inline: var(--Margin-400);
+}
+.margin-500-inline {
+	margin-inline: var(--Margin-500);
+}
+.margin-600-inline {
+	margin-inline: var(--Margin-600);
+}
+.margin-700-inline {
+	margin-inline: var(--Margin-700);
+}
+
+.margin-800-inline {
+	margin-inline: var(--Margin-800);
+}
+.margin-900-inline {
+	margin-inline: var(--Margin-900);
+}
+
+/////// margin vertical classes
+.margin-100-vertical {
+	margin-block: var(--Margin-100);
+}
+.margin-200-vertical {
+	margin-block: var(--Margin-200);
+}
+.margin-300-vertical {
+	margin-block: var(--Margin-300);
+}
+.margin-400-vertical {
+	margin-block: var(--Margin-400);
+}
+.margin-500-vertical {
+	margin-block: var(--Margin-500);
+}
+.margin-600-vertical {
+	margin-block: var(--Margin-600);
+}
+.margin-700-vertical {
+	margin-block: var(--Margin-700);
+}
+.margin-800-vertical {
+	margin-block: var(--Margin-800);
+}
+.margin-900-vertical {
+	margin-block: var(--Margin-900);
+}
+
+.padding-100 {
+	padding: var(--Padding-100);
+}
+.padding-200 {
+	padding: var(--Padding-200);
+}
+.padding-300 {
+	padding: var(--Padding-300);
+}
+.padding-400 {
+	padding: var(--Padding-400);
+}
+.padding-500 {
+	padding: var(--Padding-500);
+}
+.padding-600 {
+	padding: var(--Padding-600);
+}
+.padding-700 {
+	padding: var(--Padding-700);
+}
+.padding-800 {
+	padding: var(--Padding-800);
+}
+.padding-900 {
+	padding: var(--Padding-900);
+}
+
+// padding inline classes
+.padding-100-inline {
+	padding-inline: var(--Padding-100);
+}
+.padding-200-inline {
+	padding-inline: var(--Padding-200);
+}
+.padding-300-inline {
+	padding-inline: var(--Padding-300);
+}
+.padding-400-inline {
+	padding-inline: var(--Padding-400);
+}
+.padding-500-inline {
+	padding-inline: var(--Padding-500);
+}
+.padding-600-inline {
+	padding-inline: var(--Padding-600);
+}
+.padding-700-inline {
+	padding-inline: var(--Padding-700);
+}
+.padding-800-inline {
+	padding-inline: var(--Padding-800);
+}
+.padding-900-inline {
+	padding-inline: var(--Padding-900);
+}
+
+// padding vertical classes
+.padding-100-vertical {
+	padding-block: var(--Padding-100);
+}
+.padding-200-vertical {
+	padding-block: var(--Padding-200);
+}
+.padding-300-vertical {
+	padding-block: var(--Padding-300);
+}
+.padding-400-vertical {
+	padding-block: var(--Padding-400);
+}
+.padding-500-vertical {
+	padding-block: var(--Padding-500);
+}
+.padding-600-vertical {
+	padding-block: var(--Padding-600);
+}
+.padding-700-vertical {
+	padding-block: var(--Padding-700);
+}
+.padding-800-vertical {
+	padding-block: var(--Padding-800);
+}
+.padding-900-vertical {
+	padding-block: var(--Padding-900);
 }
 
 // border radius classes
@@ -115,8 +528,29 @@
 .border-radius-50px {
 	border-radius: var(--Border-radius-50px);
 }
-//Border classes
-.border-color-primary-tomatored{
+
+
+
+
+// semi round classes
+.border-radius-semi-round-8px {
+	border-radius: var(--Border-radius-8px) 0 0 var(--Border-radius-8px);
+}
+
+.border-radius-semi-round-8px-reverse {
+	border-radius: 0 var(--Border-radius-8px) var(--Border-radius-8px) 0;
+}
+
+.border-radius-semi-round-50px {
+	border-radius: var(--Border-radius-50px) 0 0 var(--Border-radius-50px);
+}
+.border-radius-semi-round-50px-reverse {
+	border-radius: 0 var(--Border-radius-50px) var(--Border-radius-50px) 0;
+}
+
+//Border and outline classes
+
+.border-color-primary-tomatored {
 	border-color: rgb(var(--Primary-tomatored));
 	border-style: solid;
 }
@@ -144,80 +578,121 @@
 	border-color: rgb(var(--Secondary-spoiledtomato));
 	border-style: solid;
 }
-.border-color-primary-darkgreen{
+
+.border-color-primary-darkgreen {
 	border-color: rgb(var(--Primary-darkgreen));
 	border-style: solid;
 }
-.border-color-neutral-lightblack{
+.border-color-neutral-lightblack {
 	border-color: rgb(var(--Neutral-matteblack), 0.12);
 	border-style: solid;
 }
+
+.outline-color-primary-tomatored {
+	outline-color: rgb(var(--Primary-tomatored)) !important;
+}
+.outline-color-primary-tomatogreen {
+	outline-color: rgb(var(--Primary-tomatogreen)) !important;
+}
+.outline-color-neutral-lightpink {
+	outline-color: rgb(var(--Neutral-lightpink)) !important;
+}
+.outline-color-neutral-matteblack {
+	outline-color: rgb(var(--Neutral-matteblack)) !important;
+}
+.outline-color-secondary-orange {
+	outline-color: rgb(var(--Secondary-orange)) !important;
+}
+.outline-color-secondary-duckyellow {
+	outline-color: rgb(var(--Secondary-duckyellow)) !important;
+}
+.outline-color-secondary-spoiledtomato {
+	outline-color: rgb(var(--Secondary-spoiledtomato)) !important;
+}
+
 // 			 Display classes             //
+
+
+// Display classes
+
 .display-none {
 	display: none; // hide element
 }
 .display-inline {
 	display: inline; // show element as inline element
 }
-
 .display-block {
 	display: block; // show element as block element
 }
 .display-flex {
 	display: flex; // show element as flex element
 }
-//flex clases
+
+// flex clases
 .flex-column {
-	flex-direction: column; // show element as flex element
+	flex-direction: column; // flex element direction is column
 }
 .flex-row {
-	flex-direction: row; // show element as flex element
+	flex-direction: row; // flex element direction is row
 }
 .flex-wrap {
-	flex-wrap: wrap; // show element as flex element
+	flex-wrap: wrap; // flex element wrap is wrap
 }
 .flex-end {
-	justify-content: flex-end; // show element as flex element
-}
-.flex-center {
-	justify-content: center; // show element as flex element
+	justify-content: flex-end; // flex element justify content is flex-end
 }
 .flex-start {
-	justify-content: flex-start; // show element as flex element
+	justify-content: flex-start; //	flex element justify content is flex-start
 }
 .flex-align-center {
-	align-items: center; // show element as flex element
+	align-items: center; // flex element align items is center
 }
 .flex-center {
-	justify-content: center;
-	align-items: center;
+	justify-content: center; // flex element justify content is center
+	align-items: center; // flex element align items is center
 }
 .flex-space-between {
-	justify-content: space-between; // show element as flex element
+	justify-content: space-between; // flex element justify content is space-between
 }
 .flex-space-around {
-	justify-content: space-around; // show element as flex element
+	justify-content: space-around; // 	flex element justify content is space-around
 }
-//               component classes          //
+.flex-gap {
+	gap: var(--Border-radius-22px);
+}
+
+// width and height classes
+.width-100 {
+	width: 100%; // width is 100%
+}
+.width-50 {
+	width: 50%; // width is 50%
+}
+
+.height-100 {
+	height: 100%; // height is 100%
+}
+.height-50 {
+	height: 50%; // height is 50%
+}
+
+//               Selector classes          //
 .color-block {
 	border: 1px solid rgba(var(--Neutral-matteblack), 0.25);
 	width: 9rem;
 	height: 12.75rem;
 }
 
-.flex-gap {
-	gap: var(--Border-radius-22px);
-}
-
 .h1-title {
 	font-family: "Helvetica";
 	font-style: normal;
 	font-weight: 300;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	text-align: right;
 	letter-spacing: 0.5rem;
 	text-transform: lowercase;
 }
+
 
 // Button classes //
 .button-large{
@@ -291,3 +766,46 @@
 	row-gap: 20px;
 	justify-items: center;
 }
+=======
+.paragraph-rt{
+	width: 46.875rem;
+	height: 44.9375rem;
+	left: 45.75rem;
+	margin-top: 6.25rem;
+	margin-left: 14.125rem;
+}
+.titles-lt{
+	width: 40%;
+	height: 70%;
+	left: 12%;
+	margin-top: 100px;
+	margin-left: 80px;
+	
+}
+
+.hex-Code {
+	font-family: "Helvetica";
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.body-rgb-hsl {
+	font-family: Helvetica;
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1.125rem;
+	letter-spacing: 0rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.Search-Grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-gap: 1rem;
+	justify-content: center;
+}
+
+
