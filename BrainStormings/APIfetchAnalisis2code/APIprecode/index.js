@@ -207,7 +207,7 @@ async function getLatestRecipe() {
 //=======================================================================
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
-function recipesHTML(recipesDIV,recipes) {
+/*function recipesHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
@@ -229,7 +229,7 @@ function recipesHTML(recipesDIV,recipes) {
             </div>`;
     recipesGoInDiv.appendChild(adding_recipe);
   });
-}
+}*/
 
 function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categories:', categories);
@@ -448,14 +448,63 @@ document.getElementById("randomButton").onclick = async function () {
     recipesHTML("randomRecipe",recipe.meals);
     
     ///Guardar en sesión
-    sessionStorage.setItem("randomRecipe", document.getElementById("randomRecipe").innerHTML);
+    sessionStorage.setItem("randomRecipe", JSON.stringify(recipe.meals));
+    console.log(sessionStorage.getItem("randomRecipe"));
 };
+
+function recipesHTML(recipesDIV,recipes) {
+    console.log('Enla funcion recipes:**', recipes);
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+       
+    while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
+        recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
+    }//recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+
+    
+    recipes.forEach(data => {
+        const adding_recipe = document.createElement("div");
+
+        const card = document.createElement("div");
+        card.className = 'card';
+        adding_recipe.appendChild(card);
+
+        const cardContainer = document.createElement("div");
+        cardContainer.className = 'cardContainer';
+        cardContainer.id = data.idMeal;
+        card.appendChild(cardContainer);
+
+        const cardImgContainer = document.createElement("div");
+        cardImgContainer.className = 'cardImgContainer';
+        cardContainer.appendChild(cardImgContainer);
+
+        var newContent = document.createTextNode("data.meals");
+        cardImgContainer.appendChild(newContent);
+
+        const p = document.createElement("p");
+        cardImgContainer.appendChild(p);
+
+        var newContent1 = document.createTextNode("id="+data.strMeal);
+        p.appendChild(newContent1);
+
+        const button = document.createElement("button");
+        button.className = 'linkCard';
+        cardImgContainer.appendChild(button);
+
+        const imgCard = document.createElement("img");
+        imgCard.className = 'imgCard';
+        imgCard.src = data.strMealThumb;
+        button.appendChild(imgCard);
+        
+        recipesGoInDiv.appendChild(adding_recipe);
+    });
+}
 
 // (this will only happen if the page is accidentally refreshed)
 if (sessionStorage.getItem("randomRecipe")) {
-  // Restore the contents of the text field
-  document.getElementById("randomRecipe").innerHTML = sessionStorage.getItem("randomRecipe");
-  console.log(sessionStorage.getItem("randomRecipe"));
+    // Restore the contents of the text field
+    const inicial = document.getElementById("randomRecipe");
+    inicial.innerHTML = recipesHTML("randomRecipe", JSON.parse(sessionStorage.getItem("randomRecipe"))[0]);
+    console.log(JSON.parse());
 }
 
 // Listen for changes in the text field
