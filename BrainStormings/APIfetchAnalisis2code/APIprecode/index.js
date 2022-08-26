@@ -1,9 +1,29 @@
-//The MealDB API https://themealdb.com
-//const base_URL='https://www.themealdb.com/api/json/v1/1/'
-const base_URL = "https://www.themealdb.com/api/json/";
-const api_BaseKey = "v1/1/";
-const api_PayedKey = "v2/9973533/";
-const urlImg=base_URL;
+//Initiation Sequence....
+//Setting Startup Values...
+//Const and variables
+//const base_URL='https://www.themealdb.com/api/json/v1/1/'//With basic API_key
+//const base_URL = "https://www.themealdb.com/api/json/";
+//base_URL=server_URL+api_gment
+
+const serverURL="https://themealdb.com"
+const apiSegment="/api/json/"
+const apiBaseKey = "v1/1/";
+const apiPayedKey = "v2/9973533/";
+const search_URL=`${serverURL}${apiSegment}${apiPayedKey}`;
+//img URl=serverURL + media/meals/imgname.jpg DElivered by OBJ prop in in JSNDB: strMealThumb
+//const imgURL=`${serverURL}/media/meals/`
+//img Ingredient URL viene en el OBJ JSON  en 20 props strIngredient#
+// imgIntUrl=
+//  `${serverURL}/images/ingredients/${strIngredient#}.png`;
+//small imgs
+// imgIntUrl=
+//  `${serverURL}/images/ingredients/${strIngredient#}-Small.png`;
+
+// const imgIngURL=`${serverURL}/images/ingredients/${strIngredient`${a}`}.png`;
+// console.log('imgIngrediente', imgIngURL);
+
+//Maybe develeped one day
+//const payment=true;//If apikey is being payed, else use other values all over. 
 
 // let result = "";
 
@@ -39,7 +59,7 @@ let apiSelected = [
 ];
 
 
-// const url = `${base_URL}${api_PayedKey}${apiSelected[0]}`;
+// const url = `${search_URL}${apiSelected[0]}`;
 // console.log("URL a llamar", url);
 
 async function getAPIResponse(apiIndex,params = '') {
@@ -47,14 +67,14 @@ async function getAPIResponse(apiIndex,params = '') {
     let url='';
     if (apiIndex>=0 && apiIndex<=6){
         console.log("Sin params");
-        url = `${base_URL}${api_PayedKey}${apiSelected[apiIndex]}`;
+        url = `${search_URL}${apiSelected[apiIndex]}`;
         // console.log("URL a llamar", url);
 
     } else {
         console.log("Con params");
         // let apiCompoudSelected='apiSelected[apiIndex]'+'params'
-        url = `${base_URL}${api_PayedKey}${apiSelected[apiIndex]}${params}`;
-        // url = `${base_URL}${api_PayedKey}${apiCompoundSelected}`;
+        url = `${search_URL}${apiSelected[apiIndex]}${params}`;
+        // url = `${search_URL}${apiCompoundSelected}`;
         // console.log("URL a llamar", url);
     }
     console.log("URL a llamar", url);
@@ -65,7 +85,7 @@ async function getAPIResponse(apiIndex,params = '') {
 
 
 async function getARandomRecipe() {
-    const url = `${base_URL}${api_PayedKey}${apiSelected[0]}`;
+    const url = `${search_URL}${apiSelected[0]}`;
     console.log("URL a llamar", url);
     const response = await fetch(url);
     const data = await response.json();
@@ -73,7 +93,7 @@ async function getARandomRecipe() {
 }
 
 async function get10RandomRecipes() {
-    const url = `${base_URL}${api_PayedKey}${apiSelected[1]}`;
+    const url = `${search_URL}${apiSelected[1]}`;
     console.log("URL a llamar", url);
     const response = await fetch(url);
     const data = await response.json();
@@ -81,7 +101,7 @@ async function get10RandomRecipes() {
 }
 
 async function getLatestRecipe() {
-    const url = `${base_URL}${api_PayedKey}${apiSelected[3]}`;
+    const url = `${search_URL}${apiSelected[3]}`;
     console.log("URL a llamar", url);
     const response = await fetch(url);
     const data = await response.json();
@@ -89,7 +109,7 @@ async function getLatestRecipe() {
 }
 
 // async function getARecipe(id) {
-//   const url = `${base_URL}${api_PayedKey}${apiSelected[11]}${id}`;
+//   const url = `${search_URL}${apiSelected[11]}${id}`;
 //   const response = await fetch(url);
 //   const data = await response.json();
 //   return data;
@@ -163,9 +183,8 @@ function recipesHTML(recipesDIV,recipes) {
         <div class="card">
             <div class="cardContainer" id="${data.idMeal}">
                 <div class="cardImgContainer">
-                data.meals:
                     <p>
-                        id=${data.strMeal}: 
+                        <strong>${data.strMeal}</strong>
                     </p>
                     <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
                         <img class="imgCard" src="${data.strMealThumb}">
@@ -187,9 +206,8 @@ function categoriesHTML(categoriesDIV,categories) {
         <div class="card">
             <div class="cardContainer" id="${data.idCategory}">
                 <div class="cardImgContainer">
-                data.meals:
                     <p>
-                        id=${data.strCategory}: 
+                        <strong>${data.strCategory}: </strong>
                     </p>
                     <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idCategory})">
                         <img class="imgCard" src="${data.strCategoryThumb}">
@@ -203,6 +221,31 @@ function categoriesHTML(categoriesDIV,categories) {
 }
 
 
+function listsAllCategoriesHTML(listsDIV,lists) {
+    console.log('Enla funcion lists:', lists);
+
+    //let {strCategory:dataId2List}=lists;
+    //console.log('DEstructuring:',dataId2List);
+  const listsGoInDiv = document.getElementById(listsDIV);
+  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+  lists.forEach(data => {
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
+        <div class="card">
+            <div class="cardContainer" id="${data.strCategory}">
+                <div class="cardImgContainer">
+                    <p>
+                        <strong>${data.strCategory} </strong>
+                    </p>
+                    <button class="linkCard" onclick="console.log('List ID: ',${data.strCategory})">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
+                    </button>
+        </div>`;
+    listsGoInDiv.appendChild(addingList);
+  });
+}
+
 function listsAllAreaHTML(listsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listsDIV);
@@ -212,39 +255,18 @@ function listsAllAreaHTML(listsDIV,lists) {
     addingList.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.strArea}">
-                <div class="cardImgContainer">
-                data.meals:
-                    <p>
-                        id=${data.strArea}: 
-                    </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.strArea})">
-                        <img class="imgCard" src="./assets/${data.strArea}.jpg">
+                <div class="cardAreaContainer">
+                    <button class="linkCard" 
+                        onclick="console.log('List ID: ',${data.strArea})">
+                        <p>
+                            <strong>${data.strArea}: </strong>
+                        </p>
                     </button>
         </div>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
-function listsAllCategoriesHTML(listsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
-  const listsGoInDiv = document.getElementById(listsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strCategory}">
-                <div class="cardImgContainer">
-                data.meals:
-                    <p>
-                        id=${data.strCategory}: 
-                    </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.strCategory})">
-                        <img class="imgCard" src="${urlImg}${data.strCategory}.jpg">
-                    </button>
-        </div>`;
-    listsGoInDiv.appendChild(addingList);
-  });
-}
+
 
 
 function listsAllIngredientsHTML(listIngredientsDIV,lists) {
@@ -259,10 +281,10 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
                 <div class="cardImgContainer">
                 data.meals:
                     <p>
-                        Ingrediente=${data.strIngredient}: 
+                        <strong>${data.strIngredient}</strong>
                     </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.idIngredient}:${data.strIngredient})">
-                        <img class="imgCard" src="${urlImg}${data.strIngredient}.jpg">
+                    <button class="linkCard" onclick="console.log('List ID: ',${data.strIngredient})">
+                        <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
                     </button>
                     </div>
                  <div class="cardDescription">${data.strDescription}</div>
@@ -352,7 +374,14 @@ async function getListAllIngredients(){
     // window.onload=
 window.onload=async function(){
     try {
-    await Promise.all([get10Random(),getLatest(),getCategories(),getListAllAreaCountry(),getListAllCategories() ]);//,getListAllIngredients()
+    await Promise.all([
+        get10Random(),
+        getLatest(),
+        getCategories(),
+        getListAllAreaCountry(),
+        getListAllCategories(),
+        getListAllIngredients()
+        ]);
     }catch(error){
         console.error("Promise.all Error on Wondos.onload",error);
     }
