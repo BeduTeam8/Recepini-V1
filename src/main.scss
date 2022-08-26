@@ -52,11 +52,32 @@
 	--Border-radius-16px: 1rem;
 	--Border-radius-22px: 1.375rem;
 	--Border-radius-50px: 3.125rem;
+
+	// margin and padding variables in increaments of 8px
+	--Margin-100: 0.25rem;
+	--Margin-200: 0.5rem;
+	--Margin-300: 1rem;
+	--Margin-400: 1.5rem;
+	--Margin-500: 2rem;
+	--Margin-600: 2.5rem;
+	--Margin-700: 3rem;
+	--Margin-800: 3.5rem;
+	--Margin-900: 4rem;
+
+	--Padding-100: 0.25rem;
+	--Padding-200: 0.5rem;
+	--Padding-300: 1rem;
+	--Padding-400: 1.5rem;
+	--Padding-500: 2rem;
+	--Padding-600: 2.5rem;
+	--Padding-700: 3rem;
+	--Padding-800: 3.5rem;
+	--Padding-900: 4rem;
 }
 
 //               utility classes          //
 
-// 			 Background classes             //
+// Background classes
 .bg-primary-tomatored {
 	background-color: rgb(var(--Primary-tomatored));
 }
@@ -241,6 +262,122 @@
 	color: rgb(var(--Secondary-spoiledtomato));
 }
 
+// margin and padding classes
+.margin-100 {
+	margin: var(--Margin-100);
+}
+.margin-200 {
+	margin: var(--Margin-200);
+}
+.margin-300 {
+	margin: var(--Margin-300);
+}
+.margin-400 {
+	margin: var(--Margin-400);
+}
+.margin-500 {
+	margin: var(--Margin-500);
+}
+.margin-600 {
+	margin: var(--Margin-600);
+}
+.margin-700 {
+	margin: var(--Margin-700);
+}
+.margin-800 {
+	margin: var(--Margin-800);
+}
+.margin-900 {
+	margin: var(--Margin-900);
+}
+
+/////// margin inline classes
+.margin-100-inline {
+	margin-inline: var(--Margin-100);
+}
+.margin-200-inline {
+	margin-inline: var(--Margin-200);
+}
+.margin-300-inline {
+	margin-inline: var(--Margin-300);
+}
+.margin-400-inline {
+	margin-inline: var(--Margin-400);
+}
+.margin-500-inline {
+	margin-inline: var(--Margin-500);
+}
+.margin-600-inline {
+	margin-inline: var(--Margin-600);
+}
+.margin-700-inline {
+	margin-inline: var(--Margin-700);
+}
+
+.margin-800-inline {
+	margin-inline: var(--Margin-800);
+}
+.margin-900-inline {
+	margin-inline: var(--Margin-900);
+}
+
+/////// margin vertical classes
+.margin-100-vertical {
+	margin-block: var(--Margin-100);
+}
+.margin-200-vertical {
+	margin-block: var(--Margin-200);
+}
+.margin-300-vertical {
+	margin-block: var(--Margin-300);
+}
+.margin-400-vertical {
+	margin-block: var(--Margin-400);
+}
+.margin-500-vertical {
+	margin-block: var(--Margin-500);
+}
+.margin-600-vertical {
+	margin-block: var(--Margin-600);
+}
+.margin-700-vertical {
+	margin-block: var(--Margin-700);
+}
+.margin-800-vertical {
+	margin-block: var(--Margin-800);
+}
+.margin-900-vertical {
+	margin-block: var(--Margin-900);
+}
+
+.padding-100 {
+	padding: var(--Padding-100);
+}
+.padding-200 {
+	padding: var(--Padding-200);
+}
+.padding-300 {
+	padding: var(--Padding-300);
+}
+.padding-400 {
+	padding: var(--Padding-400);
+}
+.padding-500 {
+	padding: var(--Padding-500);
+}
+.padding-600 {
+	padding: var(--Padding-600);
+}
+.padding-700 {
+	padding: var(--Padding-700);
+}
+.padding-800 {
+	padding: var(--Padding-800);
+}
+.padding-900 {
+	padding: var(--Padding-900);
+}
+
 // border radius classes
 .border-radius-5px {
 	border-radius: var(--Border-radius-5px);
@@ -261,72 +398,85 @@
 	border-radius: var(--Border-radius-50px);
 }
 
-// 			 Display classes             //
+// Display classes
 .display-none {
 	display: none; // hide element
 }
 .display-inline {
 	display: inline; // show element as inline element
 }
-
 .display-block {
 	display: block; // show element as block element
 }
 .display-flex {
 	display: flex; // show element as flex element
 }
-//flex clases
+
+// flex clases
 .flex-column {
-	flex-direction: column; // show element as flex element
+	flex-direction: column; // flex element direction is column
 }
 .flex-row {
-	flex-direction: row; // show element as flex element
+	flex-direction: row; // flex element direction is row
 }
 .flex-wrap {
-	flex-wrap: wrap; // show element as flex element
+	flex-wrap: wrap; // flex element wrap is wrap
 }
 .flex-end {
-	justify-content: flex-end; // show element as flex element
-}
-.flex-center {
-	justify-content: center; // show element as flex element
+	justify-content: flex-end; // flex element justify content is flex-end
 }
 .flex-start {
-	justify-content: flex-start; // show element as flex element
+	justify-content: flex-start; //	flex element justify content is flex-start
 }
 .flex-align-center {
-	align-items: center; // show element as flex element
+	align-items: center; // flex element align items is center
 }
 .flex-center {
-	justify-content: center;
-	align-items: center;
+	justify-content: center; // flex element justify content is center
+	align-items: center; // flex element align items is center
 }
 .flex-space-between {
-	justify-content: space-between; // show element as flex element
+	justify-content: space-between; // flex element justify content is space-between
 }
 .flex-space-around {
-	justify-content: space-around; // show element as flex element
+	justify-content: space-around; // 	flex element justify content is space-around
 }
-//               component classes          //
+.flex-gap {
+	gap: var(--Border-radius-22px);
+}
+
+// width and height classes
+.width-100 {
+	width: 100%; // width is 100%
+}
+.width-50 {
+	width: 50%; // width is 50%
+}
+
+.height-100 {
+	height: 100%; // height is 100%
+}
+.height-50 {
+	height: 50%; // height is 50%
+}
+
+//               Selector classes          //
 .color-block {
 	border: 1px solid rgba(var(--Neutral-matteblack), 0.25);
 	width: 9rem;
 	height: 12.75rem;
 }
 
-.flex-gap {
-	gap: var(--Border-radius-22px);
-}
-
 .h1-title {
 	font-family: "Helvetica";
 	font-style: normal;
 	font-weight: 300;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	text-align: right;
 	letter-spacing: 0.5rem;
 	text-transform: lowercase;
 }
+
 .paragraph-rt{
 	width: 46.875rem;
 	height: 44.9375rem;
@@ -395,3 +545,4 @@
 	}
 
 } 
+
