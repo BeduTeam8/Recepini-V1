@@ -10,6 +10,8 @@ const apiSegment="/api/json/"
 const apiBaseKey = "v1/1/";
 const apiPayedKey = "v2/9973533/";
 const search_URL=`${serverURL}${apiSegment}${apiPayedKey}`;
+//Notas en contruccion del URL de las imagenes.
+//REcordar que los directorios pueden /images/categories e /images/ingredients 
 //img URl=serverURL + media/meals/imgname.jpg DElivered by OBJ prop in in JSNDB: strMealThumb
 //const imgURL=`${serverURL}/media/meals/`
 //img Ingredient URL viene en el OBJ JSON  en 20 props strIngredient#
@@ -386,3 +388,5 @@ window.onload=async function(){
         console.error("Promise.all Error on Wondos.onload",error);
     }
 }
+
+//Faltan las funciones de sesion de Jesus aqui
