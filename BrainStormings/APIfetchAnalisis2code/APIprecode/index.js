@@ -386,6 +386,3 @@ window.onload=async function(){
         console.error("Promise.all Error on Wondos.onload",error);
     }
 }
-
-
-
