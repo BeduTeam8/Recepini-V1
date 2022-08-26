@@ -1,6 +1,8 @@
 //Initiation Sequence....
 //Setting Startup Values...
+
 //Const and variables
+//Como se hace el URL de conexion a la API
 //const base_URL='https://www.themealdb.com/api/json/v1/1/'//With basic API_key
 //const base_URL = "https://www.themealdb.com/api/json/";
 //base_URL=server_URL+api_gment
