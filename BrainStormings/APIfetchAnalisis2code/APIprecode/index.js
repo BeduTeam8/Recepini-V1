@@ -82,9 +82,17 @@ async function getAPIResponse(apiIndex,params = '') {
         // console.log("URL a llamar", url);
     }
     console.log("URL a llamar", url);
+    try{
     const response = await fetch(url);
     const data = await response.json();
     return data;
+    }
+    catch{
+        console.error("Llamada a la API fallida:",apiIndex,'\n URL: ',url);
+        console.log("DEmosle Otra OPCION nada 404 Dead END");
+        console.log("Encadenar uan random o un boton recargar");
+    
+    }
 }
 
 
@@ -184,7 +192,7 @@ function recipesHTML(recipesDIV,recipes) {
     recipes.forEach(data => {
     const adding_recipe = document.createElement("div");
     adding_recipe.innerHTML = `
-        <div class="card">
+        
             <div class="cardContainer" id="${data.idMeal}">
                 <div class="cardImgContainer">
                     <p>
@@ -195,7 +203,7 @@ function recipesHTML(recipesDIV,recipes) {
                     </button>
                 </div>
             </div>
-        </div>`;
+            `;
     recipesGoInDiv.appendChild(adding_recipe);
   });
 }
@@ -243,7 +251,7 @@ function listsAllCategoriesHTML(listsDIV,lists) {
                     <p>
                         <strong>${data.strCategory} </strong>
                     </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.strCategory})">
+                    <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
                         <img class="imgCard" 
                         src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
                     </button>
@@ -252,6 +260,7 @@ function listsAllCategoriesHTML(listsDIV,lists) {
   });
 }
 
+//Se cambia el console.log del onclock por getFilteredList a la 8 y strArea.
 function listsAllAreaHTML(listsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listsDIV);
@@ -263,7 +272,7 @@ function listsAllAreaHTML(listsDIV,lists) {
             <div class="cardContainer" id="${data.strArea}">
                 <div class="cardAreaContainer">
                     <button class="linkCard" 
-                        onclick="console.log('List ID: ',${data.strArea})">
+                        onclick="getFilteredList(7,'${data.strArea}')">
                         <p>
                             <strong>${data.strArea}: </strong>
                         </p>
@@ -274,7 +283,7 @@ function listsAllAreaHTML(listsDIV,lists) {
 }
 
 
-
+//Viernes 26 se cambio el onclick de console.log a la funcion filtrar por ingrediente
 function listsAllIngredientsHTML(listIngredientsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listIngredientsDIV);
@@ -289,7 +298,7 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
                     <p>
                         <strong>${data.strIngredient}</strong>
                     </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.strIngredient})">
+                    <button class="linkCard" onclick="getFilteredList(9,'${data.strIngredient}')">
                         <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
                     </button>
                     </div>
@@ -380,46 +389,53 @@ async function getListAllIngredients(){
 //Recibe un parametro y lo pega al URL para que la llamada al API responda.
 //primera vez llamamo a filter.php?a=gentilicio
 async function getFilteredList(filterIndex,param){
-    const filteredResponse = await getAPIResponse(filterIndex,param);
-    // console.log(allIngredients);
-    console.log("filteredSearch:",filteredResponse);
-    console.log("List filteredResponse:",filteredResponse.meals);
-    console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
-    
+    try{
+        const filteredResponse = await getAPIResponse(filterIndex,param);
+        // console.log(allIngredients);
+        console.log("filteredSearch:",filteredResponse);
+        console.log("List filteredResponse:",filteredResponse.meals);
+        console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
+        
 
-    // function getDisplayAreaxIndex(index){
-    let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
-    switch (filterIndex) {
-        case 7:{
+        // function getDisplayAreaxIndex(index){
+        let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
+        switch (filterIndex) {
+            case 7:{
+                listfilteredResponseDIV=
+                    `${listfilteredResponseDIV}Area`
+                console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
+                // return listfilteredResponseDIV;
+            }
+            break;
+            case 8:{
+                listfilteredResponseDIV=
+                    `${listfilteredResponseDIV}Category`
+                console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
+            }
+            break;
+            case 9:{
             listfilteredResponseDIV=
-                `${listfilteredResponseDIV}Area`
-            console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
-            // return listfilteredResponseDIV;
+                `${listfilteredResponseDIV}Ingredient`;  
+            console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
+            }
+            break;
+            default:
+            break;
         }
-        break;
-        case 8:{
-            listfilteredResponseDIV=
-                `${listfilteredResponseDIV}Category`
-            console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
-        }
-        break;
-        case 9:{
-        listfilteredResponseDIV=
-            `${listfilteredResponseDIV}Ingredient`;  
-        console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
-        }
-        break;
-        default:
-        break;
+        recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
     }
-    recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+    catch{
+        console.error("Llamada a la API fallida",filteredResponse);
+        console.log("DEmosle Otra OPCION nada 404 Dead END");
+        console.log("Encadenar uan random o un boton recargar");
+    }
 }
     
 // };
 //console.log('Iniciamos llamada a lista filtrada',getFilteredList(param));
-let param1='Canadian';
-let param2='Seafood';
-let param3='Chicken';
+// let param1='Canadian';
+// let param2='Seafood';
+// let param3='Chicken';
 
 
 
@@ -433,9 +449,9 @@ window.onload=async function(){
         getListAllAreaCountry(),
         getListAllCategories(),
         getListAllIngredients(),
-        getFilteredList(7,param1),
-        getFilteredList(8,param2),
-        getFilteredList(9,param3),
+        // getFilteredList(7,param1),//Area Filter text
+        // getFilteredList(8,param2),//Category filter text
+        // getFilteredList(9,param3),//Ingredient filter text
         ]);
     }catch(error){
         console.error("Promise.all Error on Wondos.onload",error);
