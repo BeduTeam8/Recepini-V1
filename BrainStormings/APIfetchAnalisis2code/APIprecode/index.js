@@ -201,28 +201,6 @@ function recipesHTML(recipesDIV,recipes) {
 }
 
 
-function recipesShortHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipesShort:', recipes);
-    const recipesGoInDiv = document.getElementById(recipesDIV);
-    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
-    recipes.forEach(data => {
-    const adding_recipe = document.createElement("div");
-    adding_recipe.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.idMeal}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strMeal}</strong>
-                    </p>
-                    <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
-                        <img class="imgCard" src="${data.strMealThumb}">
-                    </button>
-                </div>
-            </div>
-        </div>`;
-    recipesGoInDiv.appendChild(adding_recipe);
-  });
-}
 
 function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categories:', categories);
