@@ -406,8 +406,7 @@ async function getFilteredList(filterIndex,param){
                 console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
                 // return listfilteredResponseDIV;
             }
-            break;
-            
+            break;            
             case 8:{
                 listfilteredResponseDIV=
                     `${listfilteredResponseDIV}Category`
