@@ -407,6 +407,7 @@ async function getFilteredList(filterIndex,param){
                 // return listfilteredResponseDIV;
             }
             break;
+            
             case 8:{
                 listfilteredResponseDIV=
                     `${listfilteredResponseDIV}Category`
