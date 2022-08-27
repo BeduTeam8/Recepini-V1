@@ -200,6 +200,30 @@ function recipesHTML(recipesDIV,recipes) {
   });
 }
 
+
+function recipesShortHTML(recipesDIV,recipes) {
+    console.log('Enla funcion recipesShort:', recipes);
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+    recipes.forEach(data => {
+    const adding_recipe = document.createElement("div");
+    adding_recipe.innerHTML = `
+        <div class="card">
+            <div class="cardContainer" id="${data.idMeal}">
+                <div class="cardImgContainer">
+                    <p>
+                        <strong>${data.strMeal}</strong>
+                    </p>
+                    <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
+                        <img class="imgCard" src="${data.strMealThumb}">
+                    </button>
+                </div>
+            </div>
+        </div>`;
+    recipesGoInDiv.appendChild(adding_recipe);
+  });
+}
+
 function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categories:', categories);
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
@@ -368,10 +392,56 @@ async function getListAllIngredients(){
     // console.log(allIngredients);
     console.log("ListAllIngredients:",allIngredients);
     console.log("ListAllIngredients:",allIngredients.meals);
-    console.log('Registros de List by Area:(',allIngredients.meals.length,'):\n',allIngredients.meals);
+    console.log('Registros de Lista  ALLIngredientes:(',allIngredients.meals.length,'):\n',allIngredients.meals);
     listsAllIngredientsHTML("listAllIngredients",allIngredients.meals);
     
 };
+
+//Al parecer podemos utilizar esta función 3 a 4 veces,
+//Es decir para filtrar por area,categoria e ingrediet(e)
+//Recibe un parametro y lo pega al URL para que la llamada al API responda.
+//primera vez llamamo a filter.php?a=gentilicio
+async function getFilteredList(filterIndex,param){
+    const filteredResponse = await getAPIResponse(filterIndex,param);
+    // console.log(allIngredients);
+    console.log("filteredSearch:",filteredResponse);
+    console.log("List filteredResponse:",filteredResponse.meals);
+    console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
+    
+
+    // function getDisplayAreaxIndex(index){
+    let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
+    switch (filterIndex) {
+        case 7:{
+            listfilteredResponseDIV=
+                `${listfilteredResponseDIV}Area`
+            console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
+            // return listfilteredResponseDIV;
+        }
+        break;
+        case 8:{
+            listfilteredResponseDIV=
+                `${listfilteredResponseDIV}Category`
+            console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
+        }
+        break;
+        case 9:{
+        listfilteredResponseDIV=
+            `${listfilteredResponseDIV}Ingredient`;  
+        console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
+        }
+        break;
+        default:
+        break;
+    }
+    recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+}
+    
+// };
+//console.log('Iniciamos llamada a lista filtrada',getFilteredList(param));
+let param1='Canadian';
+let param2='Seafood';
+let param3='Chicken';
 
 
 
@@ -384,7 +454,10 @@ window.onload=async function(){
         getCategories(),
         getListAllAreaCountry(),
         getListAllCategories(),
-        getListAllIngredients()
+        getListAllIngredients(),
+        getFilteredList(7,param1),
+        getFilteredList(8,param2),
+        getFilteredList(9,param3),
         ]);
     }catch(error){
         console.error("Promise.all Error on Wondos.onload",error);
