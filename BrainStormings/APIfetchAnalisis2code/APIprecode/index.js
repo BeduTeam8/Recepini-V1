@@ -29,8 +29,6 @@ const search_URL=`${serverURL}${apiSegment}${apiPayedKey}`;
 //Maybe develeped one day
 //const payment=true;//If apikey is being payed, else use other values all over. 
 
-// let result = "";
-
 let apiSelected = [
     //Busquedas sin parametros    
   "random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
@@ -62,10 +60,8 @@ let apiSelected = [
                    //Regresa un arreglo de objetos cada uno con 53 propiedades.
 ];
 
-
-// const url = `${search_URL}${apiSelected[0]}`;
-// console.log("URL a llamar", url);
-
+//Function to contact the 14 API calls depending on the target call
+//the function receives an index ans optional parameters
 async function getAPIResponse(apiIndex,params = '') {
     // console.log("A ver los params");
     let url='';
@@ -95,106 +91,18 @@ async function getAPIResponse(apiIndex,params = '') {
     }
 }
 
-
-async function getARandomRecipe() {
-    const url = `${search_URL}${apiSelected[0]}`;
-    console.log("URL a llamar", url);
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-
-async function get10RandomRecipes() {
-    const url = `${search_URL}${apiSelected[1]}`;
-    console.log("URL a llamar", url);
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-
-async function getLatestRecipe() {
-    const url = `${search_URL}${apiSelected[3]}`;
-    console.log("URL a llamar", url);
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-
-// async function getARecipe(id) {
-//   const url = `${search_URL}${apiSelected[11]}${id}`;
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   return data;
-// }
-
-// async function getRecipes(aPIbyIndex, optField = " ") {
-
-//   let result = "";
-//   let aPISelected = [
-//     "random.php", //randomButton 1 receta sorpresa
-//     "randomselection.php", //10random recipes
-//     "categories.php", //List ade categorias en un OBJ Categories
-//     "latest.php", //La ultima receta ingresada al DB
-//     "list.php?a=list", //Lista de Area =Country/Pais son 27registros
-//     "list.php?c=list", //Lista de categorias 14 registros
-//     "list.php?i=list", //Lista de ingredienes son 574
-//     //Busqquedas que req parametro
-//     "filter.php?a=", //Busqueda por Area del Mundo, uno de 27 registros
-//     "filter.php?c=", //Busqueda por categoria, una de 14 registros
-//     "filter.php?i=", //Busqueda por ingrediente uno de 574
-//     'filter.php?i=',//Busqueda por multingredientes. Recibe un string ce ingredientes separados por coma.
-//     "lookup.php?i=",//Busqueda por Id
-//     "search.php?f=", //Busqueda por la primera letra
-//     "search.php?s=", //Busqueda por palabra o letras en el campo nombre
-//   ];
-//   console.log("Abajo del arreglo getRecipes:", aPIbyIndex);
-//   console.log("API2makeCall:", aPISelected[aPIbyIndex]);
-//   let urlString = base_URL + aPISelected[aPIbyIndex];
-//   console.log("strinf URL formado: " + urlString); //A que URL llamare
-
-//   if (aPIbyIndex > 6) {
-//     //Para todas las llamadas al API que requieren params extra
-//     if (aPIbyIndex === 11) {
-//       //Si es busqueda de terminos usa 'search.php?s=' y revisa el valor del input de su searchBox
-//       console.log("Dentro del if 11:", aPIbyIndex);
-//       let searchterm = document.getElementById("searchInputTxtBox");
-//       console.log(searchterm.value); //Que dice el Input del SearchBox
-//       urlString += searchterm.value;
-//     } else {
-//       urlString += optionalField; //Para las otras usa un campo extraido y validado de un JSOn anterior
-//     }
-//   }
-//   console.log(urlString); //A que URL llamare
-//   if (aPIbyIndex === 2) {
-//     result = callMealDBAPI(urlString, callType, 0);
-//   } else {
-//     result = callMealDBAPI(urlString, callType, 1);
-//   }
-//   // await callMealDBAPI();
-//   console.log("CALLDBAPI:", result);
-//   return result;
-//   //Llamada a la API*
-//   //Posiblemente falte decirle su nodo o div de zona de despliegue
-// }
-//End of function getRecipes();
-
-//====================================================================
+//==================================================================
 //===
-//lista de funciones a conectar en el HTML con sus botones o divs para onload, onclick etc.
+//HTML FORMATING CODE FUNCTIONS
+// con sus botones o divs para onload, onclick etc.
 //Si se usan events del addListener se pueden eliminar en segunda fase para que sean identificadas por id del button
-//====================================================================
-
-
-
-
-
-
-
-
-
+//==================================================================
 //===
+//All xxxxHTML functions get a DIV to realesa the formated HTML and 
+//an array of OBjs
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
+//Short Recipe Listing is called by any response that returns a list of recipes
 function recipesShortHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
@@ -218,7 +126,7 @@ function recipesShortHTML(recipesDIV,recipes) {
     recipesGoInDiv.appendChild(adding_recipe);
   });
 }
-
+//Format a One Recipe
 function recipesHTML(recipesDIV,therecipe) {
     console.log('Dentro de la funcion una recipe:', therecipe);
     const recipeGoesinDIV = document.getElementById(recipesDIV);
@@ -385,9 +293,8 @@ function recipesHTML(recipesDIV,therecipe) {
     recipeGoesinDIV.appendChild(adding_recipe);
   });
 }
-
-
-//All 53 Properties that comes on any recipe registry
+//The 53 Properties that comes on any recipe registry
+//Used in the upper function. ERASE before Realesing SW
 // ${data.idMeal}
 // ${data.strMeal}
 // ${data.strDrinkAlternate}
@@ -422,8 +329,10 @@ function recipesHTML(recipesDIV,therecipe) {
 // ${data.strCreativeCommonsConfirmed}
 // ${data.dateModified}
 
-
-
+//List of diferent categories, this came from an OBJ categories. 
+//Remember the API returns 2 types of OBJs. (meals and categories)
+//Only one is categories. 
+//The main difference is the Description Property
 function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categories:', categories);
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
@@ -448,11 +357,14 @@ function categoriesHTML(categoriesDIV,categories) {
   });
 }
 
-
+//render a categories information that came in a meals OBJ. 
+//You can decide no using the former one and keeping this ones for simplicity purposes.
+//This funciton does not work for Categoris OBJ types.
+//And does not render description property as it is not returned in its API reponse. Rememeber the API respones for this 2 functions are different.  
 function listsAllCategoriesHTML(listsDIV,lists) {
     console.log('Enla funcion lists:', lists);
-
-    //let {strCategory:dataId2List}=lists;
+    //
+    //const {strCategory:dataId2List}=lists;
     //console.log('DEstructuring:',dataId2List);
   const listsGoInDiv = document.getElementById(listsDIV);
   listsGoInDiv.innerHTML = ""; //Clean element Before Filling
@@ -474,7 +386,7 @@ function listsAllCategoriesHTML(listsDIV,lists) {
   });
 }
 
-//Se cambia el console.log del onclock por getFilteredList a la 8 y strArea.
+//List all the areas or countries related to the recipes in the API
 function listsAllAreaHTML(listsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listsDIV);
@@ -496,8 +408,8 @@ function listsAllAreaHTML(listsDIV,lists) {
   });
 }
 
-
-//Viernes 26 se cambio el onclick de console.log a la funcion filtrar por ingrediente
+//List all the ingredients in the API 574 aprox registries.
+//This could be used in a graphical search gut requires a chechbox inside each cardContainer and all the logic to concatenate the values in a String feed into the API call.
 function listsAllIngredientsHTML(listIngredientsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listIngredientsDIV);
@@ -524,79 +436,66 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
   });
 }
 
-
+//==================================================================
+//===
+//STARTING POINT FUNCTIONS
+//Con sus botones o divs para onload, onclick etc.
+//Si se usan events del addListener se pueden eliminar en segunda fase para que sean identificadas por id del button
+//==================================================================
+//===
+//All functions call the Universal function to call the API based on an Index of the 
+//SearchARRAY. Get a response that is sent to an xxxxxHTML function to parse and format
+//the content. Delivering the formatted HTML  at the given entry point in the HTML 
 document.getElementById("randomButton").onclick = async function () {
-    // const recipe = await getARandomRecipe();
+    // const recipe = await getARandomRecipe();//Original called function in early development
     const recipe = await getAPIResponse(0);
     console.log('getARandomRecipe:',recipe);
     console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
- recipesShortHTML("randomRecipe",recipe.meals);
+    recipesShortHTML("randomRecipe",recipe.meals);
 };
 
 async function get10Random(){
-//document.getElementById("rnd10Recipes").onload
-    // const recipe = await get10RandomRecipes();
+    // const recipe = await get10RandomRecipes();//Original called function in early development
     const recipe = await getAPIResponse(1);
-    // console.log(recipe);
     console.log("rnd10Recipes:",recipe);
-    console.log("rnd10Recipes:",recipe.meals);
     console.log('Registros de get10RandomRecipes:(',recipe.meals.length,'):\n',recipe.meals);
- recipesShortHTML("rnd10Recipes",recipe.meals);
-    
+    recipesShortHTML("rnd10Recipes",recipe.meals);
 };
 
 async function getCategories(){
-        const response = await getAPIResponse(2);
-        // console.log(response);
-        console.log("Categories:",response);
-        console.log("Categories:",response.categories);
-        console.log('Registros de getCategories:(',response.categories.length,'):\n',response.categories);
-        categoriesHTML("listCategories",response.categories);
-        
-    };
-
+    const response = await getAPIResponse(2);
+    console.log("Categories:",response);
+    console.log('Registros de getCategories:(',response.categories.length,'):\n',response.categories);
+    categoriesHTML("listCategories",response.categories);
     
-
+};
 
 async function getLatest(){
     const recipe = await getAPIResponse(3);
-    // console.log(recipe);
     console.log("latestRecipe:",recipe);
-    console.log("latestRecipe:",recipe.meals);
     console.log('Registros de getLatestRecipe:(',recipe.meals.length,'):\n',recipe.meals);
- recipesShortHTML("latestRecipe",recipe.meals);
-    
+    recipesShortHTML("latestRecipe",recipe.meals);
 };
+
 async function getListAllAreaCountry(){
     const recipe = await getAPIResponse(4);
-    // console.log(recipe);
     console.log("ListAllArea:",recipe);
-    console.log("ListAllArea:",recipe.meals);
     console.log('Registros de List by Area:(',recipe.meals.length,'):\n',recipe.meals);
     listsAllAreaHTML("listAllArea",recipe.meals);
-    
 };
-
-
 
 async function getListAllCategories(){
     const allcategories = await getAPIResponse(5);
-    // console.log(allcategories);
     console.log("ListAllCategories:",allcategories);
-    console.log("ListAllCategories:",allcategories.meals);
     console.log('Registros de List by Categories:(',allcategories.meals.length,'):\n',allcategories.meals);
     listsAllCategoriesHTML("listAllCategories",allcategories.meals);
-    
 };
 
 async function getListAllIngredients(){
     const allIngredients = await getAPIResponse(6);
-    // console.log(allIngredients);
     console.log("ListAllIngredients:",allIngredients);
-    console.log("ListAllIngredients:",allIngredients.meals);
     console.log('Registros de Lista  ALLIngredientes:(',allIngredients.meals.length,'):\n',allIngredients.meals);
     listsAllIngredientsHTML("listAllIngredients",allIngredients.meals);
-    
 };
 
 //Al parecer podemos utilizar esta función 3 a 4 veces,
@@ -606,12 +505,9 @@ async function getListAllIngredients(){
 async function getFilteredList(filterIndex,param){
     try{
         const filteredResponse = await getAPIResponse(filterIndex,param);
-        // console.log(allIngredients);
         console.log("filteredSearch:",filteredResponse);
-        console.log("List filteredResponse:",filteredResponse.meals);
         console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
         
-
         // function getDisplayAreaxIndex(index){
         let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
         switch (filterIndex) {
@@ -648,16 +544,17 @@ async function getFilteredList(filterIndex,param){
 
 async function getRecipe(id){
     const recipe = await getAPIResponse(11,id);
-    // console.log(allIngredients);
     console.log("Receta",id,": ",recipe);
-    console.log("Receta",id,": ",recipe.meals);
     console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
     recipesHTML("recipe",recipe.meals);
-    
 };
 
-
-// };
+//==================================================================
+//===
+//ZOna para prueba de las funciones que reciben parametros
+//==================================================================
+//===
+// 
 //console.log('Iniciamos llamada a lista filtrada',getFilteredList(param));
 // let param1='Canadian';
 // let param2='Seafood';
@@ -665,10 +562,13 @@ async function getRecipe(id){
 // let id=52772;
 // console.log(getRecipe(id));
 
-
-
-
-    // window.onload=
+//==================================================================
+//===
+// window.onload Toload data on startUP
+//==================================================================
+//===
+// 
+//
 window.onload=async function(){
     try {
     await Promise.all([
@@ -678,13 +578,15 @@ window.onload=async function(){
         getListAllAreaCountry(),
         getListAllCategories(),
         getListAllIngredients(),
-        // getFilteredList(7,param1),//Area Filter text
-        // getFilteredList(8,param2),//Category filter text
-        // getFilteredList(9,param3),//Ingredient filter text
         ]);
     }catch(error){
         console.error("Promise.all Error on Wondos.onload",error);
     }
 }
 
-//Faltan las funciones de sesion de Jesus aqui
+//==================================================================
+//===
+// Faltan las funciones de sesion de Jesus aqui
+//==================================================================
+//===
+//
