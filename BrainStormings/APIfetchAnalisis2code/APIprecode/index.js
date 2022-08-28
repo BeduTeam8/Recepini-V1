@@ -173,40 +173,254 @@ async function getLatestRecipe() {
 //   // await callMealDBAPI();
 //   console.log("CALLDBAPI:", result);
 //   return result;
-//   //Llamada a la API
+//   //Llamada a la API*
 //   //Posiblemente falte decirle su nodo o div de zona de despliegue
 // }
 //End of function getRecipes();
 
-//=======================================================================
+//====================================================================
 //===
 //lista de funciones a conectar en el HTML con sus botones o divs para onload, onclick etc.
 //Si se usan events del addListener se pueden eliminar en segunda fase para que sean identificadas por id del button
-//=======================================================================
+//====================================================================
+
+
+
+
+
+
+
+
+
+//===
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
-function recipesHTML(recipesDIV,recipes) {
+function recipesShortHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
     const adding_recipe = document.createElement("div");
     adding_recipe.innerHTML = `
-        
+        <div class="card">
             <div class="cardContainer" id="${data.idMeal}">
                 <div class="cardImgContainer">
                     <p>
                         <strong>${data.strMeal}</strong>
                     </p>
-                    <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
+                    <button class="linkCard" onclick="getRecipe(
+                        ${data.idMeal})">
                         <img class="imgCard" src="${data.strMealThumb}">
                     </button>
                 </div>
             </div>
-            `;
+        </div>`;
     recipesGoInDiv.appendChild(adding_recipe);
   });
 }
+
+function recipesHTML(recipesDIV,therecipe) {
+    console.log('Dentro de la funcion una recipe:', therecipe);
+    const recipeGoesinDIV = document.getElementById(recipesDIV);
+    recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
+    therecipe.forEach(data => {
+    const adding_recipe = document.createElement("div");
+    adding_recipe.innerHTML = `
+    <div class"cardRecipe">
+        <div class="cardContainer" id="${data.idMeal}">
+            <div class="cardImgContainer">
+                <p><strong>Id</strong>${data.idMeal}</p>
+                <p><strong>Meal</strong>${data.strMeal}</p>
+                <p><strong>Category</strong>${data.strCategory}</p>
+                <p><strong>Country</strong>${data.strArea}</p>
+                <p><strong>Intructions</strong>${data.strInstructions}</p>
+                            <img class="imgCard" src="${data.strMealThumb}">
+                <p><strong>Tags</strong>${data.strTags}</p>
+                            <a href=”${data.strYoutube}">${data.strMeal}Video</a>
+                <div class="cardIngredient">
+                <p>${data.strMeasure1}&nbsp;${data.strIngredient1}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient1}')">
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient1}.png" alt="${data.strIngredient1}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure2}&nbsp;${data.strIngredient2}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient2}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient2}.png" alt="${data.strIngredient2}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure3}&nbsp;${data.strIngredient3}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient3}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient3}.png" alt="${data.strIngredient3}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure4}&nbsp;${data.strIngredient4}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient4}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient4}.png" alt="${data.strIngredient4}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure5}&nbsp;${data.strIngredient5}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient5}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient5}.png" alt="${data.strIngredient5}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure6}&nbsp;${data.strIngredient6}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient6}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient6}.png" alt="${data.strIngredient6}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure7}&nbsp;${data.strIngredient7}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient7}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient7}.png" alt="${data.strIngredient7}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure8}&nbsp;${data.strIngredient8}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient8}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient8}.png" alt="${data.strIngredient8}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure9}&nbsp;${data.strIngredient9}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient9}')"> 
+                        <img class="imgCard" 
+                            src="${serverURL}/images/ingredients/${data.strIngredient9}.png" alt="${data.strIngredient9}"> 
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure10}&nbsp;${data.strIngredient10}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient10}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient10}.png" alt="${data.strIngredient10}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure11}&nbsp;${data.strIngredient11}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient11}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient11}.png" alt="${data.strIngredient11}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure12}&nbsp;${data.strIngredient12}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient12}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient12}.png" alt="${data.strIngredient12}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure13}&nbsp;${data.strIngredient13}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient13}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient13}.png" alt="${data.strIngredient13}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure14}&nbsp;${data.strIngredient14}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient14}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient14}.png" alt="${data.strIngredient14}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure15}&nbsp;${data.strIngredient15}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient15}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient15}.png" alt="${data.strIngredient15}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure16}&nbsp;${data.strIngredient16}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient16}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient16}.png" alt="${data.strIngredient16}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure17}&nbsp;${data.strIngredient17}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient17}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient17}.png" alt="${data.strIngredient17}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure18}&nbsp;${data.strIngredient18}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient18}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient18}.png" alt="${data.strIngredient18}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure19}&nbsp;${data.strIngredient19}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient19}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient19}.png" alt="${data.strIngredient19}">
+                    </button>
+                </p></div>                <div class="cardIngredient">
+                <p>${data.strMeasure20}&nbsp;${data.strIngredient20}
+                    <button class="linkCard" 
+                        onclick="getFilteredList(9,'${data.strIngredient20}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data.strIngredient20}.png" alt="${data.strIngredient20}">
+                    </button>
+                </p></div>
+        
+                </div>
+            </div>
+        </div>`;
+    recipeGoesinDIV.appendChild(adding_recipe);
+  });
+}
+
+
+//All 53 Properties that comes on any recipe registry
+// ${data.idMeal}
+// ${data.strMeal}
+// ${data.strDrinkAlternate}
+// ${data.strCategory}
+// ${data.strArea}
+// ${data.strInstructions}
+// ${data.strMealThumb}
+// ${data.strTags}
+// ${data.strYoutube}
+// ${data.strMeasure1} ${data.strIngredient1}
+// ${data.strMeasure2} ${data.strIngredient2}
+// ${data.strMeasure3} ${data.strIngredient3}
+// ${data.strMeasure4} ${data.strIngredient4}
+// ${data.strMeasure5} ${data.strIngredient5}
+// ${data.strMeasure6} ${data.strIngredient6}
+// ${data.strMeasure7} ${data.strIngredient7}
+// ${data.strMeasure8} ${data.strIngredient8}
+// ${data.strMeasure9} ${data.strIngredient9}
+// ${data.strMeasure10} ${data.strIngredient10}
+// ${data.strMeasure11} ${data.strIngredient11}
+// ${data.strMeasure12} ${data.strIngredient12}
+// ${data.strMeasure13} ${data.strIngredient13}
+// ${data.strMeasure14} ${data.strIngredient14}
+// ${data.strMeasure15} ${data.strIngredient15}
+// ${data.strMeasure16} ${data.strIngredient16}
+// ${data.strMeasure17} ${data.strIngredient17}
+// ${data.strMeasure18} ${data.strIngredient18}
+// ${data.strMeasure19} ${data.strIngredient19}
+// ${data.strMeasure20} ${data.strIngredient20}
+// ${data.strSource}
+// ${data.strImageSource}
+// ${data.strCreativeCommonsConfirmed}
+// ${data.dateModified}
 
 
 
@@ -223,7 +437,7 @@ function categoriesHTML(categoriesDIV,categories) {
                     <p>
                         <strong>${data.strCategory}: </strong>
                     </p>
-                    <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idCategory})">
+                    <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
                         <img class="imgCard" src="${data.strCategoryThumb}">
                     </button>
                  </div>
@@ -270,7 +484,7 @@ function listsAllAreaHTML(listsDIV,lists) {
     addingList.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.strArea}">
-                <div class="cardAreaContainer">
+                <div class="cardImgContainer">
                     <button class="linkCard" 
                         onclick="getFilteredList(7,'${data.strArea}')">
                         <p>
@@ -302,8 +516,9 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
                         <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
                     </button>
                     </div>
-                 <div class="cardDescription">${data.strDescription}</div>
+
             </div>
+            <div class="cardTextContainer">${data.strDescription}</div>
         </div>`;
     listsGoInDiv.appendChild(addingList);
   });
@@ -315,7 +530,7 @@ document.getElementById("randomButton").onclick = async function () {
     const recipe = await getAPIResponse(0);
     console.log('getARandomRecipe:',recipe);
     console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
-    recipesHTML("randomRecipe",recipe.meals);
+ recipesShortHTML("randomRecipe",recipe.meals);
 };
 
 async function get10Random(){
@@ -326,7 +541,7 @@ async function get10Random(){
     console.log("rnd10Recipes:",recipe);
     console.log("rnd10Recipes:",recipe.meals);
     console.log('Registros de get10RandomRecipes:(',recipe.meals.length,'):\n',recipe.meals);
-    recipesHTML("rnd10Recipes",recipe.meals);
+ recipesShortHTML("rnd10Recipes",recipe.meals);
     
 };
 
@@ -349,7 +564,7 @@ async function getLatest(){
     console.log("latestRecipe:",recipe);
     console.log("latestRecipe:",recipe.meals);
     console.log('Registros de getLatestRecipe:(',recipe.meals.length,'):\n',recipe.meals);
-    recipesHTML("latestRecipe",recipe.meals);
+ recipesShortHTML("latestRecipe",recipe.meals);
     
 };
 async function getListAllAreaCountry(){
@@ -417,25 +632,39 @@ async function getFilteredList(filterIndex,param){
             listfilteredResponseDIV=
                 `${listfilteredResponseDIV}Ingredient`;  
             console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
-            }
+            }//Falta el caso 10 Multiingrediente
             break;
             default:
             break;
         }
-        recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+     recipesShortHTML(listfilteredResponseDIV,filteredResponse.meals);
     }
     catch{
-        console.error("Llamada a la API fallida",filteredResponse);
+        console.error("Llamada a la API fallida",err.msj);
         console.log("DEmosle Otra OPCION nada 404 Dead END");
         console.log("Encadenar uan random o un boton recargar");
     }
 }
+
+async function getRecipe(id){
+    const recipe = await getAPIResponse(11,id);
+    // console.log(allIngredients);
+    console.log("Receta",id,": ",recipe);
+    console.log("Receta",id,": ",recipe.meals);
+    console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
+    recipesHTML("recipe",recipe.meals);
     
+};
+
+
 // };
 //console.log('Iniciamos llamada a lista filtrada',getFilteredList(param));
 // let param1='Canadian';
 // let param2='Seafood';
 // let param3='Chicken';
+// let id=52772;
+// console.log(getRecipe(id));
+
 
 
 

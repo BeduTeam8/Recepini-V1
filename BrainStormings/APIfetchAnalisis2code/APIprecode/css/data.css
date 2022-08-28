@@ -34,34 +34,52 @@ a {
   align-items: center;
 }
 
-#jsonTop {
-  width: 30%;
-  align-items: right;
-  /* align-self: flex-end; */
+.lists{
+  /* max-width: 10vmin; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+  align-items: center;
+
 }
 
 .card {
-  width: 30%;
+  max-width: 40vw;
+  min-width: 13vw;
   background-color: rgb(212, 225, 225);
   border-radius: 1em;
-  display: inline-flex;
-  width: auto;
+  /* display: inline-flex; */
+  /* width: auto; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   padding: auto;
   margin: 10px;
 }
 .cardContainer {
-  width: 30%;
+  /* max-width: 40vw; */
   background-color: rgb(212, 225, 225);
   border-radius: 1em;
-  display: inline-flex;
-  width: auto;
+  /* display: inline-flex; */
+  /* width: auto; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* text-align: center; */
+  align-items: center;
+  padding: auto;
+  margin: 10px;
+}
+
+.cardIngredient{
+  background-color: rgb(212, 225, 225);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  text-align: center;
   align-items: center;
   padding: auto;
   margin: 10px;
@@ -69,7 +87,7 @@ a {
 .cardTextContainer {
   position: absolute;
   display: none;
-  flex-direction: column;
+  flex-direction: row;
   flex-flow: wrap;
   /* visibility: collapse; */
 }
@@ -79,11 +97,11 @@ a {
   text-decoration: none;
 }
 .imgCard {
-  max-width: 50%;
+  max-width: 10vw;
 }
+
+/* 
 .card:hover .cardTextContainer {
   display: block;
-
-  /* visibility: visible; */
-  /* z-index: 1; */
-}
+  
+}  */
