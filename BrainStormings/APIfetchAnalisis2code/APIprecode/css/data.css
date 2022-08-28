@@ -5,13 +5,40 @@
 }
 body {
   background-color: antiquewhite;
+  font-size: 1.5rem;
 }
 
 h1 {
   background-color: #fff;
 }
+
 h2 {
   background-color: darksalmon;
+}
+
+h2.random{
+  background-color: blueviolet;
+}
+
+h2.recipe{
+  background-color:greenyellow;
+}
+
+h2.last{
+  background-color: rgb(229, 177, 114);
+}
+
+h2.area{
+  background-color: rgb(107, 113, 226);
+}
+
+h2.category{
+  background-color: rgb(43, 226, 159);
+}
+
+h2.ingredient{
+  background-color: rgb(226, 195, 43);
+
 }
 
 h3 {
@@ -105,3 +132,6 @@ a {
   display: block;
   
 }  */
+button{
+  width: 13vw;
+}
