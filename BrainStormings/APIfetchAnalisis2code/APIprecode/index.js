@@ -110,19 +110,28 @@ function recipesShortHTML(recipesDIV,recipes) {
     recipes.forEach(data => {
     const adding_recipe = document.createElement("div");
     adding_recipe.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.idMeal}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strMeal}</strong>
-                    </p>
-                    <button class="linkCard" onclick="getRecipe(
-                        ${data.idMeal})">
-                        <img class="imgCard" src="${data.strMealThumb}">
-                    </button>
-                </div>
+        <article id="${data.idMeal}" class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+            <div class="overflow-hidden border-radius-10px">
+                <button class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getRecipe(${data.idMeal})">
+                    <img src="${data.strMealThumb}">
+                </button>
             </div>
-        </div>`;
+            <h4>${data.strMeal}</h4>
+        </article>`;
+//StringHTML Original    antes de traer Design System a pruebas no borrar hasta terminar pruebas
+        // <div class="card">
+        //     <div class="cardContainer" id="${data.idMeal}">
+        //         <div class="cardImgContainer">
+        //             <p>
+        //                 <strong>${data.strMeal}</strong>
+        //             </p>
+        //             <button class="linkCard" onclick="getRecipe(
+        //                 ${data.idMeal})">
+        //                 <img class="imgCard" src="${data.strMealThumb}">
+        //             </button>
+        //         </div>
+        //     </div>
+        // </div>`;
     recipesGoInDiv.appendChild(adding_recipe);
   });
 }
@@ -340,19 +349,32 @@ function categoriesHTML(categoriesDIV,categories) {
   categories.forEach(data => {
     const adding_categorie = document.createElement("div");
     adding_categorie.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.idCategory}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strCategory}: </strong>
-                    </p>
-                    <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
-                        <img class="imgCard" src="${data.strCategoryThumb}">
-                    </button>
-                 </div>
-                 <div class="cardDescription">${data.strCategoryDescription}</div>
+        <article id="${data.idCategory}" class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+            <div class="overflow-hidden border-radius-10px ">
+                <button class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getFilteredList(8,'${data.strCategory}')">
+                    <img src="${data.strCategoryThumb}" 
+                    alt="${data.strCategory}">
+                </button>
             </div>
-        </div>`;
+            <h4>${data.strCategory}</h4>
+            <p>
+                ${data.strCategoryDescription}
+            </p>
+        </article>`;
+//StringHTML Original    antes de traer Design System a pruebas no borrar hasta terminar pruebas        
+        // <div class="card">
+        //     <div class="cardContainer" id="${data.idCategory}">
+        //         <div class="cardImgContainer">
+        //             <p>
+        //                 <strong>${data.strCategory}: </strong>
+        //             </p>
+        //             <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
+        //                 <img class="imgCard" src="${data.strCategoryThumb}">
+        //             </button>
+        //          </div>
+        //          <div class="cardDescription">${data.strCategoryDescription}</div>
+        //     </div>
+        // </div>`;
     categoriesGoInDiv.appendChild(adding_categorie);
   });
 }
@@ -371,17 +393,27 @@ function listsAllCategoriesHTML(listsDIV,lists) {
   lists.forEach(data => {
     const addingList = document.createElement("div");
     addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strCategory}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strCategory} </strong>
-                    </p>
-                    <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
-                    </button>
-        </div>`;
+        <article id="${data.strCategory}" class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+            <div class="overflow-hidden border-radius-10px ">
+                <button class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getFilteredList(8,'${data.strCategory}')">
+                    <img 
+                    src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
+                </button>
+            </div>
+            <h4>${data.strCategory}</h4>
+        </article>`;
+//StringHTML Original    antes de traer Design System a pruebas no borrar hasta terminar pruebas  
+        // <div class="card">
+        //     <div class="cardContainer" id="${data.strCategory}">
+        //         <div class="cardImgContainer">
+        //             <p>
+        //                 <strong>${data.strCategory} </strong>
+        //             </p>
+        //             <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
+        //                 <img class="imgCard" 
+        //                 src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
+        //             </button>
+        // </div>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
@@ -394,16 +426,26 @@ function listsAllAreaHTML(listsDIV,lists) {
   lists.forEach(data => {
     const addingList = document.createElement("div");
     addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strArea}">
-                <div class="cardImgContainer">
-                    <button class="linkCard" 
-                        onclick="getFilteredList(7,'${data.strArea}')">
-                        <p>
-                            <strong>${data.strArea}: </strong>
-                        </p>
-                    </button>
-        </div>`;
+        <article id="${data.strArea}" class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+            <div class="overflow-hidden border-radius-10px ">
+                <button class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getFilteredList(7,'${data.strArea}')">
+                    <img 
+                    src=".assets/images/area/${data.strArea}.png" alt="${data.strArea}">
+                </button>
+            </div>
+            <h4>${data.strArea}</h4>
+        </article>`;
+//StringHTML Original    antes de traer Design System a pruebas no borrar hasta terminar pruebas  
+    // <div class="card">
+    //         <div class="cardContainer" id="${data.strArea}">
+    //             <div class="cardImgContainer">
+    //                 <button class="linkCard" 
+    //                     onclick="getFilteredList(7,'${data.strArea}')">
+    //                     <p>
+    //                         <strong>${data.strArea}: </strong>
+    //                     </p>
+    //                 </button>
+    //     </div>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
@@ -417,20 +459,30 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
   lists.forEach(data => {
     const addingList = document.createElement("div");
     addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.idIngredient}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strIngredient}</strong>
-                    </p>
-                    <button class="linkCard" onclick="getFilteredList(9,'${data.strIngredient}')">
-                        <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
-                    </button>
-                    </div>
-
+        <article id="${data.strIngredient}" class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+            <div class="overflow-hidden border-radius-10px ">
+                <button class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getFilteredList(9,'${data.strIngredient}')">
+                    <img src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
+                </button>
             </div>
-            <div class="cardTextContainer">${data.strDescription}</div>
-        </div>`;
+            <h4>${data.strIngredient}</h4>
+            <p>${data.strDescription}</p>
+        </article>`; 
+//StringHTML Original    antes de traer Design System a pruebas no borrar hasta terminar pruebas  
+    // <div class="card">
+    //         <div class="cardContainer" id="${data.idIngredient}">
+    //             <div class="cardImgContainer">
+    //                 <p>
+    //                     <strong>${data.strIngredient}</strong>
+    //                 </p>
+    //                 <button class="linkCard" onclick="getFilteredList(9,'${data.strIngredient}')">
+    //                     <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
+    //                 </button>
+    //                 </div>
+
+    //         </div>
+    //         <div class="cardTextContainer">${data.strDescription}</div>
+    //     </div>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
