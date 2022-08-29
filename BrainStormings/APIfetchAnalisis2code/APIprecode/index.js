@@ -420,7 +420,6 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
         <div class="card">
             <div class="cardContainer" id="${data.idIngredient}">
                 <div class="cardImgContainer">
-                data.meals:
                     <p>
                         <strong>${data.strIngredient}</strong>
                     </p>

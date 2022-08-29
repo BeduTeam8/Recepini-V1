@@ -4,61 +4,42 @@
   box-sizing: border-box;
 }
 body {
-  background-color: antiquewhite;
+  background-color: rgb(255, 248, 248);
   font-size: 1em;
 }
 
-h1 {
-  background-color: #fff;
-}
-
-h2 {
-  background-color: darksalmon;
-}
-
-h2.random{
-  background-color: blueviolet;
-}
-
-h2.recipe{
-  background-color:greenyellow;
-}
-
-h2.last{
-  background-color: rgb(229, 177, 114);
-}
-
-h2.area{
-  background-color: rgb(107, 113, 226);
-}
-
-h2.category{
-  background-color: rgb(43, 226, 159);
-}
-
+h1,
+h2,
+h2.random,
+h2.recipe,
+h2.last,
+h2.area,
+h2.category,
 h2.ingredient{
-  background-color: rgb(226, 195, 43);
-
+  background-color: rgb(212, 24, 46);
 }
 
-h3 {
+/* h3 {
   background-color: brown;
-}
+} */
 img {
   border-radius: 1em;
   box-shadow: 10rem;
 }
 
+.button{
+  background-color: rgb(185, 206, 71);
+}
+
+button{
+  font-size: 2rem;
+  border-radius: 0.5em;
+  box-shadow: 10rem;
+  width: auto;
+}
+
 a {
   box-shadow: 10rem;
-}
-.json {
-  background-color: cadetblue;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
 }
 
 .lists{
@@ -68,13 +49,12 @@ a {
   flex-wrap: wrap;
   /* justify-content: space-evenly; */
   align-items: center;
-
 }
 
 .card {
   max-width: 40vw;
   min-width: 13vw;
-  background-color: rgb(212, 225, 225);
+  /* background-color: rgb(212, 225, 225); */
   border-radius: 1em;
   /* display: inline-flex; */
   /* width: auto; */
@@ -87,21 +67,21 @@ a {
 }
 .cardContainer {
   /* max-width: 40vw; */
-  background-color: rgb(212, 225, 225);
+  /* background-color: rgb(212, 225, 225); */
   border-radius: 1em;
   /* display: inline-flex; */
   /* width: auto; */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /* text-align: center; */
+  text-align: center;
   align-items: center;
   padding: auto;
   margin: 10px;
 }
 
 .cardIngredient{
-  background-color: rgb(212, 225, 225);
+  /* background-color: rgb(212, 225, 225); */
   border-radius: 1em;
   display: flex;
   flex-direction: row;
@@ -119,6 +99,8 @@ a {
   /* visibility: collapse; */
 }
 .cardImgContainer {
+  text-align: center;
+  align-items: center
 }
 .linkCard {
   text-decoration: none;
