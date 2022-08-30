@@ -18,13 +18,13 @@
     <form class="searchBox">
       <!-- <input id="" type="radio"  -->
       <input id="searchInputTxtBox" class="searchBox" type="text" name="search"
-      placeholder=" &#128270;term(s)..in recipe name"">
+      placeholder=" &#128270;term(s)..in recipe name"" onkeypress="callAPI()">
 
       <button id="searchButton" type="button" onclick="callAPI()">
         Search
       </button>
     </form>
     <br />
-    <div id="json" class="json">
+    <div id="results" class="json">
   </body>
 </html>
