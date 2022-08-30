@@ -12,16 +12,29 @@
     <br>
     <h1 class="top">Recipini</h1>
     <br>
-    <div id="upperpart">
-      <button class="button" id="randomButton">Random Recipe</button>
+    <div class="lists" id="upperpart">
+      <div> 
+        <form class="searchBox">
+          <!-- <input id="" type="radio"  -->
+          <input id="searchInputTxtBox" class="searchBox" type="text" name="search"
+          placeholder=" &#128270;term(s)..in recipe name"" onkeypress="callAPI()">
+    
+          <button id="searchButton" type="button" onclick="callAPI()">
+            Search
+          </button>
+        </form>     
+      </div>
+      <div>
+        <button class="button" id="randomButton">Random Recipe</button>
+      </div>
     </div>
     <br>
     PRESIONA EL BOTO PARA ELEGIRT UNA RECETA AL AZAR
     <br>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
-    <br>
+    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    <!-- <br>
     <p>===</p>
-    <br>
+    <br> -->
     <div class="random" id="random">
       <h2 class="random">Random Recipe</h2>
       <br>
@@ -30,9 +43,9 @@
       <div class="lists random" id="randomRecipe">
         <!-- Receta Random -->
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
-      <p>===</p>
-      <br>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+      <!-- <p>===</p>
+      <br> -->
       <h2 class="random">10 Random Recipe</h2>
       <br>
       TE DESPLEGAMOS 10 RECETAS AL AZAR
@@ -40,7 +53,7 @@
       <div class="lists random" id="rnd10Recipes">
         <!--10 Recetas Random -->
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
     <div id="theRecipe">
       <br>
@@ -49,9 +62,9 @@
       SI TOCAS UNA RECETA AQUI APARECE SU CONTENIDO
       <br>
       <div id="recipe">
-         <!-- La lista de categorias -->
+         <!-- La Receta desplegada -->
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
     <div id="latest">
       <br>
@@ -62,30 +75,45 @@
       <div class="last lists" id="latestRecipe">
         <!-- La ultima receta ingresada a la DB -->
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
-    <div id="categories2">
+    <!-- Seccion para desplegar los resultados de cualquier busqueda solicitada.  -->
+    <div class="results">
+      <h2 class="results">Search/List Results</h2>
       <br>
-      <h2 class="category">Categories</h2>
+      AQUI TE LISTAMOS LA LISTA DE RECETAS QUE TENEMOS SEGUN LA busqueda elegida. 
+      <br>
+      <div class="lists results" id="results">
+        <!-- La lista de categorias -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+      <br>
+    </div>
+
+    
+    <!-- <div id="categories2">
+      <br>
+      TODO esto se comenta porque no vamos a hacer uso de esta funcion. No vamos a usar la descripcio en categorias por lo tanto llamamos mejor a la funcion List ALLcategories sin description. Está función tenía la condición de que regresa un OBJ categories y solicita unos cambios en su implementación
+      <!-- <h2 class="category">Categories</h2>
       <br>
       QUIERES CONOCER TODAS NUESTRAS CATEGORIAS CON UNA BREVE DESCRIPCION
       <br>
       <div class="category lists" id="listCategories">
         <!-- La lista de categorias -->
-      </div>
+      <!-- </div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
-    </div>
+    </div> -->
     <div class="category"></div>
-      <br>
+      <!-- <br>
       <h2 class="category">Filtered Responses by Category</h2>
       <br>
       AQUI TE LISTAMOS LA LISTA DE RECETAS QUE TENEMOS SEGUN LA CATEGORIA ELEGIDA
       <br>
       <div class="category lists" id="listfilteredResponseCategory">
         <!-- La lista de categorias -->
-      </div>
+      <!-- </div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
-      <br>
+      <br> -->
       <h2 class="category">Categories</h2>
       <br>
       AQUI TE LISTAMOS TODAS LAS CATEGORIAS QUE TENEMOS (SIN DESCRIPCION)
@@ -93,10 +121,10 @@
       <div class="category lists" id="listAllCategories">
         <!-- La lista de categorias -->
       </div>
-      
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+<!--       
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
-    <div id="allArea">
+    <!-- <div id="allArea">
       <br>
       <h2 class="area">Filtered Responses by Area(Country)</h2>
       <br>
@@ -104,8 +132,8 @@
       <br>
       <div class="area lists" id="listfilteredResponseArea">
         <!-- La lista de categorias -->
-      </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- </div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
       <br>
       <h2 class="area">Area Countries</h2>
       <br>
@@ -114,18 +142,18 @@
       <div class="area lists" id="listAllArea">
         <!-- La lista de categorias -->
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
     <div id="allIngredients">
-      <br>
+      <!-- <br>
       <h2 class="ingredient">Filtered Responses by Ingrediente</h2>
       <br>
       QUIERES CONOCER TODAS RECETAS QUE UTILICEN UN INGREDIENTE DE TU INTERES
       <br>
       <div class="lists" id="listfilteredResponseIngredient">
       <!-- La lista de categorias -->
-      </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- </div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
       <br>
       <h2 class="ingredient">All Ingredients</h2>
       <br>
@@ -136,7 +164,7 @@
       <div class="lists" id="listAllIngredients">
         <!-- La lista de categorias -->
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
     <script src="./index.js"></script>
   </body>

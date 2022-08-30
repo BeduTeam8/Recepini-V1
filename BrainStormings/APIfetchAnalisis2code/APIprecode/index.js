@@ -106,7 +106,12 @@ async function getAPIResponse(apiIndex,params = '') {
 function recipesShortHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
-    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+    if (recipesDIV==='results'){
+        recipesGoInDiv.innerHTML =`<H3>WE have ${recipes.length} recipes for you:</H3>`;//Number of Results
+    }else{
+        recipesGoInDiv.innerHTML =``; //Clean element Before Filling number of results not required
+    }
+    
     recipes.forEach(data => {
     const adding_recipe = document.createElement("div");
     adding_recipe.innerHTML = `
@@ -508,31 +513,35 @@ async function getFilteredList(filterIndex,param){
         console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
         
         // function getDisplayAreaxIndex(index){
-        let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
-        switch (filterIndex) {
-            case 7:{
-                listfilteredResponseDIV=
-                    `${listfilteredResponseDIV}Area`
-                console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
-                // return listfilteredResponseDIV;
-            }
-            break;            
-            case 8:{
-                listfilteredResponseDIV=
-                    `${listfilteredResponseDIV}Category`
-                console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
-            }
-            break;
-            case 9:{
-            listfilteredResponseDIV=
-                `${listfilteredResponseDIV}Ingredient`;  
-            console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
-            }//Falta el caso 10 Multiingrediente
-            break;
-            default:
-            break;
-        }
-     recipesShortHTML(listfilteredResponseDIV,filteredResponse.meals);
+        // let listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
+        //Esta variable manda resultados al ID de resultados en HTML
+        let listfilteredResponseDIV="results";//Direccionando a una sola hoja o seccion de respuestas. Este codigo que sigue puede eliminarse.
+        //No borrar hasta probar desarrollo
+        // switch (filterIndex) {
+        //     case 7:{
+        //         listfilteredResponseDIV=
+        //             `${listfilteredResponseDIV}Area`
+        //         console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
+        //         // return listfilteredResponseDIV;
+        //     }
+        //     break;            
+        //     case 8:{
+        //         listfilteredResponseDIV=
+        //             `${listfilteredResponseDIV}Category`
+        //         console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
+        //     }
+        //     break;
+        //     case 9:{
+        //     listfilteredResponseDIV=
+        //         `${listfilteredResponseDIV}Ingredient`;  
+        //     console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
+        //     }//Falta el caso 10 Multiingrediente
+        //     break;
+        //     default:
+        //     break;
+        // }
+    console.log('lista de filtradas esta en ID/DIV:',listfilteredResponseDIV);
+    recipesShortHTML(listfilteredResponseDIV,filteredResponse.meals);
     }
     catch{
         console.error("Llamada a la API fallida",err.msj);
@@ -573,7 +582,7 @@ window.onload=async function(){
     await Promise.all([
         get10Random(),
         getLatest(),
-        getCategories(),
+        //getCategories(), //No se usa. Devuelve a través de otra API los mismos datos que AllCategories sin descripción. Pero en un OBJ diferente de un OBJ.meals, en su lugar usa del tipo Categories.
         getListAllAreaCountry(),
         getListAllCategories(),
         getListAllIngredients(),
