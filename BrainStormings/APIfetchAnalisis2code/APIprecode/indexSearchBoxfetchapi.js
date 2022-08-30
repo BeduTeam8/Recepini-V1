@@ -93,11 +93,11 @@ function callMealDBAPI(url, callType, jsonTipoEsperado = 1){
         .then(function(data) {
             console.log(data);
 
-            // let jsonHTML="";//Elementop que carga el html en el punto indicado
-            let jsonHTML=`${'<h2>Busqueda empleada: '+url+'</h2>'}`;
+             let jsonHTML="";//Elementop que carga el html en el punto indicado
+            // let jsonHTML=`${'<h2>Busqueda empleada: '+url+'</h2>'}`;
             console.log(JSONTipo[jsonTipoEsperado]);
             console.log('Que tipo de objeto estoy recibiendo: meals o Categories:', jsonTipoEsperado);
-            jsonHTML+=`${'<h3>OBJ recibido de tipo:'+jsonTipoEsperado+'</h3>'}`;
+            // jsonHTML+=`${'<h3>OBJ recibido de tipo:'+jsonTipoEsperado+'</h3>'}`;
             
             // console.log('Object.keys(data):'+Object.keys(data[index])+' Object.values(data): '+Object.values(data[index]));
 
