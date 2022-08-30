@@ -1024,10 +1024,15 @@
 
 	.flag-Container {
 		border-radius: 50%;
-		max-width: 6.25rem;
+		max-height: 6.25rem;
 		aspect-ratio: 1/1;
 		transition: all 250ms ease-in-out;
 		box-shadow: 0px 0.625rem 0.9rem rgba(var(--Neutral-matteblack), 0.25);
+
+		img {
+			height: 100%;
+			object-position: -25px 50%;
+		}
 	}
 
 	button {
@@ -1045,5 +1050,6 @@
 	button {
 		color: rgb(var(--Neutral-lightpink));
 		background-color: rgb(var(--Primary-tomatored));
+		border: 2px solid rgb(var(--Primary-tomatored)) !important;
 	}
 }
