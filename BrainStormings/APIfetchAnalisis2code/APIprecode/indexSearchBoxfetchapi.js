@@ -74,8 +74,8 @@ function mealHTML(dataMeal){
             '<div class="card">'+
                 '<div class="cardContainer">'
                     +'<div class="cardImgContainer">'
-                        +'data.meals: '
-                        +'<p>'+meal.strMeal+'</p>'
+                        // +'data.meals: '
+                        +'<h3>'+meal.strMeal+'</h3>'
                         +'<button class="linkCard" onclick="callMealDBAPI(\'https://www.themealdb.com/api/json/v1/1/lookup.php?i='+ meal.idMeal+'\',callType,1)">'
                         +'<img class="imgCard" src="'+meal.strMealThumb+'/preview">'
                         +'</button>'
