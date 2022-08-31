@@ -17,9 +17,10 @@
         <form class="searchBox">
           <!-- <input id="" type="radio"  -->
           <input id="searchInputTxtBox" class="searchBox" type="text" name="search"
-          placeholder=" &#128270;term(s)..in recipe name"" onkeypress="callAPI()">
+          placeholder="&#128270;term(s)..in recipe name" >
     
-          <button id="searchButton" type="button" onclick="callAPI()">
+          <button id="searchButton" type="button">
+          <!-- onclick="getSearchBox(12)" -->
             Search
           </button>
         </form>     
@@ -31,6 +32,29 @@
     <br>
     PRESIONA EL BOTO PARA ELEGIRT UNA RECETA AL AZAR
     <br>
+    <div class="results">
+      <h2 class="results">Search/List Results</h2>
+      <br>
+      AQUI TE LISTAMOS LA LISTA DE RECETAS QUE TENEMOS SEGUN LA busqueda elegida. 
+      <br>
+      <div class="lists results" id="results">
+        <!-- La lista de categorias -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+      <br>
+    </div>
+    <div id="theRecipe">
+      <br>
+      <h2 class="recipe">The Recipe</h2>
+      <br>
+      SI TOCAS UNA RECETA AQUI APARECE SU CONTENIDO
+      <br>
+      <div id="recipe">
+         <!-- La Receta desplegada -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    </div>
+
     <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     <!-- <br>
     <p>===</p>
@@ -55,17 +79,6 @@
       </div>
       <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
-    <div id="theRecipe">
-      <br>
-      <h2 class="recipe">The Recipe</h2>
-      <br>
-      SI TOCAS UNA RECETA AQUI APARECE SU CONTENIDO
-      <br>
-      <div id="recipe">
-         <!-- La Receta desplegada -->
-      </div>
-      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
-    </div>
     <div id="latest">
       <br>
       <h2 class="last">Latest</h2>
@@ -78,19 +91,6 @@
       <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
     <!-- Seccion para desplegar los resultados de cualquier busqueda solicitada.  -->
-    <div class="results">
-      <h2 class="results">Search/List Results</h2>
-      <br>
-      AQUI TE LISTAMOS LA LISTA DE RECETAS QUE TENEMOS SEGUN LA busqueda elegida. 
-      <br>
-      <div class="lists results" id="results">
-        <!-- La lista de categorias -->
-      </div>
-      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
-      <br>
-    </div>
-
-    
     <!-- <div id="categories2">
       <br>
       TODO esto se comenta porque no vamos a hacer uso de esta funcion. No vamos a usar la descripcio en categorias por lo tanto llamamos mejor a la funcion List ALLcategories sin description. Está función tenía la condición de que regresa un OBJ categories y solicita unos cambios en su implementación
