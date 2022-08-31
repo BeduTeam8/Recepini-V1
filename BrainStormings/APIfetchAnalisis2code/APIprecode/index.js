@@ -686,8 +686,8 @@ async function getRecipe(id){
 function saveStorage(Index) {
     if (sessionStorage.getItem(apiSelected[Index].layout)) {
         const inicial = document.getElementById(apiSelected[Index].layout);
-        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem(apiSelected[Index].layout)).apiSelected[Index].tipo);
-        categoriesHTML(apiSelected[Index].layout, JSON.parse(sessionStorage.getItem(apiSelected[Index].layout)).apiSelected[Index].tipo);
+        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
+        categoriesHTML(apiSelected[Index].layout, JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
     }
 }
 
