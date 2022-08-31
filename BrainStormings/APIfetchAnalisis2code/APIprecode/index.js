@@ -683,8 +683,18 @@ async function getRecipe(id){
     recipesHTML("recipe",recipe.meals);
 };
 
-    // window.onload=
-if (sessionStorage.getItem("listCategories")) {
+function saveStorage(Index) {
+    if (sessionStorage.getItem(apiSelected[Index].layout)) {
+        const inicial = document.getElementById(apiSelected[Index].layout);
+        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem(apiSelected[Index].layout)).apiSelected[Index].tipo);
+        categoriesHTML(apiSelected[Index].layout, JSON.parse(sessionStorage.getItem(apiSelected[Index].layout)).apiSelected[Index].tipo);
+    }
+}
+
+[2,3,4,6].map(function (x) {
+    saveStorage(x);
+});
+/*if (sessionStorage.getItem("listCategories")) {
     const inicial = document.getElementById("listCategories");
     console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("listCategories")).categories);
     categoriesHTML("listCategories", JSON.parse(sessionStorage.getItem("listCategories")).categories);
@@ -698,7 +708,7 @@ if (sessionStorage.getItem("listAllIngredients")) {
     const inicial = document.getElementById("listAllIngredients");
     console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("listAllIngredients")).meals);
     listsAllIngredientsHTML("listAllIngredients", JSON.parse(sessionStorage.getItem("listAllIngredients")).meals);
-}
+}*/
 window.onload=async function(){
     try {
         await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getListAllCategories(),getGeneral(6)]);//
@@ -733,11 +743,15 @@ async function getGeneral(Index, layout = '') {
     layout = (!layout) ? apiSelected[Index].layout : layout; ///
     console.log("layout", layout);
     switch (Index) {
-        case 1: case 3:
+        case 1:
             recipesHTML(layout, recipe[apiSelected[Index].tipo]);
             break;
         case 2: //Categorías
             categoriesHTML(layout, recipe[apiSelected[Index].tipo]);
+            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre de la sesión
+            break;
+        case 3: //Latest
+            recipesHTML(layout, recipe[apiSelected[Index].tipo]);
             sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre de la sesión
             break;
         case 4: //Area
@@ -753,6 +767,14 @@ async function getGeneral(Index, layout = '') {
     }
     
 }
+
+///Quitar area none(25)
+///Checar ingredients pasar a lista (li).
+///almacenar ultima busqueda
+///Almacenar searchbox
+///Almacenar filter
+///Almacenar latest
+
 
 /*async function get10Random(Index){
     //document.getElementById("rnd10Recipes").onload
