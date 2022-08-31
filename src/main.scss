@@ -885,6 +885,11 @@
 	letter-spacing: 0.5rem;
 	text-transform: lowercase;
 }
+.center{
+	text-align: center;
+	display: block;
+	position: absolute;
+}
 
 .basic-t {
 	width: 21.5rem;
@@ -897,6 +902,22 @@
 	height: 1.125rem;
 	line-height: 176.49%;
 	letter-spacing: 0.2813rem;
+}
+.descrip {
+	width: 45.3125rem;
+	height: auto;
+	left: 376px;
+	display: fixed;
+	text-align: center;
+}
+.margin{
+	margin: 40px;
+}
+.margin-top{
+	margin-top: 80px;
+}
+.margin-bottom{
+	margin-top: 60px;
 }
 
 .paragraph-rt {
