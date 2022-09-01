@@ -17,6 +17,8 @@
     <header class="bg-primary-tomatored display-flex flex-row flex-space-around flex-align-center">
         <a name="" id="" class="btn bg-primary-tomatogreen text-neutral-lightpink text-uppercase" href="index.html"
             role="button">Index</a>
+        <a name="" id="" class="btn bg-primary-tomatogreen text-neutral-lightpink text-uppercase" href="ingredient.html"
+            role="button">Ingredient</a>
         <img src="/src/assets/Logo_Recepini.png" alt="" style="height: 4.13rem;">
         <h1 class="h1-title | text-neutral-lightpink flex"> &#706; Design / System
             &#707;
@@ -445,13 +447,14 @@
 
 
         <!-- 03.03 Navigation Bar -->
-        <article class="width-100 height-100 padding-100">
+        <article class="width-100 padding-100">
             <h3 class="basic-p text-neutral-matteblack  font-family-Helvetica
             font-style-normal font-weight-400 font-size-20 opacity text-uppercase text-center">
                 &#706; Navbar&#707;
             </h3>
 
-            <nav class="navbar navbar-expand-sm navbar-dark bg-primary-tomatored paddiing-200-inline">
+            <nav
+                class="navbar navbar-expand-md navbar-dark bg-primary-tomatored padding-200-inline margin-500-vertical">
                 <a class="navbar-brand padding-500-inline" href="#">
                     <img src="/src/assets/Logo_Recepini.png" alt="" style="max-width:5rem;">
                 </a>
@@ -486,22 +489,46 @@
         <!-- 03.04 Cards -->
         <div>
             <article id="recipeCard"
-                class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+                class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
                 <div class="overflow-hidden border-radius-10px ">
-                    <img src="https://picsum.photos/200" alt="">
+                    <img src="https://picsum.photos/300" alt="">
                 </div>
                 <h4>
-                    Cupcake ipsum dolor
+                    Cupcake ipsum dolor ipsum dolor
                 </h4>
-                <p>
-                    Cupcake ipsum dolor sit amet cupcake caramels oat cake.
-                </p>
-                <a href=""
+                <button href="#"
                     class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
-                    recipie </a>
+                    recipie </button>
             </article>
         </div>
     </section>
+
+    <!-- 03.05 Flag button -->
+    <div class="display-flex align-baseline">
+        <article id="area" class="area-catagory ">
+            <a href="" class=" display-flex flex-column flex-gap margin-100">
+                <div class="flag-Container | overflow-hidden">
+                    <img src="/src/assets/Flags/Algeria.png" alt="">
+                </div>
+                <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
+                font-style-normal font-weight-600 font-size-20
+                 fit-content-width text-center padding-300-inline text-primary-tomatored"
+                    style="border: 2px solid ;">Algerian food</button>
+            </a>
+        </article>
+
+        <article id="area" class="area-catagory ">
+            <a href="" class=" display-flex flex-column flex-gap margin-100">
+                <div class="flag-Container | overflow-hidden">
+                    <img src="/src/assets/Flags/mexico.png" alt=" mexican flag">
+                </div>
+                <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
+                font-style-normal font-weight-600 font-size-20
+                 fit-content-width text-center padding-300-inline text-primary-tomatored"
+                    style="border: 2px solid ;">Mexican</button>
+            </a>
+        </article>
+    </div>
 
 
     <!-- 00 Footer Section -->
