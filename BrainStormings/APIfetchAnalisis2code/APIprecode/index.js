@@ -1,9 +1,11 @@
 //The MealDB API https://themealdb.com
-//const base_URL='https://www.themealdb.com/api/json/v1/1/'
-const base_URL = "https://www.themealdb.com/api/json/";
-const api_BaseKey = "v1/1/";
-const api_PayedKey = "v2/9973533/";
-//const urlImg=base_URL;
+//const base_url='https://www.themealdb.com'
+const serverURL="https://themealdb.com"
+const apiSegment="/api/json/"
+const apiBaseKey = "v1/1/";
+const apiPayedKey = "v2/9973533/";
+const search_URL=`${serverURL}${apiSegment}${apiPayedKey}`;
+//const urlImg=serverURL;
 
 // let result = "";
 
@@ -21,7 +23,6 @@ const api_PayedKey = "v2/9973533/";
   "list.php?c=list", //5-Regresa la Lista de categorias de 14 registros/objetos 
                      //de un campo/propiedad "strCategory"
   "list.php?i=list", //6-Regresa la Lista de ingredienes de 574 registros/objetos cada uno de               //4 propiedades. "idIngredient" "strIngredient" "strDescription" "strType"
-
     //Busqquedas que req parametro
   "filter.php?a=", //7-${meals.strArea} Busqueda por Area del Mundo, uno de 27 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
   "filter.php?c=", //8-${meals.strCategory} Busqueda por categoria, una de 14 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
@@ -129,7 +130,7 @@ const apiSelected = [{
     }];
 
 
-// const url = `${base_URL}${api_PayedKey}${apiSelected[0]}`;
+// const url = `${serverURL}${apiPayedKey}${apiSelected[0]}`;
 // console.log("URL a llamar", url);
 
 /*
@@ -138,14 +139,13 @@ async function getAPIResponse(apiIndex,params = '') {
     let url='';
     if (apiIndex>=0 && apiIndex<=6){
         console.log("Sin params");
-        url = `${base_URL}${api_PayedKey}${apiSelected[apiIndex]}`;
+        url = `${serverURL}${apiPayedKey}${apiSelected[apiIndex]}`;
         // console.log("URL a llamar", url);
-
     } else {
         console.log("Con params");
         // let apiCompoudSelected='apiSelected[apiIndex]'+'params'
-        url = `${base_URL}${api_PayedKey}${apiSelected[apiIndex]}${params}`;
-        // url = `${base_URL}${api_PayedKey}${apiCompoundSelected}`;
+        url = `${serverURL}${apiPayedKey}${apiSelected[apiIndex]}${params}`;
+        // url = `${serverURL}${apiPayedKey}${apiCompoundSelected}`;
         // console.log("URL a llamar", url);
     }
     console.log("URL a llamar", url);
@@ -153,25 +153,22 @@ async function getAPIResponse(apiIndex,params = '') {
     const data = await response.json();
     return data;
 }
-
 async function getARandomRecipe() {
-    const url = `${base_URL}${api_PayedKey}${apiSelected[0]}`;
+    const url = `${serverURL}${apiPayedKey}${apiSelected[0]}`;
     console.log("URL a llamar", url);
     const response = await fetch(url);
     const data = await response.json();
     return data;
 }
-
 async function get10RandomRecipes() {
-    const url = `${base_URL}${api_PayedKey}${apiSelected[1]}`;
+    const url = `${serverURL}${apiPayedKey}${apiSelected[1]}`;
     console.log("URL a llamar", url);
     const response = await fetch(url);
     const data = await response.json();
     return data;
 }
-
 async function getLatestRecipe() {
-    const url = `${base_URL}${api_PayedKey}${apiSelected[3]}`;
+    const url = `${serverURL}${apiPayedKey}${apiSelected[3]}`;
     console.log("URL a llamar", url);
     const response = await fetch(url);
     const data = await response.json();
@@ -179,7 +176,7 @@ async function getLatestRecipe() {
 }*/
 
 // async function getARecipe(id) {
-//   const url = `${base_URL}${api_PayedKey}${apiSelected[11]}${id}`;
+//   const url = `${serverURL}${apiPayedKey}${apiSelected[11]}${id}`;
 //   const response = await fetch(url);
 //   const data = await response.json();
 //   return data;
@@ -248,19 +245,6 @@ async function getLatestRecipe() {
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
-<<<<<<< HEAD
-    const adding_recipe = document.createElement("div");
-    adding_recipe.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.idMeal}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strMeal}</strong>
-                    </p>
-                    <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
-                        <img class="imgCard" src="${data.strMealThumb}">
-                    </button>
-=======
         const adding_recipe = document.createElement("div");
         adding_recipe.innerHTML = `
             <div class="card">
@@ -274,7 +258,6 @@ async function getLatestRecipe() {
                             <img class="imgCard" src="${data.strMealThumb}">
                         </button>
                     </div>
->>>>>>> e203e84a7cba11418e8d1c31754042e1039e56ea
                 </div>
             </div>`;
     recipesGoInDiv.appendChild(adding_recipe);
@@ -520,8 +503,9 @@ function categoriesHTML(categoriesDIV,categories) {
         <div class="card">
             <div class="cardContainer" id="${data.idCategory}">
                 <div class="cardImgContainer">
+                data.meals:
                     <p>
-                        <strong>${data.strCategory}: </strong>
+                        id=${data.strCategory}: 
                     </p>
                     <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idCategory})">
                         <img class="imgCard" src="${data.strCategoryThumb}">
@@ -534,7 +518,36 @@ function categoriesHTML(categoriesDIV,categories) {
   });
 }
 
+//render a categories information that came in a meals OBJ. 
+//You can decide no using the former one and keeping this ones for simplicity purposes.
+//This funciton does not work for Categoris OBJ types.
+//And does not render description property as it is not returned in its API reponse. Rememeber the API respones for this 2 functions are different.
+function listsAllCategoriesHTML(listsDIV,lists) {
+    console.log('Enla funcion lists:', lists);
+    //
+    //const {strCategory:dataId2List}=lists;
+    //console.log('DEstructuring:',dataId2List);
+  const listsGoInDiv = document.getElementById(listsDIV);
+  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+  lists.forEach(data => {
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
+        <div class="card">
+            <div class="cardContainer" id="${data.strCategory}">
+                <div class="cardImgContainer">
+                    <p>
+                        <strong>${data.strCategory} </strong>
+                    </p>
+                    <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
+                        <img class="imgCard" 
+                        src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
+                    </button>
+        </div>`;
+    listsGoInDiv.appendChild(addingList);
+  });
+}
 
+//List all the areas or countries related to the recipes in the API
 function listsAllAreaHTML(listsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listsDIV);
@@ -544,49 +557,20 @@ function listsAllAreaHTML(listsDIV,lists) {
     addingList.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.strArea}">
-<<<<<<< HEAD
-                <div class="cardAreaContainer">
+                <div class="cardImgContainer">
                     <button class="linkCard" 
-                        onclick="console.log('List ID: ',${data.strArea})">
+                        onclick="getFilteredList(7,'${data.strArea}')">
                         <p>
                             <strong>${data.strArea}: </strong>
                         </p>
-=======
-                <div class="cardImgContainer">
-                data.meals:
-                    <p>
-                        id=${data.strArea}: 
-                    </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.strArea})">
-                        <img class="imgCard" src="./assets/${data.strArea}.jpg">
-                    </button>
-        </div>`;
-    listsGoInDiv.appendChild(addingList);
-  });
-}
-function listsAllCategoriesHTML(listsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
-  const listsGoInDiv = document.getElementById(listsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strCategory}">
-                <div class="cardImgContainer">
-                data.meals:
-                    <p>
-                        id=${data.strCategory}: 
-                    </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.strCategory})">
-                        <img class="imgCard" src="${base_URL}${data.strCategory}.jpg">
                     </button>
         </div>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
 
-
+//List all the ingredients in the API 574 aprox registries.
+//This could be used in a graphical search gut requires a chechbox inside each cardContainer and all the logic to concatenate the values in a String feed into the API call.
 function listsAllIngredientsHTML(listIngredientsDIV,lists) {
     console.log('Enla funcion lists:', lists);
   const listsGoInDiv = document.getElementById(listIngredientsDIV);
@@ -601,11 +585,10 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
                     <p>
                         <strong>${data.strIngredient}</strong>
                     </p>
-                    <button class="linkCard" onclick="console.log('List ID: ',${data.idIngredient}:${data.strIngredient})">
-                        <img class="imgCard" src="${base_URL}${data.strIngredient}.jpg">
+                    <button class="linkCard" onclick="getFilteredList(9,'${data.strIngredient}')">
+                        <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
                     </button>
                     </div>
-
             </div>
             <div class="cardTextContainer">${data.strDescription}</div>
         </div>`;
@@ -621,8 +604,6 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
     console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
     recipesHTML("randomRecipe",recipe.meals);
 };
-
-
 async function get10Random(){
 //document.getElementById("rnd10Recipes").onload
     // const recipe = await get10RandomRecipes();
@@ -634,7 +615,6 @@ async function get10Random(){
     recipesHTML("rnd10Recipes",recipe.meals);
     
 };
-
 async function getCategories(){
     const response = await getAPIResponse(2);
     // console.log(response);
@@ -667,9 +647,6 @@ async function getListAllAreaCountry(){
     listsAllAreaHTML("listAllArea",recipe.meals);
     
 };
-
-
-
 async function getListAllCategories(){
     const allcategories = await getAPIResponse(5);
     // console.log(allcategories);
@@ -758,14 +735,35 @@ if (sessionStorage.getItem("listAllIngredients")) {
 }*/
 window.onload=async function(){
     try {
-    await Promise.all([get10Random(),getLatest(),getCategories(),getListAllAreaCountry(),getListAllCategories() ]);//,getListAllIngredients()
+        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getGeneral(5),getGeneral(14)]);//,getGeneral(6)
     }catch(error){
-        console.error("Promise.all Error on Wondos.onload",error);
+        console.error("Promise.all Error on window.onload",error);
     }
 }
 
 
 /////////// LGisus
+/*function saveStorage(Index) {
+    if (sessionStorage.getItem(apiSelected[Index].layout)) {
+        //const inicial = document.getElementById(apiSelected[Index].layout);
+        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
+        categoriesHTML(apiSelected[Index].layout, JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
+    }
+}
+function retrieveStorage(Index) {
+    if (sessionStorage.getItem(apiSelected[Index].layout)) {
+        // Restore the contents of the text field
+        const inicial = document.getElementById("randomRecipe");
+        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
+        recipesHTML("randomRecipe", JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
+    }
+}
+[2,3,4,6].map(function (x) { ///Almacenar datos en sesion
+    saveStorage(x);
+});*/
+
+
+
 async function getAPIResponse(apiIndex, params = '') {
     try {
         // console.log("A ver los params");
