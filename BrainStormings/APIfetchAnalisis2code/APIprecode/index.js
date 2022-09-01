@@ -557,6 +557,18 @@ async function getRecipe(id){
     recipesHTML("recipe",recipe.meals);
 };
 
+document.getElementById("searchInputTxtBox").oninput =async function(){
+// document.getElementById("searchButton").onclick =async function(){
+    //Que prefieren usar el Searchbutton o el searchTextBox
+    const searchterm=document.getElementById('searchInputTxtBox');
+    console.log(searchterm.value);
+    const recipe = await getAPIResponse(13,searchterm.value);
+    console.log("Buscando receta(",searchterm.value,"): ",recipe);
+    console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
+    recipesShortHTML("results",recipe.meals);
+};//End of funciton getSearchBox();
+
+
 //==================================================================
 //===
 //ZOna para prueba de las funciones que reciben parametros
@@ -577,6 +589,8 @@ async function getRecipe(id){
 //===
 // 
 //
+
+
 window.onload=async function(){
     try {
     await Promise.all([
