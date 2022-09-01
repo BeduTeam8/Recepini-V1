@@ -190,40 +190,40 @@
 	font-size: var(--font-size-10);
 }
 .font-line-height-78 {
-	font-size: var(--line-height-78);
+	line-height: var(--line-height-78);
 }
 .font-line-height-68 {
-	font-size: var(--line-height-68);
+	line-height: var(--line-height-68);
 }
 .font-line-height-60 {
-	font-size: var(--line-height-60);
+	line-height: var(--line-height-60);
 }
 .font-line-height-58 {
-	font-size: var(--line-height-58);
+	line-height: var(--line-height-58);
 }
 .font-line-height-48 {
-	font-size: var(--line-height-48);
+	line-height: var(--line-height-48);
 }
 .font-line-height-42 {
-	font-size: var(--line-height-42);
+	line-height: var(--line-height-42);
 }
 .font-line-height-39 {
-	font-size: var(--line-height-39);
+	line-height: var(--line-height-39);
 }
 .font-line-height-38 {
-	font-size: var(--line-height-38);
+	line-height: var(--line-height-38);
 }
 .font-line-height-36 {
-	font-size: var(--line-height-36);
+	line-height: var(--line-height-36);
 }
 .font-line-height-32 {
-	font-size: var(--line-height-32);
+	line-height: var(--line-height-32);
 }
 .font-line-height-24 {
-	font-size: var(--line-height-24);
+	line-height: var(--line-height-24);
 }
 .font-line-height-20 {
-	font-size: var(--line-height-20);
+	line-height: var(--line-height-20);
 }
 .opacity {
 	opacity: 0.5;
@@ -890,7 +890,7 @@
 	letter-spacing: 0.5rem;
 	text-transform: lowercase;
 }
-.center{
+.center {
 	text-align: center;
 	display: block;
 	position: absolute;
@@ -915,13 +915,13 @@
 	display: fixed;
 	text-align: center;
 }
-.margin{
+.margin {
 	margin: 40px;
 }
-.margin-top{
+.margin-top {
 	margin-top: 80px;
 }
-.margin-bottom{
+.margin-bottom {
 	margin-top: 60px;
 }
 
