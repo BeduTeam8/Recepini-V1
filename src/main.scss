@@ -169,33 +169,43 @@ $border-width: var(--Border-1px);
 }
 .font-size-64 {
 	font-size: var(--font-size-64);
+	@include transition(font-size 250ms ease);
 }
 .font-size-56 {
 	font-size: var(--font-size-56);
+	@include transition(font-size 250ms ease);
 }
 .font-size-48 {
 	font-size: var(--font-size-48);
+	@include transition(font-size 250ms ease);
 }
 .font-size-40 {
 	font-size: var(--font-size-40);
+	@include transition(font-size 250ms ease);
 }
 .font-size-32 {
 	font-size: var(--font-size-32);
+	@include transition(font-size 250ms ease);
 }
 .font-size-28 {
 	font-size: var(--font-size-28);
+	@include transition(font-size 250ms ease);
 }
 .font-size-24 {
 	font-size: var(--font-size-24);
+	@include transition(font-size 250ms ease);
 }
 .font-size-20 {
 	font-size: var(--font-size-20);
+	@include transition(font-size 250ms ease);
 }
 .font-size-16 {
 	font-size: var(--font-size-16);
+	@include transition(font-size 250ms ease);
 }
 .font-size-10 {
 	font-size: var(--font-size-10);
+	@include transition(font-size 250ms ease);
 }
 .font-line-height-78 {
 	line-height: var(--line-height-78);
@@ -353,15 +363,15 @@ $border-width: var(--Border-1px);
 }
 
 //Text states
-footer{
-	a{
-		transition:all 500ms ease-in;
+footer {
+	a {
+		transition: all 500ms ease-in;
 	}
-	a:hover, a:focus-within{
-		color:rgb(var(--Neutral-lightpink));
+	a:hover,
+	a:focus-within {
+		color: rgb(var(--Neutral-lightpink));
 	}
 }
-
 
 // margin and padding classes
 .margin-100 {
@@ -1225,4 +1235,30 @@ footer{
 	grid-template-rows: repeat(4, 1fr);
 	grid-gap: 1rem;
 	justify-content: center;
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	grid-template-rows: repeat(2, auto);
+	column-gap: 3.125rem;
+	row-gap: 3.125rem;
+	justify-items: center;
+}
+// // media quiery  // //
+
+// table media quiery
+@media screen and (max-width: 768px) {
+	.card-grid {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(auto, 1fr);
+	}
+}
+
+// mobile media quiery
+@media screen and (max-width: 400px) {
+	.card-grid-10-Recomendations {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(auto, 1fr);
+	}
 }
