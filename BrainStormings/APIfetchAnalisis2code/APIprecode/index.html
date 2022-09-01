@@ -9,10 +9,52 @@
     <title>AsyncCalls</title>
     </head>
     <body>
-    <h1 class="ASyncCallsTest">ASyncCallsDevelopment</h1>
-
-    <div id="upperpart">
-      <button id="randomButton">Random Recipe</button>
+      <br>
+      <h1 class="top">Recipini</h1>
+      <h2 class="results">Receta del día</h2>
+      <div class="lists results" id="recipeDay">
+        <!-- La lista de categorias -->
+      </div>
+      <br>
+      <h2 class="results">Search/List Results</h2>
+      <div class="lists" id="upperpart">
+        <div> 
+          <form class="searchBox">
+            <!-- <input id="" type="radio"  -->
+            <input id="searchInputTxtBox" class="searchBox" type="text" name="search"
+            placeholder="&#128270;term(s)..in recipe name" >
+      
+            <button id="searchButton" type="button">
+            <!-- onclick="getSearchBox(12)" -->
+              Search
+            </button>
+          </form>     
+        </div>
+    </div>
+    <br>
+    PRESIONA EL BOTO PARA ELEGIRT UNA RECETA AL AZAR
+    <br>
+    <div class="results">
+      <h2 class="results">Search/List Results</h2>
+      <br>
+      AQUI TE LISTAMOS LA LISTA DE RECETAS QUE TENEMOS SEGUN LA busqueda elegida. 
+      <br>
+      <div class="lists results" id="results">
+        <!-- La lista de categorias -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+      <br>
+    </div>
+    <div id="theRecipe">
+      <br>
+      <h2 class="recipe">The Recipe</h2>
+      <br>
+      SI TOCAS UNA RECETA AQUI APARECE SU CONTENIDO
+      <br>
+      <div id="recipe">
+         <!-- La Receta desplegada -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
     </div>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
 
@@ -20,6 +62,9 @@
 
     <div class="random" id="random">
       <h2>Random Recipe</h2>
+      <div>
+        <button id="randomButton">Random Recipe</button>
+      </div>
       <div class="random" id="randomRecipe">
         <!-- Receta Random -->
       </div>
