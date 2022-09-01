@@ -22,6 +22,11 @@ module.exports = {
 			template: "./src/recipe.html",
 			chunks: ["main"], 
 		}),
+		new HtmlWebpackPlugin({
+			filename: "search_results.html",
+			template: "./src/search_results.html",
+			chunks: ["main"], 
+		}),
 	],
 	module: {
 		rules: [
