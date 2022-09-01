@@ -17,6 +17,11 @@ module.exports = {
 			template: "./src/design_system.html",
 			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
 		}),
+		new HtmlWebpackPlugin({
+			filename: "ingredient.html",
+			template: "./src/ingredient.html",
+			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
+		}),
 	],
 	module: {
 		rules: [
