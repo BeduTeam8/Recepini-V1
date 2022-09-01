@@ -90,6 +90,14 @@
 	--Padding-900: 4rem;
 }
 
+// Bootstrap overrides
+$font-family-sans-serif: var(--Popp), sans-serif;
+$font-family-monospace: var(--Helvetica), monospace;
+$font-size-base: var(--font-size-16);
+$line-height-base: var(--line-height-24);
+$border-radius: var(--Border-radius-5px);
+$border-width: var(--Border-1px);
+
 //               utility classes          //
 
 // Background classes
@@ -1052,4 +1060,137 @@
 		background-color: rgb(var(--Primary-tomatored));
 		border: 2px solid rgb(var(--Primary-tomatored)) !important;
 	}
+}
+
+// // index page classes // //
+
+//  Hero section classes  //
+
+// carusel
+.carousel-height {
+	max-height: 37.5rem;
+	overflow: hidden;
+	.carousel-item {
+		img {
+			object-fit: cover;
+			object-position: 0 -250px;
+		}
+	}
+}
+
+// hero text
+.hero-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	z-index: 1;
+	text-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.5),
+		0px 0.825rem 1.5rem rgba(var(--Neutral-matteblack), 0.5);
+}
+
+// recipie of the day
+
+.recipie-Day-text {
+	max-width: 42rem;
+	margin-left: 10rem;
+	svg {
+		width: 4rem;
+		height: 4rem;
+		fill: rgb(var(--Primary-tomatogreen));
+		margin: -1rem;
+	}
+}
+
+.card-Recipie-Day {
+	max-width: fit-content;
+	height: 100%;
+	background-color: rgb(var(--Neutral-white));
+	box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
+
+	.redBar {
+		position: absolute;
+		background-color: rgb(var(--Primary-tomatored));
+		left: 0;
+		top: 0;
+		height: 25rem;
+		width: 1.5rem;
+	}
+
+	.imgContainer {
+		max-width: 18rem;
+		height: 18rem;
+		overflow: hidden;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			object-position: -100px 50%;
+		}
+	}
+
+	.card-Recipie-Day-Text {
+		max-width: 20rem;
+	}
+}
+
+.card-position {
+	width: fit-content;
+	height: fit-content;
+	position: absolute;
+	top: 60%;
+	right: 10%;
+}
+
+// 10-Recomendations
+.card-grid-10-Recomendations {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-gap: 2rem;
+	justify-content: center;
+}
+.recomendation-title {
+	svg {
+		width: 2.5rem;
+		height: 2.5rem;
+		fill: rgb(var(--Primary-tomatored));
+		margin: 0.5rem;
+	}
+}
+
+.recomendation-text {
+	max-width: 46rem;
+	font-family: var(--Popp);
+	font-weight: 300;
+	font-size: var(--font-size-24);
+	line-height: 36px;
+	text-align: center;
+}
+
+.recomendaiton-tagline {
+	max-width: 40rem;
+	font-style: normal;
+	font-weight: 500;
+	font-size: var(--font-size-28);
+	line-height: 42px;
+	text-align: center;
+
+	svg {
+		width: 2rem;
+		height: 2rem;
+		fill: rgb(var(--Secondary-spoiledtomato));
+		margin: 0.5rem;
+	}
+}
+
+// Favorite Cuisine section
+
+.flag-grid {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	grid-gap: 1rem;
+	justify-content: center;
 }
