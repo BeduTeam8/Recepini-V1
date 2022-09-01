@@ -15,33 +15,41 @@
 
     <!-- 00 Header -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary-tomatored paddiing-200-inline">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary-tomatored padding-200-inline">
             <a class="navbar-brand padding-500-inline" href="#">
                 <img src="/src/assets/Logo_Recepini.png" alt="" style="max-width:5rem;">
             </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation"></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse padding-500-inline flex-center" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="visually-hidden">(current)</span></a>
+                        <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="index.html">Home
+                            <span class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Search</a>
+                        <a class="nav-link font-family-Popp font-weight-600 font-size-20px"
+                            href="search_results.html">Search</a>
                     </li>
                 </ul>
-                <form class="width-50">
-                    <input
-                        class=" border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
-                        type="search" id="SearchBar" placeholder="Search for recipes here" aria-label="Search">
-                </form>
-                <button id="random"
-                    class="bg-primary-tomatogreen text-neutral-lightpink border-radius-4px button-primary text-capitalize">random
-                    ⚂</button>
+                <div class="navbar-Search-Container | display-flex">
+                    <form class="width-100 padding-300-inline">
+                        <input
+                            class=" border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
+                            type="search" id="SearchBar" placeholder="Search for recepies here" aria-label="Search">
+                    </form>
+                    <a href="recipe.html" style="text-decoration:none;">
+                        <button id="random"
+                            class="display-flex text-neutral-lightpink border-radius-4px button-primary text-capitalize font-family-Popp font-weight-600 font-size-20 bg-primary-tomatogreen">random
+                            <span class="random-dice"></span>
+                        </button>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -211,20 +219,34 @@
 
 
     <!-- 05 Footer Section -->
-    <footer class="bg-primary-tomatored display-flex flex-row  flex-align-center margin-top"
-        style="justify-content: space-around;">
-        <h1 class="h1-title | text-neutral-lightpink"> &#706; 2022 Team 8 &#707; </h1>
-        <img src="/src/assets/Logo_Bedu.png" alt="" style="height: 4.13rem;" class="flex-space-between ">
-        <section style="display: grid; grid-template-columns: repeat(4, auto);
-        grid-template-rows: repteat(2, auto); column-gap: 15px; row-gap: 1px; justify-items: center;">
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Project Repo</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Karla</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Francisco</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">GitHub Porject</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Meal DB</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Román</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Jesús</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Miguel</a>
+    <!-- Footer -->
+    <footer class="page-Footer | bg-primary-tomatored padding-300-vertical padding-800-inline">
+        <div class="">
+            <h1 class="h1-title | text-neutral-lightpink"> &#706; 2022 Team 8 &#707; </h1>
+        </div>
+
+        <a class="" href="https://bedu.org/">
+            <img src="/src/assets/Logo_Bedu.png" alt=" Logo Bedu" style="height: 4.13rem;">
+        </a>
+        <section class="footer-grid">
+            <a href="https://github.com/BeduTeam8/Recepini-V1" class="text-neutral-matteblack"
+                style="text-decoration: none;">Project Repo</a>
+            <a href="https://github.com/karlarochae" class="text-neutral-matteblack"
+                style="text-decoration: none;">Karla</a>
+            <a href="https://github.com/FrankTII" class="text-neutral-matteblack"
+                style="text-decoration: none;">Francisco</a>
+            <a href="https://github.com/orgs/BeduTeam8/projects/1" class="text-neutral-matteblack"
+                style="text-decoration: none;">GitHub Project</a>
+            <a href="https://www.themealdb.com/" class="text-neutral-matteblack" style="text-decoration: none;">Meal
+                DB</a>
+            <a href="https://github.com/rmn-isb" class="text-neutral-matteblack"
+                style="text-decoration: none;">Román</a>
+            <a href="https://github.com/jesuszdp" class="text-neutral-matteblack"
+                style="text-decoration: none;">Jesús</a>
+            <a href="https://github.com/toonchavez8" class="text-neutral-matteblack"
+                style="text-decoration: none;">Miguel</a>
+            <a href="design_system.html" class="text-neutral-matteblack" style="text-decoration: none;">&#706; Design /
+                System &#707;</a>
         </section>
 
     </footer>

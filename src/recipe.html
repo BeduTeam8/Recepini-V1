@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,34 +12,44 @@
     <link href="https://fonts.googleapis.com/css?family=Vidaloka&display=swap" rel="stylesheet" />
     <link rel="icon" href="/src/assets/logo_red.png" type="image/x-icon">
 </head>
+
 <body class="bg-neutral-lightpink">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary-tomatored paddiing-200-inline">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary-tomatored padding-200-inline">
             <a class="navbar-brand padding-500-inline" href="#">
                 <img src="/src/assets/Logo_Recepini.png" alt="" style="max-width:5rem;">
             </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation"></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse padding-500-inline flex-center" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="visually-hidden">(current)</span></a>
+                        <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="index.html">Home
+                            <span class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Search</a>
+                        <a class="nav-link font-family-Popp font-weight-600 font-size-20px"
+                            href="search_results.html">Search</a>
                     </li>
                 </ul>
-                <form class="width-50">
-                    <input
-                        class=" border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
-                        type="search" id="SearchBar" placeholder="Search for recipes here" aria-label="Search">
-                </form>
-                <button id="random"
-                    class="bg-primary-tomatogreen text-neutral-lightpink border-radius-4px button-primary text-capitalize">random ⚂</button>
+                <div class="navbar-Search-Container | display-flex">
+                    <form class="width-100 padding-300-inline">
+                        <input
+                            class=" border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
+                            type="search" id="SearchBar" placeholder="Search for recepies here" aria-label="Search">
+                    </form>
+                    <a href="recipe.html" style="text-decoration:none;">
+                        <button id="random"
+                            class="display-flex text-neutral-lightpink border-radius-4px button-primary text-capitalize font-family-Popp font-weight-600 font-size-20 bg-primary-tomatogreen">random
+                            <span class="random-dice"></span>
+                        </button>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -59,7 +70,7 @@
                 class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Cheasy</button>  
                 <button
                 class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Meat</button>      
-            </div> --> 
+            </div> -->
         </section>
         <!-- Recipe ingredients and recipe image -->
         <section class="display-flex flex-row flex-gap justify-content-center" style="width: 90%; margin: 50px 20px">
@@ -71,38 +82,62 @@
                 font-style-normal font-weight-275 font-size-20
                 font-line-height-30" style="display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(2, auto); 	
                 column-gap: 16.3px; row-gap: 1px; justify-items: center;">
-                    <figure>
-                        <img src="/src/assets/enchilada_sauce.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Enchilada sauce</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/enchilada_sauce.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Enchilada sauce</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/cheese.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Cheese</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/cheese.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Cheese</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/soft_tortilla.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Soft tortilla</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/soft_tortilla.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Soft tortilla</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/breast_fillets.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Breast fillets</p>
-                    </figure>
-                    <figure>
-                        <img src="/src/assets/breast_fillets.png" alt="" style="width: 81px; height:81px; object-fit: cover">
-                        <p>Breast fillets</p>
-                    </figure>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/enchilada_sauce.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Enchilada sauce</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/enchilada_sauce.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Enchilada sauce</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/cheese.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Cheese</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/cheese.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Cheese</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/soft_tortilla.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Soft tortilla</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/soft_tortilla.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Soft tortilla</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/breast_fillets.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Breast fillets</p>
+                        </figure>
+                    </a>
+                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                        <figure>
+                            <img src="/src/assets/breast_fillets.png" alt=""
+                                style="width: 81px; height:81px; object-fit: cover">
+                            <p>Breast fillets</p>
+                        </figure>
+                    </a>
                 </section>
             </aside>
             <!-- Recipe image -->
@@ -117,8 +152,9 @@
             <ol class="text-neutral-matteblack  font-family-Popp
             font-style-normal font-weight-400 font-size-16
             font-line-height-24">
-                <li>Cut each chicken breast in about 3 pieces, so that it cooks faster and put it in a small pot.</li> 
-                <li>Pour Enchilada sauce over it and cook covered on low to medium heat until chicken is cooked through, about 20 minutes.</li>
+                <li>Cut each chicken breast in about 3 pieces, so that it cooks faster and put it in a small pot.</li>
+                <li>Pour Enchilada sauce over it and cook covered on low to medium heat until chicken is cooked through,
+                    about 20 minutes.</li>
                 <li>No water is needed, the chicken will cook in the Enchilada sauce.</li>
                 <li>Make sure you stir occasionally so that it doesn't stick to the bottom.</li>
                 <li>Remove chicken from the pot and shred with two forks.</li>
@@ -127,9 +163,11 @@
                 <li>Start with about ¼ cup of the leftover Enchilada sauce over the bottom of a baking dish.</li>
                 <li>I used a longer baking dish, so that I can put 2 corn tortillas across.</li>
                 <li>Place 2 tortillas on the bottom, top with ⅓ of the chicken and ⅓ of the remaining sauce.</li>
-                <li>Sprinkle with ⅓ of the cheese and repeat starting with 2 more tortillas, then chicken, sauce, cheese.</li>
+                <li>Sprinkle with ⅓ of the cheese and repeat starting with 2 more tortillas, then chicken, sauce,
+                    cheese.</li>
                 <li>Repeat with last layer with the remaining ingredients, tortillas, chicken, sauce and cheese.</li>
-                <li>Bake for 20 to 30 minutes uncovered, until bubbly and cheese has melted and started to brown on top.</li>
+                <li>Bake for 20 to 30 minutes uncovered, until bubbly and cheese has melted and started to brown on top.
+                </li>
                 <li>Serve warm.</li>
             </ol>
         </section>
@@ -147,7 +185,10 @@
             <h3 class="text-primary-tomatored font-family-Popp
             font-style-normal font-weight-500 font-size-28
             font-line-height-42" style="margin: 20px">Video of how it was made!</h3>
-            <iframe width="685" height="415" src="https://www.youtube.com/embed/wNQx34RQZtI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>            
+            <iframe width="685" height="415" src="https://www.youtube.com/embed/wNQx34RQZtI"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </section>
         <!-- Similar recipes -->
         <section class="display-flex flex-column align-items-center text-center">
@@ -171,73 +212,90 @@
                         recipie </a>
                 </article>
                 <article id="recipeCard"
-                class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
-                <div class="overflow-hidden border-radius-10px ">
-                    <img src="assets/image_card.jfif" alt="" style="width: 230px; height:160px; object-fit: cover">
-                </div>
-                <h4>
-                    Cupcake ipsum dolor
-                </h4>
-                <p>
-                    Cupcake ipsum dolor sit amet cupcake caramels oat cake.
-                </p>
-                <a href=""
-                    class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
-                    recipie </a>
+                    class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+                    <div class="overflow-hidden border-radius-10px ">
+                        <img src="assets/image_card.jfif" alt="" style="width: 230px; height:160px; object-fit: cover">
+                    </div>
+                    <h4>
+                        Cupcake ipsum dolor
+                    </h4>
+                    <p>
+                        Cupcake ipsum dolor sit amet cupcake caramels oat cake.
+                    </p>
+                    <a href=""
+                        class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
+                        recipie </a>
                 </article>
                 <article id="recipeCard"
-                class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
-                <div class="overflow-hidden border-radius-10px ">
-                    <img src="assets/image_card.jfif" alt="" style="width: 230px; height:160px; object-fit: cover">
-                </div>
-                <h4>
-                    Cupcake ipsum dolor
-                </h4>
-                <p>
-                    Cupcake ipsum dolor sit amet cupcake caramels oat cake.
-                </p>
-                <a href=""
-                    class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
-                    recipie </a>
+                    class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+                    <div class="overflow-hidden border-radius-10px ">
+                        <img src="assets/image_card.jfif" alt="" style="width: 230px; height:160px; object-fit: cover">
+                    </div>
+                    <h4>
+                        Cupcake ipsum dolor
+                    </h4>
+                    <p>
+                        Cupcake ipsum dolor sit amet cupcake caramels oat cake.
+                    </p>
+                    <a href=""
+                        class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
+                        recipie </a>
                 </article>
                 <article id="recipeCard"
-                class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
-                <div class="overflow-hidden border-radius-10px ">
-                    <img src="assets/image_card.jfif" alt="" style="width: 230px; height:160px; object-fit: cover">
-                </div>
-                <h4>
-                    Cupcake ipsum dolor
-                </h4>
-                <p>
-                    Cupcake ipsum dolor sit amet cupcake caramels oat cake.
-                </p>
-                <a href=""
-                    class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
-                    recipie </a>
+                    class="recipieCard | display-flex flex-column padding-300 flex-align-center overflow-hidden position-relative">
+                    <div class="overflow-hidden border-radius-10px ">
+                        <img src="assets/image_card.jfif" alt="" style="width: 230px; height:160px; object-fit: cover">
+                    </div>
+                    <h4>
+                        Cupcake ipsum dolor
+                    </h4>
+                    <p>
+                        Cupcake ipsum dolor sit amet cupcake caramels oat cake.
+                    </p>
+                    <a href=""
+                        class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center">View
+                        recipie </a>
                 </article>
             </div>
         </section>
     </main>
 
-    <footer class="bg-primary-tomatored display-flex flex-row align-items-center" style="justify-content: space-around">
-        <h1 class="h1-title | text-neutral-lightpink"> &#706; 2022 Team 8 &#707; </h1>
-        <img src="/src/assets/Logo_Bedu.png" alt="" style="height: 4.13rem;" class="flex-space-between ">
-        <section style="display: grid; grid-template-columns: repeat(4, auto);
-        grid-template-rows: repeat(2, auto); column-gap: 15px; row-gap: 1px; justify-items: center;">
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Project Repo</a>
-            <a href="https://github.com/karlarochae" class="text-neutral-matteblack" style="text-decoration: none;">Karla</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Francisco</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">GitHub Project</a>
-            <a href="https://www.themealdb.com/" class="text-neutral-matteblack" style="text-decoration: none;">Meal DB</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Román</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Jesús</a>
-            <a href="#" class="text-neutral-matteblack" style="text-decoration: none;">Miguel</a>
+    <!-- Footer -->
+    <footer class="page-Footer | bg-primary-tomatored padding-300-vertical padding-800-inline">
+        <div class="">
+            <h1 class="h1-title | text-neutral-lightpink"> &#706; 2022 Team 8 &#707; </h1>
+        </div>
+
+        <a class="" href="https://bedu.org/">
+            <img src="/src/assets/Logo_Bedu.png" alt=" Logo Bedu" style="height: 4.13rem;">
+        </a>
+        <section class="footer-grid">
+            <a href="https://github.com/BeduTeam8/Recepini-V1" class="text-neutral-matteblack"
+                style="text-decoration: none;">Project Repo</a>
+            <a href="https://github.com/karlarochae" class="text-neutral-matteblack"
+                style="text-decoration: none;">Karla</a>
+            <a href="https://github.com/FrankTII" class="text-neutral-matteblack"
+                style="text-decoration: none;">Francisco</a>
+            <a href="https://github.com/orgs/BeduTeam8/projects/1" class="text-neutral-matteblack"
+                style="text-decoration: none;">GitHub Project</a>
+            <a href="https://www.themealdb.com/" class="text-neutral-matteblack" style="text-decoration: none;">Meal
+                DB</a>
+            <a href="https://github.com/rmn-isb" class="text-neutral-matteblack"
+                style="text-decoration: none;">Román</a>
+            <a href="https://github.com/jesuszdp" class="text-neutral-matteblack"
+                style="text-decoration: none;">Jesús</a>
+            <a href="https://github.com/toonchavez8" class="text-neutral-matteblack"
+                style="text-decoration: none;">Miguel</a>
+            <a href="design_system.html" class="text-neutral-matteblack" style="text-decoration: none;">&#706; Design /
+                System &#707;</a>
         </section>
+
     </footer>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
