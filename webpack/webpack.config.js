@@ -18,6 +18,16 @@ module.exports = {
 			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
 		}),
 		new HtmlWebpackPlugin({
+			filename: "recipe.html",
+			template: "./src/recipe.html",
+			chunks: ["main"], 
+		}),
+		new HtmlWebpackPlugin({
+			filename: "search_results.html",
+			template: "./src/search_results.html",
+			chunks: ["main"], 
+      	}),
+      new HtmlWebpackPlugin({
 			filename: "ingredient.html",
 			template: "./src/ingredient.html",
 			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
