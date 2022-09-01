@@ -27,6 +27,11 @@ module.exports = {
 			template: "./src/search_results.html",
 			chunks: ["main"], 
       	}),
+		  new HtmlWebpackPlugin({
+			filename: "aboutUs.html",
+			template: "./src/aboutUs.html",
+			chunks: ["main"], 
+      	}),
       new HtmlWebpackPlugin({
 			filename: "ingredient.html",
 			template: "./src/ingredient.html",

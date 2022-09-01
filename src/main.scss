@@ -253,13 +253,13 @@ $border-width: var(--Border-1px);
 		--font-size-64: 2.625rem;
 		--font-size-56: 2.375rem;
 		--font-size-48: 2.125rem;
-		--font-size-40: 1.875rem;
+		--font-size-40: 1.800rem;
 		--font-size-32: 1.75rem;
 		--font-size-28: 1.625rem;
-		--font-size-24: 1.5rem;
-		--font-size-20: 1.25rem;
-		--font-size-16: 1rem;
-		--font-size-10: 0.625rem;
+		--font-size-24: 1rem;
+		--font-size-20: 0.875rem;
+		--font-size-16: 0.75rem;
+		--font-size-10: 0.5rem;
 	}
 	.font-size-64 {
 		font-size: var(--font-size-64);
@@ -1225,6 +1225,23 @@ footer {
 	}
 }
 
+//Ingredient page classes
+
+.ingredient-img >img{
+	width: 685px;
+	height: 226px;
+	transition: all .560ms ease
+}
+
+//About page classes
+
+.idCards{
+	flex-direction: row;
+}
+.list{
+	width: 55%; 
+	margin: 20px auto
+}
 // // index page classes // //
 
 //  Hero section classes  //
@@ -1314,6 +1331,13 @@ footer {
 	grid-gap: 2rem;
 	justify-content: center;
 }
+.card-grid-8-Recomendations {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-gap: 2rem;
+	justify-content: center;
+}
 .recomendation-title {
 	svg {
 		width: 2.5rem;
@@ -1366,13 +1390,104 @@ footer {
 	row-gap: 3.125rem;
 	justify-items: center;
 }
+//Integrantes
+.area-catagory2 {
+	transition: all 250ms ease-in-out;
+
+	a {
+		align-items: center;
+		text-decoration: none;
+		transition: all 250ms ease-in-out;
+	}
+
+	.avatar-Container {
+		border-radius: 50%;
+		max-height: 6.25rem;
+		aspect-ratio: 1/1;
+		transition: all 250ms ease-in-out;
+		box-shadow: 0px 0.625rem 0.9rem rgba(var(--Neutral-matteblack), 0.25);
+
+		img {
+			height: 100%;
+			object-position: -25px 50%;
+		}
+	}
+
+	button {
+		transition: all 350ms ease-in-out;
+	}
+
+	// flag button hover
+}
+
+.area-catagory2:hover {
+	.avatar-Container {
+		transform: translateY(-0.5rem);
+	}
+
+	button {
+		color: rgb(var(--Neutral-lightpink));
+		background-color: rgb(var(--Primary-tomatogreen));
+		border: 2px solid rgb(var(--Primary-tomatogreen)) !important;
+	}
+}
+
 // // media quiery  // //
 
 // media quieruy for landing page
 
+// media query for about page
+@media screen and (max-width: 400px) {
+	.idCards{
+		flex-direction: column;
+	}
+	.descrip {
+		display: fixed;
+		text-align: left;
+	}
+	.margin{
+		margin: 20px;
+	}
+	.list{
+		width: 80%;
+	}
+}
+@media screen and (max-width: 768px) {
+	.idCards{
+		flex-direction: column;
+	}
+	.descrip {
+		display: fixed;
+		text-align: left;
+	}
+	.margin{
+		margin: 20px;
+	}
+	.list{
+		width: 80%;
+	}
+}
+// media query for ingredient page
+@media screen and (max-width: 400px) {
+	.ingredient-img > img{
+		height: clamp(25%, 100%, 80%);
+		width: clamp(25%, 100%, 80%);
+		
+	}
+}
+@media screen and (max-width: 768px) {
+	.ingredient-img > img{
+		height: clamp(25%, 100%, 80%);
+		width: clamp(25%, 100%, 80%);
+	}
+}
 // table media quiery
 @media screen and (max-width: 768px) {
 	.card-grid {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(auto, 1fr);
+	}
+	.card-grid-8-Recomendations {
 		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(auto, 1fr);
 	}
@@ -1381,6 +1496,10 @@ footer {
 // mobile media quiery
 @media screen and (max-width: 400px) {
 	.card-grid-10-Recomendations {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(auto, 1fr);
+	}
+	.card-grid-8-Recomendations {
 		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(auto, 1fr);
 	}
