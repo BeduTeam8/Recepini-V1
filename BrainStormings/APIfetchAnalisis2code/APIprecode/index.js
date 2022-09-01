@@ -122,7 +122,13 @@ const apiSelected = [{
         tipo:"meals",
         layout:"",
         sesion: false
-}];
+    },{
+    //Receta del día   
+        url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
+        tipo:"meals",
+        layout:"recipeDay",
+        sesion: true
+    }];
 
 
 // const url = `${serverURL}${apiPayedKey}${apiSelected[0]}`;
@@ -744,7 +750,7 @@ if (sessionStorage.getItem("listAllIngredients")) {
 }*/
 window.onload=async function(){
     try {
-        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getGeneral(5)]);//,getGeneral(6)
+        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getGeneral(5),getGeneral(14)]);//,getGeneral(6)
     }catch(error){
         console.error("Promise.all Error on window.onload",error);
     }
@@ -785,6 +791,7 @@ async function getAPIResponse(apiIndex, params = '') {
         const data = await response.json();
 
         if(data.meals) {
+            console.log("apiIndex:",apiIndex);
             data.meals.map(function (obj) { //Borrar indices que están de más
                 [...Array(21).keys()].forEach( function(valor, indice) {
                     if (`strIngredient${indice}` in obj && (obj[`strIngredient${indice}`] == '' || obj[`strIngredient${indice}`] == null)){
@@ -832,7 +839,7 @@ async function getGeneral(Index, layout = '') {
     }
     //console.log("layout", layout);
     switch (Index) {
-        case 1:
+        case 1: case 14:
             recipesHTML(layout, datos);
             break;
         case 2: //Categorías
@@ -861,6 +868,7 @@ async function getGeneral(Index, layout = '') {
 ///Almacenar searchbox
 ///Almacenar filter
 ///Almacenar latest
+///Añadir search
 
 
 /*async function get10Random(Index){
@@ -898,6 +906,26 @@ document.getElementById("randomButton").onclick = async function () {
     sessionStorage.setItem("randomRecipe", JSON.stringify(recipe));
     //console.log(sessionStorage.getItem("randomRecipe"));
 };
+
+document.getElementById("searchInputTxtBox").oninput =async function(){
+    // document.getElementById("searchButton").onclick =async function(){
+    //Que prefieren usar el Searchbutton o el searchTextBox
+    const searchterm=document.getElementById('searchInputTxtBox');
+    console.log(searchterm.value);
+    const recipe = await getAPIResponse(13,searchterm.value);
+    if ('meals' in recipe && recipe.meals){
+        console.log("Buscando receta(",searchterm.value,"): ",recipe);
+        console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
+        recipesHTML("results",recipe.meals);
+    } else {
+        /*const recipesGoInDiv = document.getElementById("results");
+       
+        while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
+            recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
+        }*/
+        document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
+    }
+};//End of funciton getSearchBox();
 
 function recipesHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:**', recipes);
