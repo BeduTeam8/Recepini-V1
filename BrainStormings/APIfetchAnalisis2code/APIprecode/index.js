@@ -43,63 +43,85 @@ const apiSelected = [{
     //Busquedas sin parametros    
         url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
         tipo:"meals",
-        layout:""
+        layout:"",
+        sesion: false
     },{
         url:"randomselection.php", //1- 10random recipes cada una con 53 props.
         tipo:"meals",
-        layout:"rnd10Recipes"
+        layout:"rnd10Recipes",
+        sesion: true
     },{
         url:"categories.php", //2- Regresa una Lista de categorias en un OBJ Categories. 
                     //con 14 registros/objetos cada uno con 4 propiedades. "idCategory" 
                     //"strCategory" "strCategoryThumb" "strCategoryDescription"
         tipo:"categories",
-        layout:"listCategories"
+        layout:"listCategories",
+        sesion: true
     },{
         url:"latest.php", //3-Regresa una lista con las ultimas 10 recetas ingresada al DB, 
                 //objetos cada una con 53 props.
         tipo:"meals",
-        layout:"latestRecipe"
+        layout:"latestRecipe",
+        sesion: true
     },{
         url:"list.php?a=list", //4-Regresa una Lista de Area=Country/Pais son 27 registros/objetos 
                         //de un campo/propiedad "strArea" 
         tipo:"meals",
-        layout:"listAllArea"
+        layout:"listAllArea",
+        sesion: true
     },{
         url:"list.php?c=list", //5-Regresa la Lista de categorias de 14 registros/objetos 
                         //de un campo/propiedad "strCategory"
-        tipo:"categories"
+        tipo:"meals",
+        layout:"listAllCategories",
+        sesion: true
     },{
         url:"list.php?i=list", //6-Regresa la Lista de ingredienes de 574 registros/objetos cada uno de               //4 propiedades. "idIngredient" "strIngredient" "strDescription" "strType"
         tipo:"meals",
-        layout:"listAllIngredients"
+        layout:"listAllIngredients",
+        sesion: true
     },{
         //Busqquedas que req parametro
         url:"filter.php?a=", //7-${meals.strArea} Busqueda por Area del Mundo, uno de 27 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
     },{
         url:"filter.php?c=", //8-${meals.strCategory} Busqueda por categoria, una de 14 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
     },{
         url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
                     //Posiblemente: String.concat(strIngredient,strIngredient,strIngredient)
                     //Busqueda por multingredientes. Recibe un string de ingredientes separados por coma. 
                     //Regresa un arreglo de objetos cada uno con 53 propiedades.
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
     },{
         url:"lookup.php?i=", //11-${idMeal}Busqueda por Id.
                     //Regresa un arreglo con un unico elemento [0] con 53 propiedades
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
     },{
         url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
     },{
         url:"search.php?s=", //13-${palabra o string} 
                    //Busqueda por palabra o letras en el campo nombre strMeal. 
                    //Regresa un arreglo de objetos cada uno con 53 propiedades.
-        tipo:"meals"
+        tipo:"meals",
+        layout:"",
+        sesion: false
 }];
 
 
@@ -241,8 +263,26 @@ async function getLatestRecipe() {
   });
 }*/
 
+function printIngredient(data){
+    let result = '';
+    [...Array(21).keys()].forEach( function(valor, indice) {
+        if (`strIngredient${indice}` in data){
+            result += `<div class="cardIngredient">
+            <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}
+                <button class="linkCard" 
+                    onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
+                    <img class="imgCard" 
+                        src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}"> 
+                </button>
+            </p></div>
+            `;
+        }
+    });
+    return result;
+}
+
 //Format a One Recipe
-function recipesHTML(recipesDIV,therecipe) {
+function recipesXLHTML(recipesDIV,therecipe) {
     console.log('Dentro de la funcion una recipe:', therecipe);
     const recipeGoesinDIV = document.getElementById(recipesDIV);
     recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
@@ -259,8 +299,17 @@ function recipesHTML(recipesDIV,therecipe) {
                 <p><strong>Intructions</strong>${data.strInstructions}</p>
                             <img class="imgCard" src="${data.strMealThumb}">
                 <p><strong>Tags</strong>${data.strTags}</p>
-                            <a href=�${data.strYoutube}">${data.strMeal}Video</a>
-                <div class="cardIngredient">
+                            <a href="${data.strYoutube}">${data.strMeal}Video</a>`+
+                printIngredient(data)+
+                `</div>
+            </div>
+        </div>`;
+    recipeGoesinDIV.appendChild(adding_recipe);
+  });
+}
+
+/*
+<div class="cardIngredient">
                 <p>${data.strMeasure1}&nbsp;${data.strIngredient1}
                     <button class="linkCard" 
                         onclick="getFilteredList(9,'${data.strIngredient1}')">
@@ -401,13 +450,8 @@ function recipesHTML(recipesDIV,therecipe) {
                         src="${serverURL}/images/ingredients/${data.strIngredient20}.png" alt="${data.strIngredient20}">
                     </button>
                 </p></div>
-        
-                </div>
-            </div>
-        </div>`;
-    recipeGoesinDIV.appendChild(adding_recipe);
-  });
-}
+*/
+
 //The 53 Properties that comes on any recipe registry
 //Used in the upper function. ERASE before Realesing SW
 // ${data.idMeal}
@@ -608,7 +652,7 @@ async function getListAllAreaCountry(){
     console.log('Registros de List by Area:(',recipe.meals.length,'):\n',recipe.meals);
     listsAllAreaHTML("listAllArea",recipe.meals);
     
-};*/
+};
 
 
 
@@ -620,7 +664,7 @@ async function getListAllCategories(){
     console.log('Registros de List by Categories:(',allcategories.meals.length,'):\n',allcategories.meals);
     listsAllCategoriesHTML("listAllCategories",allcategories.meals);
     
-};
+};*/
 
 /*async function getListAllIngredients(){
     const allIngredients = await getAPIResponse(6);
@@ -683,17 +727,6 @@ async function getRecipe(id){
     recipesHTML("recipe",recipe.meals);
 };
 
-function saveStorage(Index) {
-    if (sessionStorage.getItem(apiSelected[Index].layout)) {
-        const inicial = document.getElementById(apiSelected[Index].layout);
-        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
-        categoriesHTML(apiSelected[Index].layout, JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
-    }
-}
-
-[2,3,4,6].map(function (x) {
-    saveStorage(x);
-});
 /*if (sessionStorage.getItem("listCategories")) {
     const inicial = document.getElementById("listCategories");
     console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("listCategories")).categories);
@@ -711,7 +744,7 @@ if (sessionStorage.getItem("listAllIngredients")) {
 }*/
 window.onload=async function(){
     try {
-        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getListAllCategories(),getGeneral(6)]);//
+        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getGeneral(5)]);//,getGeneral(6)
     }catch(error){
         console.error("Promise.all Error on window.onload",error);
     }
@@ -719,6 +752,29 @@ window.onload=async function(){
 
 
 /////////// LGisus
+/*function saveStorage(Index) {
+    if (sessionStorage.getItem(apiSelected[Index].layout)) {
+        //const inicial = document.getElementById(apiSelected[Index].layout);
+        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
+        categoriesHTML(apiSelected[Index].layout, JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo]);
+    }
+}
+
+function retrieveStorage(Index) {
+    if (sessionStorage.getItem(apiSelected[Index].layout)) {
+        // Restore the contents of the text field
+        const inicial = document.getElementById("randomRecipe");
+        console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
+        recipesHTML("randomRecipe", JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
+    }
+}
+
+[2,3,4,6].map(function (x) { ///Almacenar datos en sesion
+    saveStorage(x);
+});*/
+
+
+
 async function getAPIResponse(apiIndex, params = '') {
     try {
         // console.log("A ver los params");
@@ -727,6 +783,21 @@ async function getAPIResponse(apiIndex, params = '') {
         console.log("URL a llamar", url);
         const response = await fetch(url);
         const data = await response.json();
+
+        if(data.meals) {
+            data.meals.map(function (obj) { //Borrar indices que están de más
+                [...Array(21).keys()].forEach( function(valor, indice) {
+                    if (`strIngredient${indice}` in obj && (obj[`strIngredient${indice}`] == '' || obj[`strIngredient${indice}`] == null)){
+                        delete obj[`strIngredient${indice}`];
+                        delete obj[`strMeasure${indice}`];
+                    }
+                });
+                if ('strInstructions' in obj) { //Dar formato a las instrucciones
+                    obj.strInstructions = "<ul><li>"+obj.strInstructions.split('\r\n').join('</li><li>')+"</li></ul>";
+                }
+            });
+            console.log('filterInvalid',data.meals);
+        }
         
         return data;
     } catch (error) {
@@ -734,38 +805,54 @@ async function getAPIResponse(apiIndex, params = '') {
     }
 }
 
+/*function filterInvalid(obj) {
+    if ('strIngredient1' in obj && obj.strIngredient1 != '' && obj.strIngredient1 != null) {
+        return true;
+    } else {
+        //entradasInvalidas++;
+        return false;
+    }
+}*/
+
 async function getGeneral(Index, layout = '') {
     const recipe = await getAPIResponse(Index);
     // console.log(recipe);
-    console.log("Recipes:",recipe);
+    /*console.log("Recipes:",recipe);
     console.log("Recipes[apiSelected[Index].tipo]:",recipe[apiSelected[Index].tipo]);
-    console.log('# registros de getRecipes:(',recipe[apiSelected[Index].tipo].length,')');
+    console.log('# registros de getRecipes:(',recipe[apiSelected[Index].tipo].length,')');*/
     layout = (!layout) ? apiSelected[Index].layout : layout; ///
-    console.log("layout", layout);
+    let datos = recipe[apiSelected[Index].tipo];
+
+    if(apiSelected[Index].sesion===true){ ///En caso de definir que se almacene en sesión
+        if (sessionStorage.getItem(apiSelected[Index].layout)) { ///Obtener datos de sesión
+            datos = JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo];
+        } else {
+            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
+        }
+    }
+    //console.log("layout", layout);
     switch (Index) {
         case 1:
-            recipesHTML(layout, recipe[apiSelected[Index].tipo]);
+            recipesHTML(layout, datos);
             break;
         case 2: //Categorías
-            categoriesHTML(layout, recipe[apiSelected[Index].tipo]);
-            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre de la sesión
+            categoriesHTML(layout, datos);
             break;
         case 3: //Latest
-            recipesHTML(layout, recipe[apiSelected[Index].tipo]);
-            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre de la sesión
+            recipesHTML(layout, datos);
             break;
         case 4: //Area
-            listsAllAreaHTML(layout, recipe[apiSelected[Index].tipo]);
-            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre de la sesión
+            listsAllAreaHTML(layout, datos);
+            break;
+        case 5:
+            listsAllCategoriesHTML(layout, datos);
             break;
         case 6: //Ingredientes
-            listsAllIngredientsHTML(layout, recipe[apiSelected[Index].tipo]);
-            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre de la sesión
+            listsAllIngredientsHTML(layout, datos);
             break;            
         default:
             break;
     }
-    
 }
 
 ///Quitar area none(25)
@@ -804,7 +891,7 @@ document.getElementById("randomButton").onclick = async function () {
     const recipe = await getAPIResponse(0);
     console.log('getARandomRecipe:',recipe);
     console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
-    recipesHTML("randomRecipe",recipe.meals);
+    recipesXLHTML("randomRecipe",recipe.meals);
     
     //console.log(recipe);
     ///Guardar en sesión
@@ -860,13 +947,13 @@ function recipesHTML(recipesDIV,recipes) {
 }
 
 ///En caso de que se haya guardado información en sesión, se obtiene de ella
-if (sessionStorage.getItem("randomRecipe")) {
+/*if (sessionStorage.getItem("randomRecipe")) {
     // Restore the contents of the text field
     const inicial = document.getElementById("randomRecipe");
     console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
     recipesHTML("randomRecipe", JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
 }
-
+*/
 
 
 // Listen for changes in the text field
