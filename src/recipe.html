@@ -73,7 +73,7 @@
             </div> -->
         </section>
         <!-- Recipe ingredients and recipe image -->
-        <section class="display-flex flex-row flex-gap justify-content-center" style="width: 90%; margin: 50px 20px">
+        <section class="display-flex flex-row flex-gap justify-content-center" style="width: 90%; margin: 50px 20px" id="${data.idMeal}">
             <aside class="text-center" style="width:45%">
                 <h3 class="text-primary-tomatored font-family-Popp
                 font-style-normal font-weight-500 font-size-28
@@ -82,6 +82,7 @@
                 font-style-normal font-weight-275 font-size-20
                 font-line-height-30" style="display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(2, auto); 	
                 column-gap: 16.3px; row-gap: 1px; justify-items: center;">
+                    <!-- COPIANDO HASTA -->
                     <a href="ingredient.html" class="text-none text-neutral-matteblack">
                         <figure>
                             <img src="/src/assets/enchilada_sauce.png" alt=""
@@ -89,7 +90,8 @@
                             <p>Enchilada sauce</p>
                         </figure>
                     </a>
-                    <a href="ingredient.html" class="text-none text-neutral-matteblack">
+                    <!-- HASTA AQUI LO DEMAS es AUTOMATICO -->
+                    <!-- <a href="ingredient.html" class="text-none text-neutral-matteblack">
                         <figure>
                             <img src="/src/assets/enchilada_sauce.png" alt=""
                                 style="width: 81px; height:81px; object-fit: cover">
@@ -137,12 +139,12 @@
                                 style="width: 81px; height:81px; object-fit: cover">
                             <p>Breast fillets</p>
                         </figure>
-                    </a>
+                    </a> -->
                 </section>
             </aside>
             <!-- Recipe image -->
             <article style="width: 45%">
-                <img src="/src/assets/recipe_example.png" alt="" style="width: 670px; height:400px; object-fit: cover">
+                <img src="${data.strMealThumb}" alt="Picture of ${data.strMeal}" style="width: 670px; height:400px; object-fit: cover">
             </article>
         </section>
         <!-- Recipe instructions -->
@@ -152,8 +154,8 @@
             <ol class="text-neutral-matteblack  font-family-Popp
             font-style-normal font-weight-400 font-size-16
             font-line-height-24">
-                <li>Cut each chicken breast in about 3 pieces, so that it cooks faster and put it in a small pot.</li>
-                <li>Pour Enchilada sauce over it and cook covered on low to medium heat until chicken is cooked through,
+                ${data.strInstructions}
+                <!-- <li>Pour Enchilada sauce over it and cook covered on low to medium heat until chicken is cooked through,
                     about 20 minutes.</li>
                 <li>No water is needed, the chicken will cook in the Enchilada sauce.</li>
                 <li>Make sure you stir occasionally so that it doesn't stick to the bottom.</li>
@@ -168,7 +170,7 @@
                 <li>Repeat with last layer with the remaining ingredients, tortillas, chicken, sauce and cheese.</li>
                 <li>Bake for 20 to 30 minutes uncovered, until bubbly and cheese has melted and started to brown on top.
                 </li>
-                <li>Serve warm.</li>
+                <li>Serve warm.</li> -->
             </ol>
         </section>
         <!-- Share -->
@@ -191,7 +193,8 @@
                 allowfullscreen></iframe>
         </section>
         <!-- Similar recipes -->
-        <section class="display-flex flex-column align-items-center text-center">
+        //DESACTIVADO TEMPORALMENTE NO LO HACE recipeHTML. Solo regresa un recipe
+        <!-- <section class="display-flex flex-column align-items-center text-center">
             <h3 class="text-primary-tomatored font-family-Popp
             font-style-normal font-weight-600 font-size-40
             font-line-height-60">Similar recipes based on this cuisine!</h3>
@@ -257,7 +260,7 @@
                         recipie </a>
                 </article>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <!-- Footer -->
