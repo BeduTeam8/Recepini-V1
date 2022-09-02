@@ -240,29 +240,117 @@ async function getLatestRecipe() {
 //=======================================================================
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
-/*function recipesHTML(recipesDIV,recipes) {
+function randomRecipeHTML(recipesDIV,recipes) {
     console.log('Enla funcion recipes:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
-        const adding_recipe = document.createElement("div");
-        adding_recipe.innerHTML = `
-            <div class="card">
-                <div class="cardContainer" id="${data.idMeal}">
-                    <div class="cardImgContainer">
-                    data.meals:
-                        <p>
-                            id=${data.strMeal}: 
-                        </p>
-                        <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
-                            <img class="imgCard" src="${data.strMealThumb}">
-                        </button>
-                    </div>
+        //const adding_recipe = document.createElement("article");
+       // adding_recipe.innerHTML = 
+        recipesGoInDiv.innerHTML =
+            `<article id="${data.idMeal}"
+                class="card-Recipie-Day | display-flex 
+                flex-gap overflow-hidden position-relative border-radius-10px 
+                padding-300-vertical padding-600-inline margin-500">
+                <div class="redBar"></div>
+                <button class="imgContainer | border-radius-12px" 
+                    onclick="getRecipe(${data.idMeal})">
+                    <img src="${data.strMealThumb}"
+                        alt="Picture of ${data.strMeal}">
+                </button>
+                <div class="display-flex
+                    flex-column-reverse justify-content-around flex-center">
+                    <h3 class=" card-Recipie-Day-Text | font-family-Popp
+                        font-style-normal font-weight-500 font-size-28
+                        font-line-height-42 text-center">
+                        ${data.strMeal}
+                    </h3>
+                    <button class="bg-primary-tomatogreen 
+                        text-neutral-lightpink border-radius-45px button-primary text-capitalize font-family-Popp font-weight-600 font-size-16" onclick="getRecipe(${data.idMeal})">
+                        recipie of the day
+                    </button>
                 </div>
-            </div>`;
-    recipesGoInDiv.appendChild(adding_recipe);
+            </article>`;
+    //recipesGoInDiv.appendChild(adding_recipe);
   });
+}
+
+function recipesHTML(recipesDIV,recipes) {
+    console.log('Enla funcion recipes:', recipes);
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+    //recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+    recipes.forEach(data => {
+        //const adding_recipe = document.createElement("div");
+        //adding_recipe.innerHTML = 
+        recipesGoInDiv.innerHTML +=`
+        <article id="${data.idMeal}"
+            class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
+            <button class="overflow-hidden border-radius-10px" 
+            onclick="getRecipe(${data.idMeal})">
+                <img class="imgCard" src="${data.strMealThumb}">
+            </button>
+            <h4>${data.strMeal}</h4>
+            <button class="card-Btn | bg-primary-tomatogreen 
+                width-100 padding-200 position-absolute text-decoration-none 
+                .font-family-Popp  font-size-24 text-neutral-lightpink text-center"
+                onclick="getRecipe(${data.idMeal})">
+            View recipie
+            </button>
+    </article>`;
+    //recipesGoInDiv.appendChild(adding_recipe);
+  });
+}
+
+/*Traje la función de Jesus hasta aqui.
+function recipesHTML(recipesDIV,recipes) {
+    console.log('Enla funcion recipes:**', recipes);
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+       
+    while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
+        recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
+    }//recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+
+    
+    recipes.forEach(data => {
+        const adding_recipe = document.createElement("div");
+
+        const card = document.createElement("div");
+        card.className = 'card';
+        adding_recipe.appendChild(card);
+
+        const cardContainer = document.createElement("div");
+        cardContainer.className = 'cardContainer';
+        cardContainer.id = data.idMeal;
+        card.appendChild(cardContainer);
+
+        const cardImgContainer = document.createElement("div");
+        cardImgContainer.className = 'cardImgContainer';
+        cardContainer.appendChild(cardImgContainer);
+
+        var newContent = document.createTextNode("data.meals");
+        cardImgContainer.appendChild(newContent);
+
+        const p = document.createElement("p");
+        cardImgContainer.appendChild(p);
+
+        var newContent1 = document.createTextNode("id="+data.strMeal);
+        p.appendChild(newContent1);
+
+        const button = document.createElement("button");
+        button.className = 'linkCard';
+        button.onclick=function(){getRecipe(data.idMeal);}
+        cardImgContainer.appendChild(button);
+
+        const imgCard = document.createElement("img");
+        imgCard.className = 'imgCard';
+        imgCard.src = data.strMealThumb;
+        button.appendChild(imgCard);
+        
+        recipesGoInDiv.appendChild(adding_recipe);
+    });
 }*/
+
+
 
 function printIngredient(data){
     let result = '';
@@ -840,7 +928,7 @@ async function getGeneral(Index, layout = '') {
     }
     //console.log("layout", layout);
     switch (Index) {
-        case 1: case 14:
+        case 1: //case 14:
             recipesHTML(layout, datos);
             break;
         case 2: //Categorías
@@ -857,7 +945,10 @@ async function getGeneral(Index, layout = '') {
             break;
         case 6: //Ingredientes
             listsAllIngredientsHTML(layout, datos);
-            break;            
+            break;
+        case 14:
+            randomRecipeHTML(layout, datos);
+            break;             
         default:
             break;
     }
@@ -908,8 +999,8 @@ document.getElementById("randomButton").onclick = async function () {
     //console.log(sessionStorage.getItem("randomRecipe"));
 };
 
-document.getElementById("searchInputTxtBox").oninput =async function(){
-    // document.getElementById("searchButton").onclick =async function(){
+//document.getElementById("SearchBar").oninput =async function(){
+    document.getElementById("searchButton").onclick =async function(){
     //Que prefieren usar el Searchbutton o el searchTextBox
     const searchterm=document.getElementById('searchInputTxtBox');
     console.log(searchterm.value);
@@ -927,53 +1018,6 @@ document.getElementById("searchInputTxtBox").oninput =async function(){
         document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
     }
 };//End of funciton getSearchBox();
-
-function recipesHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipes:**', recipes);
-    const recipesGoInDiv = document.getElementById(recipesDIV);
-       
-    while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
-        recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
-    }//recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
-
-    
-    recipes.forEach(data => {
-        const adding_recipe = document.createElement("div");
-
-        const card = document.createElement("div");
-        card.className = 'card';
-        adding_recipe.appendChild(card);
-
-        const cardContainer = document.createElement("div");
-        cardContainer.className = 'cardContainer';
-        cardContainer.id = data.idMeal;
-        card.appendChild(cardContainer);
-
-        const cardImgContainer = document.createElement("div");
-        cardImgContainer.className = 'cardImgContainer';
-        cardContainer.appendChild(cardImgContainer);
-
-        var newContent = document.createTextNode("data.meals");
-        cardImgContainer.appendChild(newContent);
-
-        const p = document.createElement("p");
-        cardImgContainer.appendChild(p);
-
-        var newContent1 = document.createTextNode("id="+data.strMeal);
-        p.appendChild(newContent1);
-
-        const button = document.createElement("button");
-        button.className = 'linkCard';
-        cardImgContainer.appendChild(button);
-
-        const imgCard = document.createElement("img");
-        imgCard.className = 'imgCard';
-        imgCard.src = data.strMealThumb;
-        button.appendChild(imgCard);
-        
-        recipesGoInDiv.appendChild(adding_recipe);
-    });
-}
 
 ///En caso de que se haya guardado información en sesión, se obtiene de ella
 /*if (sessionStorage.getItem("randomRecipe")) {
