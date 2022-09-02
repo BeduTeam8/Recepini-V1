@@ -1,10 +1,10 @@
 //The MealDB API https://themealdb.com
 //const base_url='https://www.themealdb.com'
-const serverURL="https://themealdb.com"
-const apiSegment="/api/json/"
+const serverURL = "https://themealdb.com";
+const apiSegment = "/api/json/";
 const apiBaseKey = "v1/1/";
 const apiPayedKey = "v2/9973533/";
-const search_URL=`${serverURL}${apiSegment}${apiPayedKey}`;
+const search_URL = `${serverURL}${apiSegment}${apiPayedKey}`;
 //const urlImg=serverURL;
 
 // let result = "";
@@ -38,97 +38,112 @@ const search_URL=`${serverURL}${apiSegment}${apiPayedKey}`;
                    //Busqueda por palabra o letras en el campo nombre strMeal. 
                    //Regresa un arreglo de objetos cada uno con 53 propiedades.
 ];*/
-const apiSelected = [{
-    //Busquedas sin parametros    
-        url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
-        tipo:"meals",
-        layout:"",
-        sesion: false
-    },{
-        url:"randomselection.php", //1- 10random recipes cada una con 53 props.
-        tipo:"meals",
-        layout:"rnd10Recipes",
-        sesion: true
-    },{
-        url:"categories.php", //2- Regresa una Lista de categorias en un OBJ Categories. 
-                    //con 14 registros/objetos cada uno con 4 propiedades. "idCategory" 
-                    //"strCategory" "strCategoryThumb" "strCategoryDescription"
-        tipo:"categories",
-        layout:"listCategories",
-        sesion: true
-    },{
-        url:"latest.php", //3-Regresa una lista con las ultimas 10 recetas ingresada al DB, 
-                //objetos cada una con 53 props.
-        tipo:"meals",
-        layout:"latestRecipe",
-        sesion: true
-    },{
-        url:"list.php?a=list", //4-Regresa una Lista de Area=Country/Pais son 27 registros/objetos 
-                        //de un campo/propiedad "strArea" 
-        tipo:"meals",
-        layout:"listAllArea",
-        sesion: true
-    },{
-        url:"list.php?c=list", //5-Regresa la Lista de categorias de 14 registros/objetos 
-                        //de un campo/propiedad "strCategory"
-        tipo:"meals",
-        layout:"listAllCategories",
-        sesion: true
-    },{
-        url:"list.php?i=list", //6-Regresa la Lista de ingredienes de 574 registros/objetos cada uno de               //4 propiedades. "idIngredient" "strIngredient" "strDescription" "strType"
-        tipo:"meals",
-        layout:"listAllIngredients",
-        sesion: true
-    },{
-        //Busqquedas que req parametro
-        url:"filter.php?a=", //7-${meals.strArea} Busqueda por Area del Mundo, uno de 27 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
-        tipo:"meals",
-        layout:"results",
-        sesion: false
-    },{
-        url:"filter.php?c=", //8-${meals.strCategory} Busqueda por categoria, una de 14 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
-        tipo:"meals",
-        layout:"results",
-        sesion: false
-    },{
-        url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
-        tipo:"meals",
-        layout:"results",
-        sesion: false
-    },{
-        url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
-                    //Posiblemente: String.concat(strIngredient,strIngredient,strIngredient)
-                    //Busqueda por multingredientes. Recibe un string de ingredientes separados por coma. 
-                    //Regresa un arreglo de objetos cada uno con 53 propiedades.
-        tipo:"meals",
-        layout:"results",
-        sesion: false
-    },{
-        url:"lookup.php?i=", //11-${idMeal}Busqueda por Id.
-                    //Regresa un arreglo con un unico elemento [0] con 53 propiedades
-        tipo:"meals",
-        layout:"results",
-        sesion: false
-    },{
-        url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
-        tipo:"meals",
-        layout:"",
-        sesion: false
-    },{
-        url:"search.php?s=", //13-${palabra o string} 
-                   //Busqueda por palabra o letras en el campo nombre strMeal. 
-                   //Regresa un arreglo de objetos cada uno con 53 propiedades.
-        tipo:"meals",
-        layout:"results",
-        sesion: false
-    },{
-    //Receta del día   
-        url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
-        tipo:"meals",
-        layout:"recipeDay",
-        sesion: true
-    }];
-
+const apiSelected = [
+	{
+		//Busquedas sin parametros
+		url: "random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
+		tipo: "meals",
+		layout: "",
+		sesion: false,
+	},
+	{
+		url: "randomselection.php", //1- 10random recipes cada una con 53 props.
+		tipo: "meals",
+		layout: "rnd10Recipes",
+		sesion: true,
+	},
+	{
+		url: "categories.php", //2- Regresa una Lista de categorias en un OBJ Categories.
+		//con 14 registros/objetos cada uno con 4 propiedades. "idCategory"
+		//"strCategory" "strCategoryThumb" "strCategoryDescription"
+		tipo: "categories",
+		layout: "listCategories",
+		sesion: true,
+	},
+	{
+		url: "latest.php", //3-Regresa una lista con las ultimas 10 recetas ingresada al DB,
+		//objetos cada una con 53 props.
+		tipo: "meals",
+		layout: "latestRecipe",
+		sesion: true,
+	},
+	{
+		url: "list.php?a=list", //4-Regresa una Lista de Area=Country/Pais son 27 registros/objetos
+		//de un campo/propiedad "strArea"
+		tipo: "meals",
+		layout: "listAllArea",
+		sesion: true,
+	},
+	{
+		url: "list.php?c=list", //5-Regresa la Lista de categorias de 14 registros/objetos
+		//de un campo/propiedad "strCategory"
+		tipo: "meals",
+		layout: "listAllCategories",
+		sesion: true,
+	},
+	{
+		url: "list.php?i=list", //6-Regresa la Lista de ingredienes de 574 registros/objetos cada uno de               //4 propiedades. "idIngredient" "strIngredient" "strDescription" "strType"
+		tipo: "meals",
+		layout: "listAllIngredients",
+		sesion: true,
+	},
+	{
+		//Busqquedas que req parametro
+		url: "filter.php?a=", //7-${meals.strArea} Busqueda por Area del Mundo, uno de 27 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
+		tipo: "meals",
+		layout: "results",
+		sesion: false,
+	},
+	{
+		url: "filter.php?c=", //8-${meals.strCategory} Busqueda por categoria, una de 14 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
+		tipo: "meals",
+		layout: "results",
+		sesion: false,
+	},
+	{
+		url: "filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
+		tipo: "meals",
+		layout: "results",
+		sesion: false,
+	},
+	{
+		url: "filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
+		//Posiblemente: String.concat(strIngredient,strIngredient,strIngredient)
+		//Busqueda por multingredientes. Recibe un string de ingredientes separados por coma.
+		//Regresa un arreglo de objetos cada uno con 53 propiedades.
+		tipo: "meals",
+		layout: "results",
+		sesion: false,
+	},
+	{
+		url: "lookup.php?i=", //11-${idMeal}Busqueda por Id.
+		//Regresa un arreglo con un unico elemento [0] con 53 propiedades
+		tipo: "meals",
+		layout: "results",
+		sesion: false,
+	},
+	{
+		url: "search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
+		tipo: "meals",
+		layout: "",
+		sesion: false,
+	},
+	{
+		url: "search.php?s=", //13-${palabra o string}
+		//Busqueda por palabra o letras en el campo nombre strMeal.
+		//Regresa un arreglo de objetos cada uno con 53 propiedades.
+		tipo: "meals",
+		layout: "results",
+		sesion: false,
+	},
+	{
+		//Receta del día
+		url: "random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
+		tipo: "meals",
+		layout: "recipeDay",
+		sesion: true,
+	},
+];
 
 // const url = `${serverURL}${apiPayedKey}${apiSelected[0]}`;
 // console.log("URL a llamar", url);
@@ -240,15 +255,14 @@ async function getLatestRecipe() {
 //=======================================================================
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
-function randomRecipeHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipes:', recipes);
-    const recipesGoInDiv = document.getElementById(recipesDIV);
-    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
-    recipes.forEach(data => {
-        //const adding_recipe = document.createElement("article");
-       // adding_recipe.innerHTML = 
-        recipesGoInDiv.innerHTML +=
-            `<article id="${data.idMeal}"
+function randomRecipeHTML(recipesDIV, recipes) {
+	console.log("Enla funcion recipes:", recipes);
+	const recipesGoInDiv = document.getElementById(recipesDIV);
+	recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+	recipes.forEach((data) => {
+		//const adding_recipe = document.createElement("article");
+		// adding_recipe.innerHTML =
+		recipesGoInDiv.innerHTML += `<article id="${data.idMeal}"
                 class="card-Recipie-Day | display-flex 
                 flex-gap overflow-hidden position-relative border-radius-10px 
                 padding-300-vertical padding-600-inline margin-500">
@@ -259,33 +273,33 @@ function randomRecipeHTML(recipesDIV,recipes) {
                         alt="Picture of ${data.strMeal}">
                 </button>
                 <div class="display-flex
-                    flex-column-reverse justify-content-around flex-center">
+                    flex-column-reverse justify-content-around flex-center fit-content-width">
                     <h3 class=" card-Recipie-Day-Text | font-family-Popp
                         font-style-normal font-weight-500 font-size-28
                         font-line-height-42 text-center">
                         ${data.strMeal}
                     </h3>
-                    <button class="bg-primary-tomatogreen 
-                        text-neutral-lightpink border-radius-45px button-primary text-capitalize font-family-Popp font-weight-600 font-size-16" onclick="getRecipe(${data.idMeal})">
+                    <button class="display-flex fit-content-width  bg-primary-tomatogreen 
+                        text-neutral-lightpink border-radius-45px button-primary text-capitalize font-family-Popp font-weight-300 font-size-16" onclick="getRecipe(${data.idMeal})">
                         recipie of the day
                     </button>
                 </div>
             </article>`;
-    //recipesGoInDiv.appendChild(adding_recipe);
-  });
+		//recipesGoInDiv.appendChild(adding_recipe);
+	});
 }
 
-function recipesHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipesHTML:',recipesDIV,":", recipes);
-    const recipesGoInDiv = document.getElementById(recipesDIV);
-    //recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
-    recipes.forEach(data => {
-        //const adding_recipe = document.createElement("div");
-        //adding_recipe.innerHTML = 
-        recipesGoInDiv.innerHTML +=`
+function recipesHTML(recipesDIV, recipes) {
+	console.log("Enla funcion recipesHTML:", recipesDIV, ":", recipes);
+	const recipesGoInDiv = document.getElementById(recipesDIV);
+	//recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+	recipes.forEach((data) => {
+		//const adding_recipe = document.createElement("div");
+		//adding_recipe.innerHTML =
+		recipesGoInDiv.innerHTML += `
         <article id="${data.idMeal}"
             class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
-            <button class="overflow-hidden border-radius-10px" 
+            <button class="padding-none overflow-hidden border-radius-10px" 
             onclick="getRecipe(${data.idMeal})">
                 <img class="imgCard" src="${data.strMealThumb}">
             </button>
@@ -297,8 +311,8 @@ function recipesHTML(recipesDIV,recipes) {
             View recipie
             </button>
     </article>`;
-    //recipesGoInDiv.appendChild(adding_recipe);
-  });
+		//recipesGoInDiv.appendChild(adding_recipe);
+	});
 }
 
 /*Traje la función de Jesus hasta aqui.
@@ -350,52 +364,58 @@ function recipesHTML(recipesDIV,recipes) {
     });
 }*/
 
-
-
-function printIngredient(data){
-    let result = '';
-    [...Array(21).keys()].forEach( function(valor, indice) {
-        if (`strIngredient${indice}` in data){
-            result += 
-            `<figure>
-                <button class="text-none text-neutral-matteblack"             onclick="getFilteredList(9,'${data['strIngredient'+indice]}')" >
+function printIngredient(data) {
+	let result = "";
+	[...Array(21).keys()].forEach(function (valor, indice) {
+		if (`strIngredient${indice}` in data) {
+			result += `<figure>
+                <button class="text-none text-neutral-matteblack"             onclick="getFilteredList(9,'${
+									data["strIngredient" + indice]
+								}')" >
                     <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}" style="width: 81px; height:81px; object-fit: cover"> 
+                        src="${serverURL}/images/ingredients/${
+				data["strIngredient" + indice]
+			}.png" alt="${
+				data["strIngredient" + indice]
+			}" style="width: 81px; height:81px; object-fit: cover"> 
                 </button>
-                <p>{indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}</p>
+                <p>{indice} ${data["strMeasure" + indice]}&nbsp;${
+				data["strIngredient" + indice]
+			}</p>
             </figure>`;
 
-        //Codigo API-precode
-        // `<div class="cardIngredient">
-        //     <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}
-        //         <button class="linkCard" 
-        //             onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
-        //             <img class="imgCard" 
-        //                 src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}"> 
-        //         </button>
-        //     </p></div>
-        //     `;
-            //Codgio design System
-                    // <a href="ingredient.html" class="text-none text-neutral-matteblack">
-                    //     <figure>
-                    //         <img src="/src/assets/enchilada_sauce.png" alt=""
-                    //             style="width: 81px; height:81px; object-fit: cover">
-                    //         <p>Enchilada sauce</p>
-                    //     </figure>
-                    // </a>
-        }
-    });
-    return result;
+			//Codigo API-precode
+			// `<div class="cardIngredient">
+			//     <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}
+			//         <button class="linkCard"
+			//             onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
+			//             <img class="imgCard"
+			//                 src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}">
+			//         </button>
+			//     </p></div>
+			//     `;
+			//Codgio design System
+			// <a href="ingredient.html" class="text-none text-neutral-matteblack">
+			//     <figure>
+			//         <img src="/src/assets/enchilada_sauce.png" alt=""
+			//             style="width: 81px; height:81px; object-fit: cover">
+			//         <p>Enchilada sauce</p>
+			//     </figure>
+			// </a>
+		}
+	});
+	return result;
 }
 
 //Format a One Recipe
-function recipesXLHTML(recipesDIV,therecipe) {
-    console.log('Dentro de la funcion una recipeXLHTML:', therecipe);
-    const recipeGoesinDIV = document.getElementById(recipesDIV);
-    recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
-    therecipe.forEach(data => {
-    const adding_recipe = document.createElement("div");
-    adding_recipe.innerHTML = `
+function recipesXLHTML(recipesDIV, therecipe) {
+	console.log("Dentro de la funcion una recipeXLHTML:", therecipe);
+	const recipeGoesinDIV = document.getElementById(recipesDIV);
+	recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
+	therecipe.forEach((data) => {
+		const adding_recipe = document.createElement("div");
+		adding_recipe.innerHTML =
+			`
     <div class"cardRecipe">
         <div class="cardContainer" id="${data.idMeal}">
             <div class="cardImgContainer">
@@ -406,13 +426,13 @@ function recipesXLHTML(recipesDIV,therecipe) {
                 <p><strong>Intructions</strong>${data.strInstructions}</p>
                             <img class="imgCard" src="${data.strMealThumb}">
                 <p><strong>Tags</strong>${data.strTags}</p>
-                            <a href="${data.strYoutube}">${data.strMeal}Video</a>`+
-                printIngredient(data)+
-                `</div>
+                            <a href="${data.strYoutube}">${data.strMeal}Video</a>` +
+			printIngredient(data) +
+			`</div>
             </div>
         </div>`;
-    recipeGoesinDIV.appendChild(adding_recipe);
-  });
+		recipeGoesinDIV.appendChild(adding_recipe);
+	});
 }
 
 /*
@@ -595,9 +615,9 @@ function recipesXLHTML(recipesDIV,therecipe) {
 // ${data.strCreativeCommonsConfirmed}
 // ${data.dateModified}
 
-//List of diferent categories, this came from an OBJ categories. 
+//List of diferent categories, this came from an OBJ categories.
 //Remember the API returns 2 types of OBJs. (meals and categories)
-//Only one is categories. 
+//Only one is categories.
 //The main difference is the Description Property
 /*
 function categoriesHTML(categoriesDIV,categories) {
@@ -625,20 +645,20 @@ function categoriesHTML(categoriesDIV,categories) {
   });
 }*/
 
-//render a categories information that came in a meals OBJ. 
+//render a categories information that came in a meals OBJ.
 //You can decide no using the former one and keeping this ones for simplicity purposes.
 //This funciton does not work for Categoris OBJ types.
 //And does not render description property as it is not returned in its API reponse. Rememeber the API respones for this 2 functions are different.
-function listsAllCategoriesHTML(listsDIV,lists) {
-    console.log('Enla funcion listsALLCAtegoriesHTML:',listsDIV,":", lists);
-    //
-    //const {strCategory:dataId2List}=lists;
-    //console.log('DEstructuring:',dataId2List);
-  const listsGoInDiv = document.getElementById(listsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
+function listsAllCategoriesHTML(listsDIV, lists) {
+	console.log("Enla funcion listsALLCAtegoriesHTML:", listsDIV, ":", lists);
+	//
+	//const {strCategory:dataId2List}=lists;
+	//console.log('DEstructuring:',dataId2List);
+	const listsGoInDiv = document.getElementById(listsDIV);
+	listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+	lists.forEach((data) => {
+		const addingList = document.createElement("div");
+		addingList.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.strCategory}">
                 <div class="cardImgContainer">
@@ -650,20 +670,20 @@ function listsAllCategoriesHTML(listsDIV,lists) {
                         src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
                     </button>
         </div>`;
-    listsGoInDiv.appendChild(addingList);
-  });
+		listsGoInDiv.appendChild(addingList);
+	});
 }
 
 //List all the areas or countries related to the recipes in the API
-function listsAllAreaHTML(listsDIV,lists) {
-    console.log('Enla funcion listsALLArea:',listsDIV,":", lists);
-  const listsGoInDiv = document.getElementById(listsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    listsGoInDiv.innerHTML +=
-    `<article id="${data.strArea}" class="area-catagory ">
-        <a href="search_results.html" class=" display-flex flex-column flex-gap margin-100">
+// export function listsAllAreasHTML
+function listsAllAreaHTML(listsDIV, lists) {
+	console.log("Enla funcion listsALLArea:", listsDIV, ":", lists);
+	const listsGoInDiv = document.getElementById(listsDIV);
+	listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+	lists.forEach((data) => {
+		const addingList = document.createElement("div");
+		listsGoInDiv.innerHTML += `<article id="${data.strArea}" class="area-catagory ">
+        <a href="search_results.html" class=" display-flex flex-column flex-gap margin-100" >
           <div class="flag-Container | overflow-hidden">
             <img 
             src="/src/assets/Flags/${data.strArea}.png" 
@@ -676,19 +696,19 @@ function listsAllAreaHTML(listsDIV,lists) {
             onclick="getFilteredList(7,'${data.strArea}')">${data.strArea}</button>
         </a>
         </article>`;
-    listsGoInDiv.appendChild(addingList);
-  });
+		listsGoInDiv.appendChild(addingList);
+	});
 }
 
 //List all the ingredients in the API 574 aprox registries.
 //This could be used in a graphical search gut requires a chechbox inside each cardContainer and all the logic to concatenate the values in a String feed into the API call.
-function listsAllIngredientsHTML(listIngredientsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
-  const listsGoInDiv = document.getElementById(listIngredientsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
+function listsAllIngredientsHTML(listIngredientsDIV, lists) {
+	console.log("Enla funcion lists:", lists);
+	const listsGoInDiv = document.getElementById(listIngredientsDIV);
+	listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+	lists.forEach((data) => {
+		const addingList = document.createElement("div");
+		addingList.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.idIngredient}">
                 <div class="cardImgContainer">
@@ -703,10 +723,9 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
             </div>
             <div class="cardTextContainer">${data.strDescription}</div>
         </div>`;
-    listsGoInDiv.appendChild(addingList);
-  });
+		listsGoInDiv.appendChild(addingList);
+	});
 }
-
 
 /*document.getElementById("randomButton").onclick = async function () {
     // const recipe = await getARandomRecipe();
@@ -736,9 +755,6 @@ async function getCategories(){
     
     sessionStorage.setItem("infoCategories", JSON.stringify(response)); ///Guardar en sesión
 };*/
-
-    
-
 
 /*async function getLatest(){
     const recipe = await getAPIResponse(3);
@@ -782,47 +798,52 @@ async function getListAllCategories(){
 //Es decir para filtrar por area,categoria e ingrediet(e)
 //Recibe un parametro y lo pega al URL para que la llamada al API responda.
 //primera vez llamamo a filter.php?a=gentilicio
-async function getFilteredList(filterIndex,param){
-    try{
-        const filteredResponse = await getAPIResponse(filterIndex,param);
-        console.log("filteredSearch:",filteredResponse);
-        console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
-        
-        // function getDisplayAreaxIndex(index){
-        let listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
-        switch (filterIndex) {
-            case 7:{
-                listfilteredResponseDIV=
-                    `${listfilteredResponseDIV}Area`
-                console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
-                // return listfilteredResponseDIV;
-            }
-            break;            
-            case 8:{
-                listfilteredResponseDIV=
-                    `${listfilteredResponseDIV}Category`
-                console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
-            }
-            break;
-            case 9:{
-            listfilteredResponseDIV=
-                `${listfilteredResponseDIV}Ingredient`;  
-            console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
-            }//Falta el caso 10 Multiingrediente
-            break;
-            default:
-            break;
-        }
-     recipesShortHTML(listfilteredResponseDIV,filteredResponse.meals);
-    }
-    catch{
-        console.error("Llamada a la API fallida",err.msj);
-        console.log("DEmosle Otra OPCION nada 404 Dead END");
-        console.log("Encadenar uan random o un boton recargar");
-    }
+async function getFilteredList(filterIndex, param) {
+	try {
+		const filteredResponse = await getAPIResponse(filterIndex, param);
+		console.log("filteredSearch:", filteredResponse);
+		console.log(
+			"Registros de filteredResponse:(",
+			filteredResponse.meals.length,
+			"):\n",
+			filteredResponse.meals
+		);
+
+		// function getDisplayAreaxIndex(index){
+		let listfilteredResponseDIV = "listfilteredResponse"; //Limpiar el Area de desplegar
+		switch (filterIndex) {
+			case 7:
+				{
+					listfilteredResponseDIV = `${listfilteredResponseDIV}Area`;
+					console.log(
+						"listfilteredResponseDIVCountry",
+						listfilteredResponseDIV
+					);
+					// return listfilteredResponseDIV;
+				}
+				break;
+			case 8:
+				{
+					listfilteredResponseDIV = `${listfilteredResponseDIV}Category`;
+					console.log("listfilteredResponseDIVCat", listfilteredResponseDIV);
+				}
+				break;
+			case 9:
+				{
+					listfilteredResponseDIV = `${listfilteredResponseDIV}Ingredient`;
+					console.log("listfilteredResponseDIVIng", listfilteredResponseDIV);
+				} //Falta el caso 10 Multiingrediente
+				break;
+			default:
+				break;
+		}
+		recipesShortHTML(listfilteredResponseDIV, filteredResponse.meals);
+	} catch {
+		console.error("Llamada a la API fallida", err.msj);
+		console.log("DEmosle Otra OPCION nada 404 Dead END");
+		console.log("Encadenar uan random o un boton recargar");
+	}
 }
-
-
 
 /*if (sessionStorage.getItem("listCategories")) {
     const inicial = document.getElementById("listCategories");
@@ -839,14 +860,19 @@ if (sessionStorage.getItem("listAllIngredients")) {
     console.log('objeto en sesion',JSON.parse(sessionStorage.getItem("listAllIngredients")).meals);
     listsAllIngredientsHTML("listAllIngredients", JSON.parse(sessionStorage.getItem("listAllIngredients")).meals);
 }*/
-window.onload=async function(){
-    try {
-        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(4),getGeneral(5),getGeneral(14)]);//,getGeneral(2),getGeneral(6)
-    }catch(error){
-        console.error("Promise.all Error on window.onload",error);
-    }
-}
-
+window.onload = async function () {
+	try {
+		await Promise.all([
+			getGeneral(1),
+			getGeneral(3),
+			getGeneral(4),
+			getGeneral(5),
+			getGeneral(14),
+		]); //,getGeneral(2),getGeneral(6)
+	} catch (error) {
+		console.error("Promise.all Error on window.onload", error);
+	}
+};
 
 /////////// LGisus
 /*function saveStorage(Index) {
@@ -868,46 +894,62 @@ function retrieveStorage(Index) {
     saveStorage(x);
 });*/
 
+async function getAPIResponse(apiIndex, params = "") {
+	try {
+		// console.log("A ver los params");
+		let url = !params
+			? `${search_URL}${apiSelected[apiIndex].url}`
+			: `${search_URL}${apiSelected[apiIndex].url}${params}`;
 
+		console.log("URL a llamar", url);
+		const response = await fetch(url);
+		const data = await response.json();
 
-async function getAPIResponse(apiIndex, params = '') {
-    try {
-        // console.log("A ver los params");
-        let url = (!params) ? `${search_URL}${apiSelected[apiIndex].url}` : `${search_URL}${apiSelected[apiIndex].url}${params}`;
-        
-        console.log("URL a llamar", url);
-        const response = await fetch(url);
-        const data = await response.json();
+		if (data.meals) {
+			console.log("apiIndex:", apiIndex);
+			data.meals.map(function (obj) {
+				//Borrar indices que están de más
+				[...Array(21).keys()].forEach(function (valor, indice) {
+					if (
+						`strIngredient${indice}` in obj &&
+						(obj[`strIngredient${indice}`] == "" ||
+							obj[`strIngredient${indice}`] == null)
+					) {
+						delete obj[`strIngredient${indice}`];
+						delete obj[`strMeasure${indice}`];
+					}
+				});
+				if ("strInstructions" in obj) {
+					//Dar formato a las instrucciones
+					obj.strInstructions =
+						"<ul><li>" +
+						obj.strInstructions.split("\r\n").join("</li><li>") +
+						"</li></ul>";
+				}
+			});
+			console.log("filterInvalid:", url, " : ", data.meals);
+		}
 
-        if(data.meals) {
-            console.log("apiIndex:",apiIndex);
-            data.meals.map(function (obj) { //Borrar indices que están de más
-                [...Array(21).keys()].forEach( function(valor, indice) {
-                    if (`strIngredient${indice}` in obj && (obj[`strIngredient${indice}`] == '' || obj[`strIngredient${indice}`] == null)){
-                        delete obj[`strIngredient${indice}`];
-                        delete obj[`strMeasure${indice}`];
-                    }
-                });
-                if ('strInstructions' in obj) { //Dar formato a las instrucciones
-                    obj.strInstructions = "<ul><li>"+obj.strInstructions.split('\r\n').join('</li><li>')+"</li></ul>";
-                }
-            });
-            console.log('filterInvalid:',url," : ",data.meals);
-        }
-        
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
 }
 
-async function getRecipe(id){
-    console.log("Receta",id,": ",recipe);
-    const recipe = await getAPIResponse(11,id);
-    console.log("Receta",id,": ",recipe);
-    console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
-    recipesXLHTML("recipe",recipe.meals);
-};
+async function getRecipe(id) {
+	console.log("Receta", id, ": ", recipe);
+	const recipe = await getAPIResponse(11, id);
+	console.log("Receta", id, ": ", recipe);
+	console.log(
+		"Registros de Receta",
+		id,
+		":(",
+		recipe.meals.length,
+		"):\n",
+		recipe.meals
+	);
+	recipesXLHTML("recipe", recipe.meals);
+}
 
 /*function filterInvalid(obj) {
     if ('strIngredient1' in obj && obj.strIngredient1 != '' && obj.strIngredient1 != null) {
@@ -918,48 +960,52 @@ async function getRecipe(id){
     }
 }*/
 
-async function getGeneral(Index, layout = '') {
-    const recipe = await getAPIResponse(Index);
-    // console.log(recipe);
-    /*console.log("Recipes:",recipe);
+async function getGeneral(Index, layout = "") {
+	const recipe = await getAPIResponse(Index);
+	// console.log(recipe);
+	/*console.log("Recipes:",recipe);
     console.log("Recipes[apiSelected[Index].tipo]:",recipe[apiSelected[Index].tipo]);
     console.log('# registros de getRecipes:(',recipe[apiSelected[Index].tipo].length,')');*/
-    layout = (!layout) ? apiSelected[Index].layout : layout; ///
-    let datos = recipe[apiSelected[Index].tipo];
+	layout = !layout ? apiSelected[Index].layout : layout; ///
+	let datos = recipe[apiSelected[Index].tipo];
 
-    if(apiSelected[Index].sesion===true){ ///En caso de definir que se almacene en sesión
-        if (sessionStorage.getItem(apiSelected[Index].layout)) { ///Obtener datos de sesión
-            datos = JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo];
-        } else {
-            sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
-        }
-    }
-    //console.log("layout", layout);
-    switch (Index) {
-        case 1: //case 14:
-            recipesHTML(layout, datos);
-            break;
-        case 2: //Categorías
-            categoriesHTML(layout, datos);
-            break;
-        case 3: //Latest
-            recipesHTML(layout, datos);
-            break;
-        case 4: //Area
-            listsAllAreaHTML(layout, datos);
-            break;
-        case 5:
-            listsAllCategoriesHTML(layout, datos);
-            break;
-        case 6: //Ingredientes
-            listsAllIngredientsHTML(layout, datos);
-            break;
-        case 14:
-            randomRecipeHTML(layout, datos);
-            break;             
-        default:
-            break;
-    }
+	if (apiSelected[Index].sesion === true) {
+		///En caso de definir que se almacene en sesión
+		if (sessionStorage.getItem(apiSelected[Index].layout)) {
+			///Obtener datos de sesión
+			datos = JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[
+				apiSelected[Index].tipo
+			];
+		} else {
+			sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
+		}
+	}
+	//console.log("layout", layout);
+	switch (Index) {
+		case 1: //case 14:
+			recipesHTML(layout, datos);
+			break;
+		case 2: //Categorías
+			categoriesHTML(layout, datos);
+			break;
+		case 3: //Latest
+			recipesHTML(layout, datos);
+			break;
+		case 4: //Area
+			listsAllAreaHTML(layout, datos);
+			break;
+		case 5:
+			listsAllCategoriesHTML(layout, datos);
+			break;
+		case 6: //Ingredientes
+			listsAllIngredientsHTML(layout, datos);
+			break;
+		case 14:
+			randomRecipeHTML(layout, datos);
+			break;
+		default:
+			break;
+	}
 }
 
 ///Quitar area none(25)
@@ -969,7 +1015,6 @@ async function getGeneral(Index, layout = '') {
 ///Almacenar filter
 ///Almacenar latest
 ///Añadir search
-
 
 /*async function get10Random(Index){
     //document.getElementById("rnd10Recipes").onload
@@ -995,37 +1040,45 @@ async function getGeneral(Index, layout = '') {
 };*/
 
 document.getElementById("randomButton").onclick = async function () {
-    // const recipe = await getARandomRecipe();
-    const recipe = await getAPIResponse(0);
-    console.log('getARandomRecipe:',recipe);
-    console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
-    recipesXLHTML("randomRecipe",recipe.meals);
-    
-    //console.log(recipe);
-    ///Guardar en sesión
-    sessionStorage.setItem("randomRecipe", JSON.stringify(recipe));
-    //console.log(sessionStorage.getItem("randomRecipe"));
+	// const recipe = await getARandomRecipe();
+	const recipe = await getAPIResponse(0);
+	console.log("getARandomRecipe:", recipe);
+	console.log("getARandomRecipe:(", recipe.meals.length, "):", recipe.meals);
+	recipesXLHTML("randomRecipe", recipe.meals);
+
+	//console.log(recipe);
+	///Guardar en sesión
+	sessionStorage.setItem("randomRecipe", JSON.stringify(recipe));
+	//console.log(sessionStorage.getItem("randomRecipe"));
 };
 
 //document.getElementById("SearchBar").oninput =async function(){
-    document.getElementById("searchButton").onclick =async function(){
-    //Que prefieren usar el Searchbutton o el searchTextBox
-    const searchterm=document.getElementById('searchInputTxtBox');
-    console.log(searchterm.value);
-    const recipe = await getAPIResponse(13,searchterm.value);
-    if ('meals' in recipe && recipe.meals){
-        console.log("Buscando receta(",searchterm.value,"): ",recipe);
-        console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
-        recipesHTML("results",recipe.meals);
-    } else {
-        /*const recipesGoInDiv = document.getElementById("results");
+document.getElementById("searchButton").onclick = async function () {
+	//Que prefieren usar el Searchbutton o el searchTextBox
+	const searchterm = document.getElementById("searchInputTxtBox");
+	console.log(searchterm.value);
+	const recipe = await getAPIResponse(13, searchterm.value);
+	if ("meals" in recipe && recipe.meals) {
+		console.log("Buscando receta(", searchterm.value, "): ", recipe);
+		console.log(
+			"Receta x Terminos: ",
+			searchterm.value,
+			":#(",
+			recipe.meals.length,
+			"):\n",
+			recipe.meals
+		);
+		recipesHTML("results", recipe.meals);
+	} else {
+		/*const recipesGoInDiv = document.getElementById("results");
        
         while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
             recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
         }*/
-        document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
-    }
-};//End of funciton getSearchBox();
+		document.getElementById("results").innerHTML =
+			"<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
+	}
+}; //End of funciton getSearchBox();
 
 ///En caso de que se haya guardado información en sesión, se obtiene de ella
 /*if (sessionStorage.getItem("randomRecipe")) {
@@ -1035,7 +1088,6 @@ document.getElementById("randomButton").onclick = async function () {
     recipesHTML("randomRecipe", JSON.parse(sessionStorage.getItem("randomRecipe")).meals);
 }
 */
-
 
 // Listen for changes in the text field
 /*button.addEventListener("click", () => {

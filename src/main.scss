@@ -253,7 +253,7 @@ $border-width: var(--Border-1px);
 		--font-size-64: 2.625rem;
 		--font-size-56: 2.375rem;
 		--font-size-48: 2.125rem;
-		--font-size-40: 1.800rem;
+		--font-size-40: 1.8rem;
 		--font-size-32: 1.75rem;
 		--font-size-28: 1.625rem;
 		--font-size-24: 1rem;
@@ -462,6 +462,10 @@ footer {
 }
 .margin-900-vertical {
 	margin-block: var(--Margin-900);
+}
+
+.padding-none {
+	padding: 0;
 }
 
 .padding-100 {
@@ -1123,19 +1127,23 @@ footer {
 	max-height: 21rem;
 	transition: all 250ms ease-in-out;
 
-	div {
+	button {
 		overflow: hidden;
 		max-width: 15rem;
+		border: none;
+		outline: none;
 
 		img {
-			width: 110%;
+			width: 150%;
 			transition: all 450ms ease-in-out;
 			object-fit: cover;
+			object-position: (-25px 0);
 		}
 	}
 
 	.card-Btn {
 		bottom: 0;
+		max-width: 20rem;
 		transform: translateY(100%);
 		border: none;
 		transition: all 350ms ease-in-out;
@@ -1227,20 +1235,20 @@ footer {
 
 //Ingredient page classes
 
-.ingredient-img >img{
+.ingredient-img > img {
 	width: 685px;
 	height: 226px;
-	transition: all .560ms ease
+	transition: all 0.56ms ease;
 }
 
 //About page classes
 
-.idCards{
+.idCards {
 	flex-direction: row;
 }
-.list{
-	width: 55%; 
-	margin: 20px auto
+.list {
+	width: 55%;
+	margin: 20px auto;
 }
 // // index page classes // //
 
@@ -1284,7 +1292,7 @@ footer {
 }
 
 .card-Recipie-Day {
-	max-width: fit-content;
+	max-width: (fit-content, 100%);
 	height: 100%;
 	background-color: rgb(var(--Neutral-white));
 	box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
@@ -1299,6 +1307,9 @@ footer {
 	}
 
 	.imgContainer {
+		border: none;
+		outline: none;
+		padding: 0%;
 		max-width: 18rem;
 		height: 18rem;
 		overflow: hidden;
@@ -1306,7 +1317,6 @@ footer {
 		img {
 			height: 100%;
 			object-fit: cover;
-			object-position: -100px 50%;
 		}
 	}
 
@@ -1438,45 +1448,44 @@ footer {
 
 // media query for about page
 @media screen and (max-width: 400px) {
-	.idCards{
+	.idCards {
 		flex-direction: column;
 	}
 	.descrip {
 		display: fixed;
 		text-align: left;
 	}
-	.margin{
+	.margin {
 		margin: 20px;
 	}
-	.list{
+	.list {
 		width: 80%;
 	}
 }
 @media screen and (max-width: 768px) {
-	.idCards{
+	.idCards {
 		flex-direction: column;
 	}
 	.descrip {
 		display: fixed;
 		text-align: left;
 	}
-	.margin{
+	.margin {
 		margin: 20px;
 	}
-	.list{
+	.list {
 		width: 80%;
 	}
 }
 // media query for ingredient page
 @media screen and (max-width: 400px) {
-	.ingredient-img > img{
+	.ingredient-img > img {
 		height: clamp(25%, 100%, 80%);
 		width: clamp(25%, 100%, 80%);
-		
 	}
 }
 @media screen and (max-width: 768px) {
-	.ingredient-img > img{
+	.ingredient-img > img {
 		height: clamp(25%, 100%, 80%);
 		width: clamp(25%, 100%, 80%);
 	}
