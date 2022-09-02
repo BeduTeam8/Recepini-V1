@@ -83,17 +83,17 @@ const apiSelected = [{
         //Busqquedas que req parametro
         url:"filter.php?a=", //7-${meals.strArea} Busqueda por Area del Mundo, uno de 27 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"filter.php?c=", //8-${meals.strCategory} Busqueda por categoria, una de 14 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
@@ -101,13 +101,13 @@ const apiSelected = [{
                     //Busqueda por multingredientes. Recibe un string de ingredientes separados por coma. 
                     //Regresa un arreglo de objetos cada uno con 53 propiedades.
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"lookup.php?i=", //11-${idMeal}Busqueda por Id.
                     //Regresa un arreglo con un unico elemento [0] con 53 propiedades
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
@@ -119,7 +119,7 @@ const apiSelected = [{
                    //Busqueda por palabra o letras en el campo nombre strMeal. 
                    //Regresa un arreglo de objetos cada uno con 53 propiedades.
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
     //Receta del día   
@@ -247,7 +247,7 @@ function randomRecipeHTML(recipesDIV,recipes) {
     recipes.forEach(data => {
         //const adding_recipe = document.createElement("article");
        // adding_recipe.innerHTML = 
-        recipesGoInDiv.innerHTML =
+        recipesGoInDiv.innerHTML +=
             `<article id="${data.idMeal}"
                 class="card-Recipie-Day | display-flex 
                 flex-gap overflow-hidden position-relative border-radius-10px 
@@ -276,7 +276,7 @@ function randomRecipeHTML(recipesDIV,recipes) {
 }
 
 function recipesHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipes:', recipes);
+    console.log('Enla funcion recipesHTML:',recipesDIV,":", recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     //recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
@@ -390,7 +390,7 @@ function printIngredient(data){
 
 //Format a One Recipe
 function recipesXLHTML(recipesDIV,therecipe) {
-    console.log('Dentro de la funcion una recipe:', therecipe);
+    console.log('Dentro de la funcion una recipeXLHTML:', therecipe);
     const recipeGoesinDIV = document.getElementById(recipesDIV);
     recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
     therecipe.forEach(data => {
@@ -599,8 +599,9 @@ function recipesXLHTML(recipesDIV,therecipe) {
 //Remember the API returns 2 types of OBJs. (meals and categories)
 //Only one is categories. 
 //The main difference is the Description Property
+/*
 function categoriesHTML(categoriesDIV,categories) {
-    console.log('Enla funcion categories:', categories);
+    console.log('Enla funcion categoriesHTML:', categories);
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
   categoriesGoInDiv.innerHTML = ""; //Clean element Before Filling
   categories.forEach(data => {
@@ -622,14 +623,14 @@ function categoriesHTML(categoriesDIV,categories) {
         </div>`;
     categoriesGoInDiv.appendChild(adding_categorie);
   });
-}
+}*/
 
 //render a categories information that came in a meals OBJ. 
 //You can decide no using the former one and keeping this ones for simplicity purposes.
 //This funciton does not work for Categoris OBJ types.
 //And does not render description property as it is not returned in its API reponse. Rememeber the API respones for this 2 functions are different.
 function listsAllCategoriesHTML(listsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
+    console.log('Enla funcion listsALLCAtegoriesHTML:',listsDIV,":", lists);
     //
     //const {strCategory:dataId2List}=lists;
     //console.log('DEstructuring:',dataId2List);
@@ -655,22 +656,26 @@ function listsAllCategoriesHTML(listsDIV,lists) {
 
 //List all the areas or countries related to the recipes in the API
 function listsAllAreaHTML(listsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
+    console.log('Enla funcion listsALLArea:',listsDIV,":", lists);
   const listsGoInDiv = document.getElementById(listsDIV);
   listsGoInDiv.innerHTML = ""; //Clean element Before Filling
   lists.forEach(data => {
     const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strArea}">
-                <div class="cardImgContainer">
-                    <button class="linkCard" 
-                        onclick="getFilteredList(7,'${data.strArea}')">
-                        <p>
-                            <strong>${data.strArea}: </strong>
-                        </p>
-                    </button>
-        </div>`;
+    listsGoInDiv.innerHTML +=
+    `<article id="${data.strArea}" class="area-catagory ">
+        <a href="search_results.html" class=" display-flex flex-column flex-gap margin-100">
+          <div class="flag-Container | overflow-hidden">
+            <img 
+            src="/src/assets/Flags/${data.strArea}.png" 
+            alt="The ${data.strArea} Flag" onclick="getFilteredList(7,'${data.strArea}')">
+          </div>
+          <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
+            font-style-normal font-weight-600 font-size-20
+             fit-content-width text-center padding-300-inline text-primary-tomatored"
+            style="border: 2px solid ;"
+            onclick="getFilteredList(7,'${data.strArea}')">${data.strArea}</button>
+        </a>
+        </article>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
@@ -784,7 +789,7 @@ async function getFilteredList(filterIndex,param){
         console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
         
         // function getDisplayAreaxIndex(index){
-        let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
+        let listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
         switch (filterIndex) {
             case 7:{
                 listfilteredResponseDIV=
@@ -817,12 +822,7 @@ async function getFilteredList(filterIndex,param){
     }
 }
 
-async function getRecipe(id){
-    const recipe = await getAPIResponse(11,id);
-    console.log("Receta",id,": ",recipe);
-    console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
-    recipesHTML("recipe",recipe.meals);
-};
+
 
 /*if (sessionStorage.getItem("listCategories")) {
     const inicial = document.getElementById("listCategories");
@@ -841,7 +841,7 @@ if (sessionStorage.getItem("listAllIngredients")) {
 }*/
 window.onload=async function(){
     try {
-        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getGeneral(5),getGeneral(14)]);//,getGeneral(6)
+        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(4),getGeneral(5),getGeneral(14)]);//,getGeneral(2),getGeneral(6)
     }catch(error){
         console.error("Promise.all Error on window.onload",error);
     }
@@ -892,7 +892,7 @@ async function getAPIResponse(apiIndex, params = '') {
                     obj.strInstructions = "<ul><li>"+obj.strInstructions.split('\r\n').join('</li><li>')+"</li></ul>";
                 }
             });
-            console.log('filterInvalid',data.meals);
+            console.log('filterInvalid:',url," : ",data.meals);
         }
         
         return data;
@@ -900,6 +900,14 @@ async function getAPIResponse(apiIndex, params = '') {
         console.log(error);
     }
 }
+
+async function getRecipe(id){
+    console.log("Receta",id,": ",recipe);
+    const recipe = await getAPIResponse(11,id);
+    console.log("Receta",id,": ",recipe);
+    console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
+    recipesXLHTML("recipe",recipe.meals);
+};
 
 /*function filterInvalid(obj) {
     if ('strIngredient1' in obj && obj.strIngredient1 != '' && obj.strIngredient1 != null) {
