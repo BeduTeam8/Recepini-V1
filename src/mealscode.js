@@ -262,7 +262,7 @@ function listsAllAreaHTML(listsDIV, lists) {
 	lists.forEach((data) => {
 		const addingList = document.createElement("div");
 		listsGoInDiv.innerHTML += `<article id="${data.strArea}" class="area-catagory ">
-        <a href="search_results.html" class=" display-flex flex-column flex-gap margin-100" >
+        <a class=" display-flex flex-column flex-gap margin-100" >
           <div class="flag-Container | overflow-hidden">
             <img 
             src="/src/assets/Flags/${data.strArea}.png" 
@@ -409,7 +409,7 @@ async function getAPIResponse(apiIndex, params = "") {
 	}
 }
 
-// get recipie by id
+//get recipie by id
 async function getRecipe(id) {
 	try {
 		const response = await getAPIResponse(11, id);

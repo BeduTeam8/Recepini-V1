@@ -2,6 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+	experiments: {
+		asyncWebAssembly: true,
+	},
 	entry: {
 		main: "./src/index.js",
 		vendor: "./src/vendor.js",
@@ -20,19 +23,19 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			filename: "recipe.html",
 			template: "./src/recipe.html",
-			chunks: ["main"], 
+			chunks: ["main"],
 		}),
 		new HtmlWebpackPlugin({
 			filename: "search_results.html",
 			template: "./src/search_results.html",
-			chunks: ["main"], 
-      	}),
-		  new HtmlWebpackPlugin({
+			chunks: ["main"],
+		}),
+		new HtmlWebpackPlugin({
 			filename: "aboutUs.html",
 			template: "./src/aboutUs.html",
-			chunks: ["main"], 
-      	}),
-      new HtmlWebpackPlugin({
+			chunks: ["main"],
+		}),
+		new HtmlWebpackPlugin({
 			filename: "ingredient.html",
 			template: "./src/ingredient.html",
 			chunks: ["main"], //agregarmos "vendor", antes de main cuando queremos cargar logica bootstrap
@@ -51,6 +54,17 @@ module.exports = {
 				// image loader
 				test: /\.(svg|png|jpe?g|jpg|gif)$/,
 				type: "asset/resource",
+			},
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-env"],
+						cacheDirectory: true,
+					},
+				},
 			},
 		],
 	},

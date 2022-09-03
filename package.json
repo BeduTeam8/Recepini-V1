@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/BeduTeam8/Recepini-V1#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
     "boostrap": "^2.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
