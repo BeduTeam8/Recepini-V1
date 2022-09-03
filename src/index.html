@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/data.css">
+    <title>AsyncCalls</title>
+    </head>
+    <body>
+      <br>
+      <h1 class="top">Recipini</h1>
+      <h2 class="results">Receta del día</h2>
+      <div class="lists results" id="recipeDay">
+        <!-- La lista de categorias -->
+      </div>
+      <br>
+      <h2 class="results">Search/List Results</h2>
+      <div class="lists" id="upperpart">
+        <div> 
+          <form class="searchBox">
+            <!-- <input id="" type="radio"  -->
+            <input id="searchInputTxtBox" class="searchBox" type="text" name="search"
+            placeholder="&#128270;term(s)..in recipe name" >
+      
+            <button id="searchButton" type="button">
+            <!-- onclick="getSearchBox(12)" -->
+              Search
+            </button>
+          </form>     
+        </div>
+    </div>
+    <br>
+    PRESIONA EL BOTO PARA ELEGIRT UNA RECETA AL AZAR
+    <br>
+    <div class="results">
+      <h2 class="results">Search/List Results</h2>
+      <br>
+      AQUI TE LISTAMOS LA LISTA DE RECETAS QUE TENEMOS SEGUN LA busqueda elegida. 
+      <br>
+      <div class="lists results" id="results">
+        <!-- La lista de categorias -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+      <br>
+    </div>
+    <div id="theRecipe">
+      <br>
+      <h2 class="recipe">The Recipe</h2>
+      <br>
+      SI TOCAS UNA RECETA AQUI APARECE SU CONTENIDO
+      <br>
+      <div id="recipe">
+         <!-- La Receta desplegada -->
+      </div>
+      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    </div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+
+    <p>===</p>
+
+    <div class="random" id="random">
+      <h2>Random Recipe</h2>
+      <div>
+        <button id="randomButton">Random Recipe</button>
+      </div>
+      <div class="random" id="randomRecipe">
+        <!-- Receta Random -->
+      </div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+      <p>===</p>
+      <h2>10 Random Recipe</h2>
+      <div class="random" id="rnd10Recipes">
+        
+        <!--10 Recetas Random -->
+      </div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+    </div>
+    
+    //NO ESTAMOS USANDO  EL RESPONSE CON OBJ CATEGORIES QUE REGRESA LO MISMO QUE LIST.PHP?C=LIST
+    <!-- <div id="categories2">
+      <h2>Categories</h2>
+      <div id="listCategories"> -->
+        <!-- La lista de categorias -->
+      <!-- </div>
+    </div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    <div id="latest">
+      <h2>Latest</h2>
+      <div id="latestRecipe">
+        <!-- La ultima receta ingresada a la DB -->
+      </div>
+    </div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime.
+    <div id="allCategories">
+      <h2>Categories</h2>
+      <div id="listAllCategories">
+        <!-- La lista de categorias -->
+      </div>
+    </div>
+    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    <div id="allArea">
+      <h2>Area Countries</h2>
+      <div id="listAllAreas">
+        <!-- La lista de categorias -->
+      </div>
+    </div>
+    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    //NO ESTAMOS USANDO LA LISTA DE TODOS LOS Ingredients
+    <!-- <div id="allIngredients">
+      <h2>All Ingredients</h2>
+      <div id="listAllIngredients"> -->
+        <!-- La lista de categorias -->
+      <!-- </div>
+    </div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, voluptatibus! Nam placeat asperiores ab est odio tempore explicabo animi officiis quia cupiditate labore consectetur laborum, tempora nobis facilis, ut maxime. -->
+    <script src="./index.js"></script>
+  </body>
+</html>
