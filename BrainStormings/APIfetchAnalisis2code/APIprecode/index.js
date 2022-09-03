@@ -42,7 +42,7 @@ const apiSelected = [{
     //Busquedas sin parametros    
         url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
         tipo:"meals",
-        layout:"",
+        layout:"recipe",
         sesion: false
     },{
         url:"randomselection.php", //1- 10random recipes cada una con 53 props.
@@ -50,7 +50,7 @@ const apiSelected = [{
         layout:"rnd10Recipes",
         sesion: true
     },{
-        url:"categories.php", //2- Regresa una Lista de categorias en un OBJ Categories. 
+        url:"categories.php", //2- Regresa una Lista de categorias en un OBJ Categories. DESACTIVAMOS SUS FUNCIONES LA DEEJAMOS PARA NO ALTERAR MAS
                     //con 14 registros/objetos cada uno con 4 propiedades. "idCategory" 
                     //"strCategory" "strCategoryThumb" "strCategoryDescription"
         tipo:"categories",
@@ -66,7 +66,7 @@ const apiSelected = [{
         url:"list.php?a=list", //4-Regresa una Lista de Area=Country/Pais son 27 registros/objetos 
                         //de un campo/propiedad "strArea" 
         tipo:"meals",
-        layout:"listAllArea",
+        layout:"listAllAreas",
         sesion: true
     },{
         url:"list.php?c=list", //5-Regresa la Lista de categorias de 14 registros/objetos 
@@ -83,17 +83,17 @@ const apiSelected = [{
         //Busqquedas que req parametro
         url:"filter.php?a=", //7-${meals.strArea} Busqueda por Area del Mundo, uno de 27 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"filter.php?c=", //8-${meals.strCategory} Busqueda por categoria, una de 14 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
@@ -101,25 +101,25 @@ const apiSelected = [{
                     //Busqueda por multingredientes. Recibe un string de ingredientes separados por coma. 
                     //Regresa un arreglo de objetos cada uno con 53 propiedades.
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
         url:"lookup.php?i=", //11-${idMeal}Busqueda por Id.
                     //Regresa un arreglo con un unico elemento [0] con 53 propiedades
         tipo:"meals",
-        layout:"",
+        layout:"recipe",
         sesion: false
     },{
         url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
         tipo:"meals",
-        layout:"",
+        layout:"alfabetico",
         sesion: false
     },{
         url:"search.php?s=", //13-${palabra o string} 
                    //Busqueda por palabra o letras en el campo nombre strMeal. 
                    //Regresa un arreglo de objetos cada uno con 53 propiedades.
         tipo:"meals",
-        layout:"",
+        layout:"results",
         sesion: false
     },{
     //Receta del día   
@@ -240,8 +240,8 @@ async function getLatestRecipe() {
 //=======================================================================
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
-/*function recipesHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipes:', recipes);
+function recipesHTML(recipesDIV,recipes) {
+    console.log('Enla funcion recipes:',recipesDIV,' : ', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
@@ -254,7 +254,7 @@ async function getLatestRecipe() {
                         <p>
                             id=${data.strMeal}: 
                         </p>
-                        <button class="linkCard" onclick="console.log('Recipe ID: ',${data.idMeal})">
+                        <button class="linkCard" onclick="getRecipe(${data.idMeal})">
                             <img class="imgCard" src="${data.strMealThumb}">
                         </button>
                     </div>
@@ -262,7 +262,7 @@ async function getLatestRecipe() {
             </div>`;
     recipesGoInDiv.appendChild(adding_recipe);
   });
-}*/
+}
 
 function printIngredient(data){
     let result = '';
@@ -673,38 +673,39 @@ async function getListAllCategories(){
 //primera vez llamamo a filter.php?a=gentilicio
 async function getFilteredList(filterIndex,param){
     try{
-        const filteredResponse = await getAPIResponse(filterIndex,param);
-        console.log("filteredSearch:",filteredResponse);
-        console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
+        //const filteredResponse = await getAPIResponse(filterIndex,param);
+        const filteredResponse = await getGeneral(filterIndex,param);
+        // console.log("filteredSearch:",filteredResponse);
+        // console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
         
         // function getDisplayAreaxIndex(index){
-        let=listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
-        switch (filterIndex) {
-            case 7:{
-                listfilteredResponseDIV=
-                    `${listfilteredResponseDIV}Area`
-                console.log('listfilteredResponseDIVCountry',listfilteredResponseDIV);
-                // return listfilteredResponseDIV;
-            }
-            break;            
-            case 8:{
-                listfilteredResponseDIV=
-                    `${listfilteredResponseDIV}Category`
-                console.log('listfilteredResponseDIVCat',         listfilteredResponseDIV);
-            }
-            break;
-            case 9:{
-            listfilteredResponseDIV=
-                `${listfilteredResponseDIV}Ingredient`;  
-            console.log('listfilteredResponseDIVIng',listfilteredResponseDIV);
-            }//Falta el caso 10 Multiingrediente
-            break;
-            default:
-            break;
-        }
-     recipesShortHTML(listfilteredResponseDIV,filteredResponse.meals);
+        let listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
+    //     switch (filterIndex) {
+    //         case 7:{
+    //             listfilteredResponseDIV=
+    //                 `${listfilteredResponseDIV}Area`
+    //             console.log('listfilteredResponseDIVCountry:',listfilteredResponseDIV);
+    //             // return listfilteredResponseDIV;
+    //         }
+    //         break;            
+    //         case 8:{
+    //             listfilteredResponseDIV=
+    //                 `${listfilteredResponseDIV}Category`
+    //             console.log('listfilteredResponseDIVCat:',         listfilteredResponseDIV);
+    //         }
+    //         break;
+    //         case 9:{
+    //         listfilteredResponseDIV=
+    //             `${listfilteredResponseDIV}Ingredient`;  
+    //         console.log('listfilteredResponseDIVIng:',listfilteredResponseDIV);
+    //         }//Falta el caso 10 Multiingrediente
+    //         break;
+    //         default:
+    //         break;
+    //     }
+    //  recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
     }
-    catch{
+    catch (err){
         console.error("Llamada a la API fallida",err.msj);
         console.log("DEmosle Otra OPCION nada 404 Dead END");
         console.log("Encadenar uan random o un boton recargar");
@@ -712,10 +713,12 @@ async function getFilteredList(filterIndex,param){
 }
 
 async function getRecipe(id){
-    const recipe = await getAPIResponse(11,id);
-    console.log("Receta",id,": ",recipe);
-    console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
-    recipesHTML("recipe",recipe.meals);
+    const recipe = await getGeneral(11,id);
+    //const recipe = await getAPIResponse(11,id);
+    // console.log("Receta",id,": ",recipe);
+    // console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
+    //recipesXLHTML("recipe",recipe.meals);
+    //recipesHTML(,recipe.meals);
 };
 
 /*if (sessionStorage.getItem("listCategories")) {
@@ -735,7 +738,7 @@ if (sessionStorage.getItem("listAllIngredients")) {
 }*/
 window.onload=async function(){
     try {
-        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(2),getGeneral(4),getGeneral(5),getGeneral(14)]);//,getGeneral(6)
+        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(4),getGeneral(5),getGeneral(14)]);//getGeneral(2),getGeneral(6)
     }catch(error){
         console.error("Promise.all Error on window.onload",error);
     }
@@ -786,7 +789,7 @@ async function getAPIResponse(apiIndex, params = '') {
                     obj.strInstructions = "<ul><li>"+obj.strInstructions.split('\r\n').join('</li><li>')+"</li></ul>";
                 }
             });
-            console.log('filterInvalid',data.meals);
+            console.log('filterOBJ from API',data.meals);
         }
         
         return data;
@@ -804,13 +807,14 @@ async function getAPIResponse(apiIndex, params = '') {
     }
 }*/
 
-async function getGeneral(Index, layout = '') {
-    const recipe = await getAPIResponse(Index);
+async function getGeneral(Index,params= '') {
+    const recipe = await getAPIResponse(Index,params);
     // console.log(recipe);
     /*console.log("Recipes:",recipe);
     console.log("Recipes[apiSelected[Index].tipo]:",recipe[apiSelected[Index].tipo]);
     console.log('# registros de getRecipes:(',recipe[apiSelected[Index].tipo].length,')');*/
-    layout = (!layout) ? apiSelected[Index].layout : layout; ///
+    layout =apiSelected[Index].layout;
+    //layout = (!layout) ? apiSelected[Index].layout : layout; ///
     let datos = recipe[apiSelected[Index].tipo];
 
     if(apiSelected[Index].sesion===true){ ///En caso de definir que se almacene en sesión
@@ -822,7 +826,7 @@ async function getGeneral(Index, layout = '') {
     }
     //console.log("layout", layout);
     switch (Index) {
-        case 1: case 14:
+        case 1: 
             recipesHTML(layout, datos);
             break;
         case 2: //Categorías
@@ -839,7 +843,44 @@ async function getGeneral(Index, layout = '') {
             break;
         case 6: //Ingredientes
             listsAllIngredientsHTML(layout, datos);
-            break;            
+            break;  
+        case 7:{//Lista por pais
+            // listfilteredResponseDIV=
+            //     `${listfilteredResponseDIV}Area`
+            // console.log('listfilteredResponseDIVCountry:',listfilteredResponseDIV);
+            // return listfilteredResponseDIV;
+        }
+        recipesHTML(layout,datos)
+        break;            
+        case 8:{//Lista por Categoria de Comida
+            // listfilteredResponseDIV=
+            //     `${listfilteredResponseDIV}Category`
+            // console.log('listfilteredResponseDIVCat:',         listfilteredResponseDIV);
+        }
+        // recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+        recipesHTML(layout,datos)
+        break; 
+        case 9:{//lista de Ingredientes
+                // listfilteredResponseDIV=
+                //     `${listfilteredResponseDIV}Ingredient`;  
+                // console.log('listfilteredResponseDIVIng:',listfilteredResponseDIV);
+                }//Falta el caso 10 Multiingrediente
+            // recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+            recipesHTML(layout,datos)
+            break; 
+        case 11:
+            recipesXLHTML(layout,datos);
+            break;
+        case 14:
+            recipesHTML(layout,datos)
+            break;
+            switch (filterIndex) {
+                
+                default:
+                break;
+            }
+         recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+    
         default:
             break;
     }
@@ -882,8 +923,8 @@ document.getElementById("randomButton").onclick = async function () {
     const recipe = await getAPIResponse(0);
     console.log('getARandomRecipe:',recipe);
     console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
-    recipesXLHTML("randomRecipe",recipe.meals);
-    
+    //recipesXLHTML("randomRecipe",recipe.meals);
+    recipesHTML("randomRecipe",recipe.meals);
     //console.log(recipe);
     ///Guardar en sesión
     sessionStorage.setItem("randomRecipe", JSON.stringify(recipe));
@@ -915,52 +956,52 @@ document.getElementById("searchInputTxtBox").oninput =async function(){
     }
 };//End of funciton getSearchBox();
 
-function recipesHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipes:**', recipes);
-    const recipesGoInDiv = document.getElementById(recipesDIV);
+// function recipesHTML(recipesDIV,recipes) {
+//     console.log('Enla funcion recipes:**', recipes);
+//     const recipesGoInDiv = document.getElementById(recipesDIV);
        
-    while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
-        recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
-    }//recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+//     while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
+//         recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
+//     }//recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
 
     
-    recipes.forEach(data => {
-        const adding_recipe = document.createElement("div");
+//     recipes.forEach(data => {
+//         const adding_recipe = document.createElement("div");
 
-        const card = document.createElement("div");
-        card.className = 'card';
-        adding_recipe.appendChild(card);
+//         const card = document.createElement("div");
+//         card.className = 'card';
+//         adding_recipe.appendChild(card);
 
-        const cardContainer = document.createElement("div");
-        cardContainer.className = 'cardContainer';
-        cardContainer.id = data.idMeal;
-        card.appendChild(cardContainer);
+//         const cardContainer = document.createElement("div");
+//         cardContainer.className = 'cardContainer';
+//         cardContainer.id = data.idMeal;
+//         card.appendChild(cardContainer);
 
-        const cardImgContainer = document.createElement("div");
-        cardImgContainer.className = 'cardImgContainer';
-        cardContainer.appendChild(cardImgContainer);
+//         const cardImgContainer = document.createElement("div");
+//         cardImgContainer.className = 'cardImgContainer';
+//         cardContainer.appendChild(cardImgContainer);
 
-        var newContent = document.createTextNode("data.meals");
-        cardImgContainer.appendChild(newContent);
+//         var newContent = document.createTextNode("data.meals");
+//         cardImgContainer.appendChild(newContent);
 
-        const p = document.createElement("p");
-        cardImgContainer.appendChild(p);
+//         const p = document.createElement("p");
+//         cardImgContainer.appendChild(p);
 
-        var newContent1 = document.createTextNode("id="+data.strMeal);
-        p.appendChild(newContent1);
+//         var newContent1 = document.createTextNode("id="+data.strMeal);
+//         p.appendChild(newContent1);
 
-        const button = document.createElement("button");
-        button.className = 'linkCard';
-        cardImgContainer.appendChild(button);
+//         const button = document.createElement("button");
+//         button.className = 'linkCard';
+//         cardImgContainer.appendChild(button);
 
-        const imgCard = document.createElement("img");
-        imgCard.className = 'imgCard';
-        imgCard.src = data.strMealThumb;
-        button.appendChild(imgCard);
+//         const imgCard = document.createElement("img");
+//         imgCard.className = 'imgCard';
+//         imgCard.src = data.strMealThumb;
+//         button.appendChild(imgCard);
         
-        recipesGoInDiv.appendChild(adding_recipe);
-    });
-}
+//         recipesGoInDiv.appendChild(adding_recipe);
+//     });
+// }
 
 ///En caso de que se haya guardado información en sesión, se obtiene de ella
 /*if (sessionStorage.getItem("randomRecipe")) {
