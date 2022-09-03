@@ -34,13 +34,14 @@
           </li>
         </ul>
         <div class="navbar-Search-Container | display-flex">
-          <form class="width-100 padding-300-inline">
-            <input
-              class=" border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
-              type="search" id="SearchBar" placeholder="Search for recepies here" aria-label="Search">
+          <form class="searchBox width-100 padding-300-inline">
+            <input 
+              class="searchBox border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
+              type="search" id="SearchBar" name="search" placeholder="Search for recepies here" aria-label="Search">
           </form>
+          
           <a href="recipe.html" style="text-decoration:none;">
-            <button id="random"
+            <button id="randomButton"
               class="display-flex text-neutral-lightpink border-radius-4px button-primary text-capitalize font-family-Popp font-weight-600 font-size-20 bg-primary-tomatogreen">random
               <span class="random-dice"></span>
             </button>
@@ -174,7 +175,8 @@
           recepie? Look no further we have 10 recomendations you
           should try and remove the guess work! </p>
       </div>
-      <div class="card-grid-10-Recomendations | margin-200 padding-900-vertical padding-200-inline " id="latestRecipe">
+      <div class="card-grid-10-Recomendations | margin-200 padding-900-vertical padding-200-inline " id="listAllCategories"
+      <!-- id="latestRecipe"> -->
         <!-- 10 recomendation funciton start here -->
         <!-- <article id="recipeCard"
           class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">

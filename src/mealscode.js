@@ -276,27 +276,25 @@ function randomRecipeHTML(recipesDIV,recipes) {
 }
 
 function recipesHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipesHTML:',recipesDIV,":", recipes);
+    console.log('En la funcion recipesHTML:',recipesDIV,":", recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     //recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
         //const adding_recipe = document.createElement("div");
         //adding_recipe.innerHTML = 
-        recipesGoInDiv.innerHTML +=`
-        <article id="${data.idMeal}"
-            class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
-            <button class="overflow-hidden border-radius-10px" 
-            onclick="getRecipe(${data.idMeal})">
-                <img class="imgCard" src="${data.strMealThumb}">
-            </button>
-            <h4>${data.strMeal}</h4>
-            <button class="card-Btn | bg-primary-tomatogreen 
-                width-100 padding-200 position-absolute text-decoration-none 
-                .font-family-Popp  font-size-24 text-neutral-lightpink text-center"
+        recipesGoInDiv.innerHTML +=
+            `<article id="${data.idMeal}"
+                class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
+                <button class="overflow-hidden border-radius-10px" 
                 onclick="getRecipe(${data.idMeal})">
-            View recipie
-            </button>
-    </article>`;
+                    <img class="imgCard" src="${data.strMealThumb}">
+                </button>
+                <h4>${data.strMeal}</h4>
+                <button href="#"
+                    class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center"
+                    onclick="getRecipe(${data.idMeal})">
+                    View recipie </button>
+            </article>`;
     //recipesGoInDiv.appendChild(adding_recipe);
   });
 }
@@ -364,25 +362,6 @@ function printIngredient(data){
                 </button>
                 <p>{indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}</p>
             </figure>`;
-
-        //Codigo API-precode
-        // `<div class="cardIngredient">
-        //     <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}
-        //         <button class="linkCard" 
-        //             onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
-        //             <img class="imgCard" 
-        //                 src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}"> 
-        //         </button>
-        //     </p></div>
-        //     `;
-            //Codgio design System
-                    // <a href="ingredient.html" class="text-none text-neutral-matteblack">
-                    //     <figure>
-                    //         <img src="/src/assets/enchilada_sauce.png" alt=""
-                    //             style="width: 81px; height:81px; object-fit: cover">
-                    //         <p>Enchilada sauce</p>
-                    //     </figure>
-                    // </a>
         }
     });
     return result;
@@ -395,211 +374,71 @@ function recipesXLHTML(recipesDIV,therecipe) {
     recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
     therecipe.forEach(data => {
     const adding_recipe = document.createElement("div");
-    adding_recipe.innerHTML = `
-    <div class"cardRecipe">
-        <div class="cardContainer" id="${data.idMeal}">
-            <div class="cardImgContainer">
-                <p><strong>Id</strong>${data.idMeal}</p>
-                <p><strong>Meal</strong>${data.strMeal}</p>
-                <p><strong>Category</strong>${data.strCategory}</p>
-                <p><strong>Country</strong>${data.strArea}</p>
-                <p><strong>Intructions</strong>${data.strInstructions}</p>
-                            <img class="imgCard" src="${data.strMealThumb}">
-                <p><strong>Tags</strong>${data.strTags}</p>
-                            <a href="${data.strYoutube}">${data.strMeal}Video</a>`+
-                printIngredient(data)+
-                `</div>
-            </div>
-        </div>`;
+    adding_recipe.innerHTML +=
+            `<section class="display-flex flex-row flex-gap justify-content-center" style="width: 90%; margin: 50px 20px" id="${data.idMeal}">
+            <aside class="text-center" style="width:45%">
+                <h3 class="text-primary-tomatored font-family-Popp
+                font-style-normal font-weight-500 font-size-28
+                font-line-height-42" style="margin: 20px">Recipe ingredients</h3>
+            
+                <section class="text-center text-neutral-matteblack  font-family-Popp
+                font-style-normal font-weight-275 font-size-20
+                font-line-height-30" style="display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(2, auto); 	
+                column-gap: 16.3px; row-gap: 1px; justify-items: center;">`;
+            
+            //<!-- COPIANDO HASTA -->
+            adding_recipe.innerHTML+=printIngredient(data)+
+                `</section>
+            </aside>
+        <!-- Recipe image -->
+            <article style="width: 45%">
+                <img src="${data.strMealThumb}" 
+                alt="Picture of ${data.strMeal}" 
+                style="width: 670px; height:400px; object-fit: cover">
+            </article>
+            </section>
+        <!-- Recipe instructions -->
+            <section class="display-flex flex-column align-items-center" style="width: 55%; margin: 20px auto">
+                <h3 class="text-primary-tomatored           
+                    font-family-Popp      font-style-normal font-weight-600 font-size-32
+                    font-line-height-48">Recipe instructions</h3>
+                <ol class="text-neutral-matteblack  font-family-Popp
+                    font-style-normal font-weight-400 font-size-16
+                    font-line-height-24">
+                    ${data.strInstructions}
+                </ol>
+            </section>
+        //<!-- Share -->
+            <section class="display-flex flex-column text-center" style="width: 40%; margin: 20px auto">
+                <span class="text-primary-tomatored font-family-Popp
+                    font-style-normal font-weight-600 font-size-40
+                    font-line-height-60">Did you make it?</span>
+                <span class="text-primary-tomatogreen font-family-Popp
+                    font-style-normal font-weight-300 font-size-24
+                    font-line-height-36">We would love for you to share it with us! #Recipini</span>
+            </section>
+        //<!-- Video -->
+            <section class="display-flex flex-column 
+                align-items-center"    
+                style="width: 80%; margin: 60px auto">
+            <h3 class="text-primary-tomatored font-family-Popp
+                font-style-normal font-weight-500 font-size-28
+                font-line-height-42" style="margin: 20px">Video of how it was made!</h3>
+                <iframe width="685" height="415" 
+                src="${data.strYoutube}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </section>`;
     recipeGoesinDIV.appendChild(adding_recipe);
   });
 }
-
-/*
-<div class="cardIngredient">
-                <p>${data.strMeasure1}&nbsp;${data.strIngredient1}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient1}')">
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient1}.png" alt="${data.strIngredient1}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure2}&nbsp;${data.strIngredient2}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient2}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient2}.png" alt="${data.strIngredient2}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure3}&nbsp;${data.strIngredient3}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient3}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient3}.png" alt="${data.strIngredient3}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure4}&nbsp;${data.strIngredient4}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient4}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient4}.png" alt="${data.strIngredient4}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure5}&nbsp;${data.strIngredient5}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient5}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient5}.png" alt="${data.strIngredient5}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure6}&nbsp;${data.strIngredient6}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient6}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient6}.png" alt="${data.strIngredient6}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure7}&nbsp;${data.strIngredient7}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient7}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient7}.png" alt="${data.strIngredient7}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure8}&nbsp;${data.strIngredient8}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient8}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient8}.png" alt="${data.strIngredient8}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure9}&nbsp;${data.strIngredient9}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient9}')"> 
-                        <img class="imgCard" 
-                            src="${serverURL}/images/ingredients/${data.strIngredient9}.png" alt="${data.strIngredient9}"> 
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure10}&nbsp;${data.strIngredient10}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient10}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient10}.png" alt="${data.strIngredient10}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure11}&nbsp;${data.strIngredient11}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient11}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient11}.png" alt="${data.strIngredient11}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure12}&nbsp;${data.strIngredient12}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient12}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient12}.png" alt="${data.strIngredient12}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure13}&nbsp;${data.strIngredient13}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient13}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient13}.png" alt="${data.strIngredient13}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure14}&nbsp;${data.strIngredient14}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient14}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient14}.png" alt="${data.strIngredient14}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure15}&nbsp;${data.strIngredient15}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient15}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient15}.png" alt="${data.strIngredient15}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure16}&nbsp;${data.strIngredient16}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient16}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient16}.png" alt="${data.strIngredient16}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure17}&nbsp;${data.strIngredient17}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient17}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient17}.png" alt="${data.strIngredient17}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure18}&nbsp;${data.strIngredient18}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient18}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient18}.png" alt="${data.strIngredient18}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure19}&nbsp;${data.strIngredient19}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient19}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient19}.png" alt="${data.strIngredient19}">
-                    </button>
-                </p></div>                <div class="cardIngredient">
-                <p>${data.strMeasure20}&nbsp;${data.strIngredient20}
-                    <button class="linkCard" 
-                        onclick="getFilteredList(9,'${data.strIngredient20}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data.strIngredient20}.png" alt="${data.strIngredient20}">
-                    </button>
-                </p></div>
-*/
-
-//The 53 Properties that comes on any recipe registry
-//Used in the upper function. ERASE before Realesing SW
-// ${data.idMeal}
-// ${data.strMeal}
-// ${data.strDrinkAlternate}
-// ${data.strCategory}
-// ${data.strArea}
-// ${data.strInstructions}
-// ${data.strMealThumb}
-// ${data.strTags}
-// ${data.strYoutube}
-// ${data.strMeasure1} ${data.strIngredient1}
-// ${data.strMeasure2} ${data.strIngredient2}
-// ${data.strMeasure3} ${data.strIngredient3}
-// ${data.strMeasure4} ${data.strIngredient4}
-// ${data.strMeasure5} ${data.strIngredient5}
-// ${data.strMeasure6} ${data.strIngredient6}
-// ${data.strMeasure7} ${data.strIngredient7}
-// ${data.strMeasure8} ${data.strIngredient8}
-// ${data.strMeasure9} ${data.strIngredient9}
-// ${data.strMeasure10} ${data.strIngredient10}
-// ${data.strMeasure11} ${data.strIngredient11}
-// ${data.strMeasure12} ${data.strIngredient12}
-// ${data.strMeasure13} ${data.strIngredient13}
-// ${data.strMeasure14} ${data.strIngredient14}
-// ${data.strMeasure15} ${data.strIngredient15}
-// ${data.strMeasure16} ${data.strIngredient16}
-// ${data.strMeasure17} ${data.strIngredient17}
-// ${data.strMeasure18} ${data.strIngredient18}
-// ${data.strMeasure19} ${data.strIngredient19}
-// ${data.strMeasure20} ${data.strIngredient20}
-// ${data.strSource}
-// ${data.strImageSource}
-// ${data.strCreativeCommonsConfirmed}
-// ${data.dateModified}
 
 //List of diferent categories, this came from an OBJ categories. 
 //Remember the API returns 2 types of OBJs. (meals and categories)
 //Only one is categories. 
 //The main difference is the Description Property
-/*
+/* DESABILITDA NO SE USA
 function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categoriesHTML:', categories);
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
@@ -638,18 +477,21 @@ function listsAllCategoriesHTML(listsDIV,lists) {
   listsGoInDiv.innerHTML = ""; //Clean element Before Filling
   lists.forEach(data => {
     const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strCategory}">
-                <div class="cardImgContainer">
-                    <p>
-                        <strong>${data.strCategory} </strong>
-                    </p>
-                    <button class="linkCard" onclick="getFilteredList(8,'${data.strCategory}')">
-                        <img class="imgCard" 
-                        src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}">
-                    </button>
-        </div>`;
+    addingList.innerHTML =
+    `<article id="${data.strCategory}" class="area-catagory ">
+        <a href="search_results.html" class=" display-flex flex-column flex-gap margin-100">
+          <div class="flag-Container | overflow-hidden">
+          <img class="imgCard" 
+          src="${serverURL}/images/category/${data.strCategory}.png" alt="${data.strCategory}" onclick="getFilteredList(7,'${data.strCategory}')">
+          </div>
+          <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
+            font-style-normal font-weight-600 font-size-20
+             fit-content-width text-center padding-300-inline text-primary-tomatored"
+            style="border: 2px solid ;"
+            onclick="getFilteredList(8,'${data.strCategory}')">${data.strCategory} </button>
+        </a>
+        </article>`;
+
     listsGoInDiv.appendChild(addingList);
   });
 }
@@ -688,21 +530,22 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
   listsGoInDiv.innerHTML = ""; //Clean element Before Filling
   lists.forEach(data => {
     const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.idIngredient}">
-                <div class="cardImgContainer">
-                data.meals:
-                    <p>
-                        <strong>${data.strIngredient}</strong>
-                    </p>
-                    <button class="linkCard" onclick="getFilteredList(9,'${data.strIngredient}')">
-                        <img class="imgCard" src="${serverURL}/images/ingredients/${data.strIngredient}.png" alt="${data.strIngredient}">
-                    </button>
-                    </div>
-            </div>
-            <div class="cardTextContainer">${data.strDescription}</div>
-        </div>`;
+    addingList.innerHTML =
+        `<article id="${data.idIngredient}" class="area-catagory ">
+            <a href="search_results.html" class=" display-flex flex-column flex-gap margin-100">
+                <div class="flag-Container | overflow-hidden">
+                    <img class="imgCard" 
+                    src="${serverURL}/images/ingredient/${data.idIngredient}.png" alt="${data.idIngredient}" onclick="getFilteredList(9,'${data.idIngredient}')">
+                </div>
+                <button class="flag-Btn |       button-primary-outline            border-color-primary-tomatored  border-radius-45px font-family-Popp
+                font-style-normal font-weight-600 font-size-20
+                fit-content-width text-center padding-300-inline text-primary-tomatored"
+                style="border: 2px solid ;"
+                onclick="getFilteredList(9,'${data.idIngredient}')">
+                    ${data.idIngredient} 
+                </button>
+            </a>
+        </article>`;
     listsGoInDiv.appendChild(addingList);
   });
 }
@@ -1007,8 +850,8 @@ document.getElementById("randomButton").onclick = async function () {
     //console.log(sessionStorage.getItem("randomRecipe"));
 };
 
-//document.getElementById("SearchBar").oninput =async function(){
-    document.getElementById("searchButton").onclick =async function(){
+// document.getElementById("").oninput =async function(){
+document.getElementById("searchButton").onclick =async function(){
     //Que prefieren usar el Searchbutton o el searchTextBox
     const searchterm=document.getElementById('searchInputTxtBox');
     console.log(searchterm.value);
@@ -1025,7 +868,30 @@ document.getElementById("randomButton").onclick = async function () {
         }*/
         document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
     }
-};//End of funciton getSearchBox();
+};//End of function getSearchBar(); para Index.html
+
+
+document.getElementById("searchInputTxtBox").oninput =async function(){
+ //   document.getElementById("searchButton1").onclick =async function()
+    // document.getElementById("searchButton2").onclick =async function(){
+        //Que prefieren usar el Searchbutton o el searchTextBox
+        const searchterm=document.getElementById('searchInputTxtBox');
+        console.log('Searcch Button: ',searchterm.value);
+        const recipe = await getAPIResponse(13,searchterm.value);
+        if ('meals' in recipe && recipe.meals){
+            console.log("Buscando receta(",searchterm.value,"): ",recipe);
+            console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
+            recipesHTML("results",recipe.meals);
+        } else {
+            /*const recipesGoInDiv = document.getElementById("results");
+           
+            while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
+                recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
+            }*/
+            document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
+        }
+    };//End of funciton getSearchBox(); con Button para Search_results.html
+    
 
 ///En caso de que se haya guardado información en sesión, se obtiene de ella
 /*if (sessionStorage.getItem("randomRecipe")) {
