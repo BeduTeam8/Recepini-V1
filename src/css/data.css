@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  body {
+    background-color: rgb(255, 248, 248);
+    font-size: 1em;
+  }
+  
+  h1,
+  h2,
+  h2.random,
+  h2.recipe,
+  h2.last,
+  h2.area,
+  h2.category,
+  h2.ingredient{
+    background-color: rgb(212, 24, 46);
+  }
+  
+  /* h3 {
+    background-color: brown;
+  } */
+  img {
+    border-radius: 1em;
+    box-shadow: 10em;
+  }
+  
+  .button{
+    background-color: rgb(185, 206, 71);
+  }
+  
+  button{
+    font-size: 1em;
+    border-radius: 0.5em;
+    box-shadow: 10em;
+    width: auto;
+  }
+  
+  a {
+    box-shadow: 10em;
+  }
+  
+  .lists{
+    /* max-width: 10vmin; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    align-items: center;
+  }
+  
+  #results{
+    background-color: #fff;
+  }
+  
+  
+  .card {
+    max-width: 40vw;
+    min-width: 13vw;
+    /* background-color: rgb(212, 225, 225); */
+    border-radius: 1em;
+    /* display: inline-flex; */
+    /* width: auto; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: auto;
+    margin: 0.5em;
+  }
+  .cardContainer {
+    /* max-width: 40vw; */
+    /* background-color: rgb(212, 225, 225); */
+    border-radius: 1em;
+    /* display: inline-flex; */
+    /* width: auto; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    text-align: center;
+    align-items: center;
+    padding: auto;
+    margin: 0.5em;
+  }
+  
+  .cardIngredient{
+    /* background-color: rgb(212, 225, 225); */
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    padding: auto;
+    margin: 0.5em;
+  }
+  .cardTextContainer {
+    position: absolute;
+    display: none;
+    flex-direction: row;
+    flex-flow: wrap;
+    /* visibility: collapse; */
+  }
+  .cardImgContainer {
+    text-align: center;
+    align-items: center
+  }
+  .linkCard {
+    text-decoration: none;
+  }
+  .imgCard {
+    max-width: 5vw;
+  }
+  
+  /* 
+  .card:hover .cardTextContainer {
+    display: block;
+    
+  }  */
+  
