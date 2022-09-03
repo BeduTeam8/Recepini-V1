@@ -908,21 +908,26 @@ document.getElementById("randomButton").onclick = async function () {
 };
 
 document.getElementById("searchInputTxtBox").oninput =async function(){
-    // document.getElementById("searchButton").onclick =async function(){
     //Que prefieren usar el Searchbutton o el searchTextBox
     const searchterm=document.getElementById('searchInputTxtBox');
     console.log(searchterm.value);
     const recipe = await getAPIResponse(13,searchterm.value);
+    ///--------------------------
+    let datos = recipe.meals;
+    sessionStorage.setItem('searchterm', searchterm.value); ///Guardar en sesión, con nombre del layout para mayor referencia
+    console.log('searchterm',sessionStorage.getItem('searchterm'));
+    console.log('resultterm',sessionStorage.getItem('resultterm'));
+    if (sessionStorage.getItem('resultterm')) {
+        datos = JSON.parse(sessionStorage.getItem('resultterm'))['meals'];
+    } else {
+        sessionStorage.setItem('resultterm', JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
+    }
+    ///--------------------------
     if ('meals' in recipe && recipe.meals){
         console.log("Buscando receta(",searchterm.value,"): ",recipe);
         console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
-        recipesHTML("results",recipe.meals);
+        recipesHTML("results",datos);
     } else {
-        /*const recipesGoInDiv = document.getElementById("results");
-       
-        while(recipesGoInDiv.firstChild) { ///Limpiar div en lugar de usar innerHTML    
-            recipesGoInDiv.removeChild(recipesGoInDiv.firstChild);
-        }*/
         document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
     }
 };//End of funciton getSearchBox();
