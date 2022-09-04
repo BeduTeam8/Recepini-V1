@@ -32,14 +32,14 @@
       <div class="collapse navbar-collapse padding-500-inline flex-center" id="collapsibleNavId">
         <ul class="navbar-nav me-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="index.html">Home
+            <a class="nav-link font-family-Popp font-weight-600 font-size-20px" id="indexMenu">Home
               <span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="aboutUs.html">About</a>
+            <a class="nav-link font-family-Popp font-weight-600 font-size-20px" id="aboutMenu">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="search_results.html">Search</a>
+            <a class="nav-link font-family-Popp font-weight-600 font-size-20px" id="searchMenu">Search</a>
           </li>
         </ul>
         <!-- ========================================================START OF SEARCHBOX====================================================== -->
@@ -1368,7 +1368,39 @@
     </footer>
 
   </main>
-<script src="./index.js"></script>
+
+  <div class="preloader-wrapper">
+    <div class="spinner-grow" style="width: 4rem; height: 4rem;">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <style>
+    .preloader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #b90e22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .4s ease;
+      z-index: 10;
+    }
+
+    .fade-out-animation {
+      opacity: 0;
+      visibility: hidden;
+      z-index: 0;
+    }
+
+    .spinner-grow {
+      color: #b9ce47;
+    }
+  </style>
+  <script src="./index.js"></script>
+
 </body>
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"

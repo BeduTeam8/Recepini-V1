@@ -1127,6 +1127,60 @@ document.addEventListener('keypress', function (e) {
     }
 });
 
+function changeVisibility(active){ ///
+    const displayAreas = document.querySelectorAll('.displayAreas');
+    displayAreas.forEach( function(element) {
+        if(active.includes(element.id)){
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+}
+
+const preloader = document.querySelector('.preloader-wrapper');
+
+function activeSection(index){
+    preloader.classList.remove('fade-out-animation');
+    setTimeout(function(){
+        switch (index) {
+            case 1:
+                changeVisibility(['indexArea']);
+                break;
+            case 2:
+                changeVisibility(['resultsArea']);
+                break;
+            case 3:
+                changeVisibility(['recipeArea']);
+                break;
+            case 4:
+                changeVisibility(['ingredientsArea']);
+                break;
+            case 5:
+                changeVisibility(['aboutUSArea']);
+                break;
+            default:
+                changeVisibility(['indexArea']);
+                break;
+        }
+        preloader.classList.add('fade-out-animation');
+    }, 300);
+}
+activeSection(1);
+
+window.addEventListener('load', function(){
+    preloader.classList.add('fade-out-animation');
+});
+
+document.getElementById('indexMenu').addEventListener("click", () => {
+    activeSection(1);
+});
+document.getElementById('aboutMenu').addEventListener("click", () => {
+    activeSection(5);
+});
+document.getElementById('searchMenu').addEventListener("click", () => {
+    activeSection(2);
+});
 // function recipesHTML(recipesDIV,recipes) {
 //     console.log('Enla funcion recipes:**', recipes);
 //     const recipesGoInDiv = document.getElementById(recipesDIV);
