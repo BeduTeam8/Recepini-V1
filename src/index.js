@@ -423,14 +423,14 @@ font-style-normal font-weight-300 font-size-24
 font-line-height-36">We would love for you to share it with us! #Recipini</span>
 </section>
 <!-- Video -->
-<!--<section class="display-flex flex-column align-items-center video">
+<section class="display-flex flex-column align-items-center video">
 <h3 class="text-primary-tomatored font-family-Popp
 font-style-normal font-weight-500 font-size-28
 font-line-height-42" style="margin: 20px">Video of how it was made!</h3>
 <iframe width="685" height="415" src=${data.strYoutube} title="YouTube video player"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen></iframe>-->
+  allowfullscreen></iframe>
 </section>`;
 
     //recipeGoesinDIV.appendChild(adding_recipe);
