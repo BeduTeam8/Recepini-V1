@@ -252,6 +252,40 @@ async function getLatestRecipe() {
 //=======================================================================
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
+
+function randomRecipeHTML(recipesDIV,recipes) {
+    console.log('Enla funcion recipes:', recipes);
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+    recipes.forEach(data => {
+        //const adding_recipe = document.createElement("article");
+        //adding_recipe.innerHTML = 
+         recipesGoInDiv.innerHTML +=
+        `<article id="${data.idMeal}"
+        class="card-Recipie-Day | display-flex flex-gap overflow-hidden position-relative border-radius-10px padding-300-vertical padding-600-inline margin-500">
+        <div class="redBar"></div>
+        <div class="imgContainer | border-radius-12px ">
+          <button onclick="getRecipe(${data.idMeal})">                
+          <img src="${data.strMealThumb}" alt="Picture of ${data.strMeal}">
+          </button>
+        </div>
+        <div class="display-flex flex-column-reverse    justify-content-around flex-center">
+          <h3 class=" card-Recipie-Day-Text | font-family-Popp
+            font-style-normal font-weight-500 font-size-28
+            font-line-height-42 text-center">
+            ${data.strMeal}
+          </h3>
+          <button
+            class="bg-primary-tomatogreen text-neutral-lightpink border-radius-45px button-primary text-capitalize font-family-Popp font-weight-600 font-size-16" onclick="getRecipe(${data.idMeal})">
+            Recipie of the day
+          </button>
+        </div>
+      </article>`;
+    //recipesGoInDiv.appendChild(adding_recipe);
+    console.log("Termina recipesHTML: -id:",recipesDIV)
+  });
+}
+
 function recipesHTML(recipesDIV,recipes) {
     console.log('DENTRO de recipesHTML:id=',recipesDIV,' : ', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
@@ -575,6 +609,9 @@ function listsAllAreaHTML(listsDIV,lists) {
                         <div class="cardImgContainer">
                             <button class="linkCard" 
                                 onclick="getFilteredList(7,'${data.strArea}')">
+                                <img 
+                                src="/src/assets/Flags/${data.strArea}.png" 
+                                alt="The ${data.strArea} Flag" onclick="getFilteredList(7,'${data.strArea}')">
                                 <p>
                                     <strong>${data.strArea}: </strong>
                                 </p>
@@ -898,7 +935,7 @@ async function getGeneral(Index,params= '') {
             recipesXLHTML(layout,datos);
             break;
         case 14:
-            recipesHTML(layout,datos)
+            randomRecipeHTML(layout,datos)
             break;
             /*switch (filterIndex) {
                 
