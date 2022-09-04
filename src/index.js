@@ -756,7 +756,7 @@ if (sessionStorage.getItem("listAllIngredients")) {
 }*/
 window.onload=async function(){
     try {
-        await Promise.all([getGeneral(1),getGeneral(3),getGeneral(4),getGeneral(14)]);//getGeneral(2),getGeneral(5),getGeneral(6)
+        await Promise.all([getGeneral(3),getGeneral(4),getGeneral(14)]);//getGeneral(1),getGeneral(2),getGeneral(5),getGeneral(6)
     }catch(error){
         console.error("Promise.all Error on window.onload",error);
     }
@@ -947,8 +947,8 @@ async function getGeneral(Index,params= '') {
 document.getElementById("randomButton").onclick = async function () {
     // const recipe = await getARandomRecipe();
     const recipe = await getAPIResponse(0);
-    console.log('getARandomRecipe:',recipe);
-    console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
+    // console.log('getARandomRecipe:',recipe);
+    // console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
     recipesXLHTML("recipeArea",recipe.meals);
     //recipesXLHTML("randomRecipe",recipe.meals);
     //recipesHTML("recipeArea",recipe.meals);
@@ -958,7 +958,8 @@ document.getElementById("randomButton").onclick = async function () {
     //console.log(sessionStorage.getItem("randomRecipe"));
 };
 
-document.getElementById("searchInputTxtBox").oninput =async function(){
+// document.getElementById("searchInputTxtBox").oninput =async function(){
+    document.getElementById("searchButton").onclick=async function(){
     //Que prefieren usar el Searchbutton o el searchTextBox
     const searchterm=document.getElementById('searchInputTxtBox');
     console.log("searchterm.length",searchterm.value.length);
