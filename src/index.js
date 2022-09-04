@@ -550,23 +550,25 @@ function listsAllCategoriesHTML(listsDIV,lists) {
 //List all the areas or countries related to the recipes in the API
 function listsAllAreaHTML(listsDIV,lists) {
     console.log('Enla funcion lists:', lists);
-  const listsGoInDiv = document.getElementById(listsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            <div class="cardContainer" id="${data.strArea}">
-                <div class="cardImgContainer">
-                    <button class="linkCard" 
-                        onclick="getFilteredList(7,'${data.strArea}')">
-                        <p>
-                            <strong>${data.strArea}: </strong>
-                        </p>
-                    </button>
-        </div>`;
-    listsGoInDiv.appendChild(addingList);
-  });
+    const listsGoInDiv = document.getElementById(listsDIV);
+    listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+    lists.forEach(data => {
+        const addingList = document.createElement("div");
+        if(data.strArea!='Unknown'){
+            addingList.innerHTML = `
+                <div class="card">
+                    <div class="cardContainer" id="${data.strArea}">
+                        <div class="cardImgContainer">
+                            <button class="linkCard" 
+                                onclick="getFilteredList(7,'${data.strArea}')">
+                                <p>
+                                    <strong>${data.strArea}: </strong>
+                                </p>
+                            </button>
+                </div>`;
+            listsGoInDiv.appendChild(addingList);
+        }
+    });
 }
 
 //List all the ingredients in the API 574 aprox registries.
@@ -672,14 +674,15 @@ async function getListAllCategories(){
 //Recibe un parametro y lo pega al URL para que la llamada al API responda.
 //primera vez llamamo a filter.php?a=gentilicio
 async function getFilteredList(filterIndex,param){
-    try{
+    //try{
         //const filteredResponse = await getAPIResponse(filterIndex,param);
-        const filteredResponse = await getGeneral(filterIndex,param);
+        //const filteredResponse = await getGeneral(filterIndex,param);
+        getGeneral(filterIndex,param);
         // console.log("filteredSearch:",filteredResponse);
         // console.log('Registros de filteredResponse:(',filteredResponse.meals.length,'):\n',filteredResponse.meals);
         
         // function getDisplayAreaxIndex(index){
-        let listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
+        //let listfilteredResponseDIV="listfilteredResponse";//Limpiar el Area de desplegar
     //     switch (filterIndex) {
     //         case 7:{
     //             listfilteredResponseDIV=
@@ -704,16 +707,17 @@ async function getFilteredList(filterIndex,param){
     //         break;
     //     }
     //  recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
-    }
+    /*}
     catch (err){
         console.error("Llamada a la API fallida",err.msj);
         console.log("DEmosle Otra OPCION nada 404 Dead END");
         console.log("Encadenar uan random o un boton recargar");
-    }
+    }*/
 }
 
 async function getRecipe(id){
-    const recipe = await getGeneral(11,id);
+    //const recipe = await getGeneral(11,id);
+    getGeneral(11,id);
     //const recipe = await getAPIResponse(11,id);
     // console.log("Receta",id,": ",recipe);
     // console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
@@ -820,6 +824,7 @@ async function getGeneral(Index,params= '') {
     if(apiSelected[Index].sesion===true){ ///En caso de definir que se almacene en sesión
         if (sessionStorage.getItem(apiSelected[Index].layout)) { ///Obtener datos de sesión
             datos = JSON.parse(sessionStorage.getItem(apiSelected[Index].layout))[apiSelected[Index].tipo];
+            console.log("en sesion");
         } else {
             sessionStorage.setItem(layout, JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
         }
@@ -874,12 +879,12 @@ async function getGeneral(Index,params= '') {
         case 14:
             recipesHTML(layout,datos)
             break;
-            switch (filterIndex) {
+            /*switch (filterIndex) {
                 
                 default:
                 break;
-            }
-         recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
+            }*/
+            //recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
     
         default:
             break;
@@ -941,11 +946,11 @@ document.getElementById("searchInputTxtBox").oninput =async function(){
     sessionStorage.setItem('searchterm', searchterm.value); ///Guardar en sesión, con nombre del layout para mayor referencia
     console.log('searchterm',sessionStorage.getItem('searchterm'));
     console.log('resultterm',sessionStorage.getItem('resultterm'));
-    if (sessionStorage.getItem('resultterm')) {
+    /*if (sessionStorage.getItem('resultterm')) {
         datos = JSON.parse(sessionStorage.getItem('resultterm'))['meals'];
-    } else {
+    } else {*/
         sessionStorage.setItem('resultterm', JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
-    }
+    //}
     ///--------------------------
     if ('meals' in recipe && recipe.meals){
         console.log("Buscando receta(",searchterm.value,"): ",recipe);
