@@ -1137,7 +1137,13 @@ function changeVisibility(active){ ///
         }
     });
 }
+function invisiblesearchBox(){
+    document.getElementById('SearchBar1').style.display="none"
+}
 
+function visiblesearchBox(){
+    document.getElementById('SearchBar1').style.display="block"
+    }
 const preloader = document.querySelector('.preloader-wrapper');
 
 function activeSection(index){
@@ -1146,21 +1152,28 @@ function activeSection(index){
         switch (index) {
             case 1:
                 changeVisibility(['indexArea']);
+                visiblesearchBox();
                 break;
             case 2:
                 changeVisibility(['resultsArea']);
+                console.log(document.getElementById('SearchBar1'));
+                invisiblesearchBox();
                 break;
             case 3:
                 changeVisibility(['recipeArea']);
+                visiblesearchBox();
                 break;
             case 4:
                 changeVisibility(['ingredientsArea']);
+                visiblesearchBox();
                 break;
             case 5:
                 changeVisibility(['aboutUSArea']);
+                visiblesearchBox();
                 break;
             default:
                 changeVisibility(['indexArea']);
+                visiblesearchBox();
                 break;
         }
         preloader.classList.add('fade-out-animation');
@@ -1181,6 +1194,11 @@ document.getElementById('aboutMenu').addEventListener("click", () => {
 document.getElementById('searchMenu').addEventListener("click", () => {
     activeSection(2);
 });
+document.getElementById('SearchBar1').addEventListener("mousedown", () => {
+    activeSection(2);
+});
+
+
 // function recipesHTML(recipesDIV,recipes) {
 //     console.log('Enla funcion recipes:**', recipes);
 //     const recipesGoInDiv = document.getElementById(recipesDIV);
