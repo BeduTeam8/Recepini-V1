@@ -758,6 +758,7 @@ footer a:focus-within {
   text-align: center;
   border: 0px;
   padding: 9px 18px 9px 18px;
+  transition: all 0.2s ease-in-out;
 }
 
 .button-small {
@@ -771,6 +772,15 @@ footer a:focus-within {
   height: var(--Button-primary-height);
   border-width: 1px;
   background: none;
+}
+
+.button-primary:hover,
+.button-primary:focus {
+  transform: scale(1.05);
+}
+
+.button-primary:active {
+  transform: scale(0.99);
 }
 
 .button-primary-hover {
@@ -1127,7 +1137,7 @@ footer a:focus-within {
   filter: brightness(0) invert(1);
 }
 
-#random:hover .random-dice {
+#randomButton:hover .random-dice {
   -webkit-animation: randomSpin 2s linear infinite;
           animation: randomSpin 2s linear infinite;
 }
@@ -1243,23 +1253,21 @@ footer a:focus-within {
   border-radius: 0.625rem;
   box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
   background-color: rgba(var(--Neutral-white), 0.25);
-  max-width: 16rem;
-  max-height: 21rem;
+  max-height: clamp(12rem, 100%, 20rem);
   transition: all 250ms ease-in-out;
 }
-.recipieCard button {
+.recipieCard button:first-child {
   overflow: hidden;
   max-width: 15rem;
   border: none;
   outline: none;
+  padding: 0;
 }
-.recipieCard button img {
+.recipieCard button:first-child img {
   width: 150%;
   transition: all 450ms ease-in-out;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: -25px 0;
-     object-position: -25px 0;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 .recipieCard .card-Btn {
   bottom: 0;
@@ -1281,8 +1289,11 @@ footer a:focus-within {
 }
 
 @media screen and (max-width: 768px) {
-  .recipieCard {
+  .card-grid-10-Recomendations .display-flex {
     flex-direction: row !important;
+  }
+  .recipieCard {
+    overflow: hidden !important;
     max-width: 100%;
   }
   .recipieCard .card-Btn {
@@ -1298,6 +1309,10 @@ footer a:focus-within {
     padding-right: 8rem;
   }
   .recipieCard:hover img {
+    width: 100%;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
     transform: translateX(-1rem);
   }
   .recipieCard:hover .card-Btn {
@@ -1307,7 +1322,7 @@ footer a:focus-within {
 .area-catagory {
   transition: all 250ms ease-in-out;
 }
-.area-catagory a {
+.area-catagory div {
   align-items: center;
   text-decoration: none;
   transition: all 250ms ease-in-out;
@@ -1327,6 +1342,18 @@ footer a:focus-within {
 .area-catagory button {
   transition: all 350ms ease-in-out;
 }
+@media screen and (max-width: 768px) {
+  .area-catagory .area-catagory {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .area-catagory .flag-Container {
+    display: none;
+    max-height: 5rem;
+  }
+}
 
 .area-catagory:hover .flag-Container {
   transform: translateY(-0.5rem);
@@ -1340,7 +1367,7 @@ footer a:focus-within {
 .ingredient-img > img {
   width: 685px;
   height: 226px;
-  transition: all 0.56ms ease;
+  transition: all 200ms ease;
 }
 
 .idCards {
@@ -1352,18 +1379,37 @@ footer a:focus-within {
   margin: 20px auto;
 }
 
+.carousel-indicators {
+  top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-indicators {
+    display: none !important;
+  }
+}
 .carousel-height {
   max-height: 37.5rem;
   overflow: hidden;
+}
+.carousel-height .carousel-item {
+  transition: all 0.56ms ease !important;
 }
 .carousel-height .carousel-item img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 0 -250px;
      object-position: 0 -250px;
+  transition: all 0.56ms ease !important;
+}
+
+.carousel {
+  isolation: isolate;
 }
 
 .hero-text {
+  transition: all 0.56ms ease;
+  max-width: 40rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1373,8 +1419,18 @@ footer a:focus-within {
   text-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.5), 0px 0.825rem 1.5rem rgba(var(--Neutral-matteblack), 0.5);
 }
 
+#recipie-of-day {
+  transition: all 0.256ms ease;
+  display: flex;
+  align-items: flex-start;
+}
+
+.invisible-block {
+  background-color: rgb(var(--Neutral-lightpink));
+}
+
 .recipie-Day-text {
-  max-width: 42rem;
+  max-width: 60rem;
   margin-left: 10rem;
 }
 .recipie-Day-text svg {
@@ -1384,13 +1440,32 @@ footer a:focus-within {
   margin: -1rem;
 }
 
+@media screen and (max-width: 1250px) {
+  .invisible-block {
+    display: none;
+  }
+  #recipie-of-day {
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+  }
+  .recipie-Day-text {
+    margin-left: 2rem;
+    margin-top: 12rem;
+    text-align: center;
+  }
+  .recipie-Day-text svg {
+    width: clamp(1.5rem, 5vw, 3rem);
+    height: clamp(1.5rem, 5vw, 3rem);
+    transform: rotate(-90deg);
+  }
+}
 .card-Recipie-Day {
-  max-width: -webkit-fit-content, 100%;
-  max-width: -moz-fit-content, 100%;
-  max-width: fit-content, 100%;
-  height: 100%;
+  max-width: clamp(20rem, 100%, 35rem);
+  height: auto;
   background-color: rgb(var(--Neutral-white));
   box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
+  transition: all 250ms ease;
 }
 .card-Recipie-Day .redBar {
   position: absolute;
@@ -1398,7 +1473,8 @@ footer a:focus-within {
   left: 0;
   top: 0;
   height: 25rem;
-  width: 1.5rem;
+  width: 1.6rem;
+  transition: all 150ms ease;
 }
 .card-Recipie-Day .imgContainer {
   border: none;
@@ -1407,40 +1483,52 @@ footer a:focus-within {
   max-width: 18rem;
   height: 18rem;
   overflow: hidden;
+  transition: all 250ms ease;
 }
 .card-Recipie-Day .imgContainer img {
+  max-width: 50%, 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: all 150ms ease;
+}
+.card-Recipie-Day div {
+  transition: all 150ms ease;
+  width: clamp(2rem, 85%, 20rem);
 }
 .card-Recipie-Day .card-Recipie-Day-Text {
-  max-width: 20rem;
+  transition: all 150ms ease;
+}
+
+.card-Recipie-Day:hover {
+  transform: translateY(-0.5rem);
+}
+.card-Recipie-Day:hover .redBar {
+  width: 1rem;
+}
+.card-Recipie-Day:hover .imgContainer {
+  transform: scale(1.05);
 }
 
 .card-position {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   position: absolute;
-  top: 60%;
-  right: 10%;
+  top: 0;
+  right: 0;
+  transform: translate(0, -50%);
 }
 
 .card-grid-10-Recomendations {
+  max-width: clamp(20rem, 100%, 90rem);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-gap: 3rem;
   justify-content: center;
 }
 
 .card-grid-8-Recomendations {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  max-width: clamp(20rem, 100%, 90rem);
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   grid-gap: 2rem;
   justify-content: center;
 }
@@ -1478,12 +1566,18 @@ footer a:focus-within {
 
 .flag-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   grid-gap: 1rem;
   justify-content: center;
 }
 
+@media screen and (max-width: 768px) {
+  .flag-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
+}
 .card-grid {
   display: grid;
   grid-template-columns: repeat(4, auto);
@@ -1527,6 +1621,81 @@ footer a:focus-within {
   border: 2px solid rgb(var(--Primary-tomatogreen)) !important;
 }
 
+@media screen and (max-width: 1440px) {
+  .carousel-height {
+    max-height: 37.5rem;
+    overflow: hidden;
+  }
+  .carousel-height .carousel-item img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 0;
+       object-position: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .carousel-height {
+    max-height: 37.5rem;
+    overflow: hidden;
+  }
+  .carousel-height .carousel-item img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 0;
+       object-position: 0;
+  }
+  .hero-text {
+    line-height: 48px !important;
+    top: 25%;
+    width: 100%;
+    padding: 1rem;
+    margin-inline: 2rem;
+  }
+  .recipie-Day-text {
+    margin-top: 10rem;
+  }
+  .card-Recipie-Day {
+    max-width: 90%;
+    padding-right: 0rem !important;
+  }
+  .card-Recipie-Day div button {
+    width: 95%;
+  }
+  .card-Recipie-Day div h3 {
+    text-align: left !important;
+  }
+  .card-Recipie-Day .imgContainer {
+    max-width: 15rem;
+    max-height: 15rem;
+    overflow: hidden;
+  }
+  .card-Recipie-Day .imgContainer img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 0;
+       object-position: 0;
+  }
+  .card-position {
+    top: 0;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+  .recomendation-title svg {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+  }
+  .recomendation-text {
+    max-width: 100%;
+    font-size: var(--font-size-20);
+    line-height: 30px;
+  }
+  .recomendaiton-tagline {
+    max-width: 100%;
+    font-size: var(--font-size-24);
+    line-height: 36px;
+  }
+}
 @media screen and (max-width: 400px) {
   .idCards {
     flex-direction: column;
@@ -1567,37 +1736,5 @@ footer a:focus-within {
   .ingredient-img > img {
     height: 80%;
     width: 80%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
-  }
-  .card-grid-8-Recomendations {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
-  }
-}
-@media screen and (max-width: 400px) {
-  .card-grid-10-Recomendations {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
-  }
-  .card-grid-8-Recomendations {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
-  }
-}
-@media screen and (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
-  }
-}
-@media screen and (max-width: 400px) {
-  .card-grid-10-Recomendations {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
   }
 }/*# sourceMappingURL=index.css.map */

@@ -671,6 +671,7 @@ footer {
 	text-align: center;
 	border: 0px;
 	padding: 9px 18px 9px 18px;
+	transition: all 0.2s ease-in-out;
 }
 
 .button-small {
@@ -685,6 +686,15 @@ footer {
 	border-width: 1px;
 	background: none;
 }
+// button hover and focus classes
+.button-primary:hover,
+.button-primary:focus {
+	transform: scale(1.05);
+}
+.button-primary:active {
+	transform: scale(0.99);
+}
+
 //Button states
 .button-primary-hover {
 	background: rgb(var(--Secondary-orange));
@@ -1021,7 +1031,7 @@ footer {
 	filter: brightness(0) invert(1);
 }
 
-#random {
+#randomButton {
 	// on hover activate the animation
 
 	&:hover .random-dice {
@@ -1120,21 +1130,20 @@ footer {
 	border-radius: 0.625rem;
 	box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
 	background-color: rgba(var(--Neutral-white), 0.25);
-	max-width: 16rem;
-	max-height: 21rem;
+	max-height: clamp(12rem, 100%, 20rem);
 	transition: all 250ms ease-in-out;
 
-	button {
+	button:first-child {
 		overflow: hidden;
 		max-width: 15rem;
 		border: none;
 		outline: none;
+		padding: 0;
 
 		img {
 			width: 150%;
 			transition: all 450ms ease-in-out;
-			object-fit: cover;
-			object-position: (-25px 0);
+			object-fit: fill;
 		}
 	}
 
@@ -1162,8 +1171,13 @@ footer {
 
 // media queries for card
 @media screen and (max-width: 768px) {
+	.card-grid-10-Recomendations {
+		.display-flex {
+			flex-direction: row !important;
+		}
+	}
 	.recipieCard {
-		flex-direction: row !important;
+		overflow: hidden !important;
 		max-width: 100%;
 		.card-Btn {
 			position: absolute;
@@ -1179,6 +1193,8 @@ footer {
 		padding-right: 8rem;
 
 		img {
+			width: 100%;
+			height: max-content;
 			transform: translateX(-1rem);
 		}
 		.card-Btn {
@@ -1192,7 +1208,7 @@ footer {
 .area-catagory {
 	transition: all 250ms ease-in-out;
 
-	a {
+	div {
 		align-items: center;
 		text-decoration: none;
 		transition: all 250ms ease-in-out;
@@ -1215,6 +1231,19 @@ footer {
 		transition: all 350ms ease-in-out;
 	}
 
+	// Flag media quiery
+	@media screen and (max-width: 768px) {
+		.area-catagory {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+		.flag-Container {
+			display: none;
+			max-height: 5rem;
+		}
+	}
 	// flag button hover
 }
 
@@ -1235,7 +1264,7 @@ footer {
 .ingredient-img > img {
 	width: 685px;
 	height: 226px;
-	transition: all 0.56ms ease;
+	transition: all 200ms ease;
 }
 
 //About page classes
@@ -1252,19 +1281,37 @@ footer {
 //  Hero section classes  //
 
 // carusel
+
+.carousel-indicators {
+	top: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.carousel-indicators {
+		display: none !important;
+	}
+}
+
 .carousel-height {
 	max-height: 37.5rem;
 	overflow: hidden;
 	.carousel-item {
+		transition: all 0.56ms ease !important;
 		img {
 			object-fit: cover;
 			object-position: 0 -250px;
+			transition: all 0.56ms ease !important;
 		}
 	}
+}
+.carousel {
+	isolation: isolate;
 }
 
 // hero text
 .hero-text {
+	transition: all 0.56ms ease;
+	max-width: 40rem;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -1277,8 +1324,17 @@ footer {
 
 // recipie of the day
 
+#recipie-of-day {
+	transition: all 0.256ms ease;
+	display: flex;
+	align-items: flex-start;
+}
+
+.invisible-block {
+	background-color: rgb(var(--Neutral-lightpink));
+}
 .recipie-Day-text {
-	max-width: 42rem;
+	max-width: 60rem;
 	margin-left: 10rem;
 	svg {
 		width: 4rem;
@@ -1288,11 +1344,35 @@ footer {
 	}
 }
 
+@media screen and (max-width: 1250px) {
+	.invisible-block {
+		display: none;
+	}
+
+	#recipie-of-day {
+		flex-direction: column;
+		gap: 5rem;
+		align-items: center;
+	}
+	.recipie-Day-text {
+		margin-left: 2rem;
+		margin-top: 12rem;
+		text-align: center;
+
+		svg {
+			width: clamp(1.5rem, 5vw, 3rem);
+			height: clamp(1.5rem, 5vw, 3rem);
+			transform: rotate(-90deg);
+		}
+	}
+}
+
 .card-Recipie-Day {
-	max-width: (fit-content, 100%);
-	height: 100%;
+	max-width: clamp(20rem, 100%, 35rem);
+	height: auto;
 	background-color: rgb(var(--Neutral-white));
 	box-shadow: 0px 0.625rem 1.25rem rgba(var(--Neutral-matteblack), 0.25);
+	transition: all 250ms ease;
 
 	.redBar {
 		position: absolute;
@@ -1300,7 +1380,8 @@ footer {
 		left: 0;
 		top: 0;
 		height: 25rem;
-		width: 1.5rem;
+		width: 1.6rem;
+		transition: all 150ms ease;
 	}
 
 	.imgContainer {
@@ -1310,41 +1391,58 @@ footer {
 		max-width: 18rem;
 		height: 18rem;
 		overflow: hidden;
+		transition: all 250ms ease;
 
 		img {
+			max-width: (50%, 100%);
 			height: 100%;
 			object-fit: cover;
+			transition: all 150ms ease;
 		}
 	}
-
+	div {
+		transition: all 150ms ease;
+		width: clamp(2rem, 85%, 20rem);
+	}
 	.card-Recipie-Day-Text {
-		max-width: 20rem;
+		transition: all 150ms ease;
+	}
+}
+//// card recipie of the day hover
+.card-Recipie-Day:hover {
+	transform: translateY(-0.5rem);
+
+	.redBar {
+		width: 1rem;
+	}
+	.imgContainer {
+		transform: scale(1.05);
 	}
 }
 
 .card-position {
-	width: fit-content;
-	height: fit-content;
 	position: absolute;
-	top: 60%;
-	right: 10%;
+	top: 0;
+	right: 0;
+	transform: translate(0, -50%);
 }
 
 // 10-Recomendations
 .card-grid-10-Recomendations {
+	max-width: clamp(20rem, 100%, 90rem);
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	grid-gap: 2rem;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	grid-gap: 3rem;
 	justify-content: center;
 }
 .card-grid-8-Recomendations {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(2, 1fr);
+	max-width: clamp(20rem, 100%, 90rem);
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 	grid-gap: 2rem;
 	justify-content: center;
 }
+
 .recomendation-title {
 	svg {
 		width: 2.5rem;
@@ -1383,10 +1481,19 @@ footer {
 
 .flag-grid {
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
-	grid-template-rows: repeat(4, 1fr);
+	// min columns
+	grid-auto-flow: dense;
+	grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
 	grid-gap: 1rem;
 	justify-content: center;
+}
+
+// flag grid media quiery
+@media screen and (max-width: 768px) {
+	.flag-grid {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(8, 1fr);
+	}
 }
 
 .card-grid {
@@ -1442,6 +1549,98 @@ footer {
 // // media quiery  // //
 
 // media quieruy for landing page
+@media screen and (max-width: 1440px) {
+	.carousel-height {
+		max-height: 37.5rem;
+		overflow: hidden;
+		.carousel-item {
+			img {
+				object-fit: cover;
+				object-position: 0;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.carousel-height {
+		max-height: 37.5rem;
+		overflow: hidden;
+		.carousel-item {
+			img {
+				object-fit: cover;
+				object-position: 0;
+			}
+		}
+	}
+	// hero
+
+	// hero text
+	.hero-text {
+		line-height: 48px !important;
+		top: 25%;
+		width: 100%;
+		padding: 1rem;
+		margin-inline: 2rem;
+	}
+
+	// recipie of the day
+	.recipie-Day-text {
+		margin-top: 10rem;
+	}
+
+	.card-Recipie-Day {
+		max-width: 90%;
+		padding-right: 0rem !important;
+
+		div {
+			button {
+				width: 95%;
+			}
+			h3 {
+				text-align: left !important;
+			}
+		}
+		.imgContainer {
+			max-width: 15rem;
+			max-height: 15rem;
+			overflow: hidden;
+
+			img {
+				object-fit: cover;
+				object-position: 0;
+			}
+		}
+	}
+
+	.card-position {
+		top: 0;
+		right: 50%;
+		transform: translate(50%, -50%);
+	}
+
+	// 10-Recomendations
+
+	.recomendation-title {
+		svg {
+			width: 2rem;
+			height: 2rem;
+			margin: 0.5rem;
+		}
+	}
+
+	.recomendation-text {
+		max-width: 100%;
+		font-size: var(--font-size-20);
+		line-height: 30px;
+	}
+
+	.recomendaiton-tagline {
+		max-width: 100%;
+		font-size: var(--font-size-24);
+		line-height: 36px;
+	}
+}
 
 // media query for about page
 @media screen and (max-width: 400px) {
@@ -1488,43 +1687,43 @@ footer {
 	}
 }
 // table media quiery
-@media screen and (max-width: 768px) {
-	.card-grid {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(auto, 1fr);
-	}
-	.card-grid-8-Recomendations {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(auto, 1fr);
-	}
-}
+// @media screen and (max-width: 768px) {
+// 	.card-grid {
+// 		grid-template-columns: repeat(1, 1fr);
+// 		grid-template-rows: repeat(auto, 1fr);
+// 	}
+// 	.card-grid-8-Recomendations {
+// 		grid-template-columns: repeat(1, 1fr);
+// 		grid-template-rows: repeat(auto, 1fr);
+// 	}
+// }
 
 // mobile media quiery
-@media screen and (max-width: 400px) {
-	.card-grid-10-Recomendations {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(auto, 1fr);
-	}
-	.card-grid-8-Recomendations {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(auto, 1fr);
-	}
-}
+// @media screen and (max-width: 400px) {
+// 	.card-grid-10-Recomendations {
+// 		grid-template-columns: repeat(1, 1fr);
+// 		grid-template-rows: repeat(auto, 1fr);
+// 	}
+// 	.card-grid-8-Recomendations {
+// 		grid-template-columns: repeat(1, 1fr);
+// 		grid-template-rows: repeat(auto, 1fr);
+// 	}
+// }
 
 // search page media quiery
 
 // table media quiery
-@media screen and (max-width: 768px) {
-	.card-grid {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(auto, 1fr);
-	}
-}
+// @media screen and (max-width: 768px) {
+// 	.card-grid {
+// 		grid-template-columns: repeat(1, 1fr);
+// 		grid-template-rows: repeat(auto, 1fr);
+// 	}
+// }
 
-// mobile media quiery
-@media screen and (max-width: 400px) {
-	.card-grid-10-Recomendations {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(auto, 1fr);
-	}
-}
+// // mobile media quiery
+// @media screen and (max-width: 400px) {
+// 	.card-grid-10-Recomendations {
+// 		grid-template-columns: repeat(1, 1fr);
+// 		grid-template-rows: repeat(auto, 1fr);
+// 	}
+// }
