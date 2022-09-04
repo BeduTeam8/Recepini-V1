@@ -334,12 +334,14 @@ function recipesHTML(recipesDIV, recipes) {
 	});
 }
 
-function printIngredient(data) {
-	let result = "";
-	console.log("Inicia printIngredient con data:", data);
-	[...Array(21).keys()].forEach(function (valor, indice) {
-		if (`strIngredient${indice}` in data) {
-			result += `<!--ESTE ERA UN ANCHOR y lo CAMBIE POR UN DIV o Button
+
+function printIngredient(data){
+    let result = '';
+    // console.log("Inicia printIngredient con data:",data);
+    [...Array(21).keys()].forEach( function(valor, indice) {
+        if (`strIngredient${indice}` in data){
+            result += 
+            `<!--ESTE ERA UN ANCHOR y lo CAMBIE POR UN DIV o Button
             //  <a href="ingredient.html"-->
                 <div class="text-none text-neutral-matteblack">
                     <figure>
@@ -444,6 +446,7 @@ font-style-normal font-weight-300 font-size-24
 font-line-height-36">We would love for you to share it with us! #Recipini</span>
 </section>
 <!-- Video -->
+<!--YOUTUBE FORZA A VERLO DESDE SU SITIO
 <!--<section class="display-flex flex-column align-items-center video">
 <h3 class="text-primary-tomatored font-family-Popp
 font-style-normal font-weight-500 font-size-28
@@ -1133,41 +1136,106 @@ document.getElementById("searchBar2").oninput = async function () {
 		/*if (sessionStorage.getItem('resultterm')) {
             datos = JSON.parse(sessionStorage.getItem('resultterm'))['meals'];
         } else {*/
-		sessionStorage.setItem("resultterm", JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
-		//}
-		///--------------------------
-		if ("meals" in recipe && recipe.meals) {
-			console.log("Buscando receta(", searchterm.value, "): ", recipe);
-			console.log(
-				"Receta x Terminos: ",
-				searchterm.value,
-				":#(",
-				recipe.meals.length,
-				"):\n",
-				recipe.meals
-			);
-			recipesHTML("results", datos);
-		} else {
-			document.getElementById("results").innerHTML =
-				"<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
-		}
-	} else {
-		sessionStorage.setItem("searchterm", "");
-		sessionStorage.setItem("resultterm", "");
-	}
-}; //End of funciton getSearchBox();
+    
+            sessionStorage.setItem('resultterm', JSON.stringify(recipe)); ///Guardar en sesión, con nombre del layout para mayor referencia
+        //}
+        ///--------------------------
+        if ('meals' in recipe && recipe.meals){
+            console.log("Buscando receta(",searchterm.value,"): ",recipe);
+            console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
+            recipesHTML("results",datos);
+        } else {
+            document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
+        }
+    } else {
+        sessionStorage.setItem('searchterm', "");
+        sessionStorage.setItem('resultterm', "");
+    }
+};//End of funciton getSearchBox();
 
-document.addEventListener("keypress", function (e) {
-	//console.log("keycode",e.keycode,"wich",e.which);
-	if (e.keyCode === 13 || e.which === 13) {
-		e.preventDefault();
-		document.getElementById("searchInputTxtBox").value = ""; ///Se limpian valor de caja de búsqueda
-		document.getElementById("results").innerHTML = ""; //Se limpian valores de capa que muestra resutados
-		sessionStorage.setItem("searchterm", ""); //Se limpian valores de búsqueda de sesión
-		sessionStorage.setItem("resultterm", "");
-		return false;
-	}
+document.addEventListener('keypress', function (e) {
+    //console.log("keycode",e.keycode,"wich",e.which);
+    if (e.keyCode === 13 || e.which === 13) {
+        e.preventDefault();
+        document.getElementById('searchInputBar2').value = ""; ///Se limpian valor de caja de búsqueda
+        document.getElementById("results").innerHTML = ""; //Se limpian valores de capa que muestra resutados
+        sessionStorage.setItem('searchterm', ""); //Se limpian valores de búsqueda de sesión
+        sessionStorage.setItem('resultterm', "");
+        return false;
+    }
 });
+
+function changeVisibility(active){ ///
+    const displayAreas = document.querySelectorAll('.displayAreas');
+    displayAreas.forEach( function(element) {
+        if(active.includes(element.id)){
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+}
+function invisiblesearchBox(){
+    document.getElementById('SearchBar1').style.display="none"
+}
+
+function visiblesearchBox(){
+    document.getElementById('SearchBar1').style.display="block"
+    }
+const preloader = document.querySelector('.preloader-wrapper');
+
+function activeSection(index){
+    preloader.classList.remove('fade-out-animation');
+    setTimeout(function(){
+        switch (index) {
+            case 1:
+                changeVisibility(['indexArea']);
+                visiblesearchBox();
+                break;
+            case 2:
+                changeVisibility(['resultsArea']);
+                console.log(document.getElementById('SearchBar1'));
+                invisiblesearchBox();
+                break;
+            case 3:
+                changeVisibility(['recipeArea']);
+                visiblesearchBox();
+                break;
+            case 4:
+                changeVisibility(['ingredientsArea']);
+                visiblesearchBox();
+                break;
+            case 5:
+                changeVisibility(['aboutUSArea']);
+                visiblesearchBox();
+                break;
+            default:
+                changeVisibility(['indexArea']);
+                visiblesearchBox();
+                break;
+        }
+        preloader.classList.add('fade-out-animation');
+    }, 300);
+}
+activeSection(1);
+
+window.addEventListener('load', function(){
+    preloader.classList.add('fade-out-animation');
+});
+
+document.getElementById('indexMenu').addEventListener("click", () => {
+    activeSection(1);
+});
+document.getElementById('aboutMenu').addEventListener("click", () => {
+    activeSection(5);
+});
+document.getElementById('searchMenu').addEventListener("click", () => {
+    activeSection(2);
+});
+document.getElementById('SearchBar1').addEventListener("mousedown", () => {
+    activeSection(2);
+});
+
 
 // function recipesHTML(recipesDIV,recipes) {
 //     console.log('Enla funcion recipes:**', recipes);
