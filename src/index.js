@@ -43,7 +43,8 @@ const apiSelected = [{
         url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
         tipo:"meals",
         layout:"recipeArea",
-        sesion: false
+        sesion: false,
+        name:"0. Receta Sorpresa"
     },{
         url:"randomselection.php", //1- 10random recipes cada una con 53 props.
         tipo:"meals",
@@ -101,15 +102,16 @@ const apiSelected = [{
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"results",
-        sesion: false
+        layout:"ingredientsResults",
+        sesion: false,
+        name:"9. Búsqueda por ingrediente 1"
     },{
         url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
                     //Posiblemente: String.concat(strIngredient,strIngredient,strIngredient)
                     //Busqueda por multingredientes. Recibe un string de ingredientes separados por coma. 
                     //Regresa un arreglo de objetos cada uno con 53 propiedades.
         tipo:"meals",
-        layout:"results",
+        layout:"ingredientsResults",
         sesion: false,
         nombre: "10. Búsqueda multingredientes"
     },{
@@ -117,7 +119,8 @@ const apiSelected = [{
                     //Regresa un arreglo con un unico elemento [0] con 53 propiedades
         tipo:"meals",
         layout:"recipeArea",
-        sesion: false
+        sesion: false,
+        name:"11. Búsqueda por Id"
     },{
         url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
         tipo:"meals",
@@ -252,73 +255,186 @@ async function getLatestRecipe() {
 //=======================================================================
 //recipes=randomRecipeDIV o el Div que le toca
 //un obj con listarecetas y el div
-function recipesHTML(recipesDIV,recipes) {
-    console.log('DENTRO de recipesHTML:id=',recipesDIV,' : ', recipes);
+
+function randomRecipeHTML(recipesDIV,recipes) {
+    console.log('Formateando String en randomRecipeHTML:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
-        const adding_recipe = document.createElement("div");
-        adding_recipe.innerHTML = `
-            <div class="card">
-                <div class="cardContainer" id="${data.idMeal}">
-                    <div class="cardImgContainer">
-                    data.meals:
-                        <p>
-                            id=${data.strMeal}: 
-                        </p>
-                        <button class="linkCard" onclick="getRecipe(${data.idMeal})">
-                            <img class="imgCard" src="${data.strMealThumb}">
-                        </button>
-                    </div>
-                </div>
-            </div>`;
-    recipesGoInDiv.appendChild(adding_recipe);
-    console.log("Termina recipesHTML: -id:",recipesDIV)
+        //const adding_recipe = document.createElement("article");
+        //adding_recipe.innerHTML = 
+         recipesGoInDiv.innerHTML +=
+        `<article id="${data.idMeal}"
+        class="card-Recipie-Day | display-flex flex-gap overflow-hidden position-relative border-radius-10px padding-300-vertical padding-600-inline margin-500">
+        <div class="redBar"></div>
+        <button class="imgContainer | border-radius-12px" onclick="getRecipe(${data.idMeal})">                
+          <img src="${data.strMealThumb}" alt="Picture of ${data.strMeal}">
+         </button>
+        <div class="display-flex flex-column-reverse    justify-content-around flex-center">
+          <h3 class=" card-Recipie-Day-Text | font-family-Popp
+            font-style-normal font-weight-500 font-size-28
+            font-line-height-42 text-center">
+            ${data.strMeal}
+          </h3>
+          <button
+            class="bg-primary-tomatogreen text-neutral-lightpink border-radius-45px button-primary text-capitalize font-family-Popp font-weight-600 font-size-16" onclick="getRecipe(${data.idMeal})">
+            Recipie of the day
+          </button>
+        </div>
+      </article>`;
+    //recipesGoInDiv.appendChild(adding_recipe);
+    console.log("Termina randomHTML en idLayout:",recipesDIV)
+  });
+}
+
+function recipesHTML(recipesDIV,recipes) {
+    console.log('DENTRO de recipesHTML:id=',recipesDIV,' : ', recipes);
+    const numberRelatedRecipes=`We found ${recipes.length} related recipies.`;
+    console.log(numberRelatedRecipes);
+    if (recipesDIV==="ingredientsResults"){
+        const header2In = document.getElementById('RelatedByIngredient');
+        header2In.textContent=`We got ${recipes.length} related dishes`;
+    }else if(recipesDIV==="latestRecipe"){}else{
+        const header2In = document.getElementById('numberResults');
+        header2In.textContent=`We found ${recipes.length} results for your search`;
+    }
+    const recipesGoInDiv = document.getElementById(recipesDIV);
+    recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
+    recipes.forEach(data => {
+        //const adding_recipe = document.createElement("article");
+        //adding_recipe.innerHTML =
+        recipesGoInDiv.innerHTML += 
+        `<article id="${data.idMeal}"
+            class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
+            <button class="overflow-hidden border-radius-10px   "onclick="getRecipe(${data.idMeal})">
+                <img class="imgCard" src="${data.strMealThumb}">
+            </button>
+            <h4>${data.strMeal}</h4>
+            <button
+                class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getRecipe(${data.idMeal})">
+                View recipie 
+            </button>
+        </article>`;
+    // recipesGoInDiv.appendChild(adding_recipe);
+    console.log("Termina recipesHTML en IdLayout:",recipesDIV);
   });
 }
 
 function printIngredient(data){
     let result = '';
+    console.log("Inicia printIngredient con data:",data);
     [...Array(21).keys()].forEach( function(valor, indice) {
         if (`strIngredient${indice}` in data){
-            result += `<div class="cardIngredient">
-            <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}
-                <button class="linkCard" 
-                    onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
-                    <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}"> 
-                </button>
-            </p></div>
-            `;
+            result += 
+            `<!--ESTE ERA UN ANCHOR y lo CAMBIE POR UN DIV o Button
+            //  <a href="ingredient.html"-->
+                <div class="text-none text-neutral-matteblack">
+                    <figure>
+                        <img src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}" style="width: 81px; height:81px; object-fit: cover" onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
+                        <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}</p>
+                    </figure>
+                </div>`;
+
         }
     });
+    console.log("Termina printIngredient");
     return result;
 }
 
 //Format a One Recipe
 function recipesXLHTML(recipesDIV,therecipe) {
-    console.log('Dentro de la funcion una recipe:', therecipe);
+    console.log('Dentro de la funcion una XLHTMLrecipe:', therecipe);
     const recipeGoesinDIV = document.getElementById(recipesDIV);
     recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
     therecipe.forEach(data => {
-    const adding_recipe = document.createElement("div");
-    adding_recipe.innerHTML = `
-    <div class"cardRecipe">
-        <div class="cardContainer" id="${data.idMeal}">
-            <div class="cardImgContainer">
-                <p><strong>Id</strong>${data.idMeal}</p>
-                <p><strong>Meal</strong>${data.strMeal}</p>
-                <p><strong>Category</strong>${data.strCategory}</p>
-                <p><strong>Country</strong>${data.strArea}</p>
-                <p><strong>Intructions</strong>${data.strInstructions}</p>
-                            <img class="imgCard" src="${data.strMealThumb}">
-                <p><strong>Tags</strong>${data.strTags}</p>
-                            <a href="${data.strYoutube}">${data.strMeal}Video</a>`+
-                printIngredient(data)+
-                `</div>
-            </div>
-        </div>`;
-    recipeGoesinDIV.appendChild(adding_recipe);
+    //const adding_recipe = document.createElement("div");
+    //adding_recipe.innerHTML =
+    recipeGoesinDIV.innerHTML = 
+    `<section style="margin: 40px;" id="recipe">
+    <div id="${data.idMeal}">
+    <!-- ==========================RECIPE TITLE id AREA =============================================start -->
+    <h1 class="text-primary-tomatogreen font-family-Vida
+
+    font-style-normal font-weight-400 font-size-64
+    font-line-height-78 display-flex justify-content-center text-center" id="recipeTitle">${data.strMeal}</h1>
+    <!-- ==========================RECIPE TITLE id AREA ================================================eND -->
+    </div>
+
+    <!-- Etiquetas suspendidas -->
+    <!--EVALUANDO NO USARLAS TEMPORALMENTE-->
+    <!-- <div class="container display-flex flex-row flex-gap justify-content-center">
+    <button
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">
+    Casserole</button>
+
+    <button
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">
+    Cheasy</button>  
+    
+    <button
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">
+    Meat</button>      
+        </div> -->
+
+    </section>
+    <!-- Recipe ingredients and recipe image -->
+    <section class="display-flex flex-column-reverse flex-gap justify-content-center recipe-ingredients">
+    <aside class="text-center">
+    <h3 class="text-primary-tomatored font-family-Popp
+        font-style-normal font-weight-500 font-size-28
+        font-line-height-42" style="margin: 20px">Recipe ingredients</h3>
+        <!--ESTA SECCION DE LA IMAGEN NO IB A AQUI INICIALMENTE. 
+        lA CAMBIE PORQUE NO RESPONDIA AL css Y CARGABA LA IMAGEN A LA IZQ-->
+            <!-- Recipe image -->
+        <article>
+            <img src="${data.strMealThumb}" alt="Foto of ${data.strMeal}" class="recipe-image">
+        </article>
+        <br><!--ESTE BR fRANK LO INSERTO, PORQUE NO HABIA ESPACION ENTRE FOTO E INGREDIENTES-->
+        <!--HASTA AQUI NO ESTABA AQUI DE LA IMAGEN DE LA RECETA  -->
+    <section class="text-center text-neutral-matteblack  font-family-Popp
+    font-style-normal font-weight-275 font-size-20 font-line-height-30" 
+    style="display: grid; grid-template-columns: repeat(4, auto); 
+    grid-template-rows: repeat(2, auto); column-gap: 16.3px; 
+    row-gap: 1px; justify-items: center;" id="recipeIngredients">
+        <!-- ==========================RECIPE INGREDIENTS id AREA ===================================== -->
+        `+printIngredient(data)+
+    `</section>
+
+</aside>
+<!--Aqui iba el tag Article con la imegen, pero no respondia a las etiquetas y estaba cargado a la izQ-->
+</section>
+<!-- Recipe instructions -->
+<section class="display-flex flex-column align-items-center" style="width: 55%; margin: 20px auto">
+<h3 class="text-primary-tomatored font-family-Popp font-style-normal font-weight-600 font-size-32
+font-line-height-48 text-center">Recipe instructions</h3>
+<ol class="text-neutral-matteblack  font-family-Popp
+font-style-normal font-weight-400 font-size-16
+font-line-height-24">
+  ${data.strInstructions}
+</ol>
+</section>
+<!-- Share -->
+<section class="display-flex flex-column text-center" style="width: 40%; margin: 20px auto">
+<span class="text-primary-tomatored font-family-Popp
+font-style-normal font-weight-600 font-size-40
+font-line-height-60">Did you make it?</span>
+<span class="text-primary-tomatogreen font-family-Popp
+font-style-normal font-weight-300 font-size-24
+font-line-height-36">We would love for you to share it with us! #Recipini</span>
+</section>
+<!-- Video -->
+<!--<section class="display-flex flex-column align-items-center video">
+<h3 class="text-primary-tomatored font-family-Popp
+font-style-normal font-weight-500 font-size-28
+font-line-height-42" style="margin: 20px">Video of how it was made!</h3>
+<iframe width="685" height="415" src=${data.strYoutube} title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>-->
+</section>`;
+
+    //recipeGoesinDIV.appendChild(adding_recipe);
+    console.log("Termina recipesXLHTML en IdLayout:",recipesDIV);
   });
 }
 
@@ -506,7 +622,7 @@ function recipesXLHTML(recipesDIV,therecipe) {
 //Remember the API returns 2 types of OBJs. (meals and categories)
 //Only one is categories. 
 //The main difference is the Description Property
-function categoriesHTML(categoriesDIV,categories) {
+/*function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categories:', categories);        
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
   categoriesGoInDiv.innerHTML = ""; //Clean element Before Filling
@@ -529,7 +645,7 @@ function categoriesHTML(categoriesDIV,categories) {
         </div>`;
     categoriesGoInDiv.appendChild(adding_categorie);
   });
-}
+}*/
 
 //render a categories information that came in a meals OBJ. 
 //You can decide no using the former one and keeping this ones for simplicity purposes.
@@ -563,26 +679,35 @@ function listsAllCategoriesHTML(listsDIV,lists) {
 
 //List all the areas or countries related to the recipes in the API
 function listsAllAreaHTML(listsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
+    console.log('En listAllAreaHTML String Formatting', lists);
     const listsGoInDiv = document.getElementById(listsDIV);
     listsGoInDiv.innerHTML = ""; //Clean element Before Filling
     lists.forEach(data => {
-        const addingList = document.createElement("div");
+        //const addingList = document.createElement("article");
         if(data.strArea!='Unknown'){
-            addingList.innerHTML = `
-                <div class="card">
-                    <div class="cardContainer" id="${data.strArea}">
-                        <div class="cardImgContainer">
-                            <button class="linkCard" 
-                                onclick="getFilteredList(7,'${data.strArea}')">
-                                <p>
-                                    <strong>${data.strArea}: </strong>
-                                </p>
-                            </button>
-                </div>`;
-            listsGoInDiv.appendChild(addingList);
+            //addingList.innerHTML =
+            listsGoInDiv.innerHTML += 
+                `<article id="${data.strArea}" class="area-catagory ">
+                    <!--ESTE ERA UN ANCHOR y lo CAMBIE POR UN DIV
+                    //       <a href="search_results.html"-->
+                    <div class=" display-flex flex-column flex-gap margin-100">
+                        <div class="flag-Container | overflow-hidden">
+                            <img 
+                            src="/src/assets/Flags/${data.strArea}.png" 
+                            alt="The ${data.strArea} Flag" onclick="getFilteredList(7,'${data.strArea}')">
+                        </div>
+                        <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
+                            font-style-normal font-weight-600 font-size-20
+                            fit-content-width text-center padding-300-inline text-primary-tomatored"
+                            style="border: 2px solid ;" onclick="getFilteredList(7,'${data.strArea}')">
+                            ${data.strArea}
+                        </button>
+                    </div>
+                </article>`;           
+            //listsGoInDiv.appendChild(addingList);
         }
     });
+    console.log("Ending listAllAreas/CountryFlags in IdLayout:",listsDIV)
 }
 
 //List all the ingredients in the API 574 aprox registries.
@@ -898,7 +1023,7 @@ async function getGeneral(Index,params= '') {
             recipesXLHTML(layout,datos);
             break;
         case 14:
-            recipesHTML(layout,datos)
+            randomRecipeHTML(layout,datos)
             break;
             /*switch (filterIndex) {
                 
@@ -958,10 +1083,10 @@ document.getElementById("randomButton").onclick = async function () {
     //console.log(sessionStorage.getItem("randomRecipe"));
 };
 
-// document.getElementById("searchInputTxtBox").oninput =async function(){
-    document.getElementById("searchButton").onclick=async function(){
+ document.getElementById("searchBar2").oninput =async function(){
+  //  document.getElementById("searchButton").onclick=async function(){
     //Que prefieren usar el Searchbutton o el searchTextBox
-    const searchterm=document.getElementById('searchInputTxtBox');
+    const searchterm=document.getElementById('searchBar2');
     console.log("searchterm.length",searchterm.value.length);
 
     if(searchterm.value.length>2){ ///Debe de al menos teclear 3 caracteres para ejecutar la búsqueda
