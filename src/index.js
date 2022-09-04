@@ -322,7 +322,7 @@ function recipesHTML(recipesDIV,recipes) {
 
 function printIngredient(data){
     let result = '';
-    console.log("Inicia printIngredient con data:",data);
+    // console.log("Inicia printIngredient con data:",data);
     [...Array(21).keys()].forEach( function(valor, indice) {
         if (`strIngredient${indice}` in data){
             result += 
@@ -1119,7 +1119,7 @@ document.addEventListener('keypress', function (e) {
     //console.log("keycode",e.keycode,"wich",e.which);
     if (e.keyCode === 13 || e.which === 13) {
         e.preventDefault();
-        document.getElementById('searchInputTxtBox').value = ""; ///Se limpian valor de caja de búsqueda
+        document.getElementById('searchInputBar2').value = ""; ///Se limpian valor de caja de búsqueda
         document.getElementById("results").innerHTML = ""; //Se limpian valores de capa que muestra resutados
         sessionStorage.setItem('searchterm', ""); //Se limpian valores de búsqueda de sesión
         sessionStorage.setItem('resultterm', "");
@@ -1137,7 +1137,13 @@ function changeVisibility(active){ ///
         }
     });
 }
+function invisiblesearchBox(){
+    document.getElementById('SearchBar1').style.display="none"
+}
 
+function visiblesearchBox(){
+    document.getElementById('SearchBar1').style.display="block"
+    }
 const preloader = document.querySelector('.preloader-wrapper');
 
 function activeSection(index){
@@ -1146,21 +1152,28 @@ function activeSection(index){
         switch (index) {
             case 1:
                 changeVisibility(['indexArea']);
+                visiblesearchBox();
                 break;
             case 2:
                 changeVisibility(['resultsArea']);
+                console.log(document.getElementById('SearchBar1'));
+                invisiblesearchBox();
                 break;
             case 3:
                 changeVisibility(['recipeArea']);
+                visiblesearchBox();
                 break;
             case 4:
                 changeVisibility(['ingredientsArea']);
+                visiblesearchBox();
                 break;
             case 5:
                 changeVisibility(['aboutUSArea']);
+                visiblesearchBox();
                 break;
             default:
                 changeVisibility(['indexArea']);
+                visiblesearchBox();
                 break;
         }
         preloader.classList.add('fade-out-animation');
@@ -1181,6 +1194,11 @@ document.getElementById('aboutMenu').addEventListener("click", () => {
 document.getElementById('searchMenu').addEventListener("click", () => {
     activeSection(2);
 });
+document.getElementById('SearchBar1').addEventListener("mousedown", () => {
+    activeSection(2);
+});
+
+
 // function recipesHTML(recipesDIV,recipes) {
 //     console.log('Enla funcion recipes:**', recipes);
 //     const recipesGoInDiv = document.getElementById(recipesDIV);
