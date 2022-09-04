@@ -43,7 +43,8 @@ const apiSelected = [{
         url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
         tipo:"meals",
         layout:"recipeArea",
-        sesion: false
+        sesion: false,
+        name:"0. Receta Sorpresa"
     },{
         url:"randomselection.php", //1- 10random recipes cada una con 53 props.
         tipo:"meals",
@@ -101,15 +102,16 @@ const apiSelected = [{
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"results",
-        sesion: false
+        layout:"ingredientsResults",
+        sesion: false,
+        name:"9. Búsqueda por ingrediente 1"
     },{
         url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
                     //Posiblemente: String.concat(strIngredient,strIngredient,strIngredient)
                     //Busqueda por multingredientes. Recibe un string de ingredientes separados por coma. 
                     //Regresa un arreglo de objetos cada uno con 53 propiedades.
         tipo:"meals",
-        layout:"results",
+        layout:"ingredientsResults",
         sesion: false,
         nombre: "10. Búsqueda multingredientes"
     },{
@@ -117,7 +119,8 @@ const apiSelected = [{
                     //Regresa un arreglo con un unico elemento [0] con 53 propiedades
         tipo:"meals",
         layout:"recipeArea",
-        sesion: false
+        sesion: false,
+        name:"11. Búsqueda por Id"
     },{
         url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
         tipo:"meals",
@@ -286,6 +289,15 @@ function randomRecipeHTML(recipesDIV,recipes) {
 
 function recipesHTML(recipesDIV,recipes) {
     console.log('DENTRO de recipesHTML:id=',recipesDIV,' : ', recipes);
+    const numberRelatedRecipes=`We found ${recipes.length} related recipies.`;
+    console.log(numberRelatedRecipes);
+    if (recipesDIV==="ingredientsResults"){
+        const header2In = document.getElementById('RelatedByIngredient');
+        header2In.textContent=`We got ${recipes.length} related dishes`;
+    }else if(recipesDIV==="latestRecipe"){}else{
+        const header2In = document.getElementById('numberResults');
+        header2In.textContent=`We found ${recipes.length} results for your search`;
+    }
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
@@ -338,49 +350,54 @@ function recipesXLHTML(recipesDIV,therecipe) {
     //const adding_recipe = document.createElement("div");
     //adding_recipe.innerHTML =
     recipeGoesinDIV.innerHTML = 
-    ` <section style="margin: 40px;" id="recipe">
-        <div id="${data.idMeal}">
-    <!-- ==========================RECIPE TITLE id AREA ====================================================start -->
+    `<section style="margin: 40px;" id="recipe">
+    <div id="${data.idMeal}">
+    <!-- ==========================RECIPE TITLE id AREA =============================================start -->
     <h1 class="text-primary-tomatogreen font-family-Vida
 
     font-style-normal font-weight-400 font-size-64
     font-line-height-78 display-flex justify-content-center text-center" id="recipeTitle">${data.strMeal}</h1>
-    <!-- ==========================RECIPE TITLE id AREA ======================================================eND -->
+    <!-- ==========================RECIPE TITLE id AREA ================================================eND -->
     </div>
+
     <!-- Etiquetas suspendidas -->
+    <!--EVALUANDO NO USARLAS TEMPORALMENTE-->
     <!-- <div class="container display-flex flex-row flex-gap justify-content-center">
     <button
-    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Casserole</button>
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">
+    Casserole</button>
 
     <button
-    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Cheasy</button>  
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">
+    Cheasy</button>  
     
     <button
-    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Meat</button>      
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">
+    Meat</button>      
         </div> -->
 
     </section>
-<!-- Recipe ingredients and recipe image -->
-<section class="display-flex flex-column-reverse flex-gap justify-content-center recipe-ingredients">
-<aside class="text-center">
-  <h3 class="text-primary-tomatored font-family-Popp
-    font-style-normal font-weight-500 font-size-28
-    font-line-height-42" style="margin: 20px">Recipe ingredients</h3>
-<!--ESTA SECCION DE LA IMAGEN NO IB A AQUI INICIALMENTE. lA CAMBIE PORQUE NO RESPONDIA AL css Y CARGABA LA IMAGEN A LA IZQ-->
-    <!-- Recipe image -->
-<article>
-    <img src="${data.strMealThumb}" alt="Foto of ${data.strMeal}" class="recipe-image">
-</article>
-<br><!--ESTE BR fRANK LO INSERTO, PORQUE NO HABIA ESPACION ENTRE FOTO E INGREDIENTES-->
-<!--HASTA AQUI NO ESTABA AQUI DE LA IMAGEN DE LA RECETA  -->
-  <section class="text-center text-neutral-matteblack  font-family-Popp
-    font-style-normal font-weight-275 font-size-20
-    font-line-height-30" style="display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(2, auto);     
-
-    column-gap: 16.3px; row-gap: 1px; justify-items: center;" id="recipeIngredients">
-        <!-- ==========================RECIPE INGREDIENTS id AREA ====================================================== -->
-        `+
-printIngredient(data)+
+    <!-- Recipe ingredients and recipe image -->
+    <section class="display-flex flex-column-reverse flex-gap justify-content-center recipe-ingredients">
+    <aside class="text-center">
+    <h3 class="text-primary-tomatored font-family-Popp
+        font-style-normal font-weight-500 font-size-28
+        font-line-height-42" style="margin: 20px">Recipe ingredients</h3>
+        <!--ESTA SECCION DE LA IMAGEN NO IB A AQUI INICIALMENTE. 
+        lA CAMBIE PORQUE NO RESPONDIA AL css Y CARGABA LA IMAGEN A LA IZQ-->
+            <!-- Recipe image -->
+        <article>
+            <img src="${data.strMealThumb}" alt="Foto of ${data.strMeal}" class="recipe-image">
+        </article>
+        <br><!--ESTE BR fRANK LO INSERTO, PORQUE NO HABIA ESPACION ENTRE FOTO E INGREDIENTES-->
+        <!--HASTA AQUI NO ESTABA AQUI DE LA IMAGEN DE LA RECETA  -->
+    <section class="text-center text-neutral-matteblack  font-family-Popp
+    font-style-normal font-weight-275 font-size-20 font-line-height-30" 
+    style="display: grid; grid-template-columns: repeat(4, auto); 
+    grid-template-rows: repeat(2, auto); column-gap: 16.3px; 
+    row-gap: 1px; justify-items: center;" id="recipeIngredients">
+        <!-- ==========================RECIPE INGREDIENTS id AREA ===================================== -->
+        `+printIngredient(data)+
     `</section>
 
 </aside>
