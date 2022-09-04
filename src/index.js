@@ -1083,10 +1083,10 @@ document.getElementById("randomButton").onclick = async function () {
     //console.log(sessionStorage.getItem("randomRecipe"));
 };
 
-// document.getElementById("searchInputTxtBox").oninput =async function(){
-    document.getElementById("searchButton").onclick=async function(){
+ document.getElementById("searchBar").oninput =async function(){
+  //  document.getElementById("searchButton").onclick=async function(){
     //Que prefieren usar el Searchbutton o el searchTextBox
-    const searchterm=document.getElementById('searchInputTxtBox');
+    const searchterm=document.getElementById('searchBar');
     console.log("searchterm.length",searchterm.value.length);
 
     if(searchterm.value.length>2){ ///Debe de al menos teclear 3 caracteres para ejecutar la búsqueda
