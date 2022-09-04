@@ -10,6 +10,7 @@
 </head>
 
 <body class="bg-neutral-lightpink">
+    <!-- ========================================================START OF HEADING NAVBAR ====================================================== -->
   <!-- 01 Navegation -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary-tomatored padding-200-inline">
@@ -33,25 +34,29 @@
             <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="search_results.html">Search</a>
           </li>
         </ul>
+        <!-- ========================================================START OF SEARCHBOX====================================================== -->
         <div class="navbar-Search-Container | display-flex">
           <form class="searchBox width-100 padding-300-inline">
             <input 
               class="searchBox border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
               type="search" id="SearchBar" name="search" placeholder="Search for recepies here" aria-label="Search">
           </form>
-          
-          <a href="recipe.html" style="text-decoration:none;">
+          <!-- ========================================================END OF SEARCHBOX====================================================== -->
+
+          <!-- ========================================================START OF RANDOM BUTTON ====================================================== -->
+          <!-- <a href="recipe.html" style="text-decoration:none;"> -->
             <button id="randomButton"
-              class="display-flex text-neutral-lightpink border-radius-4px button-primary text-capitalize font-family-Popp font-weight-600 font-size-20 bg-primary-tomatogreen">random
+              class="display-flex text-neutral-lightpink border-radius-4px button-primary text-capitalize font-family-Popp font-weight-600 font-size-20 bg-primary-tomatogreen" >random
               <span class="random-dice"></span>
             </button>
-          </a>
+          <!-- </a> -->
+          <!-- ========================================================END OF RANDOM BUTTON ====================================================== -->
         </div>
       </div>
     </nav>
   </header>
-
-
+<!-- ========================================================END OF HEADING NAVBAR ====================================================== -->
+<!-- ========================================================START OF MAIN DESIGNsYSTEM AREA ====================================================== -->
 <main>
   <!-- 02 Main -->
   <div class="displayAreas" id="indexArea">
@@ -125,7 +130,7 @@
             d="M8 16C8 15.7348 8.10536 15.4805 8.29289 15.2929C8.48043 15.1054 8.73478 15 9 15H20.586L16.292 10.708C16.1042 10.5203 15.9987 10.2656 15.9987 10C15.9987 9.73449 16.1042 9.47982 16.292 9.29204C16.4798 9.10427 16.7344 8.99878 17 8.99878C17.2656 8.99878 17.5202 9.10427 17.708 9.29204L23.708 15.292C23.8011 15.3849 23.875 15.4953 23.9254 15.6168C23.9758 15.7383 24.0018 15.8685 24.0018 16C24.0018 16.1316 23.9758 16.2618 23.9254 16.3833C23.875 16.5048 23.8011 16.6152 23.708 16.708L17.708 22.708C17.5202 22.8958 17.2656 23.0013 17 23.0013C16.7344 23.0013 16.4798 22.8958 16.292 22.708C16.1042 22.5203 15.9987 22.2656 15.9987 22C15.9987 21.7345 16.1042 21.4798 16.292 21.292L20.586 17H9C8.73478 17 8.48043 16.8947 8.29289 16.7072C8.10536 16.5196 8 16.2653 8 16Z" />
         </svg>
       </h2>
-
+  <!-- ===================================START OF RECIPE OF THE DAY ====================================================== -->
       <!-- 03.02 Section recipie of the day -->
       <div class="card-position" id="recipeDay">
 
@@ -152,6 +157,7 @@
         </article>
         <!-- 03.02 Random recipie fija End  -->
       </div>
+      <!-- ===================================END OF RECIPE OF THE DAY ====================================================== -->
     </section>
 
     <!-- 04 10 Recomendation Section -->
@@ -177,6 +183,7 @@
           recepie? Look no further we have 10 recomendations you
           should try and remove the guess work! </p>
       </div>
+      <!-- ===================================START OF 10 RECOMMENDATIONS ====================================================== -->
       <div class="card-grid-10-Recomendations | margin-200 padding-900-vertical padding-200-inline "  id="latestRecipe"> 
         <!-- id="listAllCategories"--> 
         <!-- 10 recomendation funciton start here -->
@@ -302,7 +309,7 @@
         </article> -->
         <!-- 10 recepie recomendations end here -->
       </div>
-
+  <!-- ===================================END OF 10 RECOMMENDATIONS ====================================================== -->
       <div
         class="recomendaiton-tagline | display-flex flex-column flex-center font-family-Popp text-secondary-spoiledtomato">
         <p>These should get your taste buds bussin! <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -320,6 +327,7 @@
       font-line-height-48 text-center margin-900-inline ">
         Looking for your favorite cuisine?
       </h2>
+<!-- ========================================================START OF FLAGS AREA ====================================================== -->
 
       <div class="flag-grid | margin-900 padding-300 " id="listAllArea">
 
@@ -677,12 +685,14 @@
           </a>
         </article> -->
         <!-- flag section ends here -->
+        <!-- ========================================================END OF FLAGS ====================================================== -->
       </div>
     </section>
     </div>
   </div>
-    <!-- ========================================================SEARCH RESULTS====================================================== -->
+    <!-- ========================================= SEARCH ==============================RESULTS====================================================== -->
    <div class="displayAreas" id="resultsArea">
+    SEARCH ==============================RESULTS
     <section style="margin: 40px;">
         <!-- Title-->
         <div>
@@ -693,22 +703,27 @@
         <!-- Navigation bar -->
         <div class="margin-500">
             <div class="display-flex justify-content-center ">
+
                 <form class="display-flex justify-content-center width-50">
                     <input
                         class=" | padding-300-inline padding-200-vertical  border-color-secondary-spoiledtomato bg-neutral-white border-radius-semi-round-8px outline-color-primary-tomatogreen"
                         type="search" id="SearchBar" placeholder="Search for recepies here" aria-label="Search"
                         style="width: 100%;">
-                </form>
+                <!-- NOTE HERE: Search Button was designed outside of the form, it was moved inside it works inside for JS purposes. -->
                 <button
                     class="| border-radius-semi-round-8px-reverse bg-primary-tomatogreen text-neutral-lightpink padding-600-inline border-color-secondary-spoiledtomato ">Search</button>
+                </form>
             </div>
         </div>
-        <div>
+        <!-- ========================================================END OF SEARCHBOX CON SEARCH BUTTON====================================================== -->
+        <div id="resultsCounter">
+            <!-- Supposedly we can start releasing results here -->
             <h3 class="text-primary-tomatored font-family-Popp
             font-style-normal font-weight-300 font-size-24
             font-line-height-36 text-center" style="margin: 20px">We found X results for your search of X!</h3>
         </div>
     </section>
+    <!-- ========================================================RESULTS AREA FOR ALL SEARCHES ====================================================== -->
     <!-- Search results -->
     <section class=" card-grid | text-center margin-900 padding-900-vertical" id="results">
 
@@ -814,17 +829,21 @@
         </article>
 
         <!-- inyectar resultado de busqueda en esta secion End -->
+    <!-- ===============================END OF RESULTS AREA FOR ALL SEARCHES ====================================================== -->
     </section>
 </div>
 
-<!-- ========================================================RECIPE========================================================= -->
+<!-- ======================================== RECIPE DISPLAY AREA =========================================================================================== -->
 <div class="displayAreas" id="recipeArea">
 <!-- Title and tags -->
-    <section style="margin: 40px;" id="re">
+    <!-- ================================START RECIPE LOAD AREA ==================================================== -->
+    <section style="margin: 40px;" id="recipe">
         <div>
+            <!-- ==========================RECIPE TITLE id AREA ======================================================start -->
             <h1 class="text-primary-tomatogreen font-family-Vida
             font-style-normal font-weight-400 font-size-64
-            font-line-height-78 display-flex justify-content-center text-center">Chicken Enchilada Casserole</h1>
+            font-line-height-78 display-flex justify-content-center text-center" id="recipeTitle">Chicken Enchilada Casserole</h1>
+            <!-- ==========================RECIPE TITLE id AREA ======================================================eND -->
         </div>
         <!-- Etiquetas suspendidas -->
         <!-- <div class="container display-flex flex-row flex-gap justify-content-center">
@@ -836,6 +855,7 @@
             class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Meat</button>      
         </div> -->
     </section>
+
     <!-- Recipe ingredients and recipe image -->
     <section class="display-flex flex-column-reverse flex-gap justify-content-center recipe-ingredients">
         <aside class="text-center">
@@ -845,7 +865,8 @@
             <section class="text-center text-neutral-matteblack  font-family-Popp
             font-style-normal font-weight-275 font-size-20
             font-line-height-30" style="display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(2, auto);     
-            column-gap: 16.3px; row-gap: 1px; justify-items: center;">
+            column-gap: 16.3px; row-gap: 1px; justify-items: center;" id="recipeIngredients">
+                <!-- ==========================RECIPE INGREDIENTS id AREA ====================================================== -->
                 <a href="ingredient.html" class="text-none text-neutral-matteblack">
                     <figure>
                         <img src="/src/assets/enchilada_sauce.png" alt=""
@@ -1010,9 +1031,11 @@
     </section>
   </div>
  
-<!-- ========================================================INGREDIENTS DISPLAY AREA
+<!-- ========================================================
+    INGREDIENTS DISPLAY AREA
     ========================================================= -->
 <div class="displayAreas" id="ingredientsArea">
+    INGREDIENTS DISPLAY AREA
 <!-- 01 Ingredient Name -->
 <section class="margin" id="ingredient">
     <div class="display-flex justify-content-center">
@@ -1156,50 +1179,11 @@
 </section>
 </div>
 
-<!-- ========================================================ABOUT US DISPLAY AREA========================================================= -->
+<!-- ========================================================
+    ABOUT US DISPLAY AREA
+    ========================================================= -->
 <div class="displayAreas" id="aboutUSArea">
-<!-- 00 Header -->
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-tomatored padding-200-inline">
-        <a class="navbar-brand padding-500-inline" href="#">
-            <img src="/src/assets/Logo_Recepini.png" alt="" style="max-width:5rem;">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse padding-500-inline flex-center" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="index.html">Home
-                        <span class="visually-hidden">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link font-family-Popp font-weight-600 font-size-20px" href="aboutUs.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link font-family-Popp font-weight-600 font-size-20px"
-                        href="search_results.html">Search</a>
-                </li>
-            </ul>
-            <div class="navbar-Search-Container | display-flex">
-                <form class="width-100 padding-300-inline">
-                    <input
-                        class=" border-radius-5px width-100 padding-300-inline padding-200-vertical border-color-secondary-orange outline-color-primary-tomatogreen "
-                        type="search" id="SearchBar" placeholder="Search for recepies here" aria-label="Search">
-                </form>
-                <a href="recipe.html" style="text-decoration:none;">
-                    <button id="random"
-                        class="display-flex text-neutral-lightpink border-radius-4px button-primary text-capitalize font-family-Popp font-weight-600 font-size-20 bg-primary-tomatogreen">random
-                        <span class="random-dice"></span>
-                    </button>
-                </a>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<!-- 01 Ingredient Name -->
+    ABOUT US DISPLAY AREA
 <section class="margin">
     <div class="display-flex justify-content-center">
         <h1 class="text-primary-tomatogreen font-family-Vida

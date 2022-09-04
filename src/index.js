@@ -42,7 +42,7 @@ const apiSelected = [{
     //Busquedas sin parametros    
         url:"random.php", //0- randomButton regresa 1 receta sorpresa  (registro/objeto) que tiene 53 propiedades.
         tipo:"meals",
-        layout:"recipe",
+        layout:"recipeArea",
         sesion: false
     },{
         url:"randomselection.php", //1- 10random recipes cada una con 53 props.
@@ -93,7 +93,7 @@ const apiSelected = [{
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"results",
+        layout:"ingredientsArea",
         sesion: false
     },{
         url:"filter.php?i=", //10-${strIngredient,strIngredient,strIngredient}
@@ -107,7 +107,7 @@ const apiSelected = [{
         url:"lookup.php?i=", //11-${idMeal}Busqueda por Id.
                     //Regresa un arreglo con un unico elemento [0] con 53 propiedades
         tipo:"meals",
-        layout:"recipe",
+        layout:"recipeArea",
         sesion: false
     },{
         url:"search.php?f=", //12-${charA-Z}Busqueda por la primera letra y Regresa un arreglo de objetos cada uno con 53 propiedades o null
@@ -494,7 +494,7 @@ function recipesXLHTML(recipesDIV,therecipe) {
 //Only one is categories. 
 //The main difference is the Description Property
 function categoriesHTML(categoriesDIV,categories) {
-    console.log('Enla funcion categories:', categories);
+    console.log('Enla funcion categories:', categories);        
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
   categoriesGoInDiv.innerHTML = ""; //Clean element Before Filling
   categories.forEach(data => {
@@ -721,7 +721,7 @@ async function getRecipe(id){
     //const recipe = await getAPIResponse(11,id);
     // console.log("Receta",id,": ",recipe);
     // console.log("Registros de Receta",id,":(",recipe.meals.length,"):\n",recipe.meals);
-    //recipesXLHTML("recipe",recipe.meals);
+    //recipesXLHTML("recipeArea",recipe.meals);
     //recipesHTML(,recipe.meals);
 };
 
@@ -929,7 +929,8 @@ document.getElementById("randomButton").onclick = async function () {
     console.log('getARandomRecipe:',recipe);
     console.log('getARandomRecipe:(',recipe.meals.length,'):',recipe.meals);
     //recipesXLHTML("randomRecipe",recipe.meals);
-    recipesHTML("randomRecipe",recipe.meals);
+    // 
+    recipesHTML("recipeArea",recipe.meals);
     //console.log(recipe);
     ///Guardar en sesión
     sessionStorage.setItem("randomRecipe", JSON.stringify(recipe));
