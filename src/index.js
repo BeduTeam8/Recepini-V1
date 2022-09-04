@@ -264,7 +264,7 @@ function randomRecipeHTML(recipesDIV,recipes) {
         `<article id="${data.idMeal}"
         class="card-Recipie-Day | display-flex flex-gap overflow-hidden position-relative border-radius-10px padding-300-vertical padding-600-inline margin-500">
         <div class="redBar"></div>
-        <button class="imgContainer | border-radius-12px onclick="getRecipe(${data.idMeal})">                
+        <button class="imgContainer | border-radius-12px" onclick="getRecipe(${data.idMeal})">                
           <img src="${data.strMealThumb}" alt="Picture of ${data.strMeal}">
          </button>
         <div class="display-flex flex-column-reverse    justify-content-around flex-center">
@@ -304,52 +304,120 @@ function recipesHTML(recipesDIV,recipes) {
             </button>
         </article>`;
     // recipesGoInDiv.appendChild(adding_recipe);
-    console.log("Termina recipesHTML en IdLayout:",recipesDIV)
+    console.log("Termina recipesHTML en IdLayout:",recipesDIV);
   });
 }
 
 function printIngredient(data){
     let result = '';
+    console.log("Inicia printIngredient con data:",data);
     [...Array(21).keys()].forEach( function(valor, indice) {
         if (`strIngredient${indice}` in data){
-            result += `<div class="cardIngredient">
-            <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}
-                <button class="linkCard" 
-                    onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
-                    <img class="imgCard" 
-                        src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}"> 
-                </button>
-            </p></div>
-            `;
+            result += 
+            `<!--ESTE ERA UN ANCHOR y lo CAMBIE POR UN DIV o Button
+            //  <a href="ingredient.html"-->
+                <div class="text-none text-neutral-matteblack">
+                    <figure>
+                        <img src="${serverURL}/images/ingredients/${data['strIngredient'+indice]}.png" alt="${data['strIngredient'+indice]}" style="width: 81px; height:81px; object-fit: cover" onclick="getFilteredList(9,'${data['strIngredient'+indice]}')">
+                        <p>${indice} ${data['strMeasure'+indice]}&nbsp;${data['strIngredient'+indice]}</p>
+                    </figure>
+                </div>`;
+
         }
     });
+    console.log("Termina printIngredient");
     return result;
 }
 
 //Format a One Recipe
 function recipesXLHTML(recipesDIV,therecipe) {
-    console.log('Dentro de la funcion una recipe:', therecipe);
+    console.log('Dentro de la funcion una XLHTMLrecipe:', therecipe);
     const recipeGoesinDIV = document.getElementById(recipesDIV);
     recipeGoesinDIV.innerHTML = ""; //Clean element Before Filling
     therecipe.forEach(data => {
-    const adding_recipe = document.createElement("div");
-    adding_recipe.innerHTML = `
-    <div class"cardRecipe">
-        <div class="cardContainer" id="${data.idMeal}">
-            <div class="cardImgContainer">
-                <p><strong>Id</strong>${data.idMeal}</p>
-                <p><strong>Meal</strong>${data.strMeal}</p>
-                <p><strong>Category</strong>${data.strCategory}</p>
-                <p><strong>Country</strong>${data.strArea}</p>
-                <p><strong>Intructions</strong>${data.strInstructions}</p>
-                            <img class="imgCard" src="${data.strMealThumb}">
-                <p><strong>Tags</strong>${data.strTags}</p>
-                            <a href="${data.strYoutube}">${data.strMeal}Video</a>`+
-                printIngredient(data)+
-                `</div>
-            </div>
-        </div>`;
-    recipeGoesinDIV.appendChild(adding_recipe);
+    //const adding_recipe = document.createElement("div");
+    //adding_recipe.innerHTML =
+    recipeGoesinDIV.innerHTML = 
+    ` <section style="margin: 40px;" id="recipe">
+        <div id="${data.idMeal}">
+    <!-- ==========================RECIPE TITLE id AREA ====================================================start -->
+    <h1 class="text-primary-tomatogreen font-family-Vida
+
+    font-style-normal font-weight-400 font-size-64
+    font-line-height-78 display-flex justify-content-center text-center" id="recipeTitle">${data.strMeal}</h1>
+    <!-- ==========================RECIPE TITLE id AREA ======================================================eND -->
+    </div>
+    <!-- Etiquetas suspendidas -->
+    <!-- <div class="container display-flex flex-row flex-gap justify-content-center">
+    <button
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Casserole</button>
+
+    <button
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Cheasy</button>  
+    
+    <button
+    class="button-primary-outline border-color-primary-tomatored text-primary-tomatored border-radius-45px">Meat</button>      
+        </div> -->
+
+    </section>
+<!-- Recipe ingredients and recipe image -->
+<section class="display-flex flex-column-reverse flex-gap justify-content-center recipe-ingredients">
+<aside class="text-center">
+  <h3 class="text-primary-tomatored font-family-Popp
+    font-style-normal font-weight-500 font-size-28
+    font-line-height-42" style="margin: 20px">Recipe ingredients</h3>
+<!--ESTA SECCION DE LA IMAGEN NO IB A AQUI INICIALMENTE. lA CAMBIE PORQUE NO RESPONDIA AL css Y CARGABA LA IMAGEN A LA IZQ-->
+    <!-- Recipe image -->
+<article>
+    <img src="${data.strMealThumb}" alt="Foto of ${data.strMeal}" class="recipe-image">
+</article>
+<br><!--ESTE BR fRANK LO INSERTO, PORQUE NO HABIA ESPACION ENTRE FOTO E INGREDIENTES-->
+<!--HASTA AQUI NO ESTABA AQUI DE LA IMAGEN DE LA RECETA  -->
+  <section class="text-center text-neutral-matteblack  font-family-Popp
+    font-style-normal font-weight-275 font-size-20
+    font-line-height-30" style="display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(2, auto);     
+
+    column-gap: 16.3px; row-gap: 1px; justify-items: center;" id="recipeIngredients">
+        <!-- ==========================RECIPE INGREDIENTS id AREA ====================================================== -->
+        `+
+printIngredient(data)+
+    `</section>
+
+</aside>
+<!--Aqui iba el tag Article con la imegen, pero no respondia a las etiquetas y estaba cargado a la izQ-->
+</section>
+<!-- Recipe instructions -->
+<section class="display-flex flex-column align-items-center" style="width: 55%; margin: 20px auto">
+<h3 class="text-primary-tomatored font-family-Popp font-style-normal font-weight-600 font-size-32
+font-line-height-48 text-center">Recipe instructions</h3>
+<ol class="text-neutral-matteblack  font-family-Popp
+font-style-normal font-weight-400 font-size-16
+font-line-height-24">
+  ${data.strInstructions}
+</ol>
+</section>
+<!-- Share -->
+<section class="display-flex flex-column text-center" style="width: 40%; margin: 20px auto">
+<span class="text-primary-tomatored font-family-Popp
+font-style-normal font-weight-600 font-size-40
+font-line-height-60">Did you make it?</span>
+<span class="text-primary-tomatogreen font-family-Popp
+font-style-normal font-weight-300 font-size-24
+font-line-height-36">We would love for you to share it with us! #Recipini</span>
+</section>
+<!-- Video -->
+<!--<section class="display-flex flex-column align-items-center video">
+<h3 class="text-primary-tomatored font-family-Popp
+font-style-normal font-weight-500 font-size-28
+font-line-height-42" style="margin: 20px">Video of how it was made!</h3>
+<iframe width="685" height="415" src=${data.strYoutube} title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>-->
+</section>`;
+
+    //recipeGoesinDIV.appendChild(adding_recipe);
+    console.log("Termina recipesXLHTML en IdLayout:",recipesDIV);
   });
 }
 
