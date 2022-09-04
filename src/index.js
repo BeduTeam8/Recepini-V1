@@ -254,7 +254,7 @@ async function getLatestRecipe() {
 //un obj con listarecetas y el div
 
 function randomRecipeHTML(recipesDIV,recipes) {
-    console.log('Enla funcion recipes:', recipes);
+    console.log('Formateando String en randomRecipeHTML:', recipes);
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
@@ -264,11 +264,9 @@ function randomRecipeHTML(recipesDIV,recipes) {
         `<article id="${data.idMeal}"
         class="card-Recipie-Day | display-flex flex-gap overflow-hidden position-relative border-radius-10px padding-300-vertical padding-600-inline margin-500">
         <div class="redBar"></div>
-        <div class="imgContainer | border-radius-12px ">
-          <button onclick="getRecipe(${data.idMeal})">                
+        <button class="imgContainer | border-radius-12px onclick="getRecipe(${data.idMeal})">                
           <img src="${data.strMealThumb}" alt="Picture of ${data.strMeal}">
-          </button>
-        </div>
+         </button>
         <div class="display-flex flex-column-reverse    justify-content-around flex-center">
           <h3 class=" card-Recipie-Day-Text | font-family-Popp
             font-style-normal font-weight-500 font-size-28
@@ -282,7 +280,7 @@ function randomRecipeHTML(recipesDIV,recipes) {
         </div>
       </article>`;
     //recipesGoInDiv.appendChild(adding_recipe);
-    console.log("Termina recipesHTML: -id:",recipesDIV)
+    console.log("Termina randomHTML en idLayout:",recipesDIV)
   });
 }
 
@@ -291,23 +289,22 @@ function recipesHTML(recipesDIV,recipes) {
     const recipesGoInDiv = document.getElementById(recipesDIV);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     recipes.forEach(data => {
-        const adding_recipe = document.createElement("div");
-        adding_recipe.innerHTML = `
-            <div class="card">
-                <div class="cardContainer" id="${data.idMeal}">
-                    <div class="cardImgContainer">
-                    data.meals:
-                        <p>
-                            id=${data.strMeal}: 
-                        </p>
-                        <button class="linkCard" onclick="getRecipe(${data.idMeal})">
-                            <img class="imgCard" src="${data.strMealThumb}">
-                        </button>
-                    </div>
-                </div>
-            </div>`;
-    recipesGoInDiv.appendChild(adding_recipe);
-    console.log("Termina recipesHTML: -id:",recipesDIV)
+        //const adding_recipe = document.createElement("article");
+        //adding_recipe.innerHTML =
+        recipesGoInDiv.innerHTML += 
+        `<article id="${data.idMeal}"
+            class="recipieCard | display-flex flex-column flex-gap padding-300 flex-align-center overflow-hidden position-relative text-center">
+            <button class="overflow-hidden border-radius-10px   "onclick="getRecipe(${data.idMeal})">
+                <img class="imgCard" src="${data.strMealThumb}">
+            </button>
+            <h4>${data.strMeal}</h4>
+            <button
+                class="card-Btn | bg-primary-tomatogreen width-100 padding-200 position-absolute text-decoration-none .font-family-Popp  font-size-24 text-neutral-lightpink text-center" onclick="getRecipe(${data.idMeal})">
+                View recipie 
+            </button>
+        </article>`;
+    // recipesGoInDiv.appendChild(adding_recipe);
+    console.log("Termina recipesHTML en IdLayout:",recipesDIV)
   });
 }
 
@@ -540,7 +537,7 @@ function recipesXLHTML(recipesDIV,therecipe) {
 //Remember the API returns 2 types of OBJs. (meals and categories)
 //Only one is categories. 
 //The main difference is the Description Property
-function categoriesHTML(categoriesDIV,categories) {
+/*function categoriesHTML(categoriesDIV,categories) {
     console.log('Enla funcion categories:', categories);        
   const categoriesGoInDiv = document.getElementById(categoriesDIV);
   categoriesGoInDiv.innerHTML = ""; //Clean element Before Filling
@@ -563,7 +560,7 @@ function categoriesHTML(categoriesDIV,categories) {
         </div>`;
     categoriesGoInDiv.appendChild(adding_categorie);
   });
-}
+}*/
 
 //render a categories information that came in a meals OBJ. 
 //You can decide no using the former one and keeping this ones for simplicity purposes.
@@ -597,29 +594,35 @@ function listsAllCategoriesHTML(listsDIV,lists) {
 
 //List all the areas or countries related to the recipes in the API
 function listsAllAreaHTML(listsDIV,lists) {
-    console.log('Enla funcion lists:', lists);
+    console.log('En listAllAreaHTML String Formatting', lists);
     const listsGoInDiv = document.getElementById(listsDIV);
     listsGoInDiv.innerHTML = ""; //Clean element Before Filling
     lists.forEach(data => {
-        const addingList = document.createElement("div");
+        //const addingList = document.createElement("article");
         if(data.strArea!='Unknown'){
-            addingList.innerHTML = `
-                <div class="card">
-                    <div class="cardContainer" id="${data.strArea}">
-                        <div class="cardImgContainer">
-                            <button class="linkCard" 
-                                onclick="getFilteredList(7,'${data.strArea}')">
-                                <img 
-                                src="/src/assets/Flags/${data.strArea}.png" 
-                                alt="The ${data.strArea} Flag" onclick="getFilteredList(7,'${data.strArea}')">
-                                <p>
-                                    <strong>${data.strArea}: </strong>
-                                </p>
-                            </button>
-                </div>`;
-            listsGoInDiv.appendChild(addingList);
+            //addingList.innerHTML =
+            listsGoInDiv.innerHTML += 
+                `<article id="${data.strArea}" class="area-catagory ">
+                    <!--ESTE ERA UN ANCHOR y lo CAMBIE POR UN DIV
+                    //       <a href="search_results.html"-->
+                    <div class=" display-flex flex-column flex-gap margin-100">
+                        <div class="flag-Container | overflow-hidden">
+                            <img 
+                            src="/src/assets/Flags/${data.strArea}.png" 
+                            alt="The ${data.strArea} Flag" onclick="getFilteredList(7,'${data.strArea}')">
+                        </div>
+                        <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
+                            font-style-normal font-weight-600 font-size-20
+                            fit-content-width text-center padding-300-inline text-primary-tomatored"
+                            style="border: 2px solid ;" onclick="getFilteredList(7,'${data.strArea}')">
+                            ${data.strArea}
+                        </button>
+                    </div>
+                </article>`;           
+            //listsGoInDiv.appendChild(addingList);
         }
     });
+    console.log("Ending listAllAreas/CountryFlags in IdLayout:",listsDIV)
 }
 
 //List all the ingredients in the API 574 aprox registries.
