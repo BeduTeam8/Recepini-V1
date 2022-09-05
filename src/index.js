@@ -48,7 +48,7 @@ const apiSelected = [{
     },{
         url:"randomselection.php", //1- 10random recipes cada una con 53 props.
         tipo:"meals",
-        layout:"rnd10Recipes",
+        layout:"resultsArea",
         sesion: true,
         nombre: "1. 1-10 random recipes"
     },{
@@ -1113,7 +1113,10 @@ document.getElementById("randomButton").onclick = async function () {
             console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
             recipesHTML("results",datos);
         } else {
-            document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
+            // document.getElementById("results").innerHTML = 
+            const header2In = document.getElementById('numberResults');
+            header2In.textContent="We got nothing tu fullfil your search, why not gives us a chance. Try one of our suggestions...";
+            getRecipe(1);
         }
     /*} else {
         sessionStorage.setItem('searchterm', "");
@@ -1191,6 +1194,9 @@ window.addEventListener('load', function(){
     preloader.classList.add('fade-out-animation');
 });
 
+document.getElementById('logoRecipini').addEventListener("click", () => {
+    activeSection(1);
+});
 document.getElementById('indexMenu').addEventListener("click", () => {
     activeSection(1);
 });
@@ -1201,6 +1207,8 @@ document.getElementById('searchMenu').addEventListener("click", () => {
     activeSection(2);
 });
 document.getElementById('SearchBar1').addEventListener("mousedown", () => {
+    const header2In = document.getElementById('numberResults');
+    header2In.textContent="";
     activeSection(2);
 });
 
