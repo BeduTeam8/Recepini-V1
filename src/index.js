@@ -437,6 +437,8 @@ font-line-height-42" style="margin: 20px">Video of how it was made!</h3>
     //recipeGoesinDIV.appendChild(adding_recipe);
     console.log("Termina recipesXLHTML en IdLayout:",recipesDIV);
   });
+  activeSection(3);
+  scroll(0,0);
 }
 
 /*
@@ -1002,7 +1004,10 @@ async function getGeneral(Index,params= '') {
             // console.log('listfilteredResponseDIVCountry:',listfilteredResponseDIV);
             // return listfilteredResponseDIV;
         }
-        recipesHTML(layout,datos)
+            recipesHTML(layout,datos);
+            activeSection(2);
+            scroll(0,0);
+            document.getElementById('searchBar2').value = '';
         break;            
         case 8:{//Lista por Categoria de Comida
             // listfilteredResponseDIV=
@@ -1090,7 +1095,7 @@ document.getElementById("randomButton").onclick = async function () {
     const searchterm=document.getElementById('searchBar2');
     console.log("searchterm.length",searchterm.value.length);
 
-    if(searchterm.value.length>2){ ///Debe de al menos teclear 3 caracteres para ejecutar la búsqueda
+    //if(searchterm.value.length>0){ ///Debe de al menos teclear 3 caracteres para ejecutar la búsqueda
         const recipe = await getAPIResponse(13,searchterm.value);
         ///--------------------------
         let datos = recipe.meals;
@@ -1110,10 +1115,10 @@ document.getElementById("randomButton").onclick = async function () {
         } else {
             document.getElementById("results").innerHTML = "<h3>No existen resultados con esos parámetros de búsqueda.</h3>";
         }
-    } else {
+    /*} else {
         sessionStorage.setItem('searchterm', "");
         sessionStorage.setItem('resultterm', "");
-    }
+    }*/
 };//End of funciton getSearchBox();
 
 document.addEventListener('keypress', function (e) {
