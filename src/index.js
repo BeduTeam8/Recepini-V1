@@ -1119,7 +1119,7 @@ document.getElementById("randomButton").onclick = async function () {
             console.log("Receta x Terminos: ",searchterm.value,":#(",recipe.meals.length,"):\n",recipe.meals);
             recipesHTML("results",datos);
         } else {
-            // document.getElementById("results").innerHTML = 
+            document.getElementById("results").innerHTML = "";
             const header2In = document.getElementById('numberResults');
             header2In.textContent="We got nothing tu fullfil your search, why not gives us a chance. Try one of our suggestions...";
             getRecipe(1);
