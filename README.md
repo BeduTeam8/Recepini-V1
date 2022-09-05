@@ -105,17 +105,12 @@ This is an example of how to list things you need to use the software and how to
 - [ ] Meal DB API Conectivity
 - [ ] UI 
 - [ ] User Stories
-    - [ ] search a recepie
-    - [ ] random recepie
-    - [ ] navegate around the site
+    - [ ] Search a recipe
+    - [ ] Random recipe
+    - [ ] Navigate around the site
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
                                 
-                                       
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
