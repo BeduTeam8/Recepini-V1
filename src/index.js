@@ -102,7 +102,7 @@ const apiSelected = [{
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"ingredient",
+        layout:"ingredientsResults",
         sesion: false,
         name:"9. Búsqueda por ingrediente 1"
     },{
@@ -720,7 +720,8 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
   const listsGoInDiv = document.getElementById(listIngredientsDIV);
   listsGoInDiv.innerHTML = ""; //Clean element Before Filling
   lists.forEach(data => {
-    listsGoInDiv.innerHTML = `
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.idIngredient}">
                 <div class="cardImgContainer">
@@ -734,20 +735,6 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
                     </div>
             </div>
             <div class="cardTextContainer">${data.strDescription}</div>
-        </div>`;
-  });
-}
-
-function ingredientHTML(listIngredientsDIV,lists) {
-    console.log('Enla funcion ingredientHTML:', lists);
-  const listsGoInDiv = document.getElementById(listIngredientsDIV);
-  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
-  lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
-        <div class="card">
-            
-            <div class="cardTextContainer">${data}</div>
         </div>`;
     listsGoInDiv.appendChild(addingList);
   });
@@ -1009,7 +996,6 @@ async function getGeneral(Index,params= '') {
             listsAllCategoriesHTML(layout, datos);
             break;
         case 6: //Ingredientes
-        
             listsAllIngredientsHTML(layout, datos);
             break;  
         case 7:{//Lista por pais
@@ -1038,6 +1024,10 @@ async function getGeneral(Index,params= '') {
                 }//Falta el caso 10 Multiingrediente
             // recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
             recipesHTML(layout,datos);
+            const titleIngredient =  document.getElementById('titleIngredient');
+            titleIngredient.textContent=params;
+            const imgIngredient = document.getElementById('imgIngredient');
+            imgIngredient.src = 'https://themealdb.com/images/ingredients/'+params+'.png'
             activeSection(4);
             scroll(0,0);
             break; 
@@ -1131,7 +1121,7 @@ document.getElementById("randomButton").onclick = async function () {
         } else {
             // document.getElementById("results").innerHTML = 
             const header2In = document.getElementById('numberResults');
-            header2In.textContent="We got nothing to fullfil your search, why not gives us a chance. Try one of our suggestions...";
+            header2In.textContent="We got nothing tu fullfil your search, why not gives us a chance. Try one of our suggestions...";
             getRecipe(1);
         }
     /*} else {
