@@ -696,7 +696,7 @@ function listsAllAreaHTML(listsDIV,lists) {
                     <div class=" display-flex flex-column flex-gap margin-100">
                         <div class="flag-Container | overflow-hidden">
                             <img 
-                            src="./assets/${data.strArea}.png" 
+                            src="/src/assets/Flags/${data.strArea}.png" 
                             alt="The ${data.strArea} Flag" onclick="getFilteredList(7,'${data.strArea}')">
                         </div>
                         <button class="flag-Btn | button-primary-outline border-color-primary-tomatored  border-radius-45px font-family-Popp
