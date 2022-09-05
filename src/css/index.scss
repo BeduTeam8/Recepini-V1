@@ -1477,6 +1477,15 @@ footer {
 	}
 }
 
+#numberResults {
+	font-family: var(--Popp);
+	font-weight: 500;
+	font-size: var(--font-size-24);
+	line-height: 36px;
+	text-align: center;
+	max-width: clamp(20rem, 100%, 90rem) !important;
+}
+
 // Favorite Cuisine section
 
 .flag-grid {
@@ -1498,10 +1507,9 @@ footer {
 
 .card-grid {
 	display: grid;
-	grid-template-columns: repeat(4, auto);
-	grid-template-rows: repeat(2, auto);
-	column-gap: 3.125rem;
-	row-gap: 3.125rem;
+	max-width: clamp(20rem, 100%, 90rem);
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	grid-gap: 1rem;
 	justify-items: center;
 }
 //Integrantes
