@@ -996,6 +996,7 @@ async function getGeneral(Index,params= '') {
             listsAllCategoriesHTML(layout, datos);
             break;
         case 6: //Ingredientes
+        
             listsAllIngredientsHTML(layout, datos);
             break;  
         case 7:{//Lista por pais
