@@ -996,14 +996,14 @@ footer {
 	}
 
 	.navbar-toggler-icon {
-		background-image: url(/src/assets/icons/Menu.svg);
+		background-image: url(./assets/icons/Menu.svg);
 		filter: brightness(0) invert(1);
 		opacity: 0.75;
 		width: 2.5rem;
 		height: 2.5rem;
 	}
 	&[aria-expanded="true"] .navbar-toggler-icon {
-		background-image: url(/src/assets/icons/Close.svg);
+		background-image: url(./assets/icons/Close.svg);
 	}
 }
 
@@ -1014,7 +1014,7 @@ footer {
 
 .random-dice {
 	margin-left: 0.5rem;
-	background: url(/src/assets/icons/Dice_01.svg) no-repeat;
+	background: url(./assets/icons/Dice_01.svg) no-repeat;
 	background-size: 100%;
 	width: 24px;
 	height: 24px;
@@ -1031,27 +1031,27 @@ footer {
 	// animation for the dice
 	@keyframes randomSpin {
 		0% {
-			background: url(/src/assets/icons/Dice_01.svg) no-repeat;
+			background: url(./assets/icons/Dice_01.svg) no-repeat;
 			background-size: 100%;
 		}
 		16.6% {
-			background: url(/src/assets/icons/Dice_05.svg) no-repeat;
+			background: url(./assets/icons/Dice_05.svg) no-repeat;
 			background-size: 100%;
 		}
 		33.3% {
-			background: url(/src/assets/icons/Dice_04.svg) no-repeat;
+			background: url(./assets/icons/Dice_04.svg) no-repeat;
 			background-size: 100%;
 		}
 		50% {
-			background: url(/src/assets/icons/Dice_06.svg) no-repeat;
+			background: url(./assets/icons/Dice_06.svg) no-repeat;
 			background-size: 100%;
 		}
 		66.6% {
-			background: url(/src/assets/icons/Dice_02.svg) no-repeat;
+			background: url(./assets/icons/Dice_02.svg) no-repeat;
 			background-size: 100%;
 		}
 		83.3% {
-			background: url(/src/assets/icons/Dice_06.svg) no-repeat;
+			background: url(./assets/icons/Dice_06.svg) no-repeat;
 			background-size: 100%;
 		}
 	}
