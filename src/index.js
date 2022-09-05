@@ -996,6 +996,7 @@ async function getGeneral(Index,params= '') {
             listsAllCategoriesHTML(layout, datos);
             break;
         case 6: //Ingredientes
+        
             listsAllIngredientsHTML(layout, datos);
             break;  
         case 7:{//Lista por pais
@@ -1115,7 +1116,7 @@ document.getElementById("randomButton").onclick = async function () {
         } else {
             // document.getElementById("results").innerHTML = 
             const header2In = document.getElementById('numberResults');
-            header2In.textContent="We got nothing tu fullfil your search, why not gives us a chance. Try one of our suggestions...";
+            header2In.textContent="We got nothing to fullfil your search, why not gives us a chance. Try one of our suggestions...";
             getRecipe(1);
         }
     /*} else {
