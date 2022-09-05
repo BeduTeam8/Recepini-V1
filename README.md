@@ -54,6 +54,9 @@
 
 This is a project about a recipes website named Recipini. This webpage is connected to https://www.themealdb.com/ API. 
 Functionalities include:
+* The user can look for recipes or specific ingredients with the search bar
+* The user can select a recipe and access to its full instructions and required ingredients.
+* The user can get a random recipe using the button "Random"
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -68,6 +71,10 @@ Functionalities include:
 * [![Webpack][webpack.com]][webpack-url]
 * [![SASS][sass.com]][sass-url]
 * [![Figma][figma.com]][figma-url]
+
+We used Figma to plan and configure the DesignSystem project. The basic structure was made using HTML, CSS, and Bootstrap.
+SASS was included to generate and manipulate the stylesheets (variables, functions, inheritance). 
+Finally, Webpack was utilized to produce a single document with the required modules.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,28 +102,15 @@ This is an example of how to list things you need to use the software and how to
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Meal DB Api Conectivity
+- [ ] Meal DB API Conectivity
 - [ ] UI 
 - [ ] User Stories
     - [ ] search a recepie
     - [ ] random recepie
     - [ ] navegate around the site
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [](Francisco)
-* [](karla)
-* [](Jesus)
-* [](roman)
-* [](miguel)                                       
+                                
                                        
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
