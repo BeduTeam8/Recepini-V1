@@ -54,9 +54,11 @@
 
 This is a project about a recipes website named Recipini. This webpage is connected to https://www.themealdb.com/ API. 
 Functionalities include:
-* The user can look for recipes or specific ingredients with the search bar
+* The user can look for recipes or specific ingredients with the search bar.
 * The user can select a recipe and access to its full instructions and required ingredients.
-* The user can get a random recipe using the button "Random"
+* The user can get a random recipe using the button "Random".
+* The user can find recipes from a specific country.
+* The user can find 10 suggested recipes in the landing page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
