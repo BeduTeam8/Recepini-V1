@@ -102,7 +102,7 @@ const apiSelected = [{
     },{
         url:"filter.php?i=", //9-${strIngredient} Busqueda por ingrediente uno de 574 registros/objetos, cada uno con 3 propiedades. "strMeal" "strMealThumb" "idMeal"
         tipo:"meals",
-        layout:"ingredientsResults",
+        layout:"ingredient",
         sesion: false,
         name:"9. Búsqueda por ingrediente 1"
     },{
@@ -720,8 +720,7 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
   const listsGoInDiv = document.getElementById(listIngredientsDIV);
   listsGoInDiv.innerHTML = ""; //Clean element Before Filling
   lists.forEach(data => {
-    const addingList = document.createElement("div");
-    addingList.innerHTML = `
+    listsGoInDiv.innerHTML = `
         <div class="card">
             <div class="cardContainer" id="${data.idIngredient}">
                 <div class="cardImgContainer">
@@ -735,6 +734,20 @@ function listsAllIngredientsHTML(listIngredientsDIV,lists) {
                     </div>
             </div>
             <div class="cardTextContainer">${data.strDescription}</div>
+        </div>`;
+  });
+}
+
+function ingredientHTML(listIngredientsDIV,lists) {
+    console.log('Enla funcion ingredientHTML:', lists);
+  const listsGoInDiv = document.getElementById(listIngredientsDIV);
+  listsGoInDiv.innerHTML = ""; //Clean element Before Filling
+  lists.forEach(data => {
+    const addingList = document.createElement("div");
+    addingList.innerHTML = `
+        <div class="card">
+            
+            <div class="cardTextContainer">${data}</div>
         </div>`;
     listsGoInDiv.appendChild(addingList);
   });
@@ -1023,7 +1036,9 @@ async function getGeneral(Index,params= '') {
                 // console.log('listfilteredResponseDIVIng:',listfilteredResponseDIV);
                 }//Falta el caso 10 Multiingrediente
             // recipesHTML(listfilteredResponseDIV,filteredResponse.meals);
-            recipesHTML(layout,datos)
+            recipesHTML(layout,datos);
+            activeSection(4);
+            scroll(0,0);
             break; 
         case 11:
             recipesXLHTML(layout,datos);
